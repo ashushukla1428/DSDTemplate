@@ -1,0 +1,44 @@
+﻿@model Wempe.Models.PagedData<Wempe.wmpWebsitePage>
+@{
+    ViewBag.Title = "Appraiser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Page list</h2>
+<div id="divList">
+    @Html.Partial("PageList")
+</div>
+
+@section scripts{
+
+<script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<script src="~/Content/themes/admin/pages/scripts/ui-extended-modals.js"></script>
+
+<script src="~/Scripts/adminJs/WebPages.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            activemenu('eCommerce_Brands');
+           
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+            QuickSidebar.init(); // init quick sidebar
+            Demo.init(); // init demo features
+            UIExtendedModals.init();
+            //UIToastr.init();
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+
+           
+            jQuery(".page-number").live("click", function () {
+                
+                getList(parseInt($(this).html()));
+            });
+        });
+
+       
+</script>
+}
+

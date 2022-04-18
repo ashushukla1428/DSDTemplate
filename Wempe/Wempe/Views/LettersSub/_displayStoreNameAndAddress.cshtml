@@ -1,0 +1,52 @@
+﻿ @{
+    Layout = null;
+}
+@{
+    string fontSize = this.ViewData.ContainsKey("fontSize") ? this.ViewData["fontSize"].ToString() : string.Empty;
+ }
+<font face=""Times New Roman"  size="@fontSize">
+@Model.storeNameAndAddress.name 
+ @Html.Raw("<br/>")
+ </font>
+                                                                               
+@*start address if*@
+@{
+ 
+    if (Model.storeNameAndAddress.addressLine1 != "")
+    {
+    @Model.storeNameAndAddress.addressLine1<br />
+    }
+    if (Model.storeNameAndAddress.addressLine2 != "")
+    {
+    @Model.storeNameAndAddress.addressLine2<br /> 
+    }
+
+    if (Model.storeNameAndAddress.country == "United States")
+    {
+        if (Model.storeNameAndAddress.country != "")
+        {
+        @Model.storeNameAndAddress.country<br />
+        }
+        if (Model.storeNameAndAddress.state != "")
+        {
+         @Model.storeNameAndAddress.state<br />
+        }
+        if (Model.storeNameAndAddress.zipCode != "")
+        {
+        @Model.storeNameAndAddress.zipCode<br />
+        }
+       
+    }
+    else
+    {
+        if (Model.storeNameAndAddress.city != "")
+        {
+        @Model.storeNameAndAddress.city<br />
+        }
+        if (Model.storeNameAndAddress.country != "")
+        {
+        @Model.storeNameAndAddress.country<br />
+        }
+    }
+    }
+@*end address if*@

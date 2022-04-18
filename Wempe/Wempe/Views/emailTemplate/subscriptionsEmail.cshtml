@@ -1,0 +1,42 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title></title></head>
+<body>
+<style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+</style>
+    <div style="background-color:#cdc5c5;text-align:center" >
+<img src = "http://urtestsite.com:85/wempe/Content/themes/admin/layout/img/logo.png" style="margin-top:8px; margin-bottom:8px;" />
+        </div>
+<div style = "border-top:3px solid #22BCE5">&nbsp;</div>
+<span style = "font-family:Arial;font-size:10pt">
+Hello @Model.FirstName @Model.LastName,<br /><br />
+<b style = "color:#22BCE5">Company login detail</b><br /><br />
+</span>
+<table>
+    <tr>
+        <td>Username (Email) : </td>
+        <td> @Model.UserEmail</td>
+    </tr>
+    <tr>
+        <td>Password : </td>
+        <td> @Model.Password</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <a href="http://urtestsite.com:85/wempe/" target="_blank">Login</a>
+        </td>
+    </tr>
+</table>
+<br />
+<span>
+Thanks & regards,<br />
+WATCHSERVE
+</span>
+</body>
+</html>

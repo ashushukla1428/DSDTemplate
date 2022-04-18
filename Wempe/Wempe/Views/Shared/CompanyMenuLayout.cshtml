@@ -1,0 +1,175 @@
+﻿@model IEnumerable<Wempe.Models.CompanyMenu>
+@{
+    Layout = null;
+}
+
+
+
+<li id="liMyDetails">
+    <a href="#">
+
+        @*<img src="~/Images/logoOld.gif" />*@
+
+        <div class="ViewBagLogo"><img src="@ViewBag.ImageLogo" /></div>
+        <span class="title">
+            <b>  @Wempe.CommonClasses.SessionMaster.Current.Name </b>
+</span><br />
+        <span class="title">
+            (@if (Wempe.CommonClasses.SessionMaster.Current.Role == "Company")
+            { @Html.Raw("Admin") }
+            else
+            { @Wempe.CommonClasses.SessionMaster.Current.Role })
+        </span>
+
+        @if (Wempe.CommonClasses.SessionMaster.Current.IsMainUser == false)
+        { <a href="../Suggestion/MySuggestions" title="Suggestions">
+
+              <i class="icon-bulb"></i>
+              <span class="title">Suggestions</span>
+            @*<div class="icon-bulb" ></div> Suggestions*@
+        </a>
+        }
+
+    </a>
+</li>
+
+
+
+<li id="liMyProfile">
+    <a href="@Url.Action("MyProfile", "Account")">
+        <i class="icon-user"></i>
+        <span class="title">My Profile</span>
+    </a>
+</li>
+
+@foreach (var item in Model)
+{
+    if (item.Group != true)
+    {
+        if (item.pId == 0)
+        {
+            <li id="@item.Id">
+                <a href="@Url.Action(item.ActionName, item.ControllerName)">
+                    <i class="@item.cssClass"></i>
+                    <span class="title">@item.MenuText</span>
+                </a>
+            </li>
+        }
+        else
+        {
+            List<Wempe.Models.CompanyMenu> getlist = ViewBag.Menus as List<Wempe.Models.CompanyMenu>;
+            int counter = getlist.Where(s => s.pId == item.pId).Count();
+            var tempList = getlist.Where(s => s.pId == item.pId);
+            if (counter > 0)
+            {
+                <li id="@item.Id">
+                    <a href="@Url.Action("#", item.ControllerName)">
+                        <i class="@item.cssClass"></i>
+                        <span class="title">@item.MenuText</span>
+                        <span></span><span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        @foreach (var temp in tempList)
+                        {
+                            <li id="WEMPE_" + @temp.cssClass>
+                                <a href="@Url.Action(temp.ActionName.Replace("%3f", "?").Replace("%3d", "="), temp.ControllerName)">
+                                    <i class="@temp.cssClass"></i>
+                                    <span class="title">@temp.MenuText</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        }
+    }
+}
+
+
+
+@{
+
+    List<Wempe.Models.CompanyMenu> getlist2 = ViewBag.Menus as List<Wempe.Models.CompanyMenu>;
+    var tempList2 = getlist2.Where(s => s.pId == 0 && s.MenuText != null);
+
+    foreach (var temp in tempList2)
+    {
+        <li id="@temp.Id">
+            <a href="@Url.Action(temp.ActionName.Replace("%3f", "?").Replace("%3d", "="), temp.ControllerName)">
+                <i class="@temp.cssClass"></i>
+                <span class="title">@temp.MenuText</span>
+            </a>
+        </li>
+    }
+}
+
+
+<li id="ManagList">
+    <a href="#" id="aaaa">
+        <i class="icon-list"></i>
+        <span class="title">Manage</span>
+        <span></span><span id="spnArrowManageListMain" class="arrow"></span>
+    </a>
+    <ul class="sub-menu">
+        @foreach (var item2 in Model)
+        {
+            if (item2.Group == true)
+            {
+                List<Wempe.Models.CompanyMenu> getlist = ViewBag.Menus as List<Wempe.Models.CompanyMenu>;
+                int counter = getlist.Where(s => s.pId == item2.pId).Count();
+                var tempList = getlist.Where(s => s.pId == item2.pId);
+
+      
+                if (counter > 0)
+                {
+                    <li id="@item2.Id">
+                        <a href="@Url.Action(item2.ActionName.Replace("%3f", "?").Replace("%3d", "="), item2.ControllerName)">
+                            <i class="@item2.cssClass"></i>
+                            <span class="title">@item2.MenuText</span>
+                            <span></span><span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+
+                            @foreach (var temp in tempList)
+                            {
+                                <li id="@temp.Id">
+                                    <a href="@Url.Action(temp.ActionName.Replace("%3f", "?").Replace("%3d", "="), temp.ControllerName)">
+                                        <i class="@temp.cssClass"></i>
+                                        <span class="title">@temp.MenuText</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+        }
+    </ul>
+</li>
+
+
+
+
+@*<li id="SuggestionList">
+    <a href="@Url.Action("MySuggestions","Suggestion")">
+        <i class="icon-list"></i>
+        <span class="title">Suggestions</span>
+    </a>
+</li>*@
+
+
+
+<li>
+    <a onclick='changePasswordPopup()' href="#">
+        <i class="icon-key"></i>
+        <span class="title">Change Password</span>
+    </a>
+</li>
+
+
+<li>
+    <a onclick='UserTrack()' href="@Url.Action("Login", "Home")">
+        <i class="icon-power"></i>
+        <span class="title">Sign out</span>
+    </a>
+</li>

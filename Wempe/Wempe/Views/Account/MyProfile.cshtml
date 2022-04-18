@@ -1,0 +1,265 @@
+﻿@model Wempe.Models.CompanyEmployeeModel
+@{
+    ViewBag.Title = "My Profile";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        @*<li>
+            <a href="/User/index">Users</a>
+            <i class="fa fa-angle-right"></i>
+        </li>*@
+        <li>
+            <a href="#">My Profile</a>
+        </li>
+    </ul>
+</div>
+@using (Html.BeginForm("UpdateProfile", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+
+    @Html.Partial("_PartialAddEditUser");
+}
+<style>
+    td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    .input-validation-error {
+        border: 1px solid red !important;
+    }
+</style>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+
+
+<script>
+     jQuery(document).ready(function () {
+         Metronic.init(); // init metronic core components
+         Layout.init(); // init current layout
+         QuickSidebar.init(); // init quick sidebar
+         Demo.init(); // init demo features
+       //  UIExtendedModals.init();
+     });
+</script>
+
+
+<script>
+    jQuery(document).ready(function () {
+       // alert('in');
+        activemenu('liMyProfile');
+    });
+
+
+
+    </script>
+    }
+
+
+
+<script>
+
+    var _lockPayementHistory = true;
+
+    function setPagingDetailPaymentHistory(noOfrows, Total, pageNo) {
+        _firstRecord = 1;
+        if (noOfrows < pazeSize) {
+            noOfrows = Total;
+            _firstRecord = Total;
+            _lockPayementHistory = false;
+        }
+        else {
+            noOfrows = noOfrows * pageNo;
+            if (pageNo > 1) {
+                _firstRecord = (noOfrows - pazeSize) + 1;
+            }
+        }
+        $('#sample_1_infoPaymentHistory').html('Showing ' + _firstRecord + ' to ' + noOfrows + ' of ' + Total + ' entries');
+    }
+    $('#sample_1_nextPaymentHistory').click(function () {
+        if (_lockPayementHistory) {
+            var _index = parseInt($('#hdnPageNoPaymentHistory').val()) + 1;
+            //getList(_index);
+
+            ViewPaymentHistory(_index, $('#hdnPageNoCompanyId').val());
+        }
+    });
+    $('#sample_1_previousPaymentHistory').click(function () {
+        var _index = parseInt($('#hdnPageNoPaymentHistory').val()) - 1;
+        if (_index > 0) {
+            _lockPayementHistory = true;
+            //getList(_index);
+            ViewPaymentHistory(_index, $('#hdnPageNoCompanyId').val());
+        }
+    });
+
+    function ViewPaymentHistory(pageNo, CompanyID) {
+
+        //alert(CompanyID);
+        $('#hdnPageNoCompanyId').val(CompanyID)
+
+        _lockPayementHistory = true;
+        //_lockCustomerSearch = true;
+        $('#hdnPageNoPaymentHistory').val(pageNo);
+
+        var model = {
+            CompanyId: CompanyID,
+            pageNo: pageNo,
+            sortColumn: _sortColumn,
+            sortOrder: _sortOrder
+        };
+
+
+        $('#tbodyDetailsPaymentHistory').html('<tr><td colspan="5">Loading....</td></tr>');
+        $.ajax({
+            url: siteUrl + 'Company/ViewPaymentHistory',
+            //headers: { "requestType": "client" },
+            type: 'POST',
+            data: JSON.stringify(model),
+            contentType: 'application/json;charset=utf-8',
+            success: function (data) {
+                $('#tbodyDetailsPaymentHistory').html('');
+                $('#tbodyTemplatePaymentHistory').tmpl(data).appendTo('#tbodyDetailsPaymentHistory');
+                if (data.length == 0) {
+                    setPagingDetailPaymentHistory(data.length, 0, pageNo);
+                }
+                else {
+                    setPagingDetailPaymentHistory(data.length, data[0].TotalCount, pageNo);
+                }
+            },
+            error: function (_data) {
+                $('#tbodyDetailsPaymentHistory').html('<tr><td colspan="5">error in request</td></tr>');
+            }
+        });
+
+
+        var $modal = $('#divPaymentHistoryPopUp');
+        $modal.modal();
+
+
+    }
+
+</script>
+
+
+
+<div id="divPaymentHistoryPopUp" class="modal fade" tabindex="-1" data-width="90%" style="max-height: 500px;">
+    <div class="modal-header" id="divPaymentHistoryPopupHeader">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Payment History</h4>
+
+        <input type="hidden" id="hdnPageNoPaymentHistory" value="1" />
+
+        <input type="hidden" id="hdnPageNoCompanyId" value="1" />
+
+
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN PAGE CONTENT-->
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet box blue-hoki">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-grid"></i>Listing
+                        </div>
+                        <div class="tools">
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+
+
+                        <div class="table-scrollable">
+                            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Package Start Date
+                                        </th>
+                                        <th>
+                                            Package Period
+                                        </th>
+                                        <th>
+                                            Package Renewal date
+                                        </th>
+                                        <th>
+                                            Payment
+                                        </th>
+                                        <th>
+                                            User Limit
+                                        </th>
+
+                                        <th>
+                                            Payment Status
+                                        </th>
+
+                                        @* <th>Action</th>*@
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyDetailsPaymentHistory"></tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 col-sm-12">
+                                <div class="dataTables_info" id="sample_1_infoPaymentHistory" role="status" aria-live="polite"></div>
+                            </div>
+                            <div class="col-md-7 col-sm-12">
+                                <div class="dataTables_paginate paging_simple_numbers" id="sample_1_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button previous" aria-controls="sample_1" tabindex="0" id="sample_1_previousPaymentHistory"><a><i class="fa fa-angle-left"></i></a></li>
+                                        <li class="paginate_button next" aria-controls="sample_1" tabindex="0" id="sample_1_nextPaymentHistory"><a><i class="fa fa-angle-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <script id="tbodyTemplatePaymentHistory" type="text/html">
+                            <tr>
+                                <td>
+                                    ${PackageStartDate}
+
+                                </td>
+                                <td>
+                                    ${PackagePeriod}
+                                </td>
+                                <td>
+                                    ${PackageRenewalDate}
+                                </td>
+                                <td>
+                                    ${Payment}
+                                </td>
+
+                                <td>
+                                    ${UserLimit}
+
+                                </td>
+
+
+                                <td>
+                                    ${PaymentStatus}
+
+                                </td>
+
+                                @* <td>
+
+                                        <a href="../Repair/NewRepair?id=${customerNumber}&Rid=${repairNumber}" title="${repairNumberComplete}"  class="btn default btn-xs blue-stripe">Choose </a>
+                                    </td>*@
+                            </tr>
+                        </script>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+
+            </div>
+        </div>
+    </div>
+</div>

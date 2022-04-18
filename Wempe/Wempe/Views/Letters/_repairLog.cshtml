@@ -1,0 +1,155 @@
+﻿@model Wempe.Models.CustomerReceiptEnvelope
+@{
+    Layout = null;
+    //var mailingWOD2=
+}
+<input type="hidden" value="@Model.PaperTopMargin" id="PaperTopMargin" />
+<input type="hidden" value="@Model.PaperBottomMargin" id="PaperBottomMargin" />
+<input type="hidden" value="@Model.PaperLeftMargin" id="PaperLeftMargin" />
+<input type="hidden" value="@Model.PaperRightMargin" id="PaperRightMargin" />
+<body onContextMenu="return false" >
+     @if (Model.withLetterHead == "1")
+{
+    @Html.Raw("<div id='printDiv' style='margin-top:"+Model.PaperTopMargin+"px;margin-bottom:"+Model.PaperBottomMargin+"px;margin-left:"+Model.PaperLeftMargin+"px;margin-right:"+Model.PaperRightMargin+"px'>");
+}
+else {
+    @Html.Raw("<div id='printDiv'>");
+}
+<div align="center">
+	<table border="0" width="590" id="table1">
+		<tr>
+			<td>
+			<p align="center">
+			<font face="Times New Roman" size="2">
+
+                 @if (Model.withLetterHead == "0" || Model.withLetterHead == null)
+                {
+			        @Html.Raw("<img border='0' src='../images/logo.gif'  class='imgPrintPopupLogo' width='162' height='47'><br><br><img border='0' src='../images/logoAddress.gif' class='imgPrintPopupAddress' width='494' height='21'><br>");
+                }
+
+			@*<img border="0"  id="imgPrintPopupLogo"  src="../images/logo.gif"  width="162" height="47"><br>
+			<br>
+			<img border="0" id="imgPrintPopupAddress" src="../images/logoAddress.gif" width="494" height="21"><br>*@
+			<br>
+			<br>
+			<br>
+			</font>
+			</p>
+			<table border="0" width="100%" id="table2">
+				<tr>
+					<td>
+					<p align="right"><b><font face="Times New Roman">DETAILED REPAIR LOG/HISTORY REPORT</font></b></p></td>
+				</tr>
+			</table>
+			<table border="0" width="100%" id="table3">
+				<tr>
+					<td width="60%">
+					<font face="Times New Roman" size="2">
+					<b>CUSTOMER</b><br>
+					@Html.Partial("~/Views/LettersSub/_displayCustomerData.cshtml", Model, new ViewDataDictionary { { "fontSize", "2" }, { "displayName", "name" }, { "displaySpace1", "noSpace" }, { "displayAddress", "address" }, { "displaySpace2", "space" }, { "displayTelephone", "telephone" }, { "displaySpace3", "noSpace" }, { "displayFax", "fax" } })
+					</font>
+					</td>
+					<td width="40%" align="right" valign="top">
+					<font face="Times New Roman" size="2">
+					<b>Wempe Repair # @Model.resportMainHeadrs.RepairNumber@if (Model.resportMainHeadrs.TicketNumber != "")
+                                        {
+                                            @Html.Raw("-" + Model.resportMainHeadrs.TicketNumber)
+                                      }@if (Model.resportMainHeadrs.OrderNumber != "")
+                                        {
+                                            @Html.Raw("-" + Model.resportMainHeadrs.OrderNumber)
+                                      }</b>
+					<br>
+					@DateTime.Now.ToLongDateString()
+					</font>
+					</td>
+				</tr>
+			</table>
+			<font face="Times New Roman" size="2">
+			<br>
+			</font>
+			<table border="0" width="100%" id="table4">
+				<tr>
+					<td>
+					<p align="left"><font face="Times New Roman" size="2">
+					<b><br>
+					ITEM INFORMATION</b></font></p>
+					<p align="left"><font face="Times New Roman" size="2">
+                         @Html.Partial("~/Views/LettersSub/_displayItem.cshtml", Model, new ViewDataDictionary { { "fontSize", "2" }, { "numberOfItemColumns", "2" }, { "displayConditions", "conditions" } })
+					                </font></p>
+					
+					@*displayEngraving*@
+                    @if (Model.itemDetail.repairType == "Engraving")
+                    {
+                      <p><font face="Times New Roman" size="2">
+					  <b>ENGRAVING INFORMATION</b></font></p>
+                      <p align="left"><font face="Times New Roman" size="2">
+                        @Html.Partial("~/Views/LettersSub/_displayEngraving.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" }})
+                        </font>
+                     </p>
+                    }
+					
+					<p align="left"><font face="Times New Roman" size="2">&nbsp;<br>
+					<b>
+					REPAIR LOG/HISTORY REPORT</b></font><p><font face="Times New Roman" size="2"></p></font>
+						<table border="0" width="100%" id="table18" cellspacing="4" cellpadding="4">
+							<tr>									
+							<td width="35%">
+							<font face="Times New Roman" size="2"><b>Date/Time</b>   
+							</td>
+							<td width="65%">									
+							<font face="Times New Roman" size="2"><b>Action</b>
+							</td>												
+							</tr>
+							<tr>									
+							<td width="35%">
+							<font face="Times New Roman" size="2">&nbsp;
+							</td>
+							<td width="65%">									
+							<font face="Times New Roman" size="2">&nbsp;
+							</td>												
+							</tr>
+							<tr>									
+							<td width="35%">
+							<font face="Times New Roman" size="2">@Model.customerDetail.entryDate
+							</td>
+							<td width="65%">									
+							<font face="Times New Roman" size="2">Customer profile created.
+							</td>												
+							</tr>																						
+						
+                            @if (Model.RepairLog != null)
+                            {
+                                foreach (var item in Model.RepairLog)
+                                {
+                                <tr>
+                                    <td width="35%" valign="top">
+                                        <font face="Times New Roman" size="2">@item.dateStamp
+                                    </td>
+                                    <td width="65%" valign="top">
+                                        <font face="Times New Roman" size="2">@item.changeComment
+                                    </td>
+                                </tr> 
+                             }
+
+                            }
+                            else 
+                            {
+                                <tr>
+                                    <td width="35%">
+                                        <font face="Times New Roman" size="2">No history.   
+                                    </td>
+                                    <td width="65%">
+                                        <font face="Times New Roman" size="2">&nbsp;
+                                    </td>
+                                </tr>		
+                            }
+                        </table>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+	</table>
+</div>
+    </div>
+</body>

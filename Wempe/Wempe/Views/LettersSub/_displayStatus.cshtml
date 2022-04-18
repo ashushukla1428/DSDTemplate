@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+}
+@{
+    string fontSize = this.ViewData.ContainsKey("fontSize") ? this.ViewData["fontSize"].ToString() : string.Empty;
+}
+<p>
+    <b>
+        <font face="Times New Roman" size="@fontSize">
+     @Html.Raw(Model.itemDetail.repairType + " " + Model.itemDetail.status) @if (Model.itemDetail.dueDate != null)
+{@Html.Raw(" - " + Model.itemDetail.dueDate + " (" + Model.itemDetail.dueDateTime + " " + Model.itemDetail.dueDateType)}@if (Model.itemDetail.dueDateTime != "" && Model.itemDetail.dueDateTime != "1")
+                                                                                                                                                                                                                                                                     {@Html.Raw("s") })
+  </font>
+    </b>
+</p>

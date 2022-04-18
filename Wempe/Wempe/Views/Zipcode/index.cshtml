@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Manage Cities";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Zipcode</a>
+        </li>
+    </ul>
+</div>
+
+<div id="BandType-list">
+    @Html.Partial("_zipcodeList")
+</div>
+
+<!-- responsive -->
+<div id="responsive" class="modal fade" tabindex="-1" data-width="760">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Manage Zipcode</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Country</h4>
+                <p>
+                    @Html.DropDownList("drpCityCountry", (IEnumerable<SelectListItem>)ViewBag.Countries, "Select Country", new { @class = "form-control" })
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h4>State</h4>
+                <p>
+                    <select class="form-control" id="drpcityState">
+                        <option>Please select</option>
+                    </select>
+                </p>
+            </div>
+
+            <div class="col-md-6">
+                <h4>County</h4>
+                <p>
+                    <select class="form-control" id="drpcityCounty">
+                        <option>Please select</option>
+                    </select>
+                </p>
+            </div>
+
+
+            <div class="col-md-6">
+                <h4>City</h4>
+                <p>
+                    <select class="form-control" id="drpcityCity">
+                        <option value>Please select</option>
+                    </select>
+                </p>
+            </div>
+
+            @*<div class="col-md-6">
+                    <h4>Zip-code</h4>
+                    <p>
+                        <input id="txtZipcode" class="form-control" type="text">
+                    </p>
+                </div>*@
+
+
+          
+
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <h4>Zipcode</h4>
+                <p>
+                    <input id="txtPostalCode" class="form-control" type="text">
+                </p>
+            </div>
+
+
+            <div class="col-md-6">
+                <h4>Active</h4>
+                <p>
+                    <input type="checkbox" checked="checked" id="chkIsActive">
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+        <button type="button" class="btn blue" onclick="Add();">Save changes</button>
+        <input type="hidden" id="hdnid" value="0" />
+    </div>
+</div>
+
+<!-- BEGIN PAGE LEVEL STYLES onclick="Add();"-->
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+
+<!-- END PAGE LEVEL STYLES -->
+@section scripts{
+    <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+    <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script src="~/Content/themes/admin/pages/scripts/ui-extended-modals.js"></script>
+    <script src="~/Scripts/MasterJs/zipcode.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            //activemenu('WEMPE_cities');
+
+
+            $('#ManagList').addClass('open');
+            $('#liManageLocation').addClass('open');
+            $('#liManageLocation').find('span').addClass('open');
+
+
+            $('#ManagList').find('.sub-menu:first').css('display', 'block');
+
+            $('#liManageLocation').find('.sub-menu').css('display', 'block');
+
+
+            $('#spnArrowManageListMain').addClass('open');
+
+            activemenu('wempe_zipcode');
+
+
+
+            _sortColumn = 'LastUpdate';
+            _sortOrder = 'DESC';
+            getList(1);
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+            QuickSidebar.init(); // init quick \
+            Demo.init(); // init demo features
+            UIExtendedModals.init();
+            //UIToastr.init();
+        });
+
+        function validate() {
+            var reason = "";
+ 
+            reason += validateEmpty(document.getElementById('txtPostalCode'), 'Zipcode required !');
+            reason += validateDropdown(document.getElementById('drpcityCity'), 'City name required !');
+
+            if (reason != "") {
+                alert("Some fields need correction:\n" + reason);
+                return false;
+            }
+            return true;
+        }
+    </script>
+}
+

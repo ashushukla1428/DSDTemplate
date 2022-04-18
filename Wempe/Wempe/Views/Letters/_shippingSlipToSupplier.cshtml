@@ -1,0 +1,151 @@
+﻿@model Wempe.Models.CustomerReceiptEnvelope
+@{
+    Layout = null;
+    DayOfWeek mailingWOD2 = Convert.ToDateTime(Model.itemDetail.shippingToSupplierMailingDate).DayOfWeek;
+
+    DayOfWeek arrivalWOD2 = Convert.ToDateTime(Model.itemDetail.shippingToSupplierExpectedArrivalDate).DayOfWeek;
+    //var mailingWOD2=
+}
+<input type="hidden" value="@Model.PaperTopMargin" id="PaperTopMargin" />
+<input type="hidden" value="@Model.PaperBottomMargin" id="PaperBottomMargin" />
+<input type="hidden" value="@Model.PaperLeftMargin" id="PaperLeftMargin" />
+<input type="hidden" value="@Model.PaperRightMargin" id="PaperRightMargin" />
+<body onContextMenu="return false"  bgcolor="#FFFFFF">
+    @if (Model.withLetterHead == "1")
+{
+    @Html.Raw("<div id='printDiv' style='margin-top:"+Model.PaperTopMargin+"px;margin-bottom:"+Model.PaperBottomMargin+"px;margin-left:"+Model.PaperLeftMargin+"px;margin-right:"+Model.PaperRightMargin+"px'>");
+}
+else {
+    @Html.Raw("<div id='printDiv'>");
+}
+	<p align="center">
+	<font face="Times New Roman" size="2">
+
+         @if (Model.withLetterHead == "0" || Model.withLetterHead == null)
+                {
+			        @Html.Raw("<img border='0' src='../images/logo.gif'  class='imgPrintPopupLogo' width='162' height='47'><br><br><img border='0' src='../images/logoAddress.gif' class='imgPrintPopupAddress' width='494' height='21'><br>");
+                }
+	@*<img border="0" src="../images/logo.gif"  id="imgPrintPopupLogo" width="162" height="47"><br>
+	<br>
+	<img border="0" src="../images/logoAddress.gif" id="imgPrintPopupAddress" width="494" height="21"><br>*@
+	<br><br>
+	</font>
+	<div align="center">
+	<table border="0" width="590" id="table1">
+		<tr>
+			<td width="20%" valign="top">&nbsp;</td>
+			<td width="80%">
+			<p align="right"><font face="Times New Roman"><b>SHIPPING SLIP (TO CUSTOMER)</b>
+			<br>
+			</font>
+			<font face="Times New Roman" size="2"><br>
+			<b> Repair # @Model.resportMainHeadrs.RepairNumber@if (Model.resportMainHeadrs.TicketNumber != "")
+                                        {
+                                            @Html.Raw("-" + Model.resportMainHeadrs.TicketNumber)
+                                      }@if (Model.resportMainHeadrs.OrderNumber != "")
+                                        {
+                                            @Html.Raw("-" + Model.resportMainHeadrs.OrderNumber)
+                                      }</b>
+					<br>
+					@DateTime.Now.ToLongDateString()
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td width="20%" valign="top">
+			<b>
+			<font face="Times New Roman" size="2">
+			Customer:</font></b></td>
+			<td width="80%" valign="top">
+			<font face="Times New Roman" size="2">
+                     @Html.Partial("~/Views/LettersSub/_displaySupplierData.cshtml", Model, new ViewDataDictionary { { "fontSize", "2" }, { "displayName", "name" }, { "displaySpace1", "noSpace" }, { "displayAddress", "address" }, { "displaySpace2", "space" }, { "displayTelephone", "telephone" }, { "displaySpace3", "noSpace" }, { "displayFax", "noFax" } })
+			     
+				 <br />
+				</font>
+			</td>
+		</tr>
+	</table>
+	<table border="0" width="590" id="table2">
+		<tr>
+			<td width="25%">&nbsp;</td>
+			<td width="25%">
+			&nbsp;</td>
+			<td width="25%">&nbsp;</td>
+			<td width="25%">
+			&nbsp;</td>
+		</tr>
+		<tr>
+			<td width="25%"><b><font face="Times New Roman" size="2">Value:</font></b></td>
+            <td width="25%"><font face="Times New Roman" size="2">
+                @if (Model.itemDetail.shippingToSupplierValue != null && Model.itemDetail.shippingToSupplierValue != "")
+                {
+                   @Html.Raw("$" + Model.itemDetail.shippingToSupplierValue)
+                }
+		     </font></td>
+			<td width="25%"><font face="Times New Roman" size="2"><b>&nbsp; Insurance:</b></font></td>
+			<td width="25%"><font face="Times New Roman" size="2">
+                   @if (Model.itemDetail.shippingToSupplierInsurance != null && Model.itemDetail.shippingToSupplierInsurance != "")
+                {
+                   @Html.Raw("$" + Model.itemDetail.shippingToSupplierInsurance)
+                }
+			  </font></td>
+		</tr>
+		<tr>
+			<td width="25%"><b><font face="Times New Roman" size="2">Salesperson:</font></b></td>
+			<td width="25%"><font face="Times New Roman" size="2">
+                 @if (Model.itemDetail.shippingToSupplierSalesperson != null && Model.itemDetail.shippingToSupplierSalesperson != "")
+                {
+                   @Html.Raw( Model.itemDetail.shippingToSupplierSalesperson)
+                }
+			                </font></td>
+			<td width="25%"><font face="Times New Roman" size="2"><b>&nbsp; Destination Type:</b></font></td>
+			<td width="25%"><font face="Times New Roman" size="2">
+                   @if (Model.itemDetail.shippingToSupplierDestinationType != null && Model.itemDetail.shippingToSupplierDestinationType != "")
+                {
+                   @Html.Raw( Model.itemDetail.shippingToSupplierDestinationType)
+                }
+			                </font></td>
+		</tr>
+		<tr>
+			<td width="25%"><font face="Times New Roman" size="2"><b>Carrier:</b></font></td>
+			<td width="25%"><font face="Times New Roman" size="2"> 
+                 @if (Model.itemDetail.shippingToSupplierCarrier != null && Model.itemDetail.shippingToSupplierCarrier != "")
+                {
+                   @Html.Raw( Model.itemDetail.supplierCarrierName)
+                }
+
+			  </font></td>
+			<td width="25%"><font face="Times New Roman" size="2">&nbsp; <b>Shipping Type:</b></font></td>
+			<td width="25%"><font face="Times New Roman" size="2">
+                   @if (Model.itemDetail.shippingToSupplierShippingType != null && Model.itemDetail.shippingToSupplierShippingType != "")
+                {
+                   @Html.Raw( Model.itemDetail.supplierShippingType)
+                }
+			                </font></td>
+		</tr>
+		<tr>
+			<td width="25%"><font face="Times New Roman" size="2"><b>Mailing Date:</b></font></td>
+			<td width="25%"><font face="Times New Roman" size="2">
+                 @if (Model.itemDetail.shippingToSupplierMailingDate != null)
+                {
+                   @Html.Raw(mailingWOD2+"&nbsp;"+ Model.itemDetail.shippingToSupplierMailingDate)
+                }
+			                </font></td>
+			<td width="25%"><font face="Times New Roman" size="2"><b>&nbsp; Expected Arrival:</b></font></td>
+			<td width="25%"><font face="Times New Roman" size="2">
+                 @if (Model.itemDetail.shippingToSupplierExpectedArrivalDate != null)
+                {
+                   @Html.Raw(arrivalWOD2+"&nbsp;"+ Model.itemDetail.shippingToSupplierExpectedArrivalDate)
+                }
+			                </font></td>
+		</tr>
+		<tr>
+			<td width="25%"><font face="Times New Roman" size="2"><b>&nbsp;</b></font></td>
+			<td width="25%">&nbsp;</td>
+			<td width="25%">&nbsp;</td>
+			<td width="25%">&nbsp;</td>
+		</tr>
+	</table>
+</div>
+        </div>
+</body>

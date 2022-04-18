@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+@{
+    string fontSize = this.ViewData.ContainsKey("fontSize") ? this.ViewData["fontSize"].ToString() : string.Empty;
+    string numberOfItemColumns = this.ViewData.ContainsKey("numberOfItemColumns") ? this.ViewData["numberOfItemColumns"].ToString() : string.Empty;
+    string displayConditions = this.ViewData.ContainsKey("displayConditions") ? this.ViewData["displayConditions"].ToString() : string.Empty;
+}  
+<table border="0" width="100%" cellspacing="0"  cellpadding="0" id="tableItemMain">
+    <tr>
+        <td width="50%" valign="top">
+                                    <table class="tdStyle_table" style="font-family:'Times New Roman';width:100%; font-size:12px;" border="0" cellpadding="0" cellspacing="0"  >
+                                        @displayItemInformation(Model.itemDetail.BrandName,"Brand",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.item,"Item",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.style,"Style",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.movementType,"Movement",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.caseType,"Case",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.BandType,"Band",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.BuckleType,"Buckle",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.dialType,"Dial",fontSize,numberOfItemColumns)
+                                        @if (displayConditions == "conditions")
+                                        {
+                                            @displayItemInformation(Model.itemDetail.crystalCondition,"Crystal Condition",fontSize,numberOfItemColumns)
+                                            @displayItemInformation(Model.itemDetail.bezelCondition,"Bezel Condition",fontSize,numberOfItemColumns)
+                                            @displayItemInformation(Model.itemDetail.BackCondition,"Back Condition",fontSize,numberOfItemColumns)
+                                            @displayItemInformation(Model.itemDetail.lugsCondition,"Lugs Condition",fontSize,numberOfItemColumns)
+                                            @displayItemInformation(Model.itemDetail.caseCondition,"Case Condition",fontSize,numberOfItemColumns)
+                                            @displayItemInformation(Model.itemDetail.bandCondition,"Band Condition",fontSize,numberOfItemColumns)
+                                            @displayItemInformation(Model.itemDetail.BuckleCondition,"Buckle Condition",fontSize,numberOfItemColumns)
+                                            @displayItemInformation(Model.itemDetail.dialCondition,"Dial Condition",fontSize,numberOfItemColumns)
+                                        }
+                                        @displayItemInformation(Model.itemDetail.serialNumber,"Serial #",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.referenceNumber,"Reference #",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.movementSerialNumber,"Movement Serial #",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.caliber,"Caliber #",fontSize,numberOfItemColumns)
+                                        @displayItemInformation(Model.itemDetail.numberOfJewels,"Number Of Jewels",fontSize,numberOfItemColumns)
+                                       
+                                    </table>
+			               </td>
+    </tr>
+</table>
+@{
+    
+   @helper displayItemInformation(string databaseValue,string displayName,string fontSize,string numberOfItemColumns)
+    {
+        if (databaseValue != "" && databaseValue != null && numberOfItemColumns=="1")
+        {
+            <tr>
+                <td class="tdStyle">
+                    <font face="Times New Roman" size="@fontSize"><b>@displayName :</b></font>
+                </td>
+                 <td >
+                     <font face="Times New Roman" size="@fontSize">@databaseValue </font>
+                </td>
+            </tr>
+        }
+        else
+        {
+            if (databaseValue != "" && databaseValue != null && numberOfItemColumns=="2")
+            {
+             <div style="float:left;width:25%;font-family:'Times New Roman'"><font size="@fontSize"><b>@displayName :</b></font></div>
+             <div style="float:left;width:25%;font-family:'Times New Roman'"><font size="@fontSize">@databaseValue</font></div>
+        }
+        }
+    }
+ }

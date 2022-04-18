@@ -1,0 +1,443 @@
+﻿ @model Wempe.Models.CompanyEmployeeModel
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12">
+        <!-- Begin: life time stats -->
+        <div class="portlet">
+            <div class="portlet-title">
+                 <div class="caption">
+                    <i class="fa fa-gift"></i>Create new User
+                            <input type="hidden" value="0" id="hdnid" />
+                              
+                </div>
+                <div class="actions">
+                   @Html.Raw(ViewBag.Error) &nbsp;  <a href="@Url.Action("Index", "User")" class="btn default yellow-stripe">
+                        <i class="fa fa-angle-left"></i>
+                        <span class="hidden-480">Back to list </span>
+                    </a>
+                    <button class="btn green" type="submit"><i class="fa fa-check"></i>Save</button>
+                </div>
+            </div>
+
+            <div class="portlet-body">
+                <div class="tabbable">
+                    <ul class="nav nav-tabs nav-tabs-lg">
+                        <li class="active">
+                            <a href="#tab_1" data-toggle="tab">General </a>
+                        </li>
+
+                        <div style="text-align:right;">
+                            <b>@ViewBag.CompanyUserMessage</b>
+
+                        </div>
+
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                   <div class="portlet blue-hoki box">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="fa fa-cogs"></i>Login Details(Password will be automated)
+                                            </div>
+                                          
+                                        </div>
+                                        <div class="portlet-body">
+                                                   <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                   First Name:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                      @Html.TextBoxFor(m => m.employeeFirstName, new { @class = "form-control" })
+                                                </div>
+                                            </div>
+
+                                             <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                  Last Name:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                      @Html.TextBoxFor(m => m.employeeLastName, new { @class = "form-control" })
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    User Name (E-mail):
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.UserEmail, new { @class = "form-control", @style = "text-transform:none;" })
+                                                </div>
+                                            </div>
+                                           
+                                             @if (ViewBag.IsEdit == false)
+                                            {
+                                           <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                   Password:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                      @Html.TextBoxFor(m => m.Password, new { @maxlength="8",  @class="form-control" })
+                                                </div>
+                                            </div>
+
+                                             <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                   Confirm Password:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                      @Html.TextBoxFor(m => m.ConfirmPassword, new { @maxlength = "8", @class ="form-control"})
+                                                </div>
+                                            </div>
+                                               }
+                                              else
+                                                {
+                                                  //  @Html.HiddenFor(m => m.Em)
+                                                    @Html.HiddenFor(m => m.UserID)
+                                                }
+
+                                              <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                   IsActive:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.CheckBoxFor(m => m.IsActive)
+                                                </div>
+                                            </div>
+
+                                             <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                   Roles:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                     @Html.DropDownListFor(m => m.employeeRoleID, (IEnumerable<SelectListItem>)ViewBag.Roles, "", new  {@width="68%", @class="form-control" })
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="portlet blue-hoki box">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="fa fa-cogs"></i>User Information
+                                            </div>
+
+                                        </div>
+                                        <div class="portlet-body">
+                                          @*  <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Company Name:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.CompanyName)
+                                                </div>
+                                            </div>*@
+
+@*                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Website:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.Website, new { placeholder = "http://www.web.com" })
+                                                </div>
+                                            </div>*@
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Phone Number:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.employeePhoneNumber, new { @class = "form-control", @maxlength = "20" })
+                                                </div>
+                                            </div>
+
+                                            @*<div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    E-mail:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.employeeEmailAddress, new { @class = "form-control", @style= "text-transform:none;" })
+                                                </div>
+                                            </div>*@
+
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Country:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.DropDownList("drpCountry", (IEnumerable<SelectListItem>)ViewBag.Countries, "Select Country", new { @class = "form-control", @Name = "CountryId" })
+
+
+                                                   
+                                                   @Html.HiddenFor(m=>m.CountryId)
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Zip Code:
+                                                </div>
+                                                <div class="col-md-7 value">
+
+                                                    @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control", @maxlength = "10" })
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    State:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                   
+
+
+                                                    <select id="drpState" class="form-control" name="StateId">
+                                                        <option>Select</option>
+                                                    </select>
+
+                                                    @Html.HiddenFor(s => s.StateId)
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    City:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    <select id="drpCity" class="form-control" name="CityId">
+                                                        <option>Select</option>
+                                                    </select>
+                                                    @Html.HiddenFor(s => s.CityId)
+                                                   
+                                                </div>
+                                            </div>
+
+
+
+                                               <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                     Address1:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.employeeAddress1, new { @class = "form-control" })
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                     Address2:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.employeeAddress2, new { @class = "form-control" })
+                                                </div>
+                                            </div>
+
+
+                                          
+                                            
+                                             <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                     Image:
+                                                </div>
+
+                                                <div class="col-md-7 value">
+                                                       @if(ViewBag.IsEdit == true)
+                                                        {
+                                                            <img src="@Model.ImagePath" style="max-width:195px;"/>   
+                                                       } 
+                                                        @Html.TextBoxFor(m => m.Image, new { type = "file" })
+                                                    [195X35]
+                                                </div>
+                                            </div>
+                                            
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet-title">
+                
+                <div class="actions">
+                   
+                     @Html.Raw(ViewBag.Error) &nbsp;
+
+                    <a href="@Url.Action("Index", "User")" class="btn default yellow-stripe">
+                        <i class="fa fa-angle-left"></i>
+                        <span class="hidden-480">Back to list  </span>
+                    </a>
+                    <button class="btn green" type="submit"><i class="fa fa-check"></i>Save</button>
+                </div>
+            </div>
+        </div>
+        <!-- End: life time stats -->
+    </div>
+</div>
+<!-- END PAGE CONTENT-->
+
+<div>
+
+      
+</div>
+
+
+<script src="~/Content/themes/admin/plugins/jquery.min.js" type="text/javascript"></script>
+<script>
+
+    $(function () {
+        $("#drpCountry").change(function () {
+
+
+
+         
+
+
+
+
+
+            $('#drpCity').empty().append('<option selected="selected" value="">Select City</option>');
+
+            var drpSates = $("[id*=drpState]");
+            drpSates.empty().append('<option selected="selected" value="">Loading....</option>');
+            jQuery.ajax({
+                url: siteUrl + 'User/getStates',
+                dataType: 'json',
+                headers: { "requestType": "client" },
+                data: { "Id": $("#drpCountry").val() },
+                contentType: 'application/json;charset=utf-8',
+                success: function (data) {
+                    if (data.Status == false) {
+                        showMessage('Oops', 'error', data.Message, 'toast-top-right');
+                        return;
+                    }
+                    drpSates.empty().append('<option selected="selected" value="">Please select</option>');
+                    $.each(data, function () {
+                        drpSates.append($("<option></option>").val(this['Id']).html(this['stateFullName']));
+                    });
+
+                    if ($('#StateId').val() != '') {
+                        $('#drpState').val($('#StateId').val());
+                        $('#drpState').change();
+
+
+                    }
+
+                   // alert($('#drpCountry').val());
+                    if ($('#drpCountry').val() == '253') {
+                        $("#employeePhoneNumber").mask("(999) 999-9999");
+                    }
+                    else {
+                        $("#employeePhoneNumber").unmask("(999) 999-9999");
+                    }
+                },
+                error: function (data) {
+                    drpSates.empty().append('<option selected="selected" value="">Please select</option>');
+                    showMessage('Oops', 'error', data.responseJSON.Message, 'toast-top-right');
+                }
+            });
+        });
+
+     
+        $('#ZipCode').blur(function () {
+
+           // alert('in');
+
+            jQuery.ajax({
+                url: siteUrl + 'Repair/GetDataByZipcode',
+                dataType: 'json',
+                headers: { "requestType": "client" },
+                data: { ZipCode: $('#ZipCode').val() },
+                contentType: 'application/json;charset=utf-8',
+                success: function (data) {
+                    
+                    if (data.CountryId == null) {
+                        showMessage('Oops', 'error', "Zip code not found in records", 'toast-top-right');
+                    }
+                    else {
+
+                        $('#drpCountry').val(data.CountryId);
+                      
+                        $('#StateId').val(data.StateId);
+                        $('#CityId').val(data.CityId);
+
+                        $('#drpCountry').change();
+                    }
+                },
+                error: function (data) {
+                }
+            });
+
+
+        });
+
+
+        $("#drpState").change(function () {
+            var drpSates = $("[id*=drpCity]");
+            drpSates.empty().append('<option selected="selected" value="">Loading....</option>');
+            jQuery.ajax({
+                url: siteUrl + 'User/getCities',
+                dataType: 'json',
+                headers: { "requestType": "client" },
+                data: { "Id": $("#drpState").val() },
+                contentType: 'application/json;charset=utf-8',
+                success: function (data) {
+                    if (data.Status == false) {
+                        showMessage('Oops', 'error', data.Message, 'toast-top-right');
+                        return;
+                    }
+                    drpSates.empty().append('<option selected="selected" value="">Please select</option>');
+                    $.each(data, function () {
+                        drpSates.append($("<option></option>").val(this['Id']).html(this['city']));
+                    });
+
+                    if($('#CityId').val()!='')
+                    {
+
+                        $('#drpCity').val($('#CityId').val());
+                    }
+
+                },
+                error: function (data) {
+                    drpSates.empty().append('<option selected="selected" value="">Please select</option>');
+                    showMessage('Oops', 'error', data.responseJSON.Message, 'toast-top-right');
+                }
+            });
+        });
+    });
+
+
+
+    $(window).load(function () {
+
+     
+
+        if ($('#CountryId').val() != '') {
+            $('#drpCountry').val($('#CountryId').val());
+            $("#drpCountry").change();
+        }
+        else {
+            $("#drpCountry").change();
+        }
+
+        //alert($('#StateId').val());
+
+     
+
+
+
+
+    });
+</script>
+

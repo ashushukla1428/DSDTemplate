@@ -1,0 +1,627 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@if (ViewData["Error"] != null)
+{
+    <div>@ViewData["Error"]</div>
+}
+else
+{
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-user"></i>
+                <span id="spanCustomer">New Customer </span>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <i class="fa fa-cogs"></i>
+                <span id="spanNewRepair">New Repair</span>
+            </li>
+        </ul>
+
+    </div>
+    <!-- BEGIN PAGE CONTENT-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabbable tabbable-custom boxless tabbable-reversed  NewRepairOuter">
+                <ul class="nav nav-tabs" id="ulTabList">
+
+                    <li class="active" id="Li1">
+                        <a href="#tab_0" data-toggle="tab">
+                            CUSTOMER
+                        </a>
+                    </li>
+                    <li class="tabListItems" id="Li2">
+                        <a href="#tab_1" data-toggle="tab">
+                            ITEM
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab_2" data-toggle="tab" id="Li3">
+                            REPAIR
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab_3" data-toggle="tab">
+                            DOCS/STATUS
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#tab_4" data-toggle="tab">
+                            VIEW & ADD ATTACHMENTS
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="divRepairTab">
+                    <div class="tab-pane active" id="tab_0">
+                        <div class="portlet blue-hoki box">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa  fa-user"></i>CUSTOMER
+                                </div>
+                                @*<div class="tools">
+                                        <i class="fa fa-users"></i>
+                                       <a href="../Customer/Search" style="color:#fff">USE EXISTING CUSTOMER</a>
+                                    </div>*@
+                            </div>
+                            <div class="portlet-body form">
+                                <!-- BEGIN FORM-->
+                                @Html.Partial("_customerPartial")
+                                <!-- END FORM-->
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tab_1">
+                        <div class="portlet blue-hoki box">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-tasks"></i>ITEM
+                                </div>
+
+                            </div>
+                            <div class="portlet-body form">
+                                <!-- BEGIN FORM-->
+                                @Html.Partial("_itemPartial")
+                                <!-- END FORM-->
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tab_2">
+                        <div class="portlet blue-hoki box">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-cogs"></i>REPAIR
+                                </div>
+
+                            </div>
+                            <div class="portlet-body form">
+                                <!-- BEGIN FORM-->
+                                @Html.Partial("_repairPartial1")
+                                <!-- END FORM-->
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tab_3">
+                        <div class="portlet blue-hoki box">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-file-o"></i>DOCS/STATUS
+                                </div>
+
+                            </div>
+                            <div class="portlet-body form">
+                                <!-- BEGIN FORM-->
+                                @Html.Partial("_docsStatusPartial")
+                                <!-- END FORM-->
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tab_4">
+                        <div class="portlet blue-hoki box">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-file"></i>VIEW & ADD ATTACHMENTS
+                                </div>
+
+                            </div>
+                            <div class="portlet-body form">
+                                <!-- BEGIN FORM-->
+                                @Html.Partial("_viewAndAddAttachmentsPartial")
+                                <!-- END FORM-->
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hdnCallType" value="0" />
+    <input type="hidden" id="hdnPriAddress" value="0" />
+    <input type="hidden" id="hdnStatus" value="" />
+    <!-- END PAGE CONTENT-->
+    <link href="~/Content/uploadify.css" rel="stylesheet" />
+    <!-- BEGIN PAGE LEVEL STYLES onclick="Add();"-->
+    <link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+
+    <!-- END PAGE LEVEL STYLES -->
+    @section scripts{
+        <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+        <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <script src="~/Content/themes/admin/pages/scripts/ui-extended-modals.js"></script>
+        @*<script src="~/Scripts/adminJs/Brand.js"></script>*@
+
+        <link href="~/Content/DatePicker/datepicker3.css" rel="stylesheet" />
+        <script src="~/Scripts/bootstrap-datepicker.js"></script>
+
+
+        <script src="~/Scripts/jquery.uploadify.js"></script>
+
+
+
+
+        <script src="~/Scripts/adminJs/Repair.js"></script>
+        <script>
+            jQuery(document).ready(function () {
+                activemenu('liRepair');
+
+                activemenu('WEMPE_Repair');
+
+
+                _sortColumn = 'LastUpdate';
+                _sortOrder = 'DESC';
+                // getList(1);
+                Metronic.init(); // init metronic core components
+                Layout.init(); // init current layout
+                QuickSidebar.init(); // init quick sidebar
+                Demo.init(); // init demo features
+                UIExtendedModals.init();
+                //UIToastr.init();
+
+
+            });
+
+            function validate() {
+                var reason = "";
+                reason += validateEmpty(document.getElementById('txtName'), 'Name required !');
+
+                if (reason != "") {
+                    alert("Some fields need correction:\n" + reason);
+                    return false;
+                }
+                return true;
+            }
+
+            function showAddStateDiv(openType) {
+                //$('#hdnClickId').val(_taskID);
+                //var $modal = $('#responsiveTask');
+                //$modal.modal();
+                if (openType == '1') {
+                    $('#divPrimaryAddState').toggle();
+                }
+                if (openType == '2') {
+                    $('#divAlternateAddState').toggle();
+                }
+                if (openType == '3') {
+                    $('#divThirdAddState').toggle();
+                }
+
+                //responsiveTask
+            }
+
+
+            function showAddCityDiv(openType) {
+                //$('#hdnClickId').val(_taskID);
+                //var $modal = $('#responsiveTask');
+                //$modal.modal();
+                if (openType == '1') {
+                    $('#divPrimaryAddCity').toggle();
+                }
+                if (openType == '2') {
+                    $('#divAlternateAddCity').toggle();
+                }
+                if (openType == '3') {
+                    $('#divThirdAddCity').toggle();
+                }
+
+                //responsiveTask
+            }
+
+
+
+
+
+        </script>
+
+
+        <script src="~/PrintPageScript/jquery.printPage.js"></script>
+
+
+        @*Print reports *@
+        <script>
+            var cookieRepairNumber = 0;
+            var cookieticketNumber = 0;
+            $(document).ready(function () {
+                //cookieRepairNumber = readCookie('cookieRepairNumber');
+                // cookieticketNumber = readCookie('cookieticketNumber');
+                //alert($('#hdnRepairNumber').val());
+                $(".btnPrint").printPage({
+
+                    // url: '../Letters/Index?callType=#CallType&repairNumber=' + cookieRepairNumber + "&priAddress=#priAddress" + "&random=" + Math.random(),
+                    url: "../Letters/Index?callType=#CallType&repairNumber=#hdnRepairNumber&priAddress=#priAddress&withLetterHead=#withLetterHead" + "&random=" + Math.random(),
+                    attr: "href",
+                    message: "Your document is being created"
+                });
+            });
+            function openPrintBox(_callType, _priAddress, _showPopup, _newReport) {
+
+                if (_newReport == 0) {
+                    $('#hdnCallType').val(_callType);
+                }
+                else {
+                    _callType = $('#hdnCallType').val();
+                }
+
+                if (_priAddress == 0) {
+                    if ($('#hdnPriAddress').val() == "0") {
+                        $('#hdnPriAddress').val(1);
+                        $('#divAlternate').show();
+                        $('#divPrimary').hide();
+                        _priAddress = 1;
+                    }
+                    else {
+                        $('#hdnPriAddress').val(0);
+                        $('#divAlternate').hide();
+                        $('#divPrimary').show();
+                        _priAddress = 0;
+                    }
+                }
+                else {
+                    $('#hdnPriAddress').val(_priAddress);
+                }
+
+                //cookieRepairNumber = 1;
+                $('#divPrint').empty();
+                $('#divPrint').html('Loading....');
+
+                //$('#divPrint').load('../Letters/Index?callType=' + _callType + '&repairNumber=' + cookieRepairNumber + "&priAddress=" + _priAddress + "&random=" + Math.random());
+                $('#divPrint').load('../Letters/Index?callType=' + _callType + '&repairNumber=' + $('#hdnRepairNumber').val() + "&priAddress=" + _priAddress + "&random=" + Math.random());
+                if (_showPopup == 1) {
+                    var $modal = $('#responsivePrint');
+                    $modal.modal();
+                }
+            }
+
+            $('#chkPrintOnLetterHead').change(function () {
+                if ($('#chkPrintOnLetterHead').is(':checked')) {
+                    $("#printDiv").css({ "margin-top": $('#PaperTopMargin').val() + 'px', "margin-bottom": $('#PaperBottomMargin').val() + 'px', "margin-left": $('#PaperLeftMargin').val() + 'px', "margin-right": $('#PaperRightMargin').val() + 'px' });
+                    //$('#printDiv').find('p:first').css('display', 'none');
+
+                    $('.imgPrintPopupLogo').parent().css('display', 'none');
+                    $('.imgPrintPopupAddress').parent().css('display', 'none');
+                }
+                else {
+                    $("#printDiv").css({ "margin-top": '0px', "margin-bottom": '0px', "margin-left": '0px', "margin-right": '0px' });
+                    // $('#printDiv').find('p:first').css('display', 'block');
+
+                    $('.imgPrintPopupLogo').parent().css('display', 'block');
+                    $('.imgPrintPopupAddress').parent().css('display', 'block');
+                }
+            });
+
+            $('.clsPhoneTabToNext').keyup(function (e) {
+
+                if ($(this).val().length == $(this).attr('maxlength')) {
+                    $(this).closest('div').nextAll(':has(.clsPhoneTabToNext):first').find('.clsPhoneTabToNext').focus();
+                }
+                if (e.keyCode == 8) {
+                    if ($(this).val().length == 0) {
+                        $(this).closest('div').prevAll(':has(.clsPhoneTabToNext):first').find('.clsPhoneTabToNext').focus();
+                    }
+                }
+            });
+
+        </script>
+    }
+
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        @Html.Partial("_searchbyExistingCustomer")
+        <!-- END FORM-->
+    </div>
+
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        @Html.Partial("_searchbyLocation")
+        <!-- END FORM-->
+    </div>
+
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        @Html.Partial("_searchbyPurchase")
+        <!-- END FORM-->
+    </div>
+
+    <!-- responsive -->
+    <div id="responsivePrint" class="modal fade" tabindex="-1" data-width="760">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">Report</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row" id="divPrint" style='overflow:auto; height:400px;'>
+                Loading....
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input type="checkbox" id="chkPrintOnLetterHead" />Print on letter head
+            <button type="button" class="btn btn-default" id="divAlternate" onclick="openPrintBox(0,0,0,1);">USE ALTERNATE ADDRESS</button>
+            <button type="button" class="btn btn-default" id="divPrimary" onclick="openPrintBox(0,0,0,1);" style="display:none">USE PRIMARY ADDRESS</button>
+            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+            <button type="button" class="btn blue btnPrint">Print</button>
+            <button type="button" class="btn blue btnEmail" id="btnEmail" style="display:none">Email</button>
+            <input type="hidden" id="hdnid" value="0" />
+        </div>
+    </div>
+
+    <div id="responsiveEmailBox" class="modal fade" tabindex="-1" data-width="760" style="margin-top:10%;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">E-MAIL ADDRESS SELECTION</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row" id="divEmailPopup" style='overflow:auto; height:200px;'>
+
+
+                <div class="col-md-12" style="margin-bottom: 1%;">
+
+                    <div class="form-group">
+
+                        <label class="control-label col-md-5"> <input type="checkbox" id="chkBoxEmailPoupPrimary" class="control-label col-md-1 chkBoxSendEmailPopUp" />PRIMARY E-MAIL</label>
+                        <div class="col-md-6">
+                            <input type="text" id="txtBoxEmailPoupPrimary" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-bottom: 1%;">
+                    <div class="form-group">
+                        <label class="control-label col-md-5"><input type="checkbox" id="chkBoxEmailPoupSecondary" class="control-label col-md-1 chkBoxSendEmailPopUp" />ALTERNATE E-MAIL</label>
+                        <div class="col-md-6">
+                            <input type="text" id="txtBoxEmailPoupSecondary" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-bottom: 1%;">
+                    <div class="form-group">
+                        <label class="control-label col-md-5"><input type="checkbox" id="chkBoxEmailPoupThird" class="control-label col-md-1 chkBoxSendEmailPopUp" />CUSTOM (TEMPORARY) E-MAIL</label>
+                        <div class="col-md-6">
+                            <input type="text" id="txtBoxEmailPoupThird" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Recipient:</label>
+                        <div class="col-md-6">
+                            <span id="DocumentType"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Document:</label>
+                        <div class="col-md-6">
+                            <span id="DocumentFullName"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn blue btnSendEmail">Send Email</button>
+
+        </div>
+    </div>
+    <input type="hidden" id="hdnCustomerNumber" value="0" />
+    <input type="hidden" id="hdnRepairNumber" value="0" />
+
+
+
+    @*<div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            @Html.Partial("_searchRepair")
+            <!-- END FORM-->
+        </div>*@
+
+
+    <div id="divRepairListByCustomerNumberPopUp" class="modal fade" tabindex="-1" data-width="90%" style="max-height: 500px;">
+        <div class="modal-header" id="divRepairListPopupHeader">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
+            <h4 class="modal-title">Search Result</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BEGIN PAGE CONTENT-->
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                    <div class="portlet box blue-hoki">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-grid"></i>Listing
+                            </div>
+                            <div class="tools">
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <input type="hidden" id="hdnPageNoRepair" value="1" />
+                            <div class="table-scrollable">
+                                <table class="table table-striped table-bordered table-hover" id="sample_1">
+                                    <thead>
+                                        <tr>
+                                            <th onclick="setSorting4(this,'repairNumber',[0,1]);">
+                                                REPAIR NUMBER
+                                            </th>
+                                            <th>
+                                                ENTRY DATE
+                                            </th>
+                                            <th>
+                                                BRAND NAME
+                                            </th>
+                                            <th>
+                                                SUPP. REP.#
+                                            </th>
+                                            <th>
+                                                CURRENT STATUS
+                                            </th>
+
+                                            @* <th>Action</th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyDetailsRepair"></tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-sm-12">
+                                    <div class="dataTables_info" id="sample_1_infoRepair" role="status" aria-live="polite"></div>
+                                </div>
+                                <div class="col-md-7 col-sm-12">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="sample_1_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button previous" aria-controls="sample_1" tabindex="0" id="sample_1_previousRepair"><a><i class="fa fa-angle-left"></i></a></li>
+                                            <li class="paginate_button next" aria-controls="sample_1" tabindex="0" id="sample_1_nextRepair"><a><i class="fa fa-angle-right"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <script id="tbodyTemplateRepair" type="text/html">
+                                <tr>
+                                    <td>
+                                        <a href="../Repair/NewRepair?id=${customerNumber}&Rid=${repairNumber}" target="_blank">   ${repairNumberComplete} </a>
+
+                                    </td>
+                                    <td>
+                                        ${EntryDate}
+                                    </td>
+                                    <td>
+                                        ${brandName}
+                                    </td>
+                                    <td>
+                                        ${supplierRepairNumber}
+                                    </td>
+                                    <td>
+                                        ${RepairStatus}
+                                    </td>
+                                    @* <td>
+
+                                            <a href="../Repair/NewRepair?id=${customerNumber}&Rid=${repairNumber}" title="${repairNumberComplete}"  class="btn default btn-xs blue-stripe">Choose </a>
+                                        </td>*@
+                                </tr>
+                            </script>
+                        </div>
+                    </div>
+                    <!-- END EXAMPLE TABLE PORTLET-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function setSorting4(_th, sortColumn, _items) {
+
+            for (var i = 0; i < _items.length; i++) {
+                //   alert(i);
+                if ($(_th).index() != i) {
+                    $('#sample_1 tr').eq(0).find('th').eq(_items[i]).addClass("sort");
+                }
+            }
+            // $('#sample_1 tr').eq(0).find('th').eq(3).addClass("sort");
+            if (_sortColumn == sortColumn) {
+                if (_sortOrder == 'DESC') {
+                    _sortOrder = 'ASC';
+
+                    $(_th).removeAttr("class").addClass("sorting_asc");
+                }
+                else {
+                    _sortOrder = 'DESC';
+                    $(_th).removeAttr("class").addClass("sorting_desc");
+                }
+            }
+            else {
+                _sortColumn = sortColumn;
+                _sortOrder = 'DESC';
+
+                $(_th).removeAttr("class").addClass("sorting_desc");
+            }
+            getListExistingCustomer(1);
+        }
+
+
+        //function showHideNameDiv() {
+
+        //    var divCount = $(".divName:visible").length;
+
+        //    if (divCount == 0) {
+
+        //        $('#divName2').css('display', 'block');
+        //        $('#ancdivNameRemove')
+        //    }
+
+        //    if (divCount == 1) {
+
+        //        $('#divName3').css('display', 'block');
+        //    }
+
+
+
+
+
+        //}
+
+
+
+        function showHideNameDiv() {
+            var divCount = $(".divName:visible").length;
+            if (divCount == 0) {
+                $('#divName2').css('display', 'block');
+                $('#ancdivNameRemove').css('display', 'block');
+            }
+            if (divCount == 1) {
+                $('#divName3').css('display', 'block');
+                $('#ancdivNameRemove').css('display', 'block');
+                $('#ancdivNameAdd').css('display', 'none');
+            }
+        }
+
+
+        function showHideNameDivRemove() {
+            var divCount = $(".divName:visible").length;
+            if (divCount == 2) {
+                $('#divName3').css('display', 'none');
+                $('#ancdivNameAdd').css('display', 'block');
+            }
+            if (divCount == 1) {
+                $('#divName2').css('display', 'none');
+                $('#ancdivNameRemove').css('display', 'none');
+                $('#ancdivNameAdd').css('display', 'block');
+            }
+        }
+
+    </script>
+}

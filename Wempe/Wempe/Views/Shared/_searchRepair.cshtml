@@ -1,0 +1,473 @@
+﻿<div class="form-horizontal">
+    <div class="form-body">
+        <h3 class="form-section">GENERAL</h3>
+        <div class="row">
+
+            <div class="col-md-4  col-md-offset-7">
+                <div class="form-group">
+                    <label class=" col-md-4">EMPLOYEE *</label>
+                    <div class="col-md-8">
+                        @Html.DropDownList("drptab2Employee", (IEnumerable<SelectListItem>)ViewBag.Employee, "", new { @class = "form-control SearchValueRepair", @fieldNameRepair = "employeeId" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class=" col-md-4">REPAIR #</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control SearchValueRepair" id="txtRepairNumber" fieldnamerepair="repairNumber">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+
+                <div class="form-group">
+                    <label class=" col-md-4">TICKET *</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control SearchValueRepair" id="txtTicketNumber" fieldnamerepair="ticketNumber">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <label class=" col-md-4">ORDER *</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control SearchValueRepair" id="txtOrderNumber" fieldnamerepair="OrderNumber">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+        </div>
+
+
+
+
+
+        <div class="row">
+
+
+
+            <div class="col-md-12">
+
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-home"></i>ITEM/CONDITION
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="display: none;">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4 name">BRAND</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("drptab2Brand", (IEnumerable<SelectListItem>)ViewBag.Brand, "", new { @class = "form-control SearchValueRepair", @fieldNameRepair = "brandId" })
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">ITEM *</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("drptab2Items", (IEnumerable<SelectListItem>)ViewBag.Items, "", new { @class = "form-control SearchValueRepair", @fieldNameRepair = "itemId" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            @*<div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">CLIENT COMMENTS </label>
+                                    <div class="col-md-8">
+                                        <textarea id="txtClientComments" class="form-control SearchValueRepair" fieldnamerepair="RepairComments"></textarea>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-home"></i>DETAILS
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="display: none;">
+
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">CASE INDIVIDUAL #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtTab2Serial" fieldnamerepair="serialNumber" class="form-control SearchValueRepair" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">LOCATION OF ITEM *</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("drpTab2Location", (IEnumerable<SelectListItem>)ViewBag.Location, "", new { @class = "form-control SearchValueRepair", @fieldNameRepair = "purchaseLocationId" })
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">REFERENCE #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtTab2Reference" fieldnamerepair="referenceNumber" class="form-control SearchValueRepair" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">SUPPLIER REPAIR #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtTab2SupplierRepair" fieldnamerepair="supplierRepairNumber" class="form-control SearchValueRepair" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">MOVEMENT SERIAL #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtTab2MovementSerial" fieldnamerepair="movementSerialNumber" class="form-control SearchValueRepair" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">SUPPLIER #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtTab2SupplierPickup" fieldnamerepair="supplierRepairNumber" class="form-control SearchValueRepair" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">CALIBER</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtTab2Caliber" fieldnamerepair="caliber" class="form-control SearchValueRepair" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">DUE DATE (SUPPLIER)</label>
+                                    <div class="col-md-8">
+
+
+                                        <div class="row">
+                                            <div class="col-md-6 value">
+                                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                                    <input type="text" id="txtTab2DueDateSupplierDays" class="form-control" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn default" type="button" id="btnCalenderShowSearchRepairDueDateSupplierStart"><i class="fa fa-calendar"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="col-md-6 value">
+                                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                                    <input type="text" id="txtTab2DueDateSupplierDays2" class="form-control" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn default" type="button" id="btnCalenderShowSearchRepairDueDateSupplierEnd"><i class="fa fa-calendar"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">STATUS *</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("drpTab2Status", (IEnumerable<SelectListItem>)ViewBag.Status, "", new { @class = "form-control SearchValueRepair", @fieldNameRepair = "statusId" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">DUE DATE (CUSTOMER)</label>
+                                    <div class="col-md-8">
+
+
+                                        <div class="row">
+                                            <div class="col-md-6 value">
+                                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                                    <input type="text" id="txtTab2DueDateCUSTOMERDays" class="form-control" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn default" type="button" id="btnCalenderShowSearchRepairDueDateCustomerStart"><i class="fa fa-calendar"></i></button>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+
+
+
+                                            <div class="col-md-6 value">
+                                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                                    <input type="text" id="txtTab2DueDateCUSTOMERDays2" class="form-control" />
+
+                                                    <span class="input-group-btn">
+                                                        <button class="btn default" type="button" id="btnCalenderShowSearchRepairDueDateCustomerEnd"><i class="fa fa-calendar"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">REPAIR TYPE *</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("drpTab2RepairType", (IEnumerable<SelectListItem>)ViewBag.RepairType, "", new { @class = "form-control SearchValueRepair", @fieldNameRepair = "repairTypeId" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">ENTRY DATE</label>
+                                    <div class="col-md-8">
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 value">
+                                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                                    <input type="text" id="txtRepairSearchEntryDateStart" class="form-control" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn default" type="button" id="btnCalenderShowSearchRepairEntryDateStart"><i class="fa fa-calendar"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="col-md-6 value">
+                                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                                    <input type="text" id="txtRepairSearchEntryDateEnd" class="form-control" />
+                                                    <span class="input-group-btn">
+                                                        <button class="btn default" type="button" id="btnCalenderShowSearchRepairEntryDateEnd"><i class="fa fa-calendar"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">SUPPLIER PREV REPAIR #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtTab2SupplierPrevRepair" fieldnamerepair="supplierPreviousRepairNumber" class="form-control SearchValueRepair" maxlength="50" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*  <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class=" col-md-4">WARRANTY DOC.</label>
+                                        <div class="col-md-8">
+                                            @Html.DropDownList("drpTab2WarrantyDoc", (IEnumerable<SelectListItem>)ViewBag.WarrantyDoc, "", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>*@
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">WEPME PREV REPAIR #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtTab2WepmePrevRepair" fieldnamerepair="wempePreviousRepairNumber" class="form-control SearchValueRepair" maxlength="50" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="text-right">
+            <button onclick="searchRepair(1,0);" style="margin-bottom: 10px;" class="btn green" type="button">Search</button>
+
+
+        </div>*@
+    </div>
+    @*  <div class="form-actions">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button onclick="searchRepair(1,0);" style="margin-bottom: 10px;" class="btn green" type="button">Search</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+        </div>*@
+    <div id="divRepairListByCustomerNumberPopUp" class="modal fade" tabindex="-1" data-width="90%" style="max-height: 500px;">
+        <div class="modal-header" id="divRepairListPopupHeader">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
+            <h4 class="modal-title">Search Result</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BEGIN PAGE CONTENT-->
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                    <div class="portlet box blue-hoki">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-grid"></i>Listing
+                            </div>
+                            <div class="tools">
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <input type="hidden" id="hdnPageNoRepair" value="1" />
+                            <div class="table-scrollable">
+                                <table class="table table-striped table-bordered table-hover" id="sample_1">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                REPAIR NUMBER
+                                            </th>
+                                            <th>
+                                                ENTRY DATE
+                                            </th>
+                                            <th>
+                                                BRAND NAME
+                                            </th>
+                                            <th>
+                                                SUPP. REP.#
+                                            </th>
+                                            <th>
+                                                CURRENT STATUS
+                                            </th>
+
+                                            @* <th>Action</th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyDetailsRepair"></tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-sm-12">
+                                    <div class="dataTables_info" id="sample_1_infoRepair" role="status" aria-live="polite"></div>
+                                </div>
+                                <div class="col-md-7 col-sm-12">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="sample_1_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button previous" aria-controls="sample_1" tabindex="0" id="sample_1_previousRepair"><a><i class="fa fa-angle-left"></i></a></li>
+                                            <li class="paginate_button next" aria-controls="sample_1" tabindex="0" id="sample_1_nextRepair"><a><i class="fa fa-angle-right"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <script id="tbodyTemplateRepair" type="text/html">
+                                <tr>
+                                    <td>
+                                        <a href="../Repair/NewRepair?id=${customerNumber}&Rid=${repairNumber}" target="_blank">   ${repairNumberComplete} </a>
+
+                                    </td>
+                                    <td>
+                                        ${EntryDate}
+                                    </td>
+                                    <td>
+                                        ${brandName}
+                                    </td>
+                                    <td>
+                                        ${supplierRepairNumber}
+                                    </td>
+                                    <td>
+                                        ${RepairStatus}
+                                    </td>
+                                    @* <td>
+
+                                            <a href="../Repair/NewRepair?id=${customerNumber}&Rid=${repairNumber}" title="${repairNumberComplete}"  class="btn default btn-xs blue-stripe">Choose </a>
+                                        </td>*@
+                                </tr>
+                            </script>
+                        </div>
+                    </div>
+                    <!-- END EXAMPLE TABLE PORTLET-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

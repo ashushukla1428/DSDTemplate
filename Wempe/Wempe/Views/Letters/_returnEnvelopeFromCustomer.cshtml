@@ -1,0 +1,51 @@
+@model Wempe.Models.CustomerReceiptEnvelope
+@{
+    Layout = null;
+}
+<input type="hidden" value="@Model.PaperTopMargin" id="PaperTopMargin" />
+<input type="hidden" value="@Model.PaperBottomMargin" id="PaperBottomMargin" />
+<input type="hidden" value="@Model.PaperLeftMargin" id="PaperLeftMargin" />
+<input type="hidden" value="@Model.PaperRightMargin" id="PaperRightMargin" />
+<body onContextMenu="return false"  bgcolor="#FFFFFF">
+    @if (Model.withLetterHead == "1")
+{
+    @Html.Raw("<div id='printDiv' style='margin-top:"+Model.PaperTopMargin+"px;margin-bottom:"+Model.PaperBottomMargin+"px;margin-left:"+Model.PaperLeftMargin+"px;margin-right:"+Model.PaperRightMargin+"px'>");
+}
+else {
+    @Html.Raw("<div id='printDiv'>");
+}
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div align="center">
+	<table border="0" width="500" id="table1">
+		<tr>
+			<td width="50%" valign="top">
+			<font face="Times New Roman" size="2">
+			<p>&nbsp;</p>
+                 @Html.Partial("~/Views/LettersSub/_displayCustomerData.cshtml", Model, new ViewDataDictionary { { "fontSize", "3" }, { "displayName", "name" }, { "displaySpace1", "noSpace" }, { "displayAddress", "address" }, { "displaySpace2", "noSpace" }, { "displayTelephone", "noTelephone" }, { "displaySpace3", "noSpace" }, { "displayFax", "noFax" } })
+			</font>
+			</td>
+			<td width="50%">
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p><font face="Times New Roman" size="2">
+			@Html.Partial("~/Views/LettersSub/_displayStoreNameAndAddress.cshtml", Model, new ViewDataDictionary { { "fontSize", "3" }})
+			</p></font>
+			</td>
+		</tr>
+	</table>
+</div>
+    </div>
+</body>
+
+

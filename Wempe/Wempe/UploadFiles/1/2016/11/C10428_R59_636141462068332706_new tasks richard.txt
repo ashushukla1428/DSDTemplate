@@ -1,0 +1,16 @@
+1. Assistant - Need to introduce drop down here (2 hour) (Done)
+2. Country code box for another country than US(2 hour) (TBD)
+3. Security field for Credit card (2 hour) (Done)
+4. Open multiple repairs in new tabs with customer and repair id (2 hour) (Done)
+
+5. User track (Log-in & Log-out time) (4 Hours) (Front End pending)
+
+6. Package : Company can create users on package base such as if company has package for creating 20 users, then system will allow only 20 user to be add for that particular company. For this, I have to introduce new tables in database for Saving package information company wise. (Pending) (40 Hours Approval Pending)
+7. Country, State, City drop-down for company and user. (Done) (6 Hours Approval Pending)
+8. Active Users/All users Drop down on user page. (Done) (2 Hours Approval Pending)
+9. Strip logo. (Done) (4 Hours Approval Pending)
+10. Sub menu in Admin Section: Menu will show in this way. (Done) (16 Hours Approval Pending)
+
+11. Repair Pop-up on Admin Dashboard (Number of repairs pop-up on dashboard) (Done) (2 Hours Approval Pending)
+
+12. Admin Report: Please send me the list of reports, what type   of  data and fields which you want to show in admin section. Moreover, It is new functionality, after review your requirement, I will send you time estimate. 

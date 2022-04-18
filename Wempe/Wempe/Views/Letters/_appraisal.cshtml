@@ -1,0 +1,109 @@
+﻿@model Wempe.Models.CustomerReceiptEnvelope
+@{
+    Layout = null;
+    //var mailingWOD2=
+}
+<input type="hidden" value="@Model.PaperTopMargin" id="PaperTopMargin" />
+<input type="hidden" value="@Model.PaperBottomMargin" id="PaperBottomMargin" />
+<input type="hidden" value="@Model.PaperLeftMargin" id="PaperLeftMargin" />
+<input type="hidden" value="@Model.PaperRightMargin" id="PaperRightMargin" />
+<body onContextMenu="return false" >
+        @if (Model.withLetterHead == "1")
+{
+    @Html.Raw("<div id='printDiv' style='margin-top:"+Model.PaperTopMargin+"px;margin-bottom:"+Model.PaperBottomMargin+"px;margin-left:"+Model.PaperLeftMargin+"px;margin-right:"+Model.PaperRightMargin+"px'>");
+}
+else {
+    @Html.Raw("<div id='printDiv'>");
+}
+<div align="center">
+	<table border="0" width="590" id="table1">
+		<tr>
+			<td>
+			<p align="center">
+			<font face="Times New Roman" size="2">
+
+                    @if (Model.withLetterHead == "0" || Model.withLetterHead == null)
+                {
+			        @Html.Raw("<img border='0' src='../images/logo.gif'  class='imgPrintPopupLogo' width='162' height='47'><br><br><img border='0' src='../images/logoAddress.gif' class='imgPrintPopupAddress' width='494' height='21'><br>");
+                }
+			@*<img border="0" src="../images/logo.gif"  class="imgPrintPopupLogo" width="162" height="47"><br>
+			<br>
+			<img border="0" src="../images/logoAddress.gif" class="imgPrintPopupAddress" width="494" height="21"><br>*@
+			<br>
+			<br>
+			<br>
+			</font>
+			</p>
+			<table border="0" width="100%" id="table2">
+				<tr>
+					<td>
+					<p align="right"><b><font face="Times New Roman">APPRAISAL</font></b></p></td>
+				</tr>
+			</table>
+			<table border="0" width="100%" id="table3">
+				<tr>
+					<td width="60%">
+					<font face="Times New Roman" size="2">
+                         @Html.Partial("~/Views/LettersSub/_displayCustomerData.cshtml", Model, new ViewDataDictionary { { "fontSize", "2" }, { "displayName", "name" }, { "displaySpace1", "noSpace" }, { "displayAddress", "address" }, { "displaySpace2", "space" }, { "displayTelephone", "telephone" }, { "displaySpace3", "noSpace" }, { "displayFax", "fax" } })
+					</font>
+					</td>
+					<td width="40%" align="right" valign="top">
+					<font face="Times New Roman" size="2">
+					@DateTime.Now.ToLongDateString()
+					</font>
+					</td>
+				</tr>
+			</table>
+			<font face="Times New Roman" size="2">
+			<br>
+			</font>
+			<table border="0" width="100%" id="table4">
+				<tr>
+					<td>
+					<p align="left"><font face="Times New Roman" size="2">
+					<b><br>
+					ITEM INFORMATION</b></font></p>
+					<p align="left"><font face="Times New Roman" size="2">
+                           @Html.Partial("~/Views/LettersSub/_displayItem.cshtml", Model, new ViewDataDictionary { { "fontSize", "2" }, { "numberOfItemColumns", "2" }, { "displayConditions", "noConditions" } })
+					                </font></p>
+					<p align="left"><font face="Times New Roman" size="2">&nbsp;</font></p>
+					
+					<p align="left"><font face="Times New Roman" size="2">
+					<b>Current Replacement Value:&nbsp;&nbsp;</b>
+                             @if (Model.itemDetail.appraisalValue != null && Model.itemDetail.appraisalValue != "")
+                            {
+                               @Html.Raw("$" + Model.itemDetail.appraisalValue)
+                            }
+                        </font>
+                        </p>
+					<font size="2">
+                          @if (Model.itemDetail.appraisalComments != null && Model.itemDetail.appraisalComments != "")
+                            {
+                              <p align="left">
+                                <font face="Times New Roman">
+                               @Html.Raw("<b>Comments:&nbsp;&nbsp;</b>" + Model.itemDetail.appraisalComments)
+                                    </font>
+                                </p>
+                            }
+					</font>
+					<p align="left"><font size="2">&nbsp;</p>					
+					<p align="left"><font size="2">  @if (Model.itemDetail.AppraisalName != null && Model.itemDetail.AppraisalName != "")
+                            {
+                               @Html.Raw( Model.itemDetail.AppraisalName)
+                            }<br>
+					@if (Model.itemDetail.appraiserTitle != null && Model.itemDetail.appraiserTitle != "")
+                            {
+                               @Html.Raw( Model.itemDetail.appraiserTitle)
+                            }
+                        </font>
+					</p>										
+					
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+	</table>
+</div>
+    </div>
+</body>

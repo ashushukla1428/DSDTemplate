@@ -1,0 +1,375 @@
+﻿@model Wempe.Models.CustomerReceiptEnvelope
+@{
+    Layout = null;
+}
+@{
+    string documentStatus = this.ViewData.ContainsKey("documentStatus") ? this.ViewData["documentStatus"].ToString() : string.Empty;
+    string document = this.ViewData.ContainsKey("document") ? this.ViewData["document"].ToString() : string.Empty;
+    string fontSize = this.ViewData.ContainsKey("fontSize") ? this.ViewData["fontSize"].ToString() : string.Empty;
+    string displayPrice = this.ViewData.ContainsKey("displayPrice") ? this.ViewData["displayPrice"].ToString() : string.Empty;
+    string lastLineSpacer = this.ViewData.ContainsKey("lastLineSpacer") ? this.ViewData["lastLineSpacer"].ToString() : string.Empty;
+    string rowSpacer = this.ViewData.ContainsKey("rowSpacer") ? this.ViewData["rowSpacer"].ToString() : string.Empty;
+}
+@{
+        if (documentStatus == "offer")
+             {
+                 	<p><font face="Times New Roman" size="@fontSize">
+                    <b>*The following work is optional:</b></p>
+             } 
+          
+            
+                
+     if(documentStatus == "offer")
+        { 
+                 <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                   <tr>
+                       <td width="5%" align="center">
+                           <font face="Times New Roman" size="@fontSize"><b>Yes</b>&nbsp;&nbsp;</font>
+                       </td>
+                       <td width="5%" align="center">
+                           <font face="Times New Roman" size="@fontSize"><b>No</b>&nbsp;&nbsp;</font>
+                       </td>
+                       <td width="68%">&nbsp;</td>
+                       <td width="6%">&nbsp;</td>
+                       <td width="16%">&nbsp;</td>
+                   </tr>
+                    </table>
+        }
+        }
+
+@*task3Description*@      
+@if(Model.itemDetail.task3Description != null){          
+ <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                <tr valign="top">
+                    
+                  @if (documentStatus == "offer")
+                      {
+                       <td width="5%" align="center">
+                           <img src="~/Images/checkbox.jpg" border="0"/>&nbsp;&nbsp;
+                       </td>
+                  }
+
+                  @if (documentStatus == "offer")
+                      {
+                         <td width="68%">
+                               <font face="Times New Roman" size="@fontSize">
+                                  @Html.Raw(Model.itemDetail.task3Description)
+                                   @if(Model.itemDetail.task3Decline=="1")
+                                   {
+                                        @Html.Raw("&nbsp;&nbsp;<b>(Declined by client)</b>")
+                                   }
+                               </font>
+                         </td>
+                      }
+                      else
+                       {
+                          <td width="78%"> 
+                                  <font face="Times New Roman" size="@fontSize">
+                                  @Html.Raw(Model.itemDetail.task3Description)
+                                   @if(Model.itemDetail.task3Decline=="1")
+                                   {
+                                        @Html.Raw("&nbsp;&nbsp;<b>(Declined by client)</b>")
+                                   }
+
+                               </font>
+                          </td>
+                       } 
+  
+                       <td width="6%" valign="top">&nbsp;</td>
+                       <td width="16%" valign="top"  align="right">
+                           @if (displayPrice != "noPrice")
+                           {
+                                 <font face="Times New Roman" size="@fontSize">
+                                        @if(Model.itemDetail.task3Decline=="1")
+                                   {
+                                            <strike>@String.Format("{0:C}",(Model.itemDetail.task3Price==null?0:Convert.ToDecimal(Model.itemDetail.task3Price)))</strike>
+                                   }
+                                   else{
+                                            @String.Format("{0:C}",(Model.itemDetail.task3Price==null?0:Convert.ToDecimal(Model.itemDetail.task3Price)))
+                                        }  
+
+                                 </font>
+                           }
+                          
+                       </td>
+                </tr>
+                @if (rowSpacer == "rowSpacer") { @Html.Raw("<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>")}
+            </table>  
+}          
+@*task4Description*@ 
+@if(Model.itemDetail.task4Description != null){                 
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+                <tr valign="top">
+                    
+                  @if (documentStatus == "offer")
+                      {
+                       <td width="5%" align="center">
+                           <img src="~/Images/checkbox.jpg" border="0"/>&nbsp;&nbsp;
+                       </td>
+                  }
+
+                  @if (documentStatus == "offer")
+                      {
+                         <td width="68%">
+                               <font face="Times New Roman" size="@fontSize">
+                                  @Html.Raw(Model.itemDetail.task4Description)
+                                   @if(Model.itemDetail.task4Decline=="1")
+                                   {
+                                        @Html.Raw("&nbsp;&nbsp;<b>(Declined by client)</b>")
+                                   }
+                               </font>
+                         </td>
+                      }
+                      else
+                       {
+                          <td width="78%"> 
+                                  <font face="Times New Roman" size="@fontSize">
+                                  @Html.Raw(Model.itemDetail.task4Description)
+                                   @if(Model.itemDetail.task4Decline=="1")
+                                   {
+                                        @Html.Raw("&nbsp;&nbsp;<b>(Declined by client)</b>")
+                                   }
+
+                               </font>
+                          </td>
+                       } 
+  
+                       <td width="6%" valign="top">&nbsp;</td>
+                       <td width="16%" valign="top"  align="right">
+                           @if (displayPrice != "noPrice")
+                           {
+                                 <font face="Times New Roman" size="@fontSize">
+                                        @if(Model.itemDetail.task4Decline=="1")
+                                   {
+                                            <strike>@String.Format("{0:C}",(Model.itemDetail.task4Price==null?0:Convert.ToDecimal(Model.itemDetail.task4Price)))</strike>
+                                   }
+                                   else{
+                                               @String.Format("{0:C}",(Model.itemDetail.task4Price==null?0:Convert.ToDecimal(Model.itemDetail.task4Price)))
+                                        } 
+
+                                 </font>
+                           }
+                         
+                       </td>
+                </tr>
+            @if (rowSpacer == "rowSpacer") { @Html.Raw("<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>")}
+            </table>
+}
+@*task5Description*@  
+@if(Model.itemDetail.task5Description != null){                
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+                <tr valign="top">
+                    
+                  @if (documentStatus == "offer")
+                      {
+                       <td width="5%" align="center">
+                           <img src="~/Images/checkbox.jpg" border="0"/>&nbsp;&nbsp;
+                       </td>
+                  }
+
+                  @if (documentStatus == "offer")
+                      {
+                         <td width="68%">
+                               <font face="Times New Roman" size="@fontSize">
+                                  @Html.Raw(Model.itemDetail.task5Description)
+                                   @if(Model.itemDetail.task5Decline=="1")
+                                   {
+                                        @Html.Raw("&nbsp;&nbsp;<b>(Declined by client)</b>")
+                                   }
+                               </font>
+                         </td>
+                      }
+                      else
+                       {
+                          <td width="78%"> 
+                                  <font face="Times New Roman" size="@fontSize">
+                                  @Html.Raw(Model.itemDetail.task5Description)
+                                   @if(Model.itemDetail.task5Decline=="1")
+                                   {
+                                        @Html.Raw("&nbsp;&nbsp;<b>(Declined by client)</b>")
+                                   }
+
+                               </font>
+                          </td>
+                       } 
+  
+                       <td width="6%" valign="top">&nbsp;</td>
+                       <td width="16%" valign="top"  align="right">
+                           @if (displayPrice != "noPrice")
+                           {
+                                 <font face="Times New Roman" size="@fontSize">
+                                        @if(Model.itemDetail.task5Decline=="1")
+                                   {
+                                            <strike>@String.Format("{0:C}",(Model.itemDetail.task5Price==null?0:Convert.ToDecimal(Model.itemDetail.task5Price)))</strike>
+                                   }
+                                     else{
+                                             @String.Format("{0:C}",(Model.itemDetail.task5Price==null?0:Convert.ToDecimal(Model.itemDetail.task5Price)))
+                                        }
+                                 </font>
+                           }
+                          
+                       </td>
+                </tr>
+            @if (rowSpacer == "rowSpacer") { @Html.Raw("<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>")}
+            </table>
+}
+@*task6Description*@  
+@if(Model.itemDetail.task6Description != null){                
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+                <tr valign="top">
+                    
+                  @if (documentStatus == "offer")
+                      {
+                       <td width="5%" align="center">
+                           <img src="~/Images/checkbox.jpg" border="0"/>&nbsp;&nbsp;
+                       </td>
+                  }
+
+                  @if (documentStatus == "offer")
+                      {
+                         <td width="68%">
+                               <font face="Times New Roman" size="@fontSize">
+                                  @Html.Raw(Model.itemDetail.task6Description)
+                                   @if(Model.itemDetail.task6Decline=="1")
+                                   {
+                                        @Html.Raw("&nbsp;&nbsp;<b>(Declined by client)</b>")
+                                   }
+                               </font>
+                         </td>
+                      }
+                      else
+                       {
+                          <td width="78%"> 
+                                  <font face="Times New Roman" size="@fontSize">
+                                  @Html.Raw(Model.itemDetail.task6Description)
+                                   @if(Model.itemDetail.task6Decline=="1")
+                                   {
+                                        @Html.Raw("&nbsp;&nbsp;<b>(Declined by client)</b>")
+                                   }
+
+                               </font>
+                          </td>
+                       } 
+  
+                       <td width="6%" valign="top">&nbsp;</td>
+                       <td width="16%" valign="top"  align="right">
+                           @if (displayPrice != "noPrice")
+                           {
+                                 <font face="Times New Roman" size="@fontSize">
+                                        @if(Model.itemDetail.task6Decline=="1")
+                                   {
+                                            <strike>@String.Format("{0:C}",(Model.itemDetail.task6Price==null?0:Convert.ToDecimal(Model.itemDetail.task6Decline)))</strike>
+                                   }
+                                else{
+                                          @String.Format("{0:C}",(Model.itemDetail.task6Price==null?0:Convert.ToDecimal(Model.itemDetail.task6Price)))
+                                }
+                                 </font>
+                           }
+                          
+                       </td>
+                </tr>
+            @if (rowSpacer == "rowSpacer") { @Html.Raw("<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>")}
+            </table>
+}
+@*task7Description *@
+@if(Model.itemDetail.task7Description != null){  
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+                <tr valign="top">
+                    
+                  @if (documentStatus == "offer")
+                      {
+                       <td width="5%" align="center">
+                           <img src="~/Images/checkbox.jpg" border="0"/>&nbsp;&nbsp;
+                       </td>
+                  }
+
+                  @if (documentStatus == "offer")
+                      {
+                         <td width="68%">
+                               <font face="Times New Roman" size="@fontSize">
+                                   @Html.Raw(Model.itemDetail.task7Description)
+                                   @if(Model.itemDetail.task7Decline=="1")
+                                   {
+                                        @Html.Raw("&nbsp;&nbsp;<b>(Declined by client)</b>")
+                                   }
+                               </font>
+                         </td>
+                      }
+                      else
+                       {
+                          <td width="78%"> 
+                                  <font face="Times New Roman" size="@fontSize">
+                                  @Html.Raw(Model.itemDetail.task7Description)
+                                   @if(Model.itemDetail.task7Decline=="1")
+                                   {
+                                        @Html.Raw("&nbsp;&nbsp;<b>(Declined by client)</b>")
+                                   }
+
+                               </font>
+                          </td>
+                       } 
+  
+                       <td width="6%" valign="top">&nbsp;</td>
+                       <td width="16%" valign="top"  align="right">
+                           @if (displayPrice != "noPrice")
+                           {
+                                 <font face="Times New Roman" size="@fontSize">
+                                        @if(Model.itemDetail.task7Decline=="1")
+                                   {
+                                            <strike>@String.Format("{0:C}",(Model.itemDetail.task7Price==null?0:Convert.ToDecimal(Model.itemDetail.task7Decline)))</strike>
+                                   }
+                                     else{
+                                            @String.Format("{0:C}",(Model.itemDetail.task7Price==null?0:Convert.ToDecimal(Model.itemDetail.task7Price)))
+                                        }
+                                 </font>
+                           }
+                           
+                       </td>
+                </tr>
+            @if (rowSpacer == "rowSpacer") { @Html.Raw("<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>")}
+            </table>
+} 
+@if (lastLineSpacer == "lastLineSpacer") { 
+@Html.Raw("<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>")    
+}
+@{
+//lineSignature
+if(documentStatus == "offer")
+        {
+                 <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                   <tr>
+                       <td width="100%" colspan="4" >
+                           <font face="Times New Roman" size="@fontSize">Approve checked options.</font>
+                       </td>
+                </tr><tr>
+                       <td width="10%" valign="bottom" align="left">
+                           <font face="Times New Roman" size="@fontSize">Sign</font>
+                       </td>
+                       <td width="30%"  valign="bottom" align="center"> <img src="~/Images/lineSignature.jpg" border="0" width="200" height="2"/></td>
+                       <td width="10%"  align="center">Date</td>
+                       <td width="16%" valign="bottom" > <img src="~/Images/lineDate.jpg" border="0" width="70" height="2"/></td>
+                   </tr>
+                    </table>
+         <br /><br />
+        }
+//Partial Repair
+    if (Model.itemDetail.repairType == "Partial Repair")
+    {
+         <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                   <tr>
+                       <td width="100%">
+                            <font face="Times New Roman" size="@fontSize">*The charges in optional work listed above will be added to the basic service.</font>
+                       </td>
+                   </tr>
+         </table>
+    <br />
+    }
+//repairEstimate
+if (document == "repairEstimate" && lastLineSpacer == "lastLineSpacer")
+    {
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+                 <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+         </table>
+    }
+    
+    }

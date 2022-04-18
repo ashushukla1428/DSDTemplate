@@ -1,0 +1,209 @@
+﻿@model Wempe.Models.CustomerReceiptEnvelope
+@{
+    Layout = null;
+}
+<style>
+                    .tdStyle_table tr td{
+                        font-size:12px;
+                        font-family:'Times New Roman';
+                        line-height:14px;
+                    }
+                    .tdStyle {
+                        font-weight:bold;
+                        font-size:12px;
+                        font-family:'Times New Roman';
+                        width:40%;
+                    }
+ </style>
+<input type="hidden" value="@Model.PaperTopMargin" id="PaperTopMargin" />
+<input type="hidden" value="@Model.PaperBottomMargin" id="PaperBottomMargin" />
+<input type="hidden" value="@Model.PaperLeftMargin" id="PaperLeftMargin" />
+<input type="hidden" value="@Model.PaperRightMargin" id="PaperRightMargin" />
+
+
+@if (Model.withLetterHead == "1")
+{
+    @Html.Raw("<div id='printDiv' style='margin-top:"+Model.PaperTopMargin+"px;margin-bottom:"+Model.PaperBottomMargin+"px;margin-left:"+Model.PaperLeftMargin+"px;margin-right:"+Model.PaperRightMargin+"px'>");
+}
+else {
+    @Html.Raw("<div id='printDiv'>");
+}
+@*fullReport Start*@
+
+@if(Model.fullReport){
+<div align="center" >
+	<table border="0" width="590" id="table1">
+		<tr>
+			<td>
+			<p align="center">
+			
+			<font face="Times New Roman" size="2">
+
+                @if (Model.withLetterHead == "0" || Model.withLetterHead == null)
+                {
+			        @Html.Raw("<img border='0' src='../images/logo.gif'  class='imgPrintPopupLogo' width='162' height='47'><br><img border='0' src='../images/logoAddress.gif' class='imgPrintPopupAddress' width='494' height='21'><br>");
+                }
+
+               
+			
+			
+			<br>
+			<br>
+			<br>
+			</font>
+			</p>
+			<table border="0" width="100%" id="table2">
+				<tr>
+					<td>
+					<p align="right"><b><font face="Times New Roman">RECEIPT TO CLIENT</font></b><font face="Times New Roman"><br>
+					</font></p></td>
+				</tr>
+			</table>
+			<table border="0" width="100%" id="table3">
+				<tr>
+					<td width="60%">
+					<font face="Times New Roman" size="2">
+                        @*displayCustomerData*@
+                    @Html.Partial("~/Views/LettersSub/_displayCustomerData.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" },{"displayName","name"},{"displaySpace1","noSpace"},{"displayAddress","address"},{"displaySpace2","space"},{"displayTelephone","telephone"},{"displaySpace3","noSpace"},{"displayFax","fax"} })
+					</font>
+					</td>
+					<td width="40%" align="right" valign="top">
+					<font face="Times New Roman" size="2">
+					<b>Wempe Repair # @Model.resportMainHeadrs.RepairNumber@if (Model.resportMainHeadrs.TicketNumber != "")
+                                        {
+                                            @Html.Raw("-" + Model.resportMainHeadrs.TicketNumber)
+                                      }@if (Model.resportMainHeadrs.OrderNumber != "")
+                                        {
+                                            @Html.Raw("-" + Model.resportMainHeadrs.OrderNumber)
+                                      }</b>
+					<br>
+					@DateTime.Now.ToLongDateString()
+					</font>
+					</td>
+				</tr>
+			</table>
+			<font face="Times New Roman" size="2">
+			<br>
+			</font>
+			<table border="0" width="100%" id="table4">
+				<tr>
+					<td>
+					<br>
+					
+					<p><font face="Times New Roman" size="2">
+					<b>ITEM INFORMATION</b>
+					<p align="left">
+                    @Html.Partial("~/Views/LettersSub/_displayItem.cshtml", Model, new ViewDataDictionary { { "fontSize", "2" }, { "numberOfItemColumns", "2" }, { "displayConditions", "conditions" } })
+ 					</p>
+			
+					@*displayEngraving*@
+                    @if (Model.itemDetail.repairType == "Engraving")
+                    {
+                      <p><font face="Times New Roman" size="2">
+					  <b>ENGRAVING INFORMATION</b></font></p>
+                      <p align="left"><font face="Times New Roman" size="2">
+                        @Html.Partial("~/Views/LettersSub/_displayEngraving.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" }})
+                        </font>
+                     </p>
+                    }
+
+                        <p><font face="Times New Roman" size="2">
+					<p align="left">
+                    @Html.Partial("~/Views/LettersSub/_displayTasks.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" },{ "displayPrice", "price" },{ "documentStatus", "summary" },{ "rowSpacer", "rowSpacer" }})    
+                    @*displayOptions*@
+                    @Html.Partial("~/Views/LettersSub/_displayOptions.cshtml", Model,new ViewDataDictionary { { "documentStatus", "summary" },{"document","repairSummary"},{ "fontSize", "2" },{"displayPrice","price"},{"lastLineSpacer","noLastLineSpacer"},{"rowSpacer","rowSpacer"} })
+					@*displayTotals*@
+                    @Html.Partial("~/Views/LettersSub/_displayTotals.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" }})
+					</p>
+					@Html.Partial("~/Views/LettersSub/_displayComments.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" }})
+					
+				</tr>
+				<tr>
+				<td><p align="center"><font face="Times New Roman" size="2"><br><br>Thank you very much for the opportunity to assist you,<br>@Model.itemDetail.employee</td>
+				</tr>
+
+			</table>
+			</td>
+		</tr>
+	</table>
+</div>
+    
+}
+else{
+  <div align="right" >
+	<table border="0" width="310" >
+		<tr>
+			<td valign="top">
+			<p align="center">
+			<font size="2" face="Times New Roman">
+
+                   @if (Model.withLetterHead == "0" || Model.withLetterHead == null)
+                {
+			        @Html.Raw("<img border='0' src='../images/logo.gif'  class='imgPrintPopupLogo' width='162' height='47'><br><img border='0' src='../images/logoAddress.gif' class='imgPrintPopupAddress' width='294' height='21'><br>");
+                }
+
+
+			@*<img border="0" src="../images/logo.gif"  id="imgPrintPopupLogo" width="162" height="47">*@
+                </font></p>
+			<p align="center">
+			<font size="2" face="Times New Roman">
+			@*<img border="0" src="../images/logoAddress2Lines.gif" id="imgPrintPopupAddress" width="294" height="21">*@</font></p>
+			<p align="right"><font face="Times New Roman" size="2"><b><br>
+			Wempe Repair # @Model.resportMainHeadrs.RepairNumber@if (Model.resportMainHeadrs.TicketNumber != "")
+                                        {
+                                            @Html.Raw("-" + Model.resportMainHeadrs.TicketNumber)
+                                      }@if (Model.resportMainHeadrs.OrderNumber != "")
+                                        {
+                                            @Html.Raw("-" + Model.resportMainHeadrs.OrderNumber)
+                                      }</b>
+<br>@DateTime.Now.ToLongDateString()</font></p>
+@*displayCustomerData*@
+<p align="left">
+    <font face="Times New Roman" size="2">
+@Html.Partial("~/Views/LettersSub/_displayCustomerData.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" },{"displayName","name"},{"displaySpace1","noSpace"},{"displayAddress","noAddress"},{"displaySpace2","noSpace"},{"displayTelephone","telephone"},{"displaySpace3","noSpace"},{"displayFax","noFax"} })
+        </font>
+</p>
+@*displayItem*@  
+<p align="left">
+ <font face="Times New Roman" size="2">                 
+@Html.Partial("~/Views/LettersSub/_displayItem.cshtml", Model, new ViewDataDictionary { { "fontSize", "2" }, { "numberOfItemColumns", "1" }, { "displayConditions", "conditions" } })
+ </font>
+</p>
+@*displayEngraving*@
+@if (Model.itemDetail.repairType == "Engraving")
+{
+  <p align="left"><font face="Times New Roman" size="2">
+    @Html.Partial("~/Views/LettersSub/_displayEngraving.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" }})
+    </font>
+ </p>
+}
+@*displayStatus*@
+<p align="left">
+   <font face="Times New Roman" size="2">
+   @Html.Partial("~/Views/LettersSub/_displayStatus.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" }})
+  </font>
+</p>
+@*displayTasks*@
+<p align="left">
+ <font face="Times New Roman" size="2">
+@Html.Partial("~/Views/LettersSub/_displayTasks.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" },{ "displayPrice", "price" },{ "documentStatus", "summary" },{ "rowSpacer", "noRowSpacer" }})    
+ </font>
+</p>
+@*displayOptions*@
+@Html.Partial("~/Views/LettersSub/_displayOptions.cshtml", Model,new ViewDataDictionary { { "documentStatus", "summary" },{"document","customerReceiptEnvelope"},{ "fontSize", "2" },{"displayPrice","price"},{"lastLineSpacer","lastLineSpacer"},{"rowSpacer","noRowSpacer"} })
+@*displayTotals*@
+@Html.Partial("~/Views/LettersSub/_displayTotals.cshtml", Model,new ViewDataDictionary { { "fontSize", "2" }})                     
+
+
+            </td>
+		</tr>
+	</table>
+</div>  
+}
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#btnEmail').hide();
+    });
+</script>

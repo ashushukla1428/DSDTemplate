@@ -1,0 +1,29 @@
+﻿@using Wempe.Models;
+<div class="form-horizontal" role="form">
+    <div class="form-body">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    Total Repairs Completed: <span id="CompletedRepairByYearCount"></span> (with entry date in year <span class="clsCompletedRepairsByYear"></span>)
+                </div>
+            </div>
+            <div class="portlet-body">
+                <b>Select Year: </b>
+                @Html.DropDownList("Years", new SelectList(ViewBag.Years as System.Collections.IEnumerable))
+                <div class="table-scrollable">
+                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+                        <thead>
+                            <tr>
+                                <th>Entry Date</th>
+                                <th>Repair Number</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyDetailsCompletedRepairs">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

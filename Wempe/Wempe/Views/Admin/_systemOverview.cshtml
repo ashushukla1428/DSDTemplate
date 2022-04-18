@@ -1,0 +1,219 @@
+﻿@using Wempe.Models;
+<div class="form-horizontal" role="form">
+    <div class="form-body">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    Total Repairs: <span id="SystemOverviewRepairCount">@ViewBag.SystemOverViewNumerofTotalRepairs</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                 <a class="control-label" onclick="openPrintBoxAdmin(1,0,0,0);">Print</a>
+                <div class="table-scrollable">
+                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+                        <thead>
+                            <tr>
+                                <th class="sort" onclick="SortData(this, 'NumberOfRepairs', [0, 1]);">Numbers of Repairs
+                                </th>
+                                <th class="sort" onclick="SortData(this, 'status', [0, 1]);">Status
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyDetailsSystemOverview">
+                            @foreach (var item in Model.TotalRepairs)
+                            {
+                                <tr>
+                                    <td><a href="#" onclick="ShowCountPopup(@item.StatusId)"> @item.NumberofRepairs</a></td>
+                                    <td>@item.Status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    //$(function () {
+    //    $("#sample_1").tablesorter();
+    //});
+
+
+    function sortByColumn(a, colIndex) {
+
+        a.sort(sortFunction);
+
+        function sortFunction(a, b) {
+            if (a[colIndex] === b[colIndex]) {
+                return 0;
+            }
+            else {
+                return (a[colIndex] < b[colIndex]) ? -1 : 1;
+            }
+        }
+
+        return a;
+    }
+
+    function SortData(_th, sortColumn, _items) {
+
+        var x = $('#tbodyDetailsSystemOverview').html();
+
+        var arr = [];
+
+        $('#tbodyDetailsSystemOverview tr').each(function () {
+            var $tds = $(this).find('td');
+            var x = $tds.eq(0).text();
+            var y = $tds.eq(1).text()
+            arr.push({ "NumberOfRepairs": x, "Status": y });
+        });
+        
+        //var arr2 = sortByColumn(arr, arr.length);
+        arr.sort(function (a, b) { return a - b });
+
+        var html = "";
+
+        for (var i = 0; i < arr.length; i++)
+        {
+            html += "<tr><td><a href='#' onclick='ShowCountPopup(" + arr[i].StatusId + ")'>" + arr[i].NumberOfRepairs + "</a></td>"
+            html+="<td>"+arr[i].Status+"</td></tr>"
+
+
+                                
+        }
+        $('#tbodyDetailsSystemOverview').html(html);
+        
+        //for (var i = 0; i < _items.length; i++) {
+        //    //   alert(i);
+        //    if ($(_th).index() != i) {
+        //        $('#sample_1 tr').eq(0).find('th').eq(_items[i]).addClass("sort");
+        //    }
+        //}
+        //// $('#sample_1 tr').eq(0).find('th').eq(3).addClass("sort");
+        //if (_sortColumn == sortColumn) {
+        //    if (_sortOrder == 'DESC') {
+        //        _sortOrder = 'ASC';
+
+        //        $(_th).removeAttr("class").addClass("sorting_asc");
+        //    }
+        //    else {
+        //        _sortOrder = 'DESC';
+        //        $(_th).removeAttr("class").addClass("sorting_desc");
+        //    }
+        //}
+        //else {
+        //    _sortColumn = sortColumn;
+        //    _sortOrder = 'DESC';
+
+        //    $(_th).removeAttr("class").addClass("sorting_desc");
+        //}
+       // getList(1);
+    }
+
+    function ShowCountPopup(StatusId) {
+        // alert(StatusId);
+
+        jQuery.ajax({
+            url: siteUrl + 'Admin/GetRepairsByStatusId',
+            dataType: 'json',
+            headers: { "requestType": "client" },
+            data: { "StatusId": StatusId },
+            contentType: 'application/json;charset=utf-8',
+            success: function (_data) {
+                $('#tbodyDetailsRepairsByStatusId').html('');
+                var HTML = ''
+                if (_data != '') {
+                    $.each(_data, function (i) {
+                        var TempDate = new Date(parseInt(_data[i].entryDate.replace("/Date(", "").replace(")/", ""), 10));
+                        HTML += '<tr><td>' + TempDate.toUTCString() + '</td><td><a href=../Repair/NewRepair?id=' + _data[i].customerNumber + '&Rid=' + _data[i].repairNumber + '>' + _data[i].repairNumberComplete + '</a></td><td>' + _data[i].Status + '</td></tr>';
+                    });
+                }
+                else {
+                    HTML = '<tr><td colspan=3 align=center>No Record Found!</td></tr>';
+                }
+                $('#tbodyDetailsRepairsByStatusId').html(HTML);
+            }
+        });
+
+
+        $('#divRepairListPopupHeader').show();
+        $('#divRepairListByCustomerNumberPopUp').addClass('modal');
+        $('#divRepairListByCustomerNumberPopUp').addClass('fade');
+        var $modal = $('#divRepairListByCustomerNumberPopUp');
+        $modal.modal();
+        return;
+
+    }
+</script>
+
+
+<div id="divRepairListByCustomerNumberPopUp" class="modal fade" tabindex="-1" data-width="90%" style="max-height: 500px;">
+    <div class="modal-header" id="divRepairListPopupHeader">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
+        <h4 class="modal-title">Search Result</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN PAGE CONTENT-->
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet box blue-hoki">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-grid"></i>Listing
+                        </div>
+                        <div class="tools">
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <input type="hidden" id="hdnPageNoRepair" value="1" />
+                        <div class="table-scrollable">
+                            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>
+                                            ENTRY DATE
+                                        </th>
+
+                                        <th>
+                                            REPAIR NUMBER
+                                        </th>
+                                        <th>
+                                            STATUS
+                                        </th>
+                                      
+                                        
+
+                                        @* <th>Action</th>*@
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyDetailsRepairsByStatusId"></tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 col-sm-12">
+                                <div class="dataTables_info" id="sample_1_infoRepair" role="status" aria-live="polite"></div>
+                            </div>
+                            <div class="col-md-7 col-sm-12">
+                                <div class="dataTables_paginate paging_simple_numbers" id="sample_1_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button previous" aria-controls="sample_1" tabindex="0" id="sample_1_previousRepair"><a><i class="fa fa-angle-left"></i></a></li>
+                                        <li class="paginate_button next" aria-controls="sample_1" tabindex="0" id="sample_1_nextRepair"><a><i class="fa fa-angle-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Getting Started with Twilio Video</title>
+    <style type="text/css">
+    #me, #you { display:inline-block; }
+    </style>
+</head>
+<body>
+    <h1>Getting Started with Twilio Video</h1>
+
+    <!-- Begin by specifying a name for your endpoint -->
+    <div id="startDiv">
+        <p>Enter Your Name Here:</p>
+        <input id="my-name" 
+            placeholder="your name"/>
+        <button id="start">Let's Do This!</button>
+    </div>
+
+    <!-- Here's the call UI -->
+    <div id="callDiv" style="display:none;">
+        <div id="me"></div>
+        <div id="you"></div>
+        <div>
+            <input id="other-name" placeholder="other person's name"/>
+            <button id="call">Video Call This Person</button>
+        </div>
+    </div>
+
+    <!-- Release the JavaScripts -->
+    <script src="https://www.twilio.com/blog//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://www.twilio.com/blog//media.twiliocdn.com/sdk/conversations/v0.7/js/releases/0.7.1.b1-7238b35/twilio-conversations-loader.min.js"></script>
+    <script>
+        // Initialize endpoint
+        $('#start').on('click', function () {
+            // First, grab the SAT token from the server
+            $.getJSON('/token', {
+                name: $('#my-name').val()
+            }, function (data) {
+                console.log('Token response:');
+                console.log(data);
+
+                // Create the endpoint, and then initialize the main calling app
+                var endpoint = new Twilio.Endpoint(data.token);
+                $('#startDiv').hide();
+                $('#callDiv').show();
+                init(endpoint);
+            });
+        });
+
+        // Initialize video calling app with my endpoint
+        function init(endpoint) {
+            console.log('Endpoint Created:');
+            console.log(endpoint);
+
+            // Automatically accept any incoming calls
+            endpoint.on('invite', function (invitation) {
+                invitation.accept().then(showConversation);
+            });
+
+            // Start an outbound conversation
+            $('#call').on('click', function () {
+                endpoint.createConversation($('#other-name').val())
+                    .then(showConversation);
+            });
+
+            // Listen for incoming calls
+            endpoint.listen();
+        }
+
+        // Show a conversation (inbound or outbound)
+        function showConversation(conversation) {
+            // Attach to DOM
+            conversation.localMedia.attach('#me');
+
+            // Listen for participants
+            conversation.on('participantConnected', function (participant) {
+                participant.media.attach('#you');
+            });
+        }
+    </script>
+</body>
+</html>

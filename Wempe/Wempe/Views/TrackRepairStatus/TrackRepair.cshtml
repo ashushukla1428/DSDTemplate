@@ -1,0 +1,495 @@
+﻿@{
+    ViewBag.Title = "Track Repair";
+    Layout = "~/Views/Shared/_getRepairStatus.cshtml";
+}
+
+<div class="tab-content">
+    <div class="tab-pane active" id="tab_1">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-cogs"></i>Get Repair Status
+                        </div>
+
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        First Name:
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtTrackRepairFirstName" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Last Name:
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtTrackRepairLastName" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Customer Email<span style="color:red;">(*)</span>:
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtTrackRepairCustomerEmail" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Phone Number:
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtTrackRepairCustomerPhone" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Repair Number <span style="color:red;">(*)</span>:
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtTrackRepairRepairNumber" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Zip Code <span style="color:red;">(*)</span>:
+</div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtTrackRepairZipcode" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <button onclick="searchRepairByEmailOrNumber(1);" class="btn green" type="button">Search</button> <a href="@Url.Action("Login", "Home")" class="btn green">Back</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="portlet box blue-hoki" id="divRepairListing" style="display:none;">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-grid"></i> Listing
+        </div>
+        <div class="tools">
+        </div>
+    </div>
+    <div class="portlet-body">
+        <input type="hidden" id="hdnPageNoRepair" value="1" />
+        <div class="table-scrollable">
+            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                <thead>
+                    <tr>
+                        <th>
+                            REPAIR NUMBER
+                        </th>
+                        <th>
+                            ENTRY DATE
+                        </th>
+
+                        <th>
+                            CUSTOMER NAME
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            PHONE
+                        </th>
+
+                        <th>
+                            BRAND NAME
+                        </th>
+                      
+                        <th>
+                            CURRENT STATUS
+                        </th>
+
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyDetailsRepair"></tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-sm-12">
+                <div class="dataTables_info" id="sample_1_infoRepair" role="status" aria-live="polite"></div>
+            </div>
+            <div class="col-md-7 col-sm-12">
+                <div class="dataTables_paginate paging_simple_numbers" id="sample_1_paginate">
+                    <ul class="pagination">
+                        <li class="paginate_button previous" aria-controls="sample_1" tabindex="0" id="sample_1_previousRepair"><a><i class="fa fa-angle-left"></i></a></li>
+                        <li class="paginate_button next" aria-controls="sample_1" tabindex="0" id="sample_1_nextRepair"><a><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script id="tbodyTemplateRepair" type="text/html">
+            <tr>
+                <td>
+                    @*<a target="_blank" href="../TrackRepairStatus/RepairDetails?id=${customerNumber}&Rid=${repairNumber}"> ${repairNumber} </a>*@
+
+                    <a  href="#"  onclick="ShowStatusPopup(${repairNumber}, '${CustomerName}','${LogId}');"> ${repairNumber} </a>
+
+                </td>
+                <td>
+                    ${entryDate}
+                </td>
+
+                <td>
+                    ${CustomerName}
+                </td>
+
+                <td>
+                    ${EmailAddress}
+                </td>
+                <td>
+                    ${Phone}
+                </td>
+
+                <td>
+                    ${brandName}
+                </td>
+               
+                <td>
+                    ${RepairStatus}
+                </td>
+                <td>
+                    <a href="#" onclick="ShowStatusPopup(${repairNumber}, '${CustomerName}','${LogId}');"  class="btn default btn-xs blue-stripe"> View Details</a>
+                  
+                    @*<a target="_blank" href="../TrackRepairStatus/RepairDetails?id=${customerNumber}&Rid=${repairNumber}" class="btn default btn-xs blue-stripe">View Details </a>*@
+                </td>
+            </tr>
+        </script>
+    </div>
+</div>
+<script>
+
+    function FillDocStatusData(_data) {
+        if (_data.dateReceivedByMail != null) {
+            $('#docStatusReceivedByMail').html(new Date(parseInt(_data.dateReceivedByMail.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateReceivedByMessenger != null) {
+            $('#docStatusReceivedByMessenger').html(new Date(parseInt(_data.dateReceivedByMessenger.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateEstimateRequestStatus != null) {
+            $('#docStatusEstimateRequestStatus').html(new Date(parseInt(_data.dateEstimateRequestStatus.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateServiceRequest != null) {
+            $('#docStatusServiceRequest').html(new Date(parseInt(_data.dateServiceRequest.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateServiceRequestStatus != null) {
+            $('#docStatusServiceRequestStatus').html(new Date(parseInt(_data.dateServiceRequestStatus.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateAuthToFactoryCharge != null) {
+            $('#docStatusAuthToFactory').html(new Date(parseInt(_data.dateAuthToFactoryCharge.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateAuthToFactoryNoCharge != null) {
+            $('#docStatusAuthToFactoryNC').html(new Date(parseInt(_data.dateAuthToFactoryNoCharge.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateReminderToFactory != null) {
+            $('#docStatusReminderToFactory').html(new Date(parseInt(_data.dateReminderToFactory.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateProceedToFactory != null) {
+            $('#docStatusProceedToFactory').html(new Date(parseInt(_data.dateProceedToFactory.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateRepairOffer != null) {
+            $('#docStatusRepairOffer').html(new Date(parseInt(_data.dateRepairOffer.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateRepairOfferReminder != null) {
+            $('#docStatusRepairOfferReminder').html(new Date(parseInt(_data.dateRepairOfferReminder.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateReturnUndone != null) {
+            $('#docStatusReturnUndone').html(new Date(parseInt(_data.dateReturnUndone.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateProceedWithService != null) {
+            $('#docStatusProceedWithService').html(new Date(parseInt(_data.dateProceedWithService.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateRepairStatus != null) {
+            $('#docStatusRepairStatus').html(new Date(parseInt(_data.dateRepairStatus.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateRepairDelay != null) {
+            $('#docStatusRepairDelay').html(new Date(parseInt(_data.dateRepairDelay.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.datePickupNotification != null) {
+            $('#docStatusPickupNotification').html(new Date(parseInt(_data.datePickupNotification.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.datePickedUp != null) {
+            $('#docStatusPickedUp').html(new Date(parseInt(_data.datePickedUp.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateShipped != null) {
+            $('#docStatusShipped').html(new Date(parseInt(_data.dateShipped.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+    }
+
+    function parseJsonDate(jsonDateString) {
+        if (jsonDateString == null) {
+            return "";
+        }
+        var currentTime = new Date(parseInt(jsonDateString.replace('/Date(', '')));
+        var month = currentTime.getMonth() + 1;
+        var day = currentTime.getDate();
+        var year = currentTime.getFullYear();
+        var date = month + "/" + day + "/" + year;
+
+        return date;
+    }
+
+    function getItem(id,LogId) {
+        // resetControl();
+        if (id == 0) {
+            return;
+        }
+        jQuery.ajax({
+            url: siteUrl + 'TrackRepairStatus/getRepair',
+            dataType: 'json',
+            headers: { "requestType": "client" },
+            data: { "id": id,"LogId": LogId },
+            contentType: 'application/json;charset=utf-8',
+            async: false,
+            success: function (_data) {
+                //
+             
+                if (_data != null) {
+                    if (_data.Status == false) {
+                        showMessage('Oops', 'error', _data.Message, 'toast-top-right');
+                        return;
+                    }
+                }
+
+                //FillRepairData(_data);
+
+                FillDocStatusData(_data);
+
+                $('#hdnRepairNumber').val(_data.repairNumber);
+                //$('#hdnRepairNumber').val(_data.ticketNumber);
+
+               // bindDocumentsGrid('1');
+
+
+              
+
+                //---Doc and Status tab
+                // alert(_data.entryDate);
+                if (_data.entryDate != null) {
+                    $('#docStatusRepairStart').html(parseJsonDate(_data.entryDate));
+                }
+                if (_data.dueDate != null) {
+                    $('#docStatusCustomerRepairDueDate').html(parseJsonDate(_data.dueDate));
+                }
+                //alert(_data.SupplierDueDate);
+                if (_data.SupplierDueDate != null) {
+                    $('#docStatusFactoryRepairDueDate').html(_data.SupplierDueDate);
+                }
+                //
+                if (_data.factoryDelayTime != null) {
+                    $('#docStatusFactoryDelay').html(_data.factoryDelayTime + ' ' + _data.factoryDelayType);
+                }
+
+            },
+
+            error: function (_data) {
+                // alert(JSON.stringify(data));
+                showMessage('Oops', 'error', _data, 'toast-top-right');
+                //  alert(_errorMessage);
+            }
+        });
+    }
+
+    function ShowStatusPopup(Id, CustomerName, LogId)
+    {
+        getItem(Id, LogId);
+        var $modal = $('#responsive');
+
+
+        $('#hdnDocStatus').html("Repair Number: "+Id+", Customer Name: "+CustomerName+"");
+
+        $modal.modal();
+    
+    };
+
+    function setPagingDetail(noOfrows, Total, pageNo) {
+
+        _firstRecord = 1;
+        if (noOfrows < pazeSize) {
+            noOfrows = Total;
+            _firstRecord = Total;
+            _lock = false;
+        }
+        else {
+            noOfrows = noOfrows * pageNo;
+            if (pageNo > 1) {
+                _firstRecord = (noOfrows - pazeSize) + 1;
+            }
+        }
+        $('#sample_1_infoRepair').html('Showing ' + _firstRecord + ' to ' + noOfrows + ' of ' + Total + ' entries');
+    }
+
+
+  
+
+
+    function searchRepairByEmailOrNumber(pageNo) {
+
+        if ($('#txtTrackRepairRepairNumber').val() == '') {
+
+            showMessage('Oops', 'error', 'Repair number is required for search', 'toast-top-right');
+            return;
+        }
+        if ($('#txtTrackRepairZipcode').val() == '') {
+
+            showMessage('Oops', 'error', 'Zip code is required for search', 'toast-top-right');
+            return;
+        }
+
+
+        if ($('#txtTrackRepairCustomerEmail').val() == '') {
+
+            showMessage('Oops', 'error', 'Customer email is required for search', 'toast-top-right');
+            return;
+        }
+
+       
+
+        // _lock = true;
+        // _lockCustomerSearch = true;
+        $('#hdnPageNoRepair').val(pageNo);
+        var _SearchFields = '';
+        var _SearchValues = '';
+
+        var model = {
+            Email: $('#txtTrackRepairCustomerEmail').val(),
+            RepairNumber: $('#txtTrackRepairRepairNumber').val(),
+
+            ZipCode: $('#txtTrackRepairZipcode').val(),
+            FirstName: $('#txtTrackRepairFirstName').val(),
+            LastName: $('#txtTrackRepairLastName').val(),
+            PhoneNumber: $('#txtTrackRepairCustomerPhone').val(),
+
+
+            pageNo: pageNo,
+            sortColumn: _sortColumn,
+            sortOrder: _sortOrder
+        };
+        $('#tbodyDetails').html('<tr><td colspan="5">Loading....</td></tr>');
+        $.ajax({
+            url: siteUrl + 'TrackRepairStatus/searchRepairWithoutSession',
+            headers: { "requestType": "client" },
+            type: 'POST',
+            data: JSON.stringify(model),
+            contentType: 'application/json;charset=utf-8',
+            success: function (data) {
+                $('#tbodyDetailsRepair').html('');
+                $('#tbodyTemplateRepair').tmpl(data).appendTo('#tbodyDetailsRepair');
+                if (data.length == 0) {
+                    setPagingDetail(data.length, 0, pageNo);
+                }
+                else {
+                    setPagingDetail(data.length, data[0].TotalCount, pageNo);
+                }
+
+                $('#divRepairListing').css('display', 'block');
+            },
+            error: function (_data) {
+                $('#tbodyDetails').html('<tr><td colspan="5">error in request</td></tr>');
+            }
+        });
+    }
+
+
+   
+
+</script>
+
+
+@section scripts{
+    <script>
+
+        var _lock = true;
+     jQuery(document).ready(function () {
+
+        jQuery('#sample_1_nextRepair').click(function () {
+          //  alert('in');
+            if (_lock) {
+                var _index = parseInt($('#hdnPageNoRepair').val()) + 1;
+                searchRepairByEmailOrNumber(_index, 0);
+            }
+        });
+        jQuery('#sample_1_previousRepair').click(function () {
+            var _index = parseInt($('#hdnPageNoRepair').val()) - 1;
+            if (_index > 0) {
+                _lock = true;
+                searchRepairByEmailOrNumber(_index, 0);
+            }
+        });
+
+     });
+
+</script>
+
+}
+
+
+
+
+<div id="responsive" class="modal fade" style="width:97%; left:20%; top:5%;" tabindex="-1" data-width="760">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        @*<h4 class="modal-title">Repair Status</h4>*@
+    </div>
+    <div class="modal-body">
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            @Html.Partial("_docsStatusPartial")
+            <!-- END FORM-->
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+    
+        <input type="hidden" id="hdnid" value="0" />
+    </div>
+</div>
