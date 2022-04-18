@@ -1,0 +1,1962 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbWempeModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dbWempeEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="dbWempeModel.sysdiagram" />
+    <EntitySet Name="wmpAppraiserMasters" EntityType="dbWempeModel.wmpAppraiserMaster" />
+    <EntitySet Name="wmpAppraiserTitles" EntityType="dbWempeModel.wmpAppraiserTitle" />
+    <EntitySet Name="wmpBackConditionMasters" EntityType="dbWempeModel.wmpBackConditionMaster" />
+    <EntitySet Name="wmpBandConditions" EntityType="dbWempeModel.wmpBandCondition" />
+    <EntitySet Name="wmpBandTypeMasters" EntityType="dbWempeModel.wmpBandTypeMaster" />
+    <EntitySet Name="wmpBandTypeMaster1" EntityType="dbWempeModel.wmpBandTypeMaster1" />
+    <EntitySet Name="wmpBezelConditionMasters" EntityType="dbWempeModel.wmpBezelConditionMaster" />
+    <EntitySet Name="wmpBoxIncludedMasters" EntityType="dbWempeModel.wmpBoxIncludedMaster" />
+    <EntitySet Name="wmpBrandMasters" EntityType="dbWempeModel.wmpBrandMaster" />
+    <EntitySet Name="wmpBuckleConditionMasters" EntityType="dbWempeModel.wmpBuckleConditionMaster" />
+    <EntitySet Name="wmpBuckleTypes" EntityType="dbWempeModel.wmpBuckleType" />
+    <EntitySet Name="wmpCarriers" EntityType="dbWempeModel.wmpCarrier" />
+    <EntitySet Name="wmpCaseConditions" EntityType="dbWempeModel.wmpCaseCondition" />
+    <EntitySet Name="wmpCaseTypes" EntityType="dbWempeModel.wmpCaseType" />
+    <EntitySet Name="wmpCategoryMasters" EntityType="dbWempeModel.wmpCategoryMaster" />
+    <EntitySet Name="wmpCompanyMasters" EntityType="dbWempeModel.wmpCompanyMaster" />
+    <EntitySet Name="wmpCompanyPackages" EntityType="dbWempeModel.wmpCompanyPackage" />
+    <EntitySet Name="wmpContactPreferences" EntityType="dbWempeModel.wmpContactPreference" />
+    <EntitySet Name="wmpCountries" EntityType="dbWempeModel.wmpCountry" />
+    <EntitySet Name="wmpCounties" EntityType="dbWempeModel.wmpCounty" />
+    <EntitySet Name="wmpCrystalConditions" EntityType="dbWempeModel.wmpCrystalCondition" />
+    <EntitySet Name="wmpCustomers" EntityType="dbWempeModel.wmpCustomer" />
+    <EntitySet Name="wmpCustomerTypes" EntityType="dbWempeModel.wmpCustomerType" />
+    <EntitySet Name="wmpDestinationTypes" EntityType="dbWempeModel.wmpDestinationType" />
+    <EntitySet Name="wmpDialConditions" EntityType="dbWempeModel.wmpDialCondition" />
+    <EntitySet Name="wmpDialTypes" EntityType="dbWempeModel.wmpDialType" />
+    <EntitySet Name="wmpDocuments" EntityType="dbWempeModel.wmpDocument" />
+    <EntitySet Name="wmpEmployees" EntityType="dbWempeModel.wmpEmployee" />
+    <EntitySet Name="wmpEngravingCapitalizations" EntityType="dbWempeModel.wmpEngravingCapitalization" />
+    <EntitySet Name="wmpEngravingFonts" EntityType="dbWempeModel.wmpEngravingFont" />
+    <EntitySet Name="wmpErrorLogs" EntityType="dbWempeModel.wmpErrorLog" />
+    <EntitySet Name="wmpFileAttachments" EntityType="dbWempeModel.wmpFileAttachment" />
+    <EntitySet Name="wmpIDSecurities" EntityType="dbWempeModel.wmpIDSecurity" />
+    <EntitySet Name="wmpImportStatus" EntityType="dbWempeModel.wmpImportStatu" />
+    <EntitySet Name="wmpItems" EntityType="dbWempeModel.wmpItem" />
+    <EntitySet Name="wmpLastRecordSets" EntityType="dbWempeModel.wmpLastRecordSet" />
+    <EntitySet Name="wmpLugsConditions" EntityType="dbWempeModel.wmpLugsCondition" />
+    <EntitySet Name="wmpMailBoxes" EntityType="dbWempeModel.wmpMailBox" />
+    <EntitySet Name="wmpMailBoxEmailAddresses" EntityType="dbWempeModel.wmpMailBoxEmailAddress" />
+    <EntitySet Name="wmpMenuMasters" EntityType="dbWempeModel.wmpMenuMaster" />
+    <EntitySet Name="wmpMovementTypes" EntityType="dbWempeModel.wmpMovementType" />
+    <EntitySet Name="wmpMVCAuthenticationRights" EntityType="dbWempeModel.wmpMVCAuthenticationRight" />
+    <EntitySet Name="wmpPrintSettings" EntityType="dbWempeModel.wmpPrintSetting" />
+    <EntitySet Name="wmpPurchaseLocations" EntityType="dbWempeModel.wmpPurchaseLocation" />
+    <EntitySet Name="wmpRecentRepairs" EntityType="dbWempeModel.wmpRecentRepair" />
+    <EntitySet Name="wmpRepairs" EntityType="dbWempeModel.wmpRepair" />
+    <EntitySet Name="wmpRepairLogs" EntityType="dbWempeModel.wmpRepairLog" />
+    <EntitySet Name="wmpRepairSampleTasks" EntityType="dbWempeModel.wmpRepairSampleTask" />
+    <EntitySet Name="wmpRepairTypes" EntityType="dbWempeModel.wmpRepairType" />
+    <EntitySet Name="wmpResetPasswords" EntityType="dbWempeModel.wmpResetPassword" />
+    <EntitySet Name="wmpRoleMasters" EntityType="dbWempeModel.wmpRoleMaster" />
+    <EntitySet Name="wmpRoleRelationships" EntityType="dbWempeModel.wmpRoleRelationship" />
+    <EntitySet Name="wmpSampleCities" EntityType="dbWempeModel.wmpSampleCity" />
+    <EntitySet Name="wmpShippings" EntityType="dbWempeModel.wmpShipping" />
+    <EntitySet Name="wmpShippingTypes" EntityType="dbWempeModel.wmpShippingType" />
+    <EntitySet Name="wmpStates" EntityType="dbWempeModel.wmpState" />
+    <EntitySet Name="wmpStatus" EntityType="dbWempeModel.wmpStatu" />
+    <EntitySet Name="wmpStolenRepairs" EntityType="dbWempeModel.wmpStolenRepair" />
+    <EntitySet Name="wmpStoreInformations" EntityType="dbWempeModel.wmpStoreInformation" />
+    <EntitySet Name="wmpStrapAccessories" EntityType="dbWempeModel.wmpStrapAccessory" />
+    <EntitySet Name="wmpStrapColors" EntityType="dbWempeModel.wmpStrapColor" />
+    <EntitySet Name="wmpStrapLusterTypes" EntityType="dbWempeModel.wmpStrapLusterType" />
+    <EntitySet Name="wmpStrapStitchTypes" EntityType="dbWempeModel.wmpStrapStitchType" />
+    <EntitySet Name="wmpStrapTextureTypes" EntityType="dbWempeModel.wmpStrapTextureType" />
+    <EntitySet Name="wmpStrapThicknessTypes" EntityType="dbWempeModel.wmpStrapThicknessType" />
+    <EntitySet Name="wmpStyles" EntityType="dbWempeModel.wmpStyle" />
+    <EntitySet Name="wmpSuggestions" EntityType="dbWempeModel.wmpSuggestion" />
+    <EntitySet Name="wmpSuppliers" EntityType="dbWempeModel.wmpSupplier" />
+    <EntitySet Name="wmpSystems" EntityType="dbWempeModel.wmpSystem" />
+    <EntitySet Name="wmpTaxRates" EntityType="dbWempeModel.wmpTaxRate" />
+    <EntitySet Name="wmpTitles" EntityType="dbWempeModel.wmpTitle" />
+    <EntitySet Name="wmpUserMasters" EntityType="dbWempeModel.wmpUserMaster" />
+    <EntitySet Name="wmpUserTracks" EntityType="dbWempeModel.wmpUserTrack" />
+    <EntitySet Name="wmpWarrantyDocuments" EntityType="dbWempeModel.wmpWarrantyDocument" />
+    <EntitySet Name="wmpWarrantyTypeMasters" EntityType="dbWempeModel.wmpWarrantyTypeMaster" />
+    <EntitySet Name="wmpWebsitePages" EntityType="dbWempeModel.wmpWebsitePage" />
+    <EntitySet Name="wmpWebsitePagesLinkings" EntityType="dbWempeModel.wmpWebsitePagesLinking" />
+    <EntitySet Name="wmpZipCodes" EntityType="dbWempeModel.wmpZipCode" />
+    <EntitySet Name="customers" EntityType="dbWempeModel.customer" />
+    <EntitySet Name="TestEntries" EntityType="dbWempeModel.TestEntry" />
+    <EntitySet Name="wmpBoxIncludeds" EntityType="dbWempeModel.wmpBoxIncluded" />
+    <EntitySet Name="wmpStrapLengths" EntityType="dbWempeModel.wmpStrapLength" />
+    <EntitySet Name="wmpstrapMaterialTypes" EntityType="dbWempeModel.wmpstrapMaterialType" />
+    <AssociationSet Name="FK_wmpCompanyMaster_wmpUserMaster" Association="dbWempeModel.FK_wmpCompanyMaster_wmpUserMaster">
+      <End Role="wmpUserMaster" EntitySet="wmpUserMasters" />
+      <End Role="wmpCompanyMaster" EntitySet="wmpCompanyMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_wmpPrintSetting_wmpPrintSetting" Association="dbWempeModel.FK_wmpPrintSetting_wmpPrintSetting">
+      <End Role="wmpPrintSetting" EntitySet="wmpPrintSettings" />
+      <End Role="wmpPrintSetting1" EntitySet="wmpPrintSettings" />
+    </AssociationSet>
+    <EntitySet Name="vwCustomers" EntityType="dbWempeModel.vwCustomer" />
+    <EntitySet Name="vwRepairs" EntityType="dbWempeModel.vwRepair" />
+    <EntitySet Name="wmpWebsiteThemes" EntityType="dbWempeModel.wmpWebsiteTheme" />
+    <EntitySet Name="wmpRepairStatusLogs" EntityType="dbWempeModel.wmpRepairStatusLog" />
+  </EntityContainer>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="wmpAppraiserMaster">
+    <Key>
+      <PropertyRef Name="AppraiserID" />
+    </Key>
+    <Property Name="AppraiserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppraiserTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpAppraiserTitle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="appraiserTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpBackConditionMaster">
+    <Key>
+      <PropertyRef Name="BackConditionID" />
+    </Key>
+    <Property Name="BackConditionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BackCondition" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" Nullable="false" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpBandCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="condition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpBandTypeMaster">
+    <Key>
+      <PropertyRef Name="BandTypeID" />
+    </Key>
+    <Property Name="BandTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BandType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpBandTypeMaster1">
+    <Key>
+      <PropertyRef Name="BandTypeID" />
+    </Key>
+    <Property Name="BandTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BandType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wmpBezelConditionMaster">
+    <Key>
+      <PropertyRef Name="BezelConditionID" />
+    </Key>
+    <Property Name="BezelConditionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BezelCondition" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" Nullable="false" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpBoxIncludedMaster">
+    <Key>
+      <PropertyRef Name="BoxIncludedID" />
+    </Key>
+    <Property Name="BoxIncludedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BoxIncluded" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpBrandMaster">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wmpBuckleConditionMaster">
+    <Key>
+      <PropertyRef Name="BuckleConditionID" />
+    </Key>
+    <Property Name="BuckleConditionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BuckleCondition" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpBuckleType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="buckleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpCarrier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="carrier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpCaseCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="condition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpCaseType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="caseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpCategoryMaster">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryUrl" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryIndex" Type="Int32" />
+    <Property Name="metaTitel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="metakeywords" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="metaDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="parentID" Type="Int64" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpCompanyMaster">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="WebSite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerId" Type="Int64" Nullable="false" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="CityId" Type="Int32" />
+    <NavigationProperty Name="wmpUserMaster" Relationship="dbWempeModel.FK_wmpCompanyMaster_wmpUserMaster" FromRole="wmpCompanyMaster" ToRole="wmpUserMaster" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LogoStrip" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="wmpCompanyPackage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int64" />
+    <Property Name="PackageStartDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PackageRenewalDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserLimit" Type="Int64" />
+    <Property Name="PackagePeriod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="OwnerId" Type="Int64" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="wmpContactPreference">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="contactPreference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpCountry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpCounty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="County" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Int64" />
+    <Property Name="StateId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpCrystalCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="condition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpCustomer">
+    <Key>
+      <PropertyRef Name="customerNumber" />
+    </Key>
+    <Property Name="customerNumber" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="entryDate" Type="DateTime" Precision="3" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="middleInitial" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="asstTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="asstFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="asstMiddleInitial" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="asstLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="asstRelation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCompany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="priAddressLine1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="priAddressLine2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="priCity" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <Property Name="priState" Type="Int64" />
+    <Property Name="priZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priZipCodePlusFour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCountry" Type="Int64" />
+    <Property Name="priTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCellphoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCellphoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCellphoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secState" Type="Int64" />
+    <Property Name="secZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secZipCodePlusFour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCountry" Type="Int64" />
+    <Property Name="secTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secHomephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secHomephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secHomephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secAssistanatSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secAssistanatSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secAssistanatSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secAssistanatExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCellphoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCellphoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCellphoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secEmailAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardSegment4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardExpMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardExpYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardSecurity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardSegment4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardExpMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardExpYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardSecurity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contactPreference" Type="Int64" />
+    <Property Name="customerType" Type="Int64" />
+    <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="priHomephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priHomephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priHomephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priAssistanatSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priAssistanatSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priAssistanatSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priAssistanatExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priEMailAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdZipCodePlusFour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdHomephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdHomephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdHomephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdAssistanatSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdAssistanatSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdAssistanatSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdAssistanatExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCellphoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCellphoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCellphoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdEMailAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCreditCardSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCreditCardSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCreditCardSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCreditCardSegment4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCreditCardExpMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCreditCardExpYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdCreditCardSecurity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpouseRelation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpouseTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpousefirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpousemiddleInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SpouselastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priHomePhoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secHomePhoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="thirdHomePhoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingToServiceCenterValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingToServiceCenterDecline" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingToServiceCenterPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingToEuropeValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingToEuropeDecline" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingToEuropePrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EstimateFeeValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EstimateFeeDecline" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EstimateFeePrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceMinimumChargeValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceMinimumChargeDecline" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceMinimumChargePrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Overhaul" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairValue1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairPrice1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairValue2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairPrice2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairValue3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairPrice3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairValue4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairPrice4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairValue5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairPrice5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairValue6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OptialWorkPartialRepairPrice6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RepairComment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SubTotal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCountryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AlternateCountryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ThirdCountryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="wmpCustomerType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpDestinationType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="destinationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpDialCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="condition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpDialType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dialType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpDocument">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="shortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="paperType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="print" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="eMail" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpEmployee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="employeeFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="employeeLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="UserID" Type="Int64" />
+    <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="wmpEngravingCapitalization">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="capitalization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpEngravingFont">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="font" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpErrorLog">
+    <Key>
+      <PropertyRef Name="ErrorId" />
+    </Key>
+    <Property Name="ErrorId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="wmpFileAttachment">
+    <Key>
+      <PropertyRef Name="fileNumber" />
+    </Key>
+    <Property Name="fileNumber" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="repairNumber" Type="Int32" />
+    <Property Name="dateStamp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fullPath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpIDSecurity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSecurity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpImportStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="TotalRecords" Type="Int64" />
+    <Property Name="ImportedRecords" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="item" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpLastRecordSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerNumber" Type="Int64" />
+    <Property Name="RepairNumber" Type="Int64" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="OwnderId" Type="Int64" />
+    <Property Name="DateStamp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpLugsCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="condition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpMailBox">
+    <Key>
+      <PropertyRef Name="MessageNumber" />
+    </Key>
+    <Property Name="MessageNumber" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MessageId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FromAddress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MessageBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateSent" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="UserID" Type="Int64" />
+    <Property Name="HaveAttachment" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="wmpMailBoxEmailAddress">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="MailAddress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HasValidMailAddress" Type="Boolean" />
+    <Property Name="MailRelId" Type="Int64" />
+    <Property Name="AddressType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="wmpMenuMaster">
+    <Key>
+      <PropertyRef Name="MenuID" />
+    </Key>
+    <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PageID" Type="Int64" />
+    <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="parentID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="MenuIndex" Type="Int32" />
+    <Property Name="MenuIcon" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="wmpMovementType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="movementType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpMVCAuthenticationRight">
+    <Key>
+      <PropertyRef Name="ActionID" />
+    </Key>
+    <Property Name="ActionID" Type="Int32" Nullable="false" />
+    <Property Name="ControllerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ActionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RightFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OtherFunctions" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="OnlyForCompanyUsers" Type="Boolean" />
+    <Property Name="ShowInMenu" Type="Boolean" />
+    <Property Name="MenuText" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cssClass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MenuIndex" Type="Int32" />
+    <Property Name="ParentId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="wmpPrintSetting">
+    <Key>
+      <PropertyRef Name="SettingID" />
+    </Key>
+    <Property Name="SettingID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaperTopMargin" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PaperRightMargin" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PaperBottomMargin" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PaperLeftMargin" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <NavigationProperty Name="wmpPrintSetting1" Relationship="dbWempeModel.FK_wmpPrintSetting_wmpPrintSetting" FromRole="wmpPrintSetting" ToRole="wmpPrintSetting1" />
+    <NavigationProperty Name="wmpPrintSetting2" Relationship="dbWempeModel.FK_wmpPrintSetting_wmpPrintSetting" FromRole="wmpPrintSetting1" ToRole="wmpPrintSetting" />
+  </EntityType>
+  <EntityType Name="wmpPurchaseLocation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainZipCodePlusFour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpRecentRepair">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="viewDate" Type="DateTime" Precision="3" />
+    <Property Name="repairNumber" Type="Int32" />
+    <Property Name="ticketNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpRepair">
+    <Key>
+      <PropertyRef Name="repairNumber" />
+    </Key>
+    <Property Name="repairNumber" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerNumber" Type="Int64" />
+    <Property Name="ticketNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="statusId" Type="Int64" />
+    <Property Name="receiptPrintedFlag" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="entryDate" Type="DateTime" Precision="3" />
+    <Property Name="employeeId" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+    <Property Name="itemId" Type="Int64" />
+    <Property Name="styleId" Type="Int64" />
+    <Property Name="movementTypeId" Type="Int64" />
+    <Property Name="caseTypeId" Type="Int64" />
+    <Property Name="bandTypeId" Type="Int64" />
+    <Property Name="buckleTypeId" Type="Int64" />
+    <Property Name="dialTypeId" Type="Int64" />
+    <Property Name="crystalConditionId" Type="Int64" />
+    <Property Name="bezelConditionId" Type="Int64" />
+    <Property Name="backConditionId" Type="Int64" />
+    <Property Name="lugsConditionId" Type="Int64" />
+    <Property Name="caseConditionId" Type="Int64" />
+    <Property Name="bandConditionId" Type="Int64" />
+    <Property Name="buckleConditionId" Type="Int64" />
+    <Property Name="dialConditionId" Type="Int64" />
+    <Property Name="serialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="referenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="movementSerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="caliber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="numberOfJewels" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="purchaseLocationId" Type="Int64" />
+    <Property Name="purchaseDate" Type="DateTime" Precision="3" />
+    <Property Name="wempeInventoryNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="warrantyDocumentId" Type="Int64" />
+    <Property Name="boxIncludedId" Type="Int64" />
+    <Property Name="giftCertATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="supplierId" Type="Int64" />
+    <Property Name="supplierRepairNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="supplierPickupNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="repairTypeId" Type="Int64" />
+    <Property Name="dueDateStartDate" Type="DateTime" Precision="3" />
+    <Property Name="dueDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dueDateType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dueDate" Type="DateTime" Precision="3" />
+    <Property Name="dueDateFactoryStartDate" Type="DateTime" Precision="3" />
+    <Property Name="dueDateFactoryTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dueDateFactoryType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dueDateFactory" Type="DateTime" Precision="3" />
+    <Property Name="supplierPreviousRepairNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="wempePreviousRepairNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idSecurityId" Type="Int64" />
+    <Property Name="authorizedPickup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="factoryDelayTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="factoryDelayType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="factoryDelayReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="appraisalValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="appraisalComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="appraiserId" Type="Int64" />
+    <Property Name="appraiserTitleId" Type="Int64" />
+    <Property Name="engravingFontId" Type="Int64" />
+    <Property Name="engravingCapitalizationId" Type="Int64" />
+    <Property Name="engravingMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="notesToEngraver" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task1Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task1Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task1Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task2Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task2Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task2Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task3Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task3Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task3Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task4Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task4Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task4Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task5Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task5Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task5Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task6Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task6Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task6Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task7Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task7Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task7Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task1And2Combined" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="subtotal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="taxable" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="tax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="repairComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="notesToCustomer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="notesToFactory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="letterToCustomer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerSalesperson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerDestinationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerCarrier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerShippingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerMailingDate" Type="DateTime" Precision="3" />
+    <Property Name="shippingToCustomerExpectedArrivalDate" Type="DateTime" Precision="3" />
+    <Property Name="shippingToSupplierValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierSalesperson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierDestinationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierCarrier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierShippingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierMailingDate" Type="DateTime" Precision="3" />
+    <Property Name="shippingToSupplierExpectedArrivalDate" Type="DateTime" Precision="3" />
+    <Property Name="sparePartsQuantity1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription6" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription7" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription8" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsOrderNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="strapMaterialType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strapColor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strapWidth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strapBuckle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strapLength" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strapTextureType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapLusterType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapStitchType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapThicknessType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapAccessories" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapSpecOrd600" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapSpecOrd1200" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapOrderNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dateReceivedByMail" Type="DateTime" Precision="3" />
+    <Property Name="dateReceivedByMessenger" Type="DateTime" Precision="3" />
+    <Property Name="dateEstimateRequest" Type="DateTime" Precision="3" />
+    <Property Name="dateEstimateRequestStatus" Type="DateTime" Precision="3" />
+    <Property Name="dateServiceRequest" Type="DateTime" Precision="3" />
+    <Property Name="dateServiceRequestStatus" Type="DateTime" Precision="3" />
+    <Property Name="dateAuthToFactoryCharge" Type="DateTime" Precision="3" />
+    <Property Name="dateAuthToFactoryNoCharge" Type="DateTime" Precision="3" />
+    <Property Name="dateReminderToFactory" Type="DateTime" Precision="3" />
+    <Property Name="dateProceedToFactory" Type="DateTime" Precision="3" />
+    <Property Name="dateRepairOffer" Type="DateTime" Precision="3" />
+    <Property Name="dateRepairOfferReminder" Type="DateTime" Precision="3" />
+    <Property Name="dateReturnUndone" Type="DateTime" Precision="3" />
+    <Property Name="dateProceedWithService" Type="DateTime" Precision="3" />
+    <Property Name="dateRepairStatus" Type="DateTime" Precision="3" />
+    <Property Name="dateRepairDelay" Type="DateTime" Precision="3" />
+    <Property Name="datePickupNotification" Type="DateTime" Precision="3" />
+    <Property Name="datePickedUp" Type="DateTime" Precision="3" />
+    <Property Name="dateShipped" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="ClientComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WarrantyRepair" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SupplierDueDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PickupPersonFirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PickupPersonLastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SupplierdueDateStartDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SupplierdueDateTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrderNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="wmpRepairLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="repairNumber" Type="Int32" />
+    <Property Name="dateStamp" Type="DateTime" Precision="3" />
+    <Property Name="changeComment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpRepairSampleTask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="Type" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpRepairType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="repairType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpResetPassword">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int64" />
+    <Property Name="GUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpRoleMaster">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="IsMainRole" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="wmpRoleRelationship">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int64" />
+    <Property Name="UserID" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpSampleCity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="StateId" Type="Int64" />
+    <Property Name="CountyID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpShipping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="shippingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpShippingType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="shippingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="stateFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="CountryId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="displayOrder" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="AttrName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpStolenRepair">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="serialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpStoreInformation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="storeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="addressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="addressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="zipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="faxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="faxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="faxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpStrapAccessory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strapAccessories" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpStrapColor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strapColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpStrapLusterType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strapLusterType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpStrapStitchType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strapStitchType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpStrapTextureType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strapTextureType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpStrapThicknessType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strapThicknessType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpStyle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="style" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpSuggestion">
+    <Key>
+      <PropertyRef Name="SuggestionId" />
+    </Key>
+    <Property Name="SuggestionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Suggestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpSupplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainZipCodePlusFour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainStickerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainWempeAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mainContactEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsZipCodePlusFour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsStickerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsWempeAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsContactTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsContactTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsContactTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsContactTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsContactFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsContactFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsContactFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsContactEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapZipCodePlusFour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapStickerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapWempeAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapContactTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapContactTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapContactTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapContactTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapContactFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapContactFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapContactFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapContactEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingZipCodePlusFour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingStickerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingWempeAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingContactTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingContactTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingContactTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingContactTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingContactFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingContactFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingContactFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="billingContactEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpSystem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mailHost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mailUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mailPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mailFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mailFromName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="wmpTaxRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="taxRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StateId" Type="Int64" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpTitle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="UpdateBy" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpUserMaster">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="IsMainUser" Type="Boolean" />
+    <NavigationProperty Name="wmpCompanyMasters" Relationship="dbWempeModel.FK_wmpCompanyMaster_wmpUserMaster" FromRole="wmpUserMaster" ToRole="wmpCompanyMaster" />
+  </EntityType>
+  <EntityType Name="wmpUserTrack">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Uid" Type="Int64" />
+    <Property Name="LoginTime" Type="DateTime" Precision="3" />
+    <Property Name="LogoutTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpWarrantyDocument">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WarrantyDocument" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpWarrantyTypeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="warrantyType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpWebsitePage">
+    <Key>
+      <PropertyRef Name="PageID" />
+    </Key>
+    <Property Name="PageID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PageName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PageTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="shortdescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="metakeywords" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="metadescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="headerstylescss" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="footerjavascript" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PageImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpWebsitePagesLinking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PageID" Type="Int64" />
+    <Property Name="CatID" Type="Int64" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="wmpZipCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityId" Type="Int64" />
+    <Property Name="PostalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customerNumber" />
+    </Key>
+    <Property Name="customerNumber" Type="Int32" Nullable="false" />
+    <Property Name="entryDate" Type="DateTime" Precision="3" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="middleInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="asstTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="asstFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="asstMiddleInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="asstLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCity" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <Property Name="priState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priZipCodePlusFour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCellphoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCellphoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCellphoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secZipCodePlusFour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secTelephoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secTelephoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secTelephoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secTelephoneExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCellphoneSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCellphoneSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCellphoneSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secFaxSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secFaxSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secFaxSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardSegment4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardExpMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="priCreditCardExpYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardSegment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardSegment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardSegment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardSegment4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardExpMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="secCreditCardExpYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contactPreference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customerType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TestEntry">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="County" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Zip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Abbrev" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wmpBoxIncluded">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IsActive" />
+    </Key>
+    <Property Name="boxIncluded" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="wmpStrapLength">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IsActive" />
+    </Key>
+    <Property Name="strapLength" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="wmpstrapMaterialType">
+    <Key>
+      <PropertyRef Name="MaterialTypeID" />
+    </Key>
+    <Property Name="strapMaterialType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <Association Name="FK_wmpCompanyMaster_wmpUserMaster">
+    <End Type="dbWempeModel.wmpUserMaster" Role="wmpUserMaster" Multiplicity="1" />
+    <End Type="dbWempeModel.wmpCompanyMaster" Role="wmpCompanyMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wmpUserMaster">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="wmpCompanyMaster">
+        <PropertyRef Name="OwnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_wmpPrintSetting_wmpPrintSetting">
+    <End Type="dbWempeModel.wmpPrintSetting" Role="wmpPrintSetting" Multiplicity="1" />
+    <End Type="dbWempeModel.wmpPrintSetting" Role="wmpPrintSetting1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="wmpPrintSetting">
+        <PropertyRef Name="SettingID" />
+      </Principal>
+      <Dependent Role="wmpPrintSetting1">
+        <PropertyRef Name="SettingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="vwCustomer">
+    <Key>
+      <PropertyRef Name="customerNumber" />
+      <PropertyRef Name="FullName" />
+      <PropertyRef Name="PrimaryAddress" />
+      <PropertyRef Name="PrimaryPhone" />
+      <PropertyRef Name="priEMailAddress" />
+      <PropertyRef Name="stateName" />
+    </Key>
+    <Property Name="customerNumber" Type="Int64" Nullable="false" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="302" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryAddress" Type="String" Nullable="false" MaxLength="401" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryPhone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="priEMailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="stateName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OwnerID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vwRepair">
+    <Key>
+      <PropertyRef Name="repairNumber" />
+      <PropertyRef Name="IsActive" />
+    </Key>
+    <Property Name="repairNumber" Type="Int64" Nullable="false" />
+    <Property Name="customerNumber" Type="Int64" />
+    <Property Name="ticketNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="statusId" Type="Int64" />
+    <Property Name="receiptPrintedFlag" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="entryDate" Type="DateTime" Precision="3" />
+    <Property Name="employeeId" Type="Int64" />
+    <Property Name="brandId" Type="Int64" />
+    <Property Name="itemId" Type="Int64" />
+    <Property Name="styleId" Type="Int64" />
+    <Property Name="movementTypeId" Type="Int64" />
+    <Property Name="caseTypeId" Type="Int64" />
+    <Property Name="bandTypeId" Type="Int64" />
+    <Property Name="buckleTypeId" Type="Int64" />
+    <Property Name="dialTypeId" Type="Int64" />
+    <Property Name="crystalConditionId" Type="Int64" />
+    <Property Name="bezelConditionId" Type="Int64" />
+    <Property Name="backConditionId" Type="Int64" />
+    <Property Name="lugsConditionId" Type="Int64" />
+    <Property Name="caseConditionId" Type="Int64" />
+    <Property Name="bandConditionId" Type="Int64" />
+    <Property Name="buckleConditionId" Type="Int64" />
+    <Property Name="dialConditionId" Type="Int64" />
+    <Property Name="serialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="referenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="movementSerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="caliber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="numberOfJewels" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="purchaseLocationId" Type="Int64" />
+    <Property Name="purchaseDate" Type="DateTime" Precision="3" />
+    <Property Name="wempeInventoryNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="warrantyDocumentId" Type="Int64" />
+    <Property Name="boxIncludedId" Type="Int64" />
+    <Property Name="giftCertATNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="supplierId" Type="Int64" />
+    <Property Name="supplierRepairNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="supplierPickupNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="repairTypeId" Type="Int64" />
+    <Property Name="dueDateStartDate" Type="DateTime" Precision="3" />
+    <Property Name="dueDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dueDateType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dueDate" Type="DateTime" Precision="3" />
+    <Property Name="dueDateFactoryStartDate" Type="DateTime" Precision="3" />
+    <Property Name="dueDateFactoryTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dueDateFactoryType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dueDateFactory" Type="DateTime" Precision="3" />
+    <Property Name="supplierPreviousRepairNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="wempePreviousRepairNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idSecurityId" Type="Int64" />
+    <Property Name="authorizedPickup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="factoryDelayTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="factoryDelayType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="factoryDelayReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="appraisalValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="appraisalComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="appraiserId" Type="Int64" />
+    <Property Name="appraiserTitleId" Type="Int64" />
+    <Property Name="engravingFontId" Type="Int64" />
+    <Property Name="engravingCapitalizationId" Type="Int64" />
+    <Property Name="engravingMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="notesToEngraver" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task1Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task1Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task1Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task2Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task2Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task2Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task3Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task3Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task3Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task4Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task4Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task4Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task5Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task5Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task5Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task6Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task6Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task6Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="task7Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="task7Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task7Decline" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="task1And2Combined" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="subtotal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="taxable" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="tax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="repairComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="notesToCustomer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="notesToFactory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="letterToCustomer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerSalesperson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerDestinationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerCarrier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerShippingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToCustomerMailingDate" Type="DateTime" Precision="3" />
+    <Property Name="shippingToCustomerExpectedArrivalDate" Type="DateTime" Precision="3" />
+    <Property Name="shippingToSupplierValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierInsurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierSalesperson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierDestinationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierCarrier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierShippingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shippingToSupplierMailingDate" Type="DateTime" Precision="3" />
+    <Property Name="shippingToSupplierExpectedArrivalDate" Type="DateTime" Precision="3" />
+    <Property Name="sparePartsQuantity1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription6" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription7" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsQuantity8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsPartNumber8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsDescription8" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="sparePartsOrderNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="strapMaterialType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strapColor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strapWidth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strapBuckle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strapLength" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="strapTextureType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapLusterType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapStitchType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapThicknessType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapAccessories" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapSpecOrd600" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapSpecOrd1200" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="strapOrderNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dateReceivedByMail" Type="DateTime" Precision="3" />
+    <Property Name="dateReceivedByMessenger" Type="DateTime" Precision="3" />
+    <Property Name="dateEstimateRequest" Type="DateTime" Precision="3" />
+    <Property Name="dateEstimateRequestStatus" Type="DateTime" Precision="3" />
+    <Property Name="dateServiceRequest" Type="DateTime" Precision="3" />
+    <Property Name="dateServiceRequestStatus" Type="DateTime" Precision="3" />
+    <Property Name="dateAuthToFactoryCharge" Type="DateTime" Precision="3" />
+    <Property Name="dateAuthToFactoryNoCharge" Type="DateTime" Precision="3" />
+    <Property Name="dateReminderToFactory" Type="DateTime" Precision="3" />
+    <Property Name="dateProceedToFactory" Type="DateTime" Precision="3" />
+    <Property Name="dateRepairOffer" Type="DateTime" Precision="3" />
+    <Property Name="dateRepairOfferReminder" Type="DateTime" Precision="3" />
+    <Property Name="dateReturnUndone" Type="DateTime" Precision="3" />
+    <Property Name="dateProceedWithService" Type="DateTime" Precision="3" />
+    <Property Name="dateRepairStatus" Type="DateTime" Precision="3" />
+    <Property Name="dateRepairDelay" Type="DateTime" Precision="3" />
+    <Property Name="datePickupNotification" Type="DateTime" Precision="3" />
+    <Property Name="datePickedUp" Type="DateTime" Precision="3" />
+    <Property Name="dateShipped" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="Int64" />
+    <Property Name="OwnerID" Type="Int64" />
+    <Property Name="ClientComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WarrantyRepair" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SupplierDueDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PickupPersonFirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PickupPersonLastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SupplierdueDateStartDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SupplierdueDateTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrderNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="employee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="item" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="style" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="movementType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="caseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BandType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BuckleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dialType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="crystalCondition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bezelCondition" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BackCondition" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="lugsCondition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="caseCondition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bandCondition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BuckleCondition" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="dialCondition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="boxIncluded" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="supplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="repairType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idSecurity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AppraisalName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="appraiserTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="font" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="capitalization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customerCarrierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="supplierCarrierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customerShippingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="supplierShippingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="wmpWebsiteTheme">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int64" Nullable="false" />
+    <Property Name="BodyColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PageSidebar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PageHeader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PageFooter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PageContent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PageBar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TabContent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PortletTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PortletBody" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FormActions" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FormControl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModalPopUp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SidebarSubMenu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Button" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ActiveTab" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ActiveSideBar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SideBarHover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InnerTable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InnerTableHover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ButtonHover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="wmpRepairStatusLog">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RepairNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Zipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

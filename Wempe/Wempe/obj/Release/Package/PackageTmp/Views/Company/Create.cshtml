@@ -1,0 +1,75 @@
+﻿@model Wempe.Models.CompanyUserModel
+
+@{
+    ViewBag.Title = "Create new company";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@*<link href="~/Content/DatePicker/datepicker3.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datepicker.js"></script>*@
+
+
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="/company/index">Companies</a>
+             <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Create</a>
+        </li>   
+    </ul>     
+</div>
+
+@using (Html.BeginForm("Create", "Company", FormMethod.Post, new {enctype = "multipart/form-data" }))
+{             
+    @Html.AntiForgeryToken(); 
+
+    @Html.Partial("_PartialAddEditCompanyUser");
+}
+
+ 
+
+<style>
+    
+    td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    .input-validation-error {
+        border: 1px solid red !important;
+    }
+
+</style>
+
+@section scripts{     
+    <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<script src="~/Content/themes/admin/pages/scripts/ui-extended-modals.js"></script>  
+     <script>
+         jQuery(document).ready(function () {
+             //activemenu('WEMPE_Company');
+             activemenu('liCompany');
+
+
+             Metronic.init(); // init metronic core components
+             Layout.init(); // init current layout
+             QuickSidebar.init(); // init quick sidebar
+             Demo.init(); // init demo features
+             UIExtendedModals.init();
+         });
+       </script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script> 
+
+<link href="~/Content/DatePicker/datepicker3.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+}

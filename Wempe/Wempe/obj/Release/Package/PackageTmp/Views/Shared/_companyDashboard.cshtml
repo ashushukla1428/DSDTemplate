@@ -1,0 +1,144 @@
+﻿@*@using Wempe.Models;*@
+@{
+    Layout = null;
+}
+<style>
+    .tdStyle_table tr td {
+        font-size: 12px;
+        font-family: 'Times New Roman';
+        line-height: 14px;
+    }
+
+    .tdStyle {
+        font-weight: bold;
+        font-size: 12px;
+        font-family: 'Times New Roman';
+        width: 40%;
+    }
+</style>
+<div>
+    <input type="hidden" id="hdnPageNoRepair" value="1" />
+    <div class="portlet-body">
+        <div class="row" id="divCompanyDashboardRepairsBySearch" style="display:none;">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class=" col-md-4">START DATE</label>
+                                <div class="col-md-8">
+                                    <div class="input-group input-medium date date-picker" data-date-format="mm/dd/yyyy">
+                                        <input type="text" class="form-control" id="txtCompanyDashboardStartDate">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button" id="btnCompanyDashboardStartDateShow"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class=" col-md-4">END DATE</label>
+                                <div class="col-md-8">
+                                    <div class="input-group input-medium date date-picker" data-date-format="mm/dd/yyyy">
+                                        <input type="text" class="form-control" id="txtCompanyDashboardEndDate">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button" id="btnCompanyDashboardEndDateShow"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                         <div class="col-md-1">
+                            <div class="form-group">
+                            
+                                <div class="col-md-8">
+                                   <input type="button" id="btnCompanyDashboardSearchRepairsByDate" value="Search" class="btn green" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="table-scrollable">
+            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                <thead>
+                    <tr>
+                        <th class="sort" onclick="setSorting2(this,'repairNumber',[0,1]);">REPAIR NUMBER
+                        </th>
+
+                        <th>
+                            CUSTOMER NAME
+                        </th>
+
+                        <th>
+                            CONTACT NUMBER
+                        </th>
+
+
+                        <th class="sort" onclick="setSorting2(this,'entryDate',[0,1]);">ENTRY DATE
+                        </th>
+                        <th class="sort" onclick="setSorting2(this,'brandName',[0,1]);">BRAND NAME
+                        </th>
+                        <th class="sort" onclick="setSorting2(this, 'supplierRepairNumber', [0, 1]);">SUPP. REP.#
+                        </th>
+                        <th class="sort" onclick="setSorting2(this, 'RepairStatus', [0, 1]);">CURRENT STATUS
+                        </th>
+                           @*<th>Action</th>*@
+                    </tr>
+                </thead>
+                <tbody id="tbodyDetailsRepair">
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-sm-12">
+                <div class="dataTables_info" id="sample_1_infoRepair" role="status" aria-live="polite"></div>
+            </div>
+            <div class="col-md-7 col-sm-12">
+                <div class="dataTables_paginate paging_simple_numbers" id="sample_1_paginate">
+                    <ul class="pagination">
+                        <li class="paginate_button previous" aria-controls="sample_1" tabindex="0" id="sample_1_previousRepair"><a><i class="fa fa-angle-left"></i></a></li>
+                        <li class="paginate_button next" aria-controls="sample_1" tabindex="0" id="sample_1_nextRepair"><a><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script id="tbodyTemplateRepair" type="text/html">
+            <tr>
+                <td>
+                     <a  href="../Repair/NewRepair?id=${customerNumber}&Rid=${repairNumber}"> ${repairNumberComplete} </a>
+                    
+                </td>
+
+                <td>
+                    ${CustomerName}
+                </td>
+                <td>
+                    ${ContactNumber}
+                </td>
+
+
+                <td>${EntryDate}
+                </td>
+                <td>${brandName}
+                </td>
+                <td>${supplierRepairNumber}
+                </td>
+                <td>${RepairStatus}
+                </td>
+                  @*<td>
+                                        <a href="../Repair/NewRepair?id=${customerNumber}&Rid=${repairNumber}" class="btn default btn-xs blue-stripe">Choose </a>
+                                    </td>*@
+            </tr>
+        </script>
+    </div>
+</div>

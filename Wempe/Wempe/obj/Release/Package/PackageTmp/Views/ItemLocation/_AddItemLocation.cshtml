@@ -1,0 +1,922 @@
+﻿<div class="form-horizontal">
+    <div class="form-body">
+        <!--row-->
+         <div class="row">
+            <div class="col-md-12 col-sm-10">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-building"></i>Main detail
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        COUNTRY *
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        @Html.DropDownList("drpMainCountry", (IEnumerable<SelectListItem>)ViewBag.Countries, "Select Country", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                              
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Name *
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtItemName" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                    <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                       Contact person 
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtmainContact" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Company *
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtMainCompany" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Address 1
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtMainAddress1" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                     <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Address 2
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtMainAddress2" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info" id="divMianZipPrimary">
+                                    <div class="col-md-4 name">
+                                        STATE/ZIP
+                                    </div>
+                                    <div class="col-md-4 value">
+                                        <select class="form-control" id="drpMainState">
+                                            <option >Please select</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtMainZipCode" class="form-control" maxlength="10" />
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtMainZipCodePlusFour" class="form-control" maxlength="10" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        CITY
+                                    </div>
+                                    <div class="col-md-8 value" id="divMainUSCityPrimary">
+                                        <select class="form-control" id="drpMainCites">
+                                            <option value>Please select</option>
+                                        </select>
+                                        <br />
+                                        <input type="text" id="txtMainCity" placeholder="city name" class="form-control" style="display: none;" />
+                                    </div>
+
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                       Telephone#
+                                    </div>
+                                   
+
+                                  
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtMainTelephoneSegment1NonUS" class="form-control txtPhone1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtMainTelephoneSegment1NonUSExtension" class="form-control txtPhone1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                   
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Phone#
+                                    </div>
+                                   
+
+                                
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtmainContactTelephoneSegment1NonUS" class="form-control txtHomePhone1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtmainContactTelephoneSegment1NonUSExtension" class="form-control txtHomePhone1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                   
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="col-md-6">
+
+
+                           
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        FAX 1#
+                                    </div>
+
+                                   
+
+                                
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtmainFaxSegment1NonUs" class="form-control txtFAX1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtmainFaxSegment1NonUsExtension" class="form-control txtFAX1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                   
+
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        FAX 2#
+                                    </div>
+
+                                  
+
+                                   
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="mainContactFaxSegment1NonUs" class="form-control txtFAX1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="mainContactFaxSegment1NonUsExtension" class="form-control txtFAX1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                   
+
+                                </div>
+                          
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         EMAIL 1
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtmainEMailAddress" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         EMAIL 2
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtmainContactEMailAddress" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                            
+                                   <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                      StickerCode
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtmainStickerCode" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                                   <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Wempe Account#
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtmainWempeAccount" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                 <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Active
+                                    </div>
+                                    <div class="col-md-8 value">
+                                          <input class="form-control" type="checkbox" checked="checked"   id="chkIsActive">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/row-->
+        <!--row-->
+        <div class="row">
+            <div class="col-md-12 col-sm-10">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-building"></i>SPARE PARTS
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+
+                    <div class="portlet-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        COUNTRY 
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        @Html.DropDownList("drpSPARECountry", (IEnumerable<SelectListItem>)ViewBag.Countries, "Select Country", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                              
+                          
+                                  <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Company
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtsparePartsCompany" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                      <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         Contact person 
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtsparePartsContact" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Address 1
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtsparePartsAddress1" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                     <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Address 2
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtsparePartsAddress2" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info" id="divSpareZipPrimary">
+                                    <div class="col-md-4 name">
+                                        STATE/ZIP
+                                    </div>
+                                    <div class="col-md-4 value">
+                                        <select class="form-control" id="drpsparePartsState">
+                                            <option value>Please select</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtsparePartsZipCode" class="form-control" maxlength="10" />
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtsparePartsZipCodePlusFour" class="form-control" maxlength="10" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        CITY
+                                    </div>
+                                    <div class="col-md-8 value" id="divsparePartsUSCityPrimary">
+                                        <select class="form-control" id="drpsparePartsPrimaryCites">
+                                            <option value>Please select</option>
+                                        </select>
+                                        <br />
+                                        <input type="text" id="txtsparePartsCity" placeholder="city name" class="form-control" style="display: none;" />
+                                    </div>
+
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                       Telephone#
+                                    </div>
+                                  
+
+                                   
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtsparePartsTelephoneSegment1NonUS" class="form-control txtPhone1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtsparePartsTelephoneSegment1NonUSExtension" class="form-control txtPhone1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                   
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Phone#
+                                    </div>
+                                  
+
+                                 
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtsparePartsContactTelephoneSegment1NonUS" class="form-control txtHomePhone1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtsparePartsContactTelephoneSegment1NonUSExtension" class="form-control txtHomePhone1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                   
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="col-md-6">
+
+
+                           
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        FAX 1#
+                                    </div>
+
+                                   
+
+                                
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtsparePartsFaxSegment1NonUs" class="form-control txtFAX1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtsparePartsFaxSegment1NonUsExtension" class="form-control txtFAX1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                    
+
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        FAX 2#
+                                    </div>
+
+                                
+
+                                   
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="sparePartsContactFaxSegment1NonUs" class="form-control txtFAX1" maxlength="15" />
+                                        </div>
+
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="sparePartsContactFaxSegment1NonUsExtension" class="form-control txtFAX1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                    
+
+                                </div>
+                          
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         EMAIL 1
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtsparePartsEMailAddress" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         EMAIL 2
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtsparePartsContactEMailAddress" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                            
+                                   <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                      StickerCode
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtsparePartsStickerCode" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                                   <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Wempe Account#
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtsparePartsWempeAccount" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/row-->
+        <!--row-->
+        @*Strap*@
+        <div class="row">
+            <div class="col-md-12 col-sm-10">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-building"></i>Strap
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+
+                    <div class="portlet-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        COUNTRY 
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        @Html.DropDownList("drpStrapCountry", (IEnumerable<SelectListItem>)ViewBag.Countries, "Select Country", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Company
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtStrapCompany" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                      <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         Contact person 
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtstrapContact" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Address 1
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtStrapAddress1" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                     <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Address 2
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtStrapAddress2" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info" id="divStrapZipPrimary">
+                                    <div class="col-md-4 name">
+                                        STATE/ZIP
+                                    </div>
+                                    <div class="col-md-4 value">
+                                        <select class="form-control" id="drpStrapState">
+                                            <option value>Please select</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtStrapZipCode" class="form-control" maxlength="10" />
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtStrapZipCodePlusFour" class="form-control" maxlength="10" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        CITY
+                                    </div>
+                                    <div class="col-md-8 value" id="divStrapUSCityPrimary">
+                                        <select class="form-control" id="drpStrapPrimaryCites">
+                                            <option value>Please select</option>
+                                        </select>
+                                        <br />
+                                        <input type="text" id="txtStrapCity" class="form-control" placeholder="city name" style="display: none;" />
+                                    </div>
+
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                       Telephone#
+                                    </div>
+                                   
+
+                                   
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtStrapTelephoneSegment1NonUS" class="form-control txtPhone1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtStrapTelephoneSegment1NonUSExtension" class="form-control txtPhone1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                   
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Phone#
+                                    </div>
+                                   
+
+                                 
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtStrapContactTelephoneSegment1NonUS" class="form-control txtHomePhone1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtStrapContactTelephoneSegment1NonUSExtension" class="form-control txtHomePhone1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                   
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="col-md-6">
+
+
+                           
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        FAX 1#
+                                    </div>
+
+                                  
+
+                                 
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtStrapFaxSegment1NonUs" class="form-control txtFAX1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtStrapFaxSegment1NonUsExtension" class="form-control txtFAX1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                   
+
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        FAX 2#
+                                    </div>
+
+                                  
+
+                                  
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="StrapContactFaxSegment1NonUs" class="form-control txtFAX1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="StrapContactFaxSegment1NonUsExtension" class="form-control txtFAX1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                    
+
+                                </div>
+                          
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         EMAIL 1
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtStrapEMailAddress" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         EMAIL 2
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtStrapContactEMailAddress" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                            
+                                   <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                      StickerCode
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtStrapStickerCode" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                                   <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Wempe Account#
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtStrapWempeAccount" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @*BILLING*@
+        <div class="row">
+            <div class="col-md-12 col-sm-10">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-building"></i>BILLING
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+
+                    <div class="portlet-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        COUNTRY 
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        @Html.DropDownList("drpBILLINGCountry", (IEnumerable<SelectListItem>)ViewBag.Countries, "Select Country", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Company
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtBillingCompany" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                      <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         Contact person 
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtbillingContact" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Address 1
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtbillingAddress1" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                     <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Address 2
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtbillingAddress2" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info" id="divBillingZipPrimary">
+                                    <div class="col-md-4 name">
+                                        STATE/ZIP
+                                    </div>
+                                    <div class="col-md-4 value">
+                                        <select class="form-control" id="drpbillingState">
+                                            <option value>Please select</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtbillingZipCode" class="form-control" maxlength="10" />
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtbillingZipCodePlusFour" class="form-control" maxlength="10" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        CITY
+                                    </div>
+                                    <div class="col-md-8 value" id="divbillingUSCityPrimary">
+                                        <select class="form-control" id="drpbillingPrimaryCites">
+                                            <option value>Please select</option>
+                                        </select>
+                                        <br />
+                                        <input type="text" id="txtNoNUSbillingCity" class="form-control" placeholder="city name" style="display: none;" />
+                                    </div>
+
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                       Telephone#
+                                    </div>
+                                   
+
+                                  
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtbillingTelephoneSegment1NonUS" class="form-control txtPhone1" maxlength="15" />
+                                        </div>
+
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtbillingTelephoneSegment1NonUSExtension" class="form-control txtPhone1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Phone#
+                                    </div>
+                                   
+
+                                  
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtbillingContactTelephoneSegment1NonUS" class="form-control txtHomePhone1" maxlength="15" />
+                                        </div>
+
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtbillingContactTelephoneSegment1NonUSExtension" class="form-control txtHomePhone1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                  
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="col-md-6">
+
+
+                           
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        FAX 1#
+                                    </div>
+
+                                  
+
+                              
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="txtbillingFaxSegment1NonUs" class="form-control txtFAX1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="txtbillingFaxSegment1NonUsExtension" class="form-control txtFAX1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                  
+
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        FAX 2#
+                                    </div>
+
+                                   
+
+                                  
+                                        <div class="col-md-6 value">
+                                            <input type="text" id="billingContactFaxSegment1NonUs" class="form-control txtFAX1" maxlength="15" />
+                                        </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="text" id="billingContactFaxSegment1NonUsExtension" class="form-control txtFAX1" maxlength="5" placeholder="Ext." />
+                                    </div>
+                                   
+
+                                </div>
+                          
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         EMAIL 1
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtbillingEMailAddress" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                         EMAIL 2
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtbillingContactEMailAddress" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                            
+                                   <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                      StickerCode
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtbillingStickerCode" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                                   <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        Wempe Account#
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtbillingWempeAccount" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-10">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-building"></i>Note
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+
+                    <div class="portlet-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                              <div class="row static-info">
+                                   
+                                    <div class="col-md-12 value">
+                                       <textarea id="txtnotes" class="form-control" ></textarea>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--/row-->
+          @*<div class="form-actions">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="button" class="btn green" onclick="Add();" id="btnSaveItem">Submit</button>
+
+                        <button type="button" class="btn default" onclick="resetRepair();">Reset</button>
+                        <input type="hidden" id="hdnid" value="0" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>*@
+    </div>
+</div>

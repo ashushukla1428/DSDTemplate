@@ -1,0 +1,666 @@
+﻿<div id="divSearchbyLocation" class="modal fade" tabindex="-1" data-width="90%" style="max-height:500px;">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Search Result</h4>
+    </div>
+    <div class="modal-body" >
+        <div class="row">
+
+            <h3 class="form-section" style="margin-left: 18px;">MAIN</h3>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="portlet-body">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">SUPPLIER</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchSupplier" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">COUNTRY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchCountry" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">COMPANY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchCompany" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">LINE 1</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchLine1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">STICKER</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchStickerCode" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">LINE 2</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchLine2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">WEMPE ACCT.</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchWempeAcct" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">CITY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchCity" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">CONTACT</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchContact" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">STATE/ZIP</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchStateZip" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">PHONE #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchPhone1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">PHONE #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchPhone2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">FAX #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchFax1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">FAX #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchFax2" readonly="readonly"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">EMAIL</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchEmail1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">EMAIL</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtLocationSearchEmail2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Spare Section -->
+
+              <h3 class="form-section" style="margin-left: 18px;">SPARE PARTS</h3>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="portlet-body">
+                       
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">COUNTRY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchCountry" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">COMPANY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchCompany" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">LINE 1</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchLine1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">STICKER</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchStickerCode" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">LINE 2</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchLine2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">WEMPE ACCT.</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchWempeAcct" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">CITY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchCity" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">CONTACT</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchContact" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">STATE/ZIP</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchStateZip" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">PHONE #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchPhone1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">PHONE #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchPhone2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">FAX #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchFax1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">FAX #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchFax2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">EMAIL</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchEmail1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">EMAIL</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSPAREPARTSLocationSearchEmail2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STRAP -->
+            
+              <h3 class="form-section" style="margin-left: 18px;">STRAP</h3>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="portlet-body">
+                       
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">COUNTRY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchCountry" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">COMPANY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchCompany" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">LINE 1</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchLine1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">STICKER</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchStickerCode" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">LINE 2</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchLine2"  readonly="readonly"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">WEMPE ACCT.</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchWempeAcct" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">CITY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchCity" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">CONTACT</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchContact" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">STATE/ZIP</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchStateZip" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">PHONE #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchPhone1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">PHONE #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchPhone2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">FAX #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchFax1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">FAX #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchFax2"  readonly="readonly"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">EMAIL</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchEmail1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">EMAIL</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtSTRAPLocationSearchEmail2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+             
+
+            <!-- bILLING -->
+
+              <h3 class="form-section" style="margin-left: 18px;">BILLING</h3>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="portlet-body">
+                       
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">COUNTRY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchCountry" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">COMPANY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchCompany" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">LINE 1</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchLine1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">STICKER</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchStickerCode" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">LINE 2</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchLine2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">WEMPE ACCT.</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchWempeAcct" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">CITY</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchCity" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">CONTACT</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchContact" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">STATE/ZIP</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchStateZip" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">PHONE #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchPhone1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">PHONE #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchPhone2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">FAX #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchFax1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">FAX #</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchFax2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">EMAIL</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchEmail1" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">EMAIL</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="txtBILLINGLocationSearchEmail2" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                <h3 class="form-section" style="margin-left: 18px;">NOTES</h3>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="portlet-body">
+                       
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                      
+                                    <div class="col-md-12">
+                                         <textarea class="form-control" id="txtSearchLocationNotes"  readonly="readonly" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            </div></div></div></div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+        @*<button type="button" class="btn blue" onclick="getListExistingCustomer(1);">Search</button>*@
+        <input type="hidden" id="hdnid" value="0" />
+    </div>
+
+</div>

@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+@{
+    string fontSize = this.ViewData.ContainsKey("fontSize") ? this.ViewData["fontSize"].ToString() : string.Empty;
+}             <table class="tdStyle_table" style="font-family:'Times New Roman';width:100%; font-size:@fontSize;" border="0" cellpadding="0" cellspacing="0"  >
+                                        @if (Model.itemDetail.font != null)
+                                        {
+                                        <tr>
+                                            <td class="tdStyle">Font:</td>
+                                            <td>@Model.itemDetail.font</td>
+                                        </tr>
+                                        }
+                                        @if (Model.itemDetail.capitalization != null)
+                                        {
+                                        <tr>
+                                            <td class="tdStyle">Capitalization:</td>
+                                            <td>@Model.itemDetail.capitalization</td>
+                                        </tr>
+                                        }
+                                        @if (Model.itemDetail.engravingMessage != null)
+                                        {
+                                        <tr>
+                                            <td class="tdStyle">Message:</td>
+                                            <td>@Model.itemDetail.engravingMessage</td>
+                                        </tr>
+                                        }
+                                         @if (Model.itemDetail.notesToEngraver != null)
+                                        {
+                                        <tr>
+                                            <td class="tdStyle">Notes:</td>
+                                            <td>@Model.itemDetail.notesToEngraver</td>
+                                        </tr>
+                                        }
+                                    </table>
+                                            

@@ -1,0 +1,75 @@
+﻿@model Wempe.Models.CompanyEmployeeModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+
+        <li>
+            <i class="fa fa-building-o"></i>
+            <a href="@Url.Action("Index", "Company")">Companies</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+
+
+        <li>
+            <a href="/User/ManageUsers">Users</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Edit</a>
+        </li>
+    </ul>
+</div>
+@using (Html.BeginForm("Edit", "ManageUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{             
+    @Html.AntiForgeryToken();
+
+    @Html.Partial("_PartialAddEditUser");
+}
+<style>
+    td {
+        padding: 12px;
+        text-align: left;
+    }
+    .input-validation-error {
+        border: 1px solid red !important;
+    }
+</style>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.mask.min.js"></script>
+}
+
+<script>
+    jQuery(document).ready(function () {
+
+        //$('#ManagList').addClass('open');
+        //$('#liManageUsers').addClass('open');
+        //$('#liManageUsers').find('span').addClass('open');
+
+
+        //$('#ManagList').find('.sub-menu:first').css('display', 'block');
+
+        //$('#liManageUsers').find('.sub-menu').css('display', 'block');
+
+
+        //$('#spnArrowManageListMain').addClass('open');
+
+        activemenu('liCompany');
+
+
+         Metronic.init(); // init metronic core components
+         Layout.init(); // init current layout
+         QuickSidebar.init(); // init quick sidebar
+         Demo.init(); // init demo features
+         UIExtendedModals.init();
+     });
+</script>

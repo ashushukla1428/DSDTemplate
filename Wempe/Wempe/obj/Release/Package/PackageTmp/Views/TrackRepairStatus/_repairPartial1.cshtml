@@ -1,0 +1,1160 @@
+﻿<div class="form-horizontal">
+    <div class="form-body">
+
+             <h3 class="form-section">Tasks
+
+                 <div style="float:right;">  
+                     <a href="@Url.Action("TrackRepair", "TrackRepairStatus")" class="btn green">Back</a>
+                     </div>
+             </h3>
+
+    <!--/row-->
+    <div class="row">
+         <div class="divTab3Repair">
+        <div class="col-md-5">
+            <div class="form-group">
+                <label class="control-label col-md-3">TASK 1<a title="Add new task" onclick="showSampleTask('txtTab3RepairNumber');"> <i class="icon-plus"></i></a> </label>
+                <div class="col-md-9">
+                    <textarea  class="form-control" id="txtTab3RepairNumber" style="height:40px"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label col-md-3">APPROVE </label>
+                <div class="col-md-9">
+                    <input type="checkbox" class="form-control" checked="checked" id="chkTab3RepairCheck1">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label col-md-4">AMOUNT $ </label>
+                <div class="col-md-3">
+                    <input class="form-control Tab3Amount" id="txtTab3RepairPrice1" type="text" placeholder="0.00">
+                </div>
+            </div>
+        </div>
+             </div>
+    </div>
+    <!--/row-->
+    <div class="row">
+         <div class="divTab3Repair">
+        <div class="col-md-5">
+            <div class="form-group">
+                <label class="control-label col-md-3">TASK 2<a title="Add new task" onclick="showSampleTask('txtTab3RepairNumber2');"> <i class="icon-plus"></i></a></label>
+                <div class="col-md-9">
+                    <textarea class="form-control" id="txtTab3RepairNumber2" style="height:40px"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label col-md-3" style="margin-top: -8px"></label>
+                <div class="col-md-9">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label col-md-4">AMOUNT $</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control Tab3Amount" id="txtTab3RepairPrice2" placeholder="0.00">
+                </div>
+            </div>
+        </div>
+             </div>
+    </div>
+    <h3 class="form-section">OPTIONAL WORK</h3>
+
+    <!--/row-->
+    <div class="row">
+        <div class="divTab3Repair">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label col-md-3">TASK 3 <a title="Add new task" onclick="showSampleTask('txtTab3RepairNumber3');"> <i class="icon-plus"></i></a></label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" id="txtTab3RepairNumber3" style="height:40px"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="margin-top: -8px">APPROVE </label>
+                    <div class="col-md-9">
+                        <input type="checkbox" class="form-control chkTab3DisableEnableAmount" checked="checked" id="chkTab3RepairCheck3">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-4">AMOUNT $</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control Tab3Amount" id="txtTab3RepairPrice3" placeholder="0.00">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--/row-->
+    <div class="row">
+        <div class="divTab3Repair">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label col-md-3">TASK 4 <a title="Add new task" onclick="showSampleTask('txtTab3RepairNumber4');"> <i class="icon-plus"></i></a></label>
+                    <div class="col-md-9">
+                        <textarea  class="form-control" id="txtTab3RepairNumber4"  style="height:40px"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="margin-top: -8px">APPROVE </label>
+                    <div class="col-md-9">
+                        <input type="checkbox" class="form-control chkTab3DisableEnableAmount" checked="checked" id="chkTab3RepairCheck4">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-4">AMOUNT $</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control Tab3Amount" id="txtTab3RepairPrice4" placeholder="0.00">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/row-->
+    <div class="row">
+        <div class="divTab3Repair">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label col-md-3">TASK 5<a title="Add new task" onclick="showSampleTask('txtTab3RepairNumber5');"> <i class="icon-plus"></i></a></label>
+                    <div class="col-md-9">
+                        <textarea type="text" class="form-control" id="txtTab3RepairNumber5" style="height:40px"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="margin-top: -8px">APPROVE </label>
+                    <div class="col-md-9">
+                        <input type="checkbox" class="form-control chkTab3DisableEnableAmount" checked="checked" id="chkTab3RepairCheck5">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-4">AMOUNT $</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control Tab3Amount" id="txtTab3RepairPrice5" placeholder="0.00">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TASK 6-->
+    <div class="row">
+        <div class="divTab3Repair">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label col-md-3">TASK 6<a title="Add new task" onclick="showSampleTask('txtTab3RepairNumber6');"> <i class="icon-plus"></i></a></label>
+                    <div class="col-md-9">
+                        <textarea type="text" class="form-control" id="txtTab3RepairNumber6" style="height:40px"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="margin-top: -8px">APPROVE </label>
+                    <div class="col-md-9">
+                        <input type="checkbox" class="form-control chkTab3DisableEnableAmount" checked="checked" id="chkTab3RepairCheck6">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-4">AMOUNT $</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control Tab3Amount" id="txtTab3RepairPrice6" placeholder="0.00">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--TASK 7-->
+    <div class="row">
+        <div class="divTab3Repair">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label col-md-3">TASK 7<a title="Add new task" onclick="showSampleTask('txtTab3RepairNumber7');"> <i class="icon-plus"></i></a></label>
+                    <div class="col-md-9">
+                        <textarea type="text" class="form-control" id="txtTab3RepairNumber7" style="height:40px"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3" style="margin-top: -8px">APPROVE </label>
+                    <div class="col-md-9">
+                        <input type="checkbox" class="form-control chkTab3DisableEnableAmount" checked="checked" id="chkTab3RepairCheck7">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-4">AMOUNT $</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control Tab3Amount" id="txtTab3RepairPrice7" placeholder="0.00">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 class="form-section">COMMENTS</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label class="control-label col-md-2"></label>
+                <div class="col-md-7">
+                    <textarea rows="6" class="form-control" id="txtRepairComments"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label col-md-5">SUBTOTAL</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="txtTab3RepairPriceSubTotal" value="0.00" readonly="readonly" />
+                </div>
+            </div>  
+            <div class="form-group">
+                <label class="control-label col-md-5">SHIPPING $</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control Tab3Amount" id="txtTab3RepairPriceShipping" placeholder="0.00" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-5">TAX $</label>
+                <div class="col-md-6">
+
+                    <div class="col-md-5">
+                        <div class="row">
+                            <input type="text" class="form-control" id="txtTab3RepairPriceTax" placeholder="0.00"  />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+
+                        <input type="checkbox" id="chkTab3Tax" checked="checked"  />
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">TOTAL $</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="txtTab3RepairPriceTotal" value="0.00" readonly="readonly" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+   <div class="portlet blue-hoki box">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa  fa-pencil-square-o"></i>NOTES
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+            </div>
+        </div>
+        <div class="portlet-body form-body" style="display: none;">
+            <div class="row">
+                <div class="col-md-12 col-sm-10">
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-pencil-square-o"></i>NOTES TO CUSTOMER
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="display: none;">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" id="txtTab3NotesToCustomer"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-pencil-square-o"></i>NOTES TO FACTORY
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="display: none;">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" id="txtTab3NotesToFactory"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12">
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-pencil-square-o"></i>LETTER TO CUSTOMER
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="display: none;">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" id="txtTab3LetterToCustomer"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+   <div class="portlet blue-hoki box">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa  fa-truck"></i>SHIPPING
+            </div>
+               <div class="tools">
+                <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+            </div>
+        </div>
+        <div class="portlet-body form-body" style="display: none;">
+            <div class="row">
+                <div class="col-md-12 col-sm-10">
+
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-pencil-square-o"></i>TO CUSTOMER
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="display: none;">
+
+                            <div class="row">
+                                <div class="col-md-6">
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            VALUE $
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" class="form-control" id="txtTab3ShippingCustomerValue" />
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            SALES PERSON
+                                        </div>
+                                        <div class="col-md-8 value">
+                                           @* <input type="text" class="form-control" id="txtTab3ShippingCustomerSalesPerson" />*@
+                                             @Html.DropDownList("txtTab3ShippingCustomerSalesPerson", (IEnumerable<SelectListItem>)ViewBag.Employee, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            CARRIER
+                                        </div>
+                                        <div class="col-md-8 value">
+                                          @*  <input type="text" class="form-control" id="txtTab3ShippingCustomerCarrier" />*@
+                                              @Html.DropDownList("txtTab3ShippingCustomerCarrier", (IEnumerable<SelectListItem>)ViewBag.ShippingCarrier, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            MAILING DATE
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <div class="input-group input-medium date date-picker" data-date-format="dd/mm/yyyy">
+                                                <input type="text" class="form-control" id="txtTab3ToCustomeMailingDate">
+                                                <span class="input-group-btn">
+                                                    <button class="btn default" type="button" id="btnTab3CustomerMailingDateCalenderShow"><i class="fa fa-calendar"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            INSURANCE $
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" class="form-control" id="txtTab3ShippingCustomerInsurance" />
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            DESTINATION TYPE
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <select id="drpTab3ToCustomerDestinationType" class="form-control">
+                                                <option value="0"></option>
+                                                <option value="Commercial">Commercial</option>
+                                                <option value="Residential">Residential</option>
+
+
+                                            </select>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            SHIPPING TYPE
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            @*<input type="text" class="form-control" id="txtTab3ShippingCustomerDestinationType" />*@
+                                              @Html.DropDownList("txtTab3ShippingCustomerDestinationType", (IEnumerable<SelectListItem>)ViewBag.ShippingType, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            EXPECTED ARRIVAL
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <div class="input-group input-medium date date-picker" data-date-format="dd/mm/yyyy">
+                                                <input type="text" class="form-control" id="txtTab3ToCustomerExpectedArrival">
+                                                <span class="input-group-btn">
+                                                    <button class="btn default" type="button" id="btnTab3CustomerExpectdArrivalCalenderShow"><i class="fa fa-calendar"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet-body form-body" style="display: none;">
+            <div class="row">
+                <div class="col-md-12 col-sm-10">
+
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-pencil-square-o"></i>TO SUPPLIER
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="display: none;">
+
+                            <div class="row">
+                                <div class="col-md-6">
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            VALUE $
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" class="form-control" id="txtTab3ShippingSupplierValue" />
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            SALES PERSON
+                                        </div>
+                                        <div class="col-md-8 value">
+                                           @* <input type="text" class="form-control" id="txtTab3ShippingSupplierSalesPerson" />*@
+                                             @Html.DropDownList("txtTab3ShippingSupplierSalesPerson", (IEnumerable<SelectListItem>)ViewBag.Employee, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            CARRIER
+                                        </div>
+                                        <div class="col-md-8 value">
+                                           @* <input type="text" class="form-control" id="txtTab3ShippingSupplierCarrier" />*@
+                                             @Html.DropDownList("txtTab3ShippingSupplierCarrier", (IEnumerable<SelectListItem>)ViewBag.ShippingCarrier, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            MAILING DATE
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <div class="input-group input-medium date date-picker" data-date-format="dd/mm/yyyy">
+                                                <input type="text" class="form-control" id="txtTab3ToSupplierMailingDate">
+                                                <span class="input-group-btn">
+                                                    <button class="btn default" type="button" id="btnTab3SupplierMailingDateCalenderShow"><i class="fa fa-calendar"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            INSURANCE $
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" class="form-control" id="txtTab3ShippingSupplierInsurance" />
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            DESTINATION TYPE
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <select id="drpTab3ToSupplierDestinationType" class="form-control">
+                                                <option value="0"></option>
+                                                <option value="Commercial">Commercial</option>
+                                                <option value="Residential">Residential</option>
+
+
+                                            </select>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            SHIPPING TYPE
+                                        </div>
+                                        <div class="col-md-8 value">
+                                           @* <input type="text" class="form-control" id="txtTab3ShippingSupplierDestinationType" />*@
+                                            @Html.DropDownList("txtTab3ShippingSupplierDestinationType", (IEnumerable<SelectListItem>)ViewBag.ShippingType, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            EXPECTED ARRIVAL
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <div class="input-group input-medium date date-picker" data-date-format="dd/mm/yyyy">
+                                                <input type="text" class="form-control" id="txtTab3ToSupplierExpectedArrival">
+                                                <span class="input-group-btn">
+                                                    <button class="btn default" type="button" id="btnTab3SupplierExpectdArrivalCalenderShow"><i class="fa fa-calendar"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="portlet blue-hoki box">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-shopping-cart"></i>ORDERS
+            </div>
+   <div class="tools">
+                <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+            </div>
+        </div>
+        <div class="portlet-body form-body" style="display: none;">
+            <div class="row">
+                <div class="col-md-12 col-sm-10">
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-pencil-square-o"></i>SPARE PARTS ORDER
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="display: none;">
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">QTY</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="txtTab3SparePartQty1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">PART #</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePart1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">DESCRIPTION</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePartDescription1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">QTY</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="txtTab3SparePartQty2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">PART #</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePart2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">DESCRIPTION</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePartDescription2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">QTY</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="txtTab3SparePartQty3">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">PART #</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePart3">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">DESCRIPTION</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePartDescription3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">QTY</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="txtTab3SparePartQty4">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">PART #</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePart4">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">DESCRIPTION</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePartDescription4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">QTY</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="txtTab3SparePartQty5">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">PART #</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePart5">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">DESCRIPTION</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePartDescription5">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">QTY</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="txtTab3SparePartQty6">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">PART #</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePart6">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">DESCRIPTION</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePartDescription6">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">QTY</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="txtTab3SparePartQty7">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">PART #</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePart7">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">DESCRIPTION</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePartDescription7">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">QTY</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="txtTab3SparePartQty8">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">PART #</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePart8">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">DESCRIPTION</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="txtTab3SparePartDescription8">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">ORDER NOTES</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" id="txtTab3SparePartOrderNotes"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12 col-sm-10">
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-pencil-square-o"></i>STRAP ORDER
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="display: none;">
+
+                            <div class="row">
+                                <div class="col-md-6">
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            MATERIAL TYPE 
+                                        </div>
+                                        <div class="col-md-8 value">
+                                           @* <input type="text" class="form-control" id="txtTab3StrapOrderMaterialType" />*@
+                                             @Html.DropDownList("txtTab3StrapOrderMaterialType", (IEnumerable<SelectListItem>)ViewBag.MaterialType, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            COLOR
+                                        </div>
+                                        <div class="col-md-8 value">
+                                           @* <input type="text" class="form-control" id="txtTab3StrapOrderColor" />*@
+                                              @Html.DropDownList("txtTab3StrapOrderColor", (IEnumerable<SelectListItem>)ViewBag.Color, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            WIDTH
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" class="form-control" id="txtTab3StrapOrderWidth" />
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            BUCKLE
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" class="form-control" id="txtTab3StrapOrderBuckle" />
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            LENGTH
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" class="form-control" id="txtTab3StrapOrderLength" />
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            LENGTH S/O 6:00
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" class="form-control" id="txtTab3StrapOrderLengthSO6" />
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            TEXTURE TYPE 
+                                        </div>
+                                        <div class="col-md-8 value">
+                                           @* <input type="text" class="form-control" id="txtTab3StrapOrderTextureType" />*@
+                                             @Html.DropDownList("txtTab3StrapOrderTextureType", (IEnumerable<SelectListItem>)ViewBag.TextureType, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            LUSTER TYPE
+                                        </div>
+                                        <div class="col-md-8 value">
+                                           @* <input type="text" class="form-control" id="txtTab3StrapOrderLusterType" />*@
+                                             @Html.DropDownList("txtTab3StrapOrderLusterType", (IEnumerable<SelectListItem>)ViewBag.LusterType, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            STITCH TYPE
+                                        </div>
+                                        <div class="col-md-8 value">
+                                           @* <input type="text" class="form-control" id="txtTab3StrapOrderStitchType" />*@
+                                            @Html.DropDownList("txtTab3StrapOrderStitchType", (IEnumerable<SelectListItem>)ViewBag.StitchType, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            THICKNESS TYPE
+                                        </div>
+                                        <div class="col-md-8 value">
+                                           @* <input type="text" class="form-control" id="txtTab3StrapOrderThicknessType" />*@
+                                              @Html.DropDownList("txtTab3StrapOrderThicknessType", (IEnumerable<SelectListItem>)ViewBag.ThicknessType, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            ACCESSORIES
+                                        </div>
+                                        <div class="col-md-8 value">
+                                          @*  <input type="text" class="form-control" id="txtTab3StrapOrderAccessories" />*@
+                                            @Html.DropDownList("txtTab3StrapOrderAccessories", (IEnumerable<SelectListItem>)ViewBag.Accessories, "", new { @class = "form-control" })
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            LENGTH S/O 12:00
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" class="form-control" id="txtTab3StrapOrderLengthSO12" />
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">ORDER NOTES</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" id="txtTab3StrapOrderNotes"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+         
+
+
+    </div>
+
+<div class="form-actions">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <a href="@Url.Action("TrackRepair", "TrackRepairStatus")" class="btn green">Back</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+</div>
+<!-- responsive -->
+<div id="responsiveTask" class="modal fade" tabindex="-1" data-width="760">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Select Task </h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-10">
+                <p>
+                    @Html.DropDownList("drpSampleTask", (IEnumerable<SelectListItem>)ViewBag.SampleTask, "Select", new { @class = "form-control" })
+                </p>
+
+            </div>
+            
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal"  class="btn btn-default">Close</button>
+        <button type="button"  class="btn blue" onclick="selectTask();">Select</button>
+        <input type="hidden" id="hdnClickId" value="0"/>
+    </div>
+</div>
+
+
+
+

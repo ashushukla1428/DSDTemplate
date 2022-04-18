@@ -1,0 +1,985 @@
+﻿@{
+    ViewBag.Title = "Repair Details";
+    Layout = "~/Views/Shared/_getRepairStatus.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tabbable tabbable-custom boxless tabbable-reversed  NewRepairOuter">
+            <ul class="nav nav-tabs" id="ulTabList">
+
+                <li class="active" id="Li1">
+                    <a href="#tab_0" data-toggle="tab">
+                        CUSTOMER
+                    </a>
+                </li>
+                <li class="tabListItems" id="Li2">
+                    <a href="#tab_1" data-toggle="tab">
+                        ITEM
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab_2" data-toggle="tab" id="Li3">
+                        REPAIR
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab_3" data-toggle="tab">
+                        STATUS
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#tab_4" data-toggle="tab">
+                        VIEW & ADD ATTACHMENTS
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content" id="divRepairTab">
+                <div class="tab-pane active" id="tab_0">
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa  fa-user"></i>CUSTOMER
+                            </div>
+                            @*<div class="tools">
+                                    <i class="fa fa-users"></i>
+                                   <a href="../Customer/Search" style="color:#fff">USE EXISTING CUSTOMER</a>
+                                </div>*@
+                        </div>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            @Html.Partial("_customerPartial")
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="tab_1">
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-tasks"></i>ITEM
+                            </div>
+
+                        </div>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            @Html.Partial("_itemPartial")
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="tab_2">
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs"></i>REPAIR
+                            </div>
+
+                        </div>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            @Html.Partial("_repairPartial1")
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="tab_3">
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-file-o"></i>DOCS/STATUS
+                            </div>
+
+                        </div>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            @Html.Partial("_docsStatusPartial")
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="tab_4">
+                    <div class="portlet blue-hoki box">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-file"></i>VIEW & ADD ATTACHMENTS
+                            </div>
+
+                        </div>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            @Html.Partial("_viewAndAddAttachmentsPartial")
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnCallType" value="0" />
+<input type="hidden" id="hdnPriAddress" value="0" />
+<input type="hidden" id="hdnStatus" value="" />
+<!-- END PAGE CONTENT-->
+<link href="~/Content/uploadify.css" rel="stylesheet" />
+<!-- BEGIN PAGE LEVEL STYLES onclick="Add();"-->
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+
+<!-- END PAGE LEVEL STYLES -->
+
+
+
+
+@section scripts{
+    <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+    <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script src="~/Content/themes/admin/pages/scripts/ui-extended-modals.js"></script>
+    @*<script src="~/Scripts/adminJs/Brand.js"></script>*@
+
+    <link href="~/Content/DatePicker/datepicker3.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+
+
+    <script src="~/Scripts/jquery.uploadify.js"></script>
+
+
+
+
+    @*<script src="~/Scripts/adminJs/Repair.js"></script>*@
+
+
+    <script>
+        jQuery(document).ready(function () {
+            activemenu('liRepair');
+
+            activemenu('WEMPE_Repair');
+
+
+            _sortColumn = 'LastUpdate';
+            _sortOrder = 'DESC';
+           // getList(1);
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+            QuickSidebar.init(); // init quick sidebar
+            Demo.init(); // init demo features
+            UIExtendedModals.init();
+            //UIToastr.init();
+
+
+        });
+
+        function validate() {
+            var reason = "";
+            reason += validateEmpty(document.getElementById('txtName'), 'Name required !');
+
+            if (reason != "") {
+                alert("Some fields need correction:\n" + reason);
+                return false;
+            }
+            return true;
+        }
+
+        function showAddStateDiv(openType) {
+            //$('#hdnClickId').val(_taskID);
+            //var $modal = $('#responsiveTask');
+            //$modal.modal();
+            if (openType == '1') {
+                $('#divPrimaryAddState').toggle();
+            }
+            if (openType == '2') {
+                $('#divAlternateAddState').toggle();
+            }
+            if (openType == '3') {
+                $('#divThirdAddState').toggle();
+            }
+
+            //responsiveTask
+        }
+
+
+        function showAddCityDiv(openType) {
+            //$('#hdnClickId').val(_taskID);
+            //var $modal = $('#responsiveTask');
+            //$modal.modal();
+            if (openType == '1') {
+                $('#divPrimaryAddCity').toggle();
+            }
+            if (openType == '2') {
+                $('#divAlternateAddCity').toggle();
+            }
+            if (openType == '3') {
+                $('#divThirdAddCity').toggle();
+            }
+
+            //responsiveTask
+        }
+
+
+
+
+
+    </script>
+
+
+    <script src="~/PrintPageScript/jquery.printPage.js"></script>
+
+
+    @*Print reports *@
+    <script>
+
+
+
+       
+
+        var TempValues = { PriState: '', PriCity: '', AltState: '', AltCity: '', thirdState: '', thirdCity: '', StatusAttr: '' };
+
+
+    var cookieRepairNumber = 0;
+    var cookieticketNumber = 0;
+
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+
+    function getCustomer(id) {
+        if (id == 0) {
+            return;
+        }
+        jQuery.ajax({
+            url: siteUrl + 'TrackRepairStatus/getCustomer',
+            dataType: 'json',
+            headers: { "requestType": "client" },
+            data: { "id": id },
+            contentType: 'application/json;charset=utf-8',
+            async: false,
+            success: function (_data) {
+                if (_data == null) {
+                    return;
+                }
+                if (_data.Status == false) {
+                    showMessage('Oops', 'error', _data.Message, 'toast-top-right');
+                    return;
+                }
+                // primary country, state, city
+                //$("#drpPrimaryCountry option:contains(" + _data.priCountry + ")").attr('selected', true).trigger('change');
+                //$("#drpAltCountry option:contains(" + _data.secCountry + ")").attr('selected', true).trigger('change');
+                $("#drpPrimaryCountry").val(_data.priCountry).trigger('change');
+                $("#drpAltCountry").val(_data.secCountry).trigger('change');
+                $("#drpthirdCountry").val(_data.thirdCountry).trigger('change');
+                TempValues.PriState = _data.priState;
+                TempValues.PriCity = _data.priCity;
+
+                $('#txtPrimaryCites').val(_data.priCity);
+                $('#txtAltCites').val(_data.secCity);
+                $('#txtthirdCites').val(_data.thirdCity);
+
+                TempValues.AltState = _data.secState;
+                TempValues.AltCity = _data.secCity;
+                TempValues.thirdState = _data.thirdState;
+                TempValues.thirdCity = _data.thirdCity;
+                $('#drpTitelsSpouse option').map(function () {
+                    if ($(this).text() == _data.SpouseTitle) return this;
+                }).attr('selected', 'selected');
+                $('#txtFirstNameSpouse').val(_data.SpousefirstName);
+                $('#txtMiddleSpouse').val(_data.SpousemiddleInitial);
+                $('#txtLastSpouse').val(_data.SpouselastName);
+
+
+
+                $('#ddlSpouseRelation').val(_data.SpouseRelation);
+                $('#drpTitels1 option').map(function () {
+                    if ($(this).text() == _data.title) return this;
+                }).attr('selected', 'selected');
+                //  $("#drpTitels1 option[value='" + _data.title + "']").attr('selected', 'selected');
+
+
+
+                $('#txtFirstName').val(_data.firstName);
+                $('#txtMiddle').val(_data.middleInitial);
+                $('#txtLast').val(_data.lastName);
+
+                $('#spanCustomer').html(_data.firstName + ' ' + _data.lastName);
+
+                $('#drpTitels2 option').map(function () {
+                    if ($(this).text() == _data.asstTitle) return this;
+                }).attr('selected', 'selected');
+                //$("#drpTitels2 option[value='" + _data.asstTitle + "']").attr('selected', 'selected');
+                //$("#drpTitels2 option:selected").text(),
+                $('#txtFirstName1').val(_data.asstFirstName);
+                $('#txtMiddle1').val(_data.asstMiddleInitial);
+                $('#txtLast1').val(_data.asstLastName);
+                $('#ddlAssistantRelation').val(_data.asstRelation);
+
+                $('#txtCompany').val(_data.priCompany);
+                $('#txtLine1').val(_data.priAddressLine1);
+                $('#txtLine2').val(_data.priAddressLine2);
+                //priCity: $("#drpPrimaryCites option:selected").text(),
+                //priState: $("#drpPrimaryStates option:selected").text(),
+                $('#txtStateZip').val(_data.priZipCode);
+                $('#txtStateZip1').val(_data.priZipCodePlusFour);
+
+
+                $('#txtPrimaryCountryCode').val(_data.priCountryCode);
+                $('#txtAlternateCountryCode').val(_data.AlternateCountryCode);
+                $('#txtThirdCountryCode').val(_data.ThirdCountryCode);
+
+                //priCountry: $("#drpPrimaryCountry option:selected").text(),
+
+
+
+                $('#txtOfficePhone').val(_data.priTelephoneSegment1);
+                $('#txtHomePhone').val(_data.priHomephoneSegment1);
+                $('#txtASSISTANTPhone').val(_data.priAssistanatSegment1);
+                $('#txtCell').val(_data.priCellphoneSegment1);
+                $('#txtFAX').val(_data.priFaxSegment1);
+
+
+
+                if ($("#drpPrimaryCountry option:selected").text() == "United States") {
+
+                    $('#divPrimaryCountryCode').hide();
+
+
+                    $("#txtOfficePhone").mask("(999) 999-9999");
+                    $("#txtHomePhone").mask("(999) 999-9999");
+                    $("#txtASSISTANTPhone").mask("(999) 999-9999");
+                    $("#txtCell").mask("(999) 999-9999");
+                    $("#txtFAX").mask("(999) 999-9999");
+
+
+                }
+                else {
+
+                    $('#divPrimaryCountryCode').show();
+
+                    $("#txtOfficePhone").unmask("(999) 999-9999");
+                    $("#txtHomePhone").unmask("(999) 999-9999");
+                    $("#txtASSISTANTPhone").unmask("(999) 999-9999");
+                    $("#txtCell").unmask("(999) 999-9999");
+                    $("#txtFAX").unmask("(999) 999-9999");
+
+                }
+                //$('.txtHomePhone1:visible').val(_data.priHomephoneSegment1);
+                $('#txtEmail').val(_data.priEMailAddress);
+                $('#txtEmail2').val(_data.priEMailAddress2);
+                //ALTERNATE ADDRESS
+                $('#txtAltCompany').val(_data.secCompany);
+                $('#txtAltLine1').val(_data.secAddressLine1);
+                $('#txtAltLine2').val(_data.secAddressLine2);
+                //secCity: $("#drpAltCites option:selected").text(),
+                //secState: $("#drpAltStates option:selected").text(),
+                $('#txtAltStateZip').val(_data.secZipCode);
+                $('#txtAltStateZip1').val(_data.secZipCodePlusFour);
+                //secCountry: $("#drpAltCountry option:selected").text(),
+
+
+
+
+                $('#txtAltOfficePhone').val(_data.secTelephoneSegment1);
+                $('#txtAltHomePhone').val(_data.secHomephoneSegment1);
+                $('#txtAltAssistantPhone').val(_data.secAssistanatSegment1);
+                $('#txtAltCell').val(_data.secCellphoneSegment1);
+                $('#txtAltFAX').val(_data.secFaxSegment1);
+
+
+                if ($("#drpAltCountry option:selected").text() == "United States") {
+
+
+                    $('#divAlternateCountryCode').hide();
+
+                    $("#txtAltOfficePhone").mask("(999) 999-9999");
+                    $("#txtAltHomePhone").mask("(999) 999-9999");
+                    $("#txtAltAssistantPhone").mask("(999) 999-9999");
+                    $("#txtAltCell").mask("(999) 999-9999");
+                    $("#txtAltFAX").mask("(999) 999-9999");
+
+
+
+                }
+                else {
+
+                    $('#divAlternateCountryCode').show();
+
+
+
+                    $("#txtAltOfficePhone").unmask("(999) 999-9999");
+                    $("#txtAltHomePhone").unmask("(999) 999-9999");
+                    $("#txtAltAssistantPhone").unmask("(999) 999-9999");
+                    $("#txtAltCell").unmask("(999) 999-9999");
+                    $("#txtAltFAX").unmask("(999) 999-9999");
+
+                }
+
+
+                $('#txtthirdOfficePhone').val(_data.thirdTelephoneSegment1);
+                $('#txtthirdHomePhone').val(_data.thirdHomephoneSegment1);
+                $('#txtthirdAssistantPhone').val(_data.thirdAssistanatSegment1);
+                $('#txtthirdCell').val(_data.thirdCellphoneSegment1);
+                $('#txtthirdFAX').val(_data.thirdFaxSegment1);
+
+
+                if ($("#drpthirdCountry option:selected").text() == "United States") {
+
+
+                    $('#divThirdCountryCode').hide();
+
+                    $("#txtthirdOfficePhone").mask("(999) 999-9999");
+                    $("#txtthirdHomePhone").mask("(999) 999-9999");
+                    $("#txtthirdAssistantPhone").mask("(999) 999-9999");
+                    $("#txtthirdCell").mask("(999) 999-9999");
+                    $("#txtthirdFAX").mask("(999) 999-9999");
+
+
+
+                }
+                else {
+                    $('#divThirdCountryCode').show();
+                    $("#txtthirdOfficePhone").unmask("(999) 999-9999");
+                    $("#txtthirdHomePhone").unmask("(999) 999-9999");
+                    $("#txtthirdAssistantPhone").unmask("(999) 999-9999");
+                    $("#txtthirdCell").unmask("(999) 999-9999");
+                    $("#txtthirdFAX").unmask("(999) 999-9999");
+                }
+                $('#txtAltEmail').val(_data.secEMailAddress);
+                $('#txtAltEmail2').val(_data.secEmailAddress2);
+                // third address
+                $('#txtthirdCompany').val(_data.thirdCompany);
+                $('#txtthirdLine1').val(_data.thirdAddressLine1);
+                $('#txtthirdLine2').val(_data.thirdAddressLine2);
+                //secCity: $("#drpAltCites option:selected").text(),
+                //secState: $("#drpAltStates option:selected").text(),
+                $('#txtthirdStateZip').val(_data.thirdZipCode);
+                $('#txtthirdStateZip1').val(_data.thirdZipCodePlusFour);
+                //secCountry: $("#drpAltCountry option:selected").text(),
+                $('#txtthirdEmail').val(_data.thirdEMailAddress);
+                $('#txtthirdEmail2').val(_data.thirdEMailAddress2);
+                //PRIMARY CREDIT CARD
+                $('#txtCreditCard1').val(_data.priCreditCardSegment1);
+                $('#txtCreditCard2').val(_data.priCreditCardSegment2);
+                $('#txtCreditCard3').val(_data.priCreditCardSegment3);
+                $('#txtCreditCard4').val(_data.priCreditCardSegment4);
+                $('#txtCardExpDay').val(_data.priCreditCardExpMonth);
+                $('#txtCardExpYear').val(_data.priCreditCardExpYear);
+                $('#txtCardSecurity').val(_data.priCreditCardSecurity);
+                //ALTERNATE ADDRESS
+                $('#txtAltCreditCard1').val(_data.secCreditCardSegment1);
+                $('#txtAltCreditCard2').val(_data.secCreditCardSegment2);
+                $('#txtAltCreditCard3').val(_data.secCreditCardSegment3);
+                $('#txtAltCreditCard4').val(_data.secCreditCardSegment4);
+                $('#txtAltCardExpDay').val(_data.secCreditCardExpMonth);
+                $('#txtAltCardExpYear').val(_data.secCreditCardExpYear);
+                $('#txtAltCardSecurity').val(_data.secCreditCardSecurity);
+                // THIRD Address
+                $('#txtthirdCreditCard1').val(_data.thirdCreditCardSegment1);
+                $('#txtthirdCreditCard2').val(_data.thirdCreditCardSegment2);
+                $('#txtthirdCreditCard3').val(_data.thirdCreditCardSegment3);
+                $('#txtthirdCreditCard4').val(_data.thirdCreditCardSegment4);
+                $('#txtthirdCardExpDay').val(_data.thirdCreditCardExpMonth);
+                $('#txtthirdCardExpYear').val(_data.thirdCreditCardExpYear);
+                $('#txtthirdCardSecurity').val(_data.thirdCreditCardSecurity);
+                //NOTE
+                //contactPreference: $("#drpContactPrefrences option:selected").text(),
+                $("#drpContactPrefrences").val(_data.contactPreference);
+                $("#drpCustomerType").val(_data.customerType);
+                //customerType: $("#drpCustomerType option:s;elected").text(),
+                $('#txtNote').val(_data.notes);
+                // $('#hdnid').val(data.AppraiserID);
+                // $('#txtName').val(data.AppraiserTitle);
+                // alert(data.IsActive);
+            },
+            error: function (_data) {
+                // alert(JSON.stringify(data));
+                showMessage('Oops', 'error', _data, 'toast-top-right');
+                //  alert(_errorMessage);
+            }
+        });
+    }
+    function getItem(id) {
+        // resetControl();
+        if (id == 0) {
+            return;
+        }
+        jQuery.ajax({
+            url: siteUrl + 'TrackRepairStatus/getRepair',
+            dataType: 'json',
+            headers: { "requestType": "client" },
+            data: { "id": id },
+            contentType: 'application/json;charset=utf-8',
+            async: false,
+            success: function (_data) {
+                //
+                //alert(JSON.stringify(_data));
+                if (_data != null) {
+                    if (_data.Status == false) {
+                        showMessage('Oops', 'error', _data.Message, 'toast-top-right');
+                        return;
+                    }
+                }
+
+                FillRepairData(_data);
+
+                FillDocStatusData(_data);
+
+                $('#hdnRepairNumber').val(_data.repairNumber);
+                //$('#hdnRepairNumber').val(_data.ticketNumber);
+
+                bindDocumentsGrid('1');
+
+
+                $('#txtRepairNumber').val(_data.repairNumber)
+                if (_data.repairNumber != null && _data.ticketNumber != null && _data.OrderNumber != null) {
+                    $('#spanNewRepair').html(_data.repairNumber + '-' + _data.ticketNumber + '-' + _data.OrderNumber);
+                }
+                else if (_data.repairNumber != null && _data.ticketNumber != null) {
+                    $('#spanNewRepair').html(_data.repairNumber + '-' + _data.ticketNumber);
+                }
+                else {
+                    $('#spanNewRepair').html(_data.repairNumber);
+                }
+                $('#drpTab2Status').val(_data.statusId);
+                $('#hdnStatus').val(_data.statusId);
+                $('#txtTicketNumber').val(_data.ticketNumber);
+                $("#drptab2Employee").val(_data.employeeId);
+                $("#drptab2Brand").val(_data.brandId);
+                $("#drptab2Items").val(_data.itemId);
+                $("#drptab2Style").val(_data.styleId);
+                $("#drptab2Movement").val(_data.movementTypeId);
+                $("#drptab2Case").val(_data.caseTypeId);
+                $("#drptab2Case").val(_data.caseTypeId);
+                $('#drptab2Band').val(_data.bandTypeId);
+                $('#drptab2Buckle').val(_data.buckleTypeId);
+                $('#drptab2Dial').val(_data.dialTypeId);
+                $('#drptab2CrystalCondition').val(_data.crystalConditionId);
+                $('#drptab2BezelCondition').val(_data.bezelConditionId);
+                $('#drptab2BackCondition').val(_data.backConditionId);
+                $('#drptab2LugsCondition').val(_data.lugsConditionId);
+                $('#drptab2CaseCondition').val(_data.caseConditionId);
+                $('#drptab2BandCondition').val(_data.bandConditionId);
+                $('#drptab2BuckleCondition').val(_data.buckleConditionId);
+                $('#drptab2DialCondition').val(_data.dialConditionId);
+                $('#txtTab2Serial').val(_data.serialNumber);
+                $('#txtTab2Reference').val(_data.referenceNumber);
+                $('#txtTab2MovementSerial').val(_data.movementSerialNumber);
+                $('#txtTab2Caliber').val(_data.caliber);
+                $('#txtTab2NumberofJewels').val(_data.numberOfJewels);
+                $('#drpTab2PurchaseLocation').val(_data.purchaseLocationId);
+                $('#txtTab2PurchaseDate').val(parseJsonDate(_data.purchaseDate));
+                $('#txtTab2Inventory').val(_data.wempeInventoryNumber);
+                $('#drpTab2WarrantyDoc').val(_data.warrantyDocumentId);
+                $('#drpTab2BoxIncluded').val(_data.boxIncludedId);
+                $('#txtTab2GiftCert').val(_data.giftCertATNumber);
+                $('#drpTab2Location').val(_data.supplierId);
+                $('#txtTab2SupplierRepair').val(_data.supplierRepairNumber);
+                $('#txtTab2SupplierPickup').val(_data.supplierPickupNumber);
+                $('#drpTab2RepairType').val(_data.repairTypeId);
+
+                // $('#idCUSTOMERStartdate').val(parseJsonDate(_data.dueDateStartDate));//date type
+                $('#txtTab2DueDateCUSTOMERDays').val(_data.dueDateTime);
+                $('#drpTab2DueDateCUSTOMER').val(_data.dueDateType);
+                $('#txtTab2DueDateCUSTOMERDays2').val(parseJsonDate(_data.dueDate));//date type
+
+                $('#idFACTORYStartdate').val(_data.dueDateFactoryStartDate);//date type
+                $('#txtTab2DueDateFactoryDays').val(_data.dueDateFactoryTime);
+                $('#drpTab2DueDateFactory').val(_data.dueDateFactoryType);
+                $('#txtTab2DueDateFactoryDays2').val(parseJsonDate(_data.dueDateFactory));//date type
+                ////-------------------------APPRAISAL
+                $('#txtTab2SupplierPrevRepair').val(_data.supplierPreviousRepairNumber);
+                $('#txtTab2WepmePrevRepair').val(_data.wempePreviousRepairNumber);
+                $('#drpTab2Security').val(_data.idSecurityId);
+                $('#txtTab2AuthorizedPickup').val(_data.authorizedPickup);
+                $('#txtTab2Delay').val(_data.factoryDelayTime);
+                $('#drpTab2Delay').val(_data.factoryDelayType);
+                $('#txtTab2Reason').val(_data.factoryDelayReason);
+                $('#txtTab2AppraisalValue').val(_data.appraisalValue);
+                $('#txtTab2Comments').val(_data.appraisalComments);
+                $('#drptab2APPRAISER').val(_data.appraiserId);
+                $('#drptab2AppraiserTitle').val(_data.appraiserTitleId);
+                ////--------------------------ENGRAVING
+                $('#drptab2EngravingFont').val(_data.engravingFontId);
+                $('#drptab2EngravingCapitalization').val(_data.engravingCapitalizationId);
+                $('#txtTab2Message').val(_data.engravingMessage);
+                $('#txtTab2NoteToEngraver').val(_data.notesToEngraver)
+
+                // Sagar -- new columns
+
+                $('#txtClientComments').val(_data.ClientComments);
+                $('#txtTab2WarrantyforthisRepair').val(_data.WarrantyRepair);
+                $('#txtTab2DueDateSupplierDays2').val(_data.SupplierDueDate);
+                //SupplierdueDateStartDate: dt,//dueDateFactoryStartDate
+                $('#txtTab2DueDateSupplierDays').val(_data.SupplierdueDateTime);
+                $('#drpTab2DueDateSupplier').val(_data.dueDateFactoryType);
+                $('#txtTab2PickUpFirstName').val(_data.PickupPersonFirstName);
+                $('#txtTab2PickUpLastName').val(_data.PickupPersonLastName);
+
+                $('#txtOrderNumber').val(_data.OrderNumber)
+
+                //---Doc and Status tab
+                // alert(_data.entryDate);
+                if (_data.entryDate != null) {
+                    $('#docStatusRepairStart').html(parseJsonDate(_data.entryDate));
+                }
+                if (_data.dueDate != null) {
+                    $('#docStatusCustomerRepairDueDate').html(parseJsonDate(_data.dueDate));
+                }
+                //alert(_data.SupplierDueDate);
+                if (_data.SupplierDueDate != null) {
+                    $('#docStatusFactoryRepairDueDate').html(_data.SupplierDueDate);
+                }
+                //
+                if (_data.factoryDelayTime != null) {
+                    $('#docStatusFactoryDelay').html(_data.factoryDelayTime + ' ' + _data.factoryDelayType);
+                }
+
+            },
+
+            error: function (_data) {
+                // alert(JSON.stringify(data));
+                showMessage('Oops', 'error', _data, 'toast-top-right');
+                //  alert(_errorMessage);
+            }
+        });
+    }
+
+    function FillRepairData(_data) {
+        if (_data.task1Decline == null) {
+            $('#chkTab3RepairCheck1').prop('checked', false);
+            $('#chkTab3RepairCheck1').removeAttr("checked");
+            $('#chkTab3RepairCheck1').parent().removeClass('checked');
+            $('#txtTab3RepairPrice1').attr('disabled', 'disabled');
+            $('#txtTab3RepairPrice2').attr('disabled', 'disabled');
+        }
+        if (_data.task1Decline == null) {
+            // $('#chkTab3RepairCheck2').prop('checked', false);
+            //   $('#txtTab3RepairPrice2').attr('disabled', 'disabled');
+        }
+        if (_data.task3Decline == null) {
+            $('#chkTab3RepairCheck3').prop('checked', false);
+            $('#chkTab3RepairCheck3').parent().removeClass('checked');
+            $('#txtTab3RepairPrice3').attr('disabled', 'disabled');
+        }
+        if (_data.task4Decline == null) {
+            $('#chkTab3RepairCheck4').prop('checked', false);
+            $('#chkTab3RepairCheck4').parent().removeClass('checked');
+            $('#txtTab3RepairPrice4').attr('disabled', 'disabled');
+        }
+        if (_data.task5Decline == null) {
+            $('#chkTab3RepairCheck5').prop('checked', false);
+            $('#chkTab3RepairCheck5').parent().removeClass('checked');
+            $('#txtTab3RepairPrice5').attr('disabled', 'disabled');
+        }
+        if (_data.task6Decline == null) {
+            $('#chkTab3RepairCheck6').prop('checked', false);
+            $('#chkTab3RepairCheck6').parent().removeClass('checked');
+            $('#txtTab3RepairPrice6').attr('disabled', 'disabled');
+        }
+        if (_data.task7Decline == null) {
+            $('#chkTab3RepairCheck7').prop('checked', false);
+            $('#chkTab3RepairCheck7').parent().removeClass('checked');
+            $('#txtTab3RepairPrice7').attr('disabled', 'disabled');
+        }
+
+        $('#txtTab3RepairNumber').val(_data.task1Description),
+        $('#txtTab3RepairPrice1').val(_data.task1Price);
+        // $('#chkTab3RepairCheck1').is(":checked"),
+
+
+        $('#txtTab3RepairNumber2').val(_data.task2Description);
+
+
+        $('#txtTab3RepairPrice2').val(_data.task2Price);
+        //task2Decline: $('#chkTab3RepairCheck2').is(":checked"),
+        $('#txtTab3RepairNumber3').val(_data.task3Description);
+        $('#txtTab3RepairPrice3').val(_data.task3Price);
+        //task3Decline: $('#chkTab3RepairCheck3').is(":checked"),
+        $('#txtTab3RepairNumber4').val(_data.task4Description);
+        $('#txtTab3RepairPrice4').val(_data.task4Price);
+        //task4Decline: $('#chkTab3RepairCheck4').is(":checked"),
+        $('#txtTab3RepairNumber5').val(_data.task5Description);
+        $('#txtTab3RepairPrice5').val(_data.task5Price);
+        //task5Decline: $('#chkTab3RepairCheck5').is(":checked"),
+        $('#txtTab3RepairNumber6').val(_data.task6Description);
+        $('#txtTab3RepairPrice6').val(_data.task6Price);
+        // task6Decline: $('#chkTab3RepairCheck6').is(":checked"),
+        $('#txtTab3RepairNumber7').val(_data.task7Description);
+        $('#txtTab3RepairPrice7').val(_data.task7Price);
+        //task7Decline: $('#chkTab3RepairCheck7').is(":checked"),
+        $('#txtTab3RepairPriceShipping').val(_data.shipping);
+        $('#txtTab3RepairPriceSubTotal').val(_data.subtotal);
+
+        if (_data.tax != null && _data.tax != "0.00" && _data.tax != "") {
+            $('#chkTab3Tax').prop('checked', true);
+        }
+        $('#txtTab3RepairPriceTax').val(_data.tax);
+        //taxable: $('#chkTab3Tax').is(":checked"),
+        $('#txtTab3RepairPriceTotal').val(_data.total);
+        $('#txtRepairComments').val(_data.repairComments);
+        $('#txtTab3NotesToCustomer').val(_data.notesToCustomer);
+        $('#txtTab3NotesToFactory').val(_data.notesToFactory);
+        $('#txtTab3LetterToCustomer').val(_data.letterToCustomer);
+        $('#txtTab3ShippingCustomerValue').val(_data.shippingToCustomerValue);
+        $('#txtTab3ShippingCustomerInsurance').val(_data.shippingToCustomerInsurance);
+        $('#txtTab3ShippingCustomerSalesPerson').val(_data.shippingToCustomerSalesperson);
+        $('#drpTab3ToCustomerDestinationType').val(_data.shippingToCustomerDestinationType);
+        $('#txtTab3ShippingCustomerCarrier').val(_data.shippingToCustomerCarrier);
+        $('#txtTab3ShippingCustomerDestinationType').val(_data.shippingToCustomerShippingType);
+        $('#txtTab3ToCustomeMailingDate').val(parseJsonDate(_data.shippingToCustomerMailingDate)),
+        $('#txtTab3ToCustomerExpectedArrival').val(parseJsonDate(_data.shippingToCustomerExpectedArrivalDate));
+        $('#txtTab3ShippingSupplierValue').val(_data.shippingToSupplierValue);
+        $('#txtTab3ShippingSupplierInsurance').val(_data.shippingToSupplierInsurance);
+        $('#txtTab3ShippingSupplierSalesPerson').val(_data.shippingToSupplierSalesperson);
+        $('#drpTab3ToSupplierDestinationType').val(_data.shippingToSupplierDestinationType);
+        $('#txtTab3ShippingSupplierCarrier').val(_data.shippingToSupplierCarrier);
+        $('#txtTab3ShippingSupplierDestinationType').val(_data.shippingToSupplierShippingType);
+        $('#txtTab3ToSupplierMailingDate').val(parseJsonDate(_data.shippingToSupplierMailingDate));
+        $('#txtTab3ToSupplierExpectedArrival').val(parseJsonDate(_data.shippingToSupplierExpectedArrivalDate));
+        $('#txtTab3SparePartQty1').val(_data.sparePartsQuantity1);
+        $('#txtTab3SparePart1').val(_data.sparePartsPartNumber1);
+        $('#txtTab3SparePartDescription1').val(_data.sparePartsDescription1);
+        $('#txtTab3SparePartQty2').val(_data.sparePartsQuantity2);
+        $('#txtTab3SparePart2').val(_data.sparePartsPartNumber2);
+        $('#txtTab3SparePartDescription2').val(_data.sparePartsDescription2);
+        $('#txtTab3SparePartQty3').val(_data.sparePartsQuantity3);
+        $('#txtTab3SparePart3').val(_data.sparePartsPartNumber3);
+        $('#txtTab3SparePartDescription3').val(_data.sparePartsDescription3);
+        $('#txtTab3SparePartQty4').val(_data.sparePartsQuantity4);
+        $('#txtTab3SparePart4').val(_data.sparePartsPartNumber4);
+        $('#txtTab3SparePartDescription4').val(_data.sparePartsDescription4);
+        $('#txtTab3SparePartQty5').val(_data.sparePartsQuantity5);
+        $('#txtTab3SparePart5').val(_data.sparePartsPartNumber5);
+        $('#txtTab3SparePartDescription5').val(_data.sparePartsDescription5);
+        $('#txtTab3SparePartQty6').val(_data.sparePartsQuantity6);
+        $('#txtTab3SparePart6').val(_data.sparePartsPartNumber6);
+        $('#txtTab3SparePartDescription6').val(_data.sparePartsDescription6);
+        $('#txtTab3SparePartQty7').val(_data.sparePartsQuantity7);
+        $('#txtTab3SparePart7').val(_data.sparePartsPartNumber7);
+        $('#txtTab3SparePartDescription7').val(_data.sparePartsDescription7);
+        $('#txtTab3SparePartQty8').val(_data.sparePartsQuantity8);
+        $('#txtTab3SparePart8').val(_data.sparePartsPartNumber8);
+        $('#txtTab3SparePartDescription8').val(_data.sparePartsDescription8);
+        $('#txtTab3SparePartOrderNotes').val(_data.sparePartsOrderNotes);
+        $('#txtTab3StrapOrderMaterialType').val(_data.strapMaterialType);
+        $('#txtTab3StrapOrderColor').val(_data.strapColor);
+        $('#txtTab3StrapOrderWidth').val(_data.strapWidth);
+        $('#txtTab3StrapOrderBuckle').val(_data.strapBuckle);
+        $('#txtTab3StrapOrderLength').val(_data.strapLength);
+        $('#txtTab3StrapOrderTextureType').val(_data.strapTextureType);
+        $('#txtTab3StrapOrderLusterType').val(_data.strapLusterType);
+        $('#txtTab3StrapOrderStitchType').val(_data.strapStitchType);
+        $('#txtTab3StrapOrderThicknessType').val(_data.strapThicknessType);
+        $('#txtTab3StrapOrderAccessories').val(_data.strapAccessories);
+        $('#txtTab3StrapOrderLengthSO6').val(_data.strapSpecOrd600);
+        $('#txtTab3StrapOrderLengthSO12').val(_data.strapSpecOrd1200);
+        $('#txtTab3StrapOrderNotes').val(_data.strapOrderNotes);
+    }
+
+    var _lock = true;
+
+
+    function FillDocStatusData(_data) {
+        if (_data.dateReceivedByMail != null) {
+            $('#docStatusReceivedByMail').html(new Date(parseInt(_data.dateReceivedByMail.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateReceivedByMessenger != null) {
+            $('#docStatusReceivedByMessenger').html(new Date(parseInt(_data.dateReceivedByMessenger.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateEstimateRequestStatus != null) {
+            $('#docStatusEstimateRequestStatus').html(new Date(parseInt(_data.dateEstimateRequestStatus.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateServiceRequest != null) {
+            $('#docStatusServiceRequest').html(new Date(parseInt(_data.dateServiceRequest.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateServiceRequestStatus != null) {
+            $('#docStatusServiceRequestStatus').html(new Date(parseInt(_data.dateServiceRequestStatus.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateAuthToFactoryCharge != null) {
+            $('#docStatusAuthToFactory').html(new Date(parseInt(_data.dateAuthToFactoryCharge.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateAuthToFactoryNoCharge != null) {
+            $('#docStatusAuthToFactoryNC').html(new Date(parseInt(_data.dateAuthToFactoryNoCharge.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateReminderToFactory != null) {
+            $('#docStatusReminderToFactory').html(new Date(parseInt(_data.dateReminderToFactory.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateProceedToFactory != null) {
+            $('#docStatusProceedToFactory').html(new Date(parseInt(_data.dateProceedToFactory.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateRepairOffer != null) {
+            $('#docStatusRepairOffer').html(new Date(parseInt(_data.dateRepairOffer.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateRepairOfferReminder != null) {
+            $('#docStatusRepairOfferReminder').html(new Date(parseInt(_data.dateRepairOfferReminder.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateReturnUndone != null) {
+            $('#docStatusReturnUndone').html(new Date(parseInt(_data.dateReturnUndone.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateProceedWithService != null) {
+            $('#docStatusProceedWithService').html(new Date(parseInt(_data.dateProceedWithService.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateRepairStatus != null) {
+            $('#docStatusRepairStatus').html(new Date(parseInt(_data.dateRepairStatus.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateRepairDelay != null) {
+            $('#docStatusRepairDelay').html(new Date(parseInt(_data.dateRepairDelay.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.datePickupNotification != null) {
+            $('#docStatusPickupNotification').html(new Date(parseInt(_data.datePickupNotification.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.datePickedUp != null) {
+            $('#docStatusPickedUp').html(new Date(parseInt(_data.datePickedUp.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+        if (_data.dateShipped != null) {
+            $('#docStatusShipped').html(new Date(parseInt(_data.dateShipped.replace("/Date(", "").replace(")/", ""), 10)).toDateString() || "N/A");
+        }
+    }
+
+    function parseJsonDate(jsonDateString) {
+        if (jsonDateString == null) {
+            return "";
+        }
+        var currentTime = new Date(parseInt(jsonDateString.replace('/Date(', '')));
+        var month = currentTime.getMonth() + 1;
+        var day = currentTime.getDate();
+        var year = currentTime.getFullYear();
+        var date = month + "/" + day + "/" + year;
+
+        return date;
+    }
+
+
+   
+
+    function bindDocumentsGrid(pageNo) {
+
+
+        _lock = true;
+        $('#hdnFileUploadPageNo').val(pageNo);
+        var model = {
+            repairNumber: $('#hdnRepairNumber').val(),
+            pageNo: pageNo,
+            sortColumn: _sortColumn,
+            sortOrder: _sortOrder
+        };
+        $('#tbodyDetails').html('<tr><td colspan="5">Loading....</td></tr>');
+        $('#tbodyDetailsRepair').html('<tr><td colspan="5">Loading....</td></tr>');
+        $.ajax({
+            url: siteUrl + 'TrackRepairStatus/getUploadedFilesList',
+            headers: { "requestType": "client" },
+            type: 'POST',
+            data: JSON.stringify(model),
+            contentType: 'application/json;charset=utf-8',
+            success: function (data) {
+                $('#tbodyDetailsFileUpload').html('');
+                $('#tbodyTemplateFileUpload').tmpl(data).appendTo('#tbodyDetailsFileUpload');
+                if (data.length == 0) {
+                    setPagingDetailFileUpload(data.length, 0, pageNo);
+                }
+                else {
+                    setPagingDetailFileUpload(data.length, data[0].TotalCount, pageNo);
+                }
+            },
+            error: function (_data) {
+                $('#tbodyDetailsRepair').html('<tr><td colspan="6">error in request</td></tr>');
+            }
+        });
+    }
+
+
+    function setPagingDetailFileUpload(noOfrows, Total, pageNo) {
+        _firstRecord = 1;
+        if (noOfrows < pazeSize) {
+            noOfrows = Total;
+            _firstRecord = Total;
+            _lock = false;
+        }
+        else {
+            noOfrows = noOfrows * pageNo;
+            if (pageNo > 1) {
+                _firstRecord = (noOfrows - pazeSize) + 1;
+            }
+        }
+        $('#sample_1_infoFileUpload').html('Showing ' + _firstRecord + ' to ' + noOfrows + ' of ' + Total + ' entries');
+    }
+
+    $(document).ready(function () {
+      
+
+
+       
+
+
+
+      
+
+        var _id = getParameterByName('id', null);
+        if (_id != null && _id != 0) {
+
+            // alert(_id);
+
+            $('#hdnCustomerNumber').val(_id);
+            getCustomer(_id);
+        }
+        var Rid = getParameterByName('Rid', null);
+        if (Rid != null && Rid != 0) {
+            $('#hdnRepairNumber').val(Rid);
+            getItem(Rid);
+        }
+        // set Page title
+
+        if (Rid != null) {
+            //$(document).prop('title', $('#txtFirstName').val() + '-' + Rid);
+            var temp = '';
+            if ($('#txtRepairNumber').val() != '') {
+                temp = $('#txtRepairNumber').val();
+            }
+            if ($('#txtTicketNumber').val() != '') {
+                temp += '-' + $('#txtTicketNumber').val();
+            }
+            if ($('#txtOrderNumber').val() != '') {
+                temp += '-' + $('#txtOrderNumber').val();
+            }
+            $(document).prop('title', temp);
+        }
+        else {
+            $(document).prop('title', 'Repair');
+        }
+       
+     
+        //$('.page-content').css('margin-left', '0px !important');
+    });
+   
+
+   
+        
+   
+
+    </script>
+}
+
+
+
+
+
+<input type="hidden" id="hdnCustomerNumber" value="0" />
+<input type="hidden" id="hdnRepairNumber" value="0" />
+
+
+
+
+

@@ -1,0 +1,127 @@
+﻿@using System.Data;
+@{
+    ViewBag.Title = "ImportExcel";
+}
+
+
+<h2>ImportExcel</h2>
+<!--[if !IE]><!-->
+<style type="text/css">
+    /* Generic Styling, for Desktops/Laptops */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    /* Zebra striping */
+    tr:nth-of-type(odd) {
+        background: #eee;
+    }
+
+    th {
+        background: #333;
+        color: white;
+        font-weight: bold;
+    }
+
+    td, th {
+        padding: 6px;
+        border: 1px solid #ccc;
+        text-align: left;
+    }
+    /*
+    Max width before this PARTICULAR table gets nasty
+    This query will take effect for any screen smaller than 760px
+    and also iPads specifically.
+    */
+    @@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+        /* Force table to not be like tables anymore */
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+        tr {
+            border: 1px solid #ccc;
+        }
+
+        td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+            td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+
+            /*
+     Label the data
+     */
+            td:before {
+                content: attr(data-title);
+            }
+    }
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $(document).ready(         
+            function() {
+                setInterval(function () {
+
+                    $.ajax({
+                        url: "/Home/ImportResult",
+                        type: "GET",
+                        success: function (response) {                            
+                            if (response.IsActive==true) {
+                                $('#Submit').hide();
+                                $('#show').show();
+                                $('#show').text(
+                                'Backend process is working on importing data. There are ' + response.ResultCount + ' records pending.');
+                            }
+                            else {                               
+                                $('#show').hide();
+                                $('#Submit').show();
+                                $('#Submit').attr("display","block");
+                            }
+                        },
+                        error: function (response) {
+                            alert(response);
+                            
+                        }
+                    });
+                }, 3000);
+            });
+</script>
+<!--<![endif]-->
+@using (Html.BeginForm("ImportExcel", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    <table>
+        <tr><td>Country</td><td>@Html.DropDownList("Country")</td></tr>
+        <tr><td>Excel file</td><td><input type="file" id="FileUpload1" name="FileUpload1" /></td></tr>
+        @if (!Model.IsActive)
+        {
+            <tr><td></td><td><input type="submit" id="Submit" name="Submit" value="Submit" onclick="return confirm('Do you really want to import this file with selected country?');" /></td></tr>
+        }
+    </table>
+    <div style="border:1px solid gray;margin-top:5px;color:red;font-size:17px; display:none;" id="show"></div>
+    <div style="border:1px solid gray;margin-top:5px;color:red;font-size:17px;" >@ViewBag.Message</div>
+}
+
+

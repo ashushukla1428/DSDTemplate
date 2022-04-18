@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+@{
+    string fontSize = this.ViewData.ContainsKey("fontSize") ? this.ViewData["fontSize"].ToString() : string.Empty;
+}
+@if (Model.itemDetail.total != null)
+{
+    <p align="left">
+        <font face="Times New Roman" size="@fontSize">
+                                          <table class="tdStyle_table" style="font-family:'Times New Roman';width:100%; font-size:@fontSize;" border="0" cellpadding="0" cellspacing="0"  >
+                                       
+                                                <tr>
+                                                    <td style="width:78%;" valign="top" align="right">
+                                                             @Html.Raw("Subtotal:&nbsp;&nbsp;&nbsp;")
+                                                    </td>
+                                                    <td style="width:6%;" valign="top">&nbsp;</td>
+                                                    <td style="width:16%;" valign="top"  align="right">
+                                                        @String.Format("{0:C}", (Model.itemDetail.subtotal == null ? 0 : Convert.ToDecimal(Model.itemDetail.subtotal)))
+                                                    </td>
+                                                </tr>
+                                                  <tr>
+                                                    <td style="width:78%;" valign="top" align="right">
+                                              
+                                                             @Html.Raw("Shipping:&nbsp;&nbsp;&nbsp;")
+                                                    </td>
+                                                    <td style="width:6%;" valign="top">&nbsp;</td>
+                                                    <td style="width:16%;" valign="top"  align="right">
+                                                         @String.Format("{0:C}", (Model.itemDetail.shipping == null ? 0 : Convert.ToDecimal(Model.itemDetail.shipping)))
+                                                    </td>
+                                                </tr>
+                                                   <tr>
+                                                    <td style="width:78%;" valign="top" align="right">
+                                              
+                                                             @Html.Raw("Tax:&nbsp;&nbsp;&nbsp;")
+                                                    </td>
+                                                    <td style="width:6%;" valign="top">&nbsp;</td>
+                                                    <td style="width:16%;" valign="top"  align="right">
+                                                        @String.Format("{0:C}", (Model.itemDetail.tax == null ? 0 : Convert.ToDecimal(Model.itemDetail.tax)))
+                                                       
+                                                    </td>
+                                                </tr> 
+                                                                                                        <tr>
+                                                    <td style="width:78%;" class="tdStyle" valign="top" align="right">
+                                                             @Html.Raw("Total:&nbsp;&nbsp;&nbsp;")
+                                                    </td>
+                                                    <td style="width:6%;" valign="top">&nbsp;</td>
+                                                    <td style="width:16%;" valign="top" class="tdStyle"  align="right">
+                                                        @String.Format("{0:C}", (Model.itemDetail.total == null ? 0 : Convert.ToDecimal(Model.itemDetail.total)))
+                                                    </td>
+                                                </tr>                                                                                                                         
+                                          </table>
+                                                    </font>
+    </p>
+}

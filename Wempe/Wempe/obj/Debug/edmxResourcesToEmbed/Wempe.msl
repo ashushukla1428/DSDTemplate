@@ -1,0 +1,1917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbWempeModelStoreContainer" CdmEntityContainer="dbWempeEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="dbWempeModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpAppraiserMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpAppraiserMaster">
+        <MappingFragment StoreEntitySet="wmpAppraiserMaster">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AppraiserTitle" ColumnName="AppraiserTitle" />
+          <ScalarProperty Name="AppraiserID" ColumnName="AppraiserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpAppraiserTitles">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpAppraiserTitle">
+        <MappingFragment StoreEntitySet="wmpAppraiserTitle">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="appraiserTitle" ColumnName="appraiserTitle" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpBackConditionMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpBackConditionMaster">
+        <MappingFragment StoreEntitySet="wmpBackConditionMaster">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BackCondition" ColumnName="BackCondition" />
+          <ScalarProperty Name="BackConditionID" ColumnName="BackConditionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpBandConditions">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpBandCondition">
+        <MappingFragment StoreEntitySet="wmpBandCondition">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="condition" ColumnName="condition" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpBandTypeMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpBandTypeMaster">
+        <MappingFragment StoreEntitySet="wmpBandTypeMaster">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BandType" ColumnName="BandType" />
+          <ScalarProperty Name="BandTypeID" ColumnName="BandTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpBandTypeMaster1">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpBandTypeMaster1">
+        <MappingFragment StoreEntitySet="wmpBandTypeMaster1">
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BandType" ColumnName="BandType" />
+          <ScalarProperty Name="BandTypeID" ColumnName="BandTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpBezelConditionMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpBezelConditionMaster">
+        <MappingFragment StoreEntitySet="wmpBezelConditionMaster">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BezelCondition" ColumnName="BezelCondition" />
+          <ScalarProperty Name="BezelConditionID" ColumnName="BezelConditionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpBoxIncludedMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpBoxIncludedMaster">
+        <MappingFragment StoreEntitySet="wmpBoxIncludedMaster">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BoxIncluded" ColumnName="BoxIncluded" />
+          <ScalarProperty Name="BoxIncludedID" ColumnName="BoxIncludedID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpBrandMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpBrandMaster">
+        <MappingFragment StoreEntitySet="wmpBrandMaster">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpBuckleConditionMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpBuckleConditionMaster">
+        <MappingFragment StoreEntitySet="wmpBuckleConditionMaster">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BuckleCondition" ColumnName="BuckleCondition" />
+          <ScalarProperty Name="BuckleConditionID" ColumnName="BuckleConditionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpBuckleTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpBuckleType">
+        <MappingFragment StoreEntitySet="wmpBuckleType">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="buckleType" ColumnName="buckleType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCarriers">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCarrier">
+        <MappingFragment StoreEntitySet="wmpCarrier">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="carrier" ColumnName="carrier" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCaseConditions">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCaseCondition">
+        <MappingFragment StoreEntitySet="wmpCaseCondition">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="condition" ColumnName="condition" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCaseTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCaseType">
+        <MappingFragment StoreEntitySet="wmpCaseType">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="caseType" ColumnName="caseType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCategoryMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCategoryMaster">
+        <MappingFragment StoreEntitySet="wmpCategoryMaster">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="parentID" ColumnName="parentID" />
+          <ScalarProperty Name="metaDescription" ColumnName="metaDescription" />
+          <ScalarProperty Name="metakeywords" ColumnName="metakeywords" />
+          <ScalarProperty Name="metaTitel" ColumnName="metaTitel" />
+          <ScalarProperty Name="CategoryIndex" ColumnName="CategoryIndex" />
+          <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
+          <ScalarProperty Name="CategoryUrl" ColumnName="CategoryUrl" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCompanyMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCompanyMaster">
+        <MappingFragment StoreEntitySet="wmpCompanyMaster">
+          <ScalarProperty Name="LogoStrip" ColumnName="LogoStrip" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCompanyPackages">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCompanyPackage">
+        <MappingFragment StoreEntitySet="wmpCompanyPackage">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="Payment" ColumnName="Payment" />
+          <ScalarProperty Name="PackagePeriod" ColumnName="PackagePeriod" />
+          <ScalarProperty Name="UserLimit" ColumnName="UserLimit" />
+          <ScalarProperty Name="PackageRenewalDate" ColumnName="PackageRenewalDate" />
+          <ScalarProperty Name="PackageStartDate" ColumnName="PackageStartDate" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpContactPreferences">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpContactPreference">
+        <MappingFragment StoreEntitySet="wmpContactPreference">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="contactPreference" ColumnName="contactPreference" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCountries">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCountry">
+        <MappingFragment StoreEntitySet="wmpCountry">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCounties">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCounty">
+        <MappingFragment StoreEntitySet="wmpCounty">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCrystalConditions">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCrystalCondition">
+        <MappingFragment StoreEntitySet="wmpCrystalCondition">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="condition" ColumnName="condition" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCustomers">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCustomer">
+        <MappingFragment StoreEntitySet="wmpCustomer">
+          <ScalarProperty Name="ThirdCountryCode" ColumnName="ThirdCountryCode" />
+          <ScalarProperty Name="AlternateCountryCode" ColumnName="AlternateCountryCode" />
+          <ScalarProperty Name="priCountryCode" ColumnName="priCountryCode" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Shipping" ColumnName="Shipping" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="RepairComment" ColumnName="RepairComment" />
+          <ScalarProperty Name="OptialWorkPartialRepairPrice6" ColumnName="OptialWorkPartialRepairPrice6" />
+          <ScalarProperty Name="OptialWorkPartialRepairValue6" ColumnName="OptialWorkPartialRepairValue6" />
+          <ScalarProperty Name="OptialWorkPartialRepairPrice5" ColumnName="OptialWorkPartialRepairPrice5" />
+          <ScalarProperty Name="OptialWorkPartialRepairValue5" ColumnName="OptialWorkPartialRepairValue5" />
+          <ScalarProperty Name="OptialWorkPartialRepairPrice4" ColumnName="OptialWorkPartialRepairPrice4" />
+          <ScalarProperty Name="OptialWorkPartialRepairValue4" ColumnName="OptialWorkPartialRepairValue4" />
+          <ScalarProperty Name="OptialWorkPartialRepairPrice3" ColumnName="OptialWorkPartialRepairPrice3" />
+          <ScalarProperty Name="OptialWorkPartialRepairValue3" ColumnName="OptialWorkPartialRepairValue3" />
+          <ScalarProperty Name="OptialWorkPartialRepairPrice2" ColumnName="OptialWorkPartialRepairPrice2" />
+          <ScalarProperty Name="OptialWorkPartialRepairValue2" ColumnName="OptialWorkPartialRepairValue2" />
+          <ScalarProperty Name="OptialWorkPartialRepairPrice1" ColumnName="OptialWorkPartialRepairPrice1" />
+          <ScalarProperty Name="OptialWorkPartialRepairValue1" ColumnName="OptialWorkPartialRepairValue1" />
+          <ScalarProperty Name="Overhaul" ColumnName="Overhaul" />
+          <ScalarProperty Name="ServiceMinimumChargePrice" ColumnName="ServiceMinimumChargePrice" />
+          <ScalarProperty Name="ServiceMinimumChargeDecline" ColumnName="ServiceMinimumChargeDecline" />
+          <ScalarProperty Name="ServiceMinimumChargeValue" ColumnName="ServiceMinimumChargeValue" />
+          <ScalarProperty Name="EstimateFeePrice" ColumnName="EstimateFeePrice" />
+          <ScalarProperty Name="EstimateFeeDecline" ColumnName="EstimateFeeDecline" />
+          <ScalarProperty Name="EstimateFeeValue" ColumnName="EstimateFeeValue" />
+          <ScalarProperty Name="ShippingToEuropePrice" ColumnName="ShippingToEuropePrice" />
+          <ScalarProperty Name="ShippingToEuropeDecline" ColumnName="ShippingToEuropeDecline" />
+          <ScalarProperty Name="ShippingToEuropeValue" ColumnName="ShippingToEuropeValue" />
+          <ScalarProperty Name="ShippingToServiceCenterPrice" ColumnName="ShippingToServiceCenterPrice" />
+          <ScalarProperty Name="ShippingToServiceCenterDecline" ColumnName="ShippingToServiceCenterDecline" />
+          <ScalarProperty Name="ShippingToServiceCenterValue" ColumnName="ShippingToServiceCenterValue" />
+          <ScalarProperty Name="thirdHomePhoneExtension" ColumnName="thirdHomePhoneExtension" />
+          <ScalarProperty Name="secHomePhoneExtension" ColumnName="secHomePhoneExtension" />
+          <ScalarProperty Name="priHomePhoneExtension" ColumnName="priHomePhoneExtension" />
+          <ScalarProperty Name="SpouselastName" ColumnName="SpouselastName" />
+          <ScalarProperty Name="SpousemiddleInitial" ColumnName="SpousemiddleInitial" />
+          <ScalarProperty Name="SpousefirstName" ColumnName="SpousefirstName" />
+          <ScalarProperty Name="SpouseTitle" ColumnName="SpouseTitle" />
+          <ScalarProperty Name="SpouseRelation" ColumnName="SpouseRelation" />
+          <ScalarProperty Name="thirdCreditCardSecurity" ColumnName="thirdCreditCardSecurity" />
+          <ScalarProperty Name="thirdCreditCardExpYear" ColumnName="thirdCreditCardExpYear" />
+          <ScalarProperty Name="thirdCreditCardExpMonth" ColumnName="thirdCreditCardExpMonth" />
+          <ScalarProperty Name="thirdCreditCardSegment4" ColumnName="thirdCreditCardSegment4" />
+          <ScalarProperty Name="thirdCreditCardSegment3" ColumnName="thirdCreditCardSegment3" />
+          <ScalarProperty Name="thirdCreditCardSegment2" ColumnName="thirdCreditCardSegment2" />
+          <ScalarProperty Name="thirdCreditCardSegment1" ColumnName="thirdCreditCardSegment1" />
+          <ScalarProperty Name="thirdEMailAddress2" ColumnName="thirdEMailAddress2" />
+          <ScalarProperty Name="thirdEMailAddress" ColumnName="thirdEMailAddress" />
+          <ScalarProperty Name="thirdFaxSegment3" ColumnName="thirdFaxSegment3" />
+          <ScalarProperty Name="thirdFaxSegment2" ColumnName="thirdFaxSegment2" />
+          <ScalarProperty Name="thirdFaxSegment1" ColumnName="thirdFaxSegment1" />
+          <ScalarProperty Name="thirdCellphoneSegment3" ColumnName="thirdCellphoneSegment3" />
+          <ScalarProperty Name="thirdCellphoneSegment2" ColumnName="thirdCellphoneSegment2" />
+          <ScalarProperty Name="thirdCellphoneSegment1" ColumnName="thirdCellphoneSegment1" />
+          <ScalarProperty Name="thirdAssistanatExtension" ColumnName="thirdAssistanatExtension" />
+          <ScalarProperty Name="thirdAssistanatSegment3" ColumnName="thirdAssistanatSegment3" />
+          <ScalarProperty Name="thirdAssistanatSegment2" ColumnName="thirdAssistanatSegment2" />
+          <ScalarProperty Name="thirdAssistanatSegment1" ColumnName="thirdAssistanatSegment1" />
+          <ScalarProperty Name="thirdHomephoneSegment3" ColumnName="thirdHomephoneSegment3" />
+          <ScalarProperty Name="thirdHomephoneSegment2" ColumnName="thirdHomephoneSegment2" />
+          <ScalarProperty Name="thirdHomephoneSegment1" ColumnName="thirdHomephoneSegment1" />
+          <ScalarProperty Name="thirdTelephoneExtension" ColumnName="thirdTelephoneExtension" />
+          <ScalarProperty Name="thirdTelephoneSegment3" ColumnName="thirdTelephoneSegment3" />
+          <ScalarProperty Name="thirdTelephoneSegment2" ColumnName="thirdTelephoneSegment2" />
+          <ScalarProperty Name="thirdTelephoneSegment1" ColumnName="thirdTelephoneSegment1" />
+          <ScalarProperty Name="thirdCountry" ColumnName="thirdCountry" />
+          <ScalarProperty Name="thirdZipCodePlusFour" ColumnName="thirdZipCodePlusFour" />
+          <ScalarProperty Name="thirdZipCode" ColumnName="thirdZipCode" />
+          <ScalarProperty Name="thirdState" ColumnName="thirdState" />
+          <ScalarProperty Name="thirdCity" ColumnName="thirdCity" />
+          <ScalarProperty Name="thirdAddressLine2" ColumnName="thirdAddressLine2" />
+          <ScalarProperty Name="thirdAddressLine1" ColumnName="thirdAddressLine1" />
+          <ScalarProperty Name="thirdCompany" ColumnName="thirdCompany" />
+          <ScalarProperty Name="priEMailAddress2" ColumnName="priEMailAddress2" />
+          <ScalarProperty Name="priAssistanatExtension" ColumnName="priAssistanatExtension" />
+          <ScalarProperty Name="priAssistanatSegment3" ColumnName="priAssistanatSegment3" />
+          <ScalarProperty Name="priAssistanatSegment2" ColumnName="priAssistanatSegment2" />
+          <ScalarProperty Name="priAssistanatSegment1" ColumnName="priAssistanatSegment1" />
+          <ScalarProperty Name="priHomephoneSegment3" ColumnName="priHomephoneSegment3" />
+          <ScalarProperty Name="priHomephoneSegment2" ColumnName="priHomephoneSegment2" />
+          <ScalarProperty Name="priHomephoneSegment1" ColumnName="priHomephoneSegment1" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="customerType" ColumnName="customerType" />
+          <ScalarProperty Name="contactPreference" ColumnName="contactPreference" />
+          <ScalarProperty Name="secCreditCardSecurity" ColumnName="secCreditCardSecurity" />
+          <ScalarProperty Name="secCreditCardExpYear" ColumnName="secCreditCardExpYear" />
+          <ScalarProperty Name="secCreditCardExpMonth" ColumnName="secCreditCardExpMonth" />
+          <ScalarProperty Name="secCreditCardSegment4" ColumnName="secCreditCardSegment4" />
+          <ScalarProperty Name="secCreditCardSegment3" ColumnName="secCreditCardSegment3" />
+          <ScalarProperty Name="secCreditCardSegment2" ColumnName="secCreditCardSegment2" />
+          <ScalarProperty Name="secCreditCardSegment1" ColumnName="secCreditCardSegment1" />
+          <ScalarProperty Name="priCreditCardSecurity" ColumnName="priCreditCardSecurity" />
+          <ScalarProperty Name="priCreditCardExpYear" ColumnName="priCreditCardExpYear" />
+          <ScalarProperty Name="priCreditCardExpMonth" ColumnName="priCreditCardExpMonth" />
+          <ScalarProperty Name="priCreditCardSegment4" ColumnName="priCreditCardSegment4" />
+          <ScalarProperty Name="priCreditCardSegment3" ColumnName="priCreditCardSegment3" />
+          <ScalarProperty Name="priCreditCardSegment2" ColumnName="priCreditCardSegment2" />
+          <ScalarProperty Name="priCreditCardSegment1" ColumnName="priCreditCardSegment1" />
+          <ScalarProperty Name="secEmailAddress2" ColumnName="secEmailAddress2" />
+          <ScalarProperty Name="secEMailAddress" ColumnName="secEMailAddress" />
+          <ScalarProperty Name="secFaxSegment3" ColumnName="secFaxSegment3" />
+          <ScalarProperty Name="secFaxSegment2" ColumnName="secFaxSegment2" />
+          <ScalarProperty Name="secFaxSegment1" ColumnName="secFaxSegment1" />
+          <ScalarProperty Name="secCellphoneSegment3" ColumnName="secCellphoneSegment3" />
+          <ScalarProperty Name="secCellphoneSegment2" ColumnName="secCellphoneSegment2" />
+          <ScalarProperty Name="secCellphoneSegment1" ColumnName="secCellphoneSegment1" />
+          <ScalarProperty Name="secAssistanatExtension" ColumnName="secAssistanatExtension" />
+          <ScalarProperty Name="secAssistanatSegment3" ColumnName="secAssistanatSegment3" />
+          <ScalarProperty Name="secAssistanatSegment2" ColumnName="secAssistanatSegment2" />
+          <ScalarProperty Name="secAssistanatSegment1" ColumnName="secAssistanatSegment1" />
+          <ScalarProperty Name="secHomephoneSegment3" ColumnName="secHomephoneSegment3" />
+          <ScalarProperty Name="secHomephoneSegment2" ColumnName="secHomephoneSegment2" />
+          <ScalarProperty Name="secHomephoneSegment1" ColumnName="secHomephoneSegment1" />
+          <ScalarProperty Name="secTelephoneExtension" ColumnName="secTelephoneExtension" />
+          <ScalarProperty Name="secTelephoneSegment3" ColumnName="secTelephoneSegment3" />
+          <ScalarProperty Name="secTelephoneSegment2" ColumnName="secTelephoneSegment2" />
+          <ScalarProperty Name="secTelephoneSegment1" ColumnName="secTelephoneSegment1" />
+          <ScalarProperty Name="secCountry" ColumnName="secCountry" />
+          <ScalarProperty Name="secZipCodePlusFour" ColumnName="secZipCodePlusFour" />
+          <ScalarProperty Name="secZipCode" ColumnName="secZipCode" />
+          <ScalarProperty Name="secState" ColumnName="secState" />
+          <ScalarProperty Name="secCity" ColumnName="secCity" />
+          <ScalarProperty Name="secAddressLine2" ColumnName="secAddressLine2" />
+          <ScalarProperty Name="secAddressLine1" ColumnName="secAddressLine1" />
+          <ScalarProperty Name="secCompany" ColumnName="secCompany" />
+          <ScalarProperty Name="priEMailAddress" ColumnName="priEMailAddress" />
+          <ScalarProperty Name="priFaxSegment3" ColumnName="priFaxSegment3" />
+          <ScalarProperty Name="priFaxSegment2" ColumnName="priFaxSegment2" />
+          <ScalarProperty Name="priFaxSegment1" ColumnName="priFaxSegment1" />
+          <ScalarProperty Name="priCellphoneSegment3" ColumnName="priCellphoneSegment3" />
+          <ScalarProperty Name="priCellphoneSegment2" ColumnName="priCellphoneSegment2" />
+          <ScalarProperty Name="priCellphoneSegment1" ColumnName="priCellphoneSegment1" />
+          <ScalarProperty Name="priTelephoneExtension" ColumnName="priTelephoneExtension" />
+          <ScalarProperty Name="priTelephoneSegment3" ColumnName="priTelephoneSegment3" />
+          <ScalarProperty Name="priTelephoneSegment2" ColumnName="priTelephoneSegment2" />
+          <ScalarProperty Name="priTelephoneSegment1" ColumnName="priTelephoneSegment1" />
+          <ScalarProperty Name="priCountry" ColumnName="priCountry" />
+          <ScalarProperty Name="priZipCodePlusFour" ColumnName="priZipCodePlusFour" />
+          <ScalarProperty Name="priZipCode" ColumnName="priZipCode" />
+          <ScalarProperty Name="priState" ColumnName="priState" />
+          <ScalarProperty Name="priCity" ColumnName="priCity" />
+          <ScalarProperty Name="priAddressLine2" ColumnName="priAddressLine2" />
+          <ScalarProperty Name="priAddressLine1" ColumnName="priAddressLine1" />
+          <ScalarProperty Name="priCompany" ColumnName="priCompany" />
+          <ScalarProperty Name="asstRelation" ColumnName="asstRelation" />
+          <ScalarProperty Name="asstLastName" ColumnName="asstLastName" />
+          <ScalarProperty Name="asstMiddleInitial" ColumnName="asstMiddleInitial" />
+          <ScalarProperty Name="asstFirstName" ColumnName="asstFirstName" />
+          <ScalarProperty Name="asstTitle" ColumnName="asstTitle" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="middleInitial" ColumnName="middleInitial" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="entryDate" ColumnName="entryDate" />
+          <ScalarProperty Name="customerNumber" ColumnName="customerNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpCustomerTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpCustomerType">
+        <MappingFragment StoreEntitySet="wmpCustomerType">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="customerType" ColumnName="customerType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpDestinationTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpDestinationType">
+        <MappingFragment StoreEntitySet="wmpDestinationType">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="destinationType" ColumnName="destinationType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpDialConditions">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpDialCondition">
+        <MappingFragment StoreEntitySet="wmpDialCondition">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="condition" ColumnName="condition" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpDialTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpDialType">
+        <MappingFragment StoreEntitySet="wmpDialType">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="dialType" ColumnName="dialType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpDocuments">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpDocument">
+        <MappingFragment StoreEntitySet="wmpDocument">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="eMail" ColumnName="eMail" />
+          <ScalarProperty Name="print" ColumnName="print" />
+          <ScalarProperty Name="paperType" ColumnName="paperType" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="fileName" ColumnName="fileName" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="shortName" ColumnName="shortName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpEmployees">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpEmployee">
+        <MappingFragment StoreEntitySet="wmpEmployee">
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="employeeLastName" ColumnName="employeeLastName" />
+          <ScalarProperty Name="employeeFirstName" ColumnName="employeeFirstName" />
+          <ScalarProperty Name="employee" ColumnName="employee" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpEngravingCapitalizations">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpEngravingCapitalization">
+        <MappingFragment StoreEntitySet="wmpEngravingCapitalization">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="capitalization" ColumnName="capitalization" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpEngravingFonts">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpEngravingFont">
+        <MappingFragment StoreEntitySet="wmpEngravingFont">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="font" ColumnName="font" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpErrorLogs">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpErrorLog">
+        <MappingFragment StoreEntitySet="wmpErrorLog">
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpFileAttachments">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpFileAttachment">
+        <MappingFragment StoreEntitySet="wmpFileAttachment">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="fullPath" ColumnName="fullPath" />
+          <ScalarProperty Name="fileName" ColumnName="fileName" />
+          <ScalarProperty Name="dateStamp" ColumnName="dateStamp" />
+          <ScalarProperty Name="repairNumber" ColumnName="repairNumber" />
+          <ScalarProperty Name="fileNumber" ColumnName="fileNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpIDSecurities">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpIDSecurity">
+        <MappingFragment StoreEntitySet="wmpIDSecurity">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="idSecurity" ColumnName="idSecurity" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpImportStatus">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpImportStatu">
+        <MappingFragment StoreEntitySet="wmpImportStatus">
+          <ScalarProperty Name="ImportedRecords" ColumnName="ImportedRecords" />
+          <ScalarProperty Name="TotalRecords" ColumnName="TotalRecords" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpItems">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpItem">
+        <MappingFragment StoreEntitySet="wmpItem">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpLastRecordSets">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpLastRecordSet">
+        <MappingFragment StoreEntitySet="wmpLastRecordSet">
+          <ScalarProperty Name="DateStamp" ColumnName="DateStamp" />
+          <ScalarProperty Name="OwnderId" ColumnName="OwnderId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RepairNumber" ColumnName="RepairNumber" />
+          <ScalarProperty Name="CustomerNumber" ColumnName="CustomerNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpLugsConditions">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpLugsCondition">
+        <MappingFragment StoreEntitySet="wmpLugsCondition">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="condition" ColumnName="condition" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpMailBoxes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpMailBox">
+        <MappingFragment StoreEntitySet="wmpMailBox">
+          <ScalarProperty Name="HaveAttachment" ColumnName="HaveAttachment" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+          <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="MessageNumber" ColumnName="MessageNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpMailBoxEmailAddresses">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpMailBoxEmailAddress">
+        <MappingFragment StoreEntitySet="wmpMailBoxEmailAddress">
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="MailRelId" ColumnName="MailRelId" />
+          <ScalarProperty Name="HasValidMailAddress" ColumnName="HasValidMailAddress" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpMenuMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpMenuMaster">
+        <MappingFragment StoreEntitySet="wmpMenuMaster">
+          <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+          <ScalarProperty Name="MenuIndex" ColumnName="MenuIndex" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="parentID" ColumnName="parentID" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="PageID" ColumnName="PageID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpMovementTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpMovementType">
+        <MappingFragment StoreEntitySet="wmpMovementType">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="movementType" ColumnName="movementType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpMVCAuthenticationRights">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpMVCAuthenticationRight">
+        <MappingFragment StoreEntitySet="wmpMVCAuthenticationRights">
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="MenuIndex" ColumnName="MenuIndex" />
+          <ScalarProperty Name="cssClass" ColumnName="cssClass" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MenuText" ColumnName="MenuText" />
+          <ScalarProperty Name="ShowInMenu" ColumnName="ShowInMenu" />
+          <ScalarProperty Name="OnlyForCompanyUsers" ColumnName="OnlyForCompanyUsers" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="OtherFunctions" ColumnName="OtherFunctions" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="RightFor" ColumnName="RightFor" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpPrintSettings">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpPrintSetting">
+        <MappingFragment StoreEntitySet="wmpPrintSetting">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PaperLeftMargin" ColumnName="PaperLeftMargin" />
+          <ScalarProperty Name="PaperBottomMargin" ColumnName="PaperBottomMargin" />
+          <ScalarProperty Name="PaperRightMargin" ColumnName="PaperRightMargin" />
+          <ScalarProperty Name="PaperTopMargin" ColumnName="PaperTopMargin" />
+          <ScalarProperty Name="SettingID" ColumnName="SettingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpPurchaseLocations">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpPurchaseLocation">
+        <MappingFragment StoreEntitySet="wmpPurchaseLocation">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="mainContactEMailAddress" ColumnName="mainContactEMailAddress" />
+          <ScalarProperty Name="mainContactFaxSegment3" ColumnName="mainContactFaxSegment3" />
+          <ScalarProperty Name="mainContactFaxSegment2" ColumnName="mainContactFaxSegment2" />
+          <ScalarProperty Name="mainContactFaxSegment1" ColumnName="mainContactFaxSegment1" />
+          <ScalarProperty Name="mainContactTelephoneExtension" ColumnName="mainContactTelephoneExtension" />
+          <ScalarProperty Name="mainContactTelephoneSegment3" ColumnName="mainContactTelephoneSegment3" />
+          <ScalarProperty Name="mainContactTelephoneSegment2" ColumnName="mainContactTelephoneSegment2" />
+          <ScalarProperty Name="mainContactTelephoneSegment1" ColumnName="mainContactTelephoneSegment1" />
+          <ScalarProperty Name="mainContact" ColumnName="mainContact" />
+          <ScalarProperty Name="mainEMailAddress" ColumnName="mainEMailAddress" />
+          <ScalarProperty Name="mainFaxSegment3" ColumnName="mainFaxSegment3" />
+          <ScalarProperty Name="mainFaxSegment2" ColumnName="mainFaxSegment2" />
+          <ScalarProperty Name="mainFaxSegment1" ColumnName="mainFaxSegment1" />
+          <ScalarProperty Name="mainTelephoneExtension" ColumnName="mainTelephoneExtension" />
+          <ScalarProperty Name="mainTelephoneSegment3" ColumnName="mainTelephoneSegment3" />
+          <ScalarProperty Name="mainTelephoneSegment2" ColumnName="mainTelephoneSegment2" />
+          <ScalarProperty Name="mainTelephoneSegment1" ColumnName="mainTelephoneSegment1" />
+          <ScalarProperty Name="mainCountry" ColumnName="mainCountry" />
+          <ScalarProperty Name="mainZipCodePlusFour" ColumnName="mainZipCodePlusFour" />
+          <ScalarProperty Name="mainZipCode" ColumnName="mainZipCode" />
+          <ScalarProperty Name="mainState" ColumnName="mainState" />
+          <ScalarProperty Name="mainCity" ColumnName="mainCity" />
+          <ScalarProperty Name="mainAddressLine2" ColumnName="mainAddressLine2" />
+          <ScalarProperty Name="mainAddressLine1" ColumnName="mainAddressLine1" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpRecentRepairs">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpRecentRepair">
+        <MappingFragment StoreEntitySet="wmpRecentRepair">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ticketNumber" ColumnName="ticketNumber" />
+          <ScalarProperty Name="repairNumber" ColumnName="repairNumber" />
+          <ScalarProperty Name="viewDate" ColumnName="viewDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpRepairs">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpRepair">
+        <MappingFragment StoreEntitySet="wmpRepair">
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="SupplierdueDateTime" ColumnName="SupplierdueDateTime" />
+          <ScalarProperty Name="SupplierdueDateStartDate" ColumnName="SupplierdueDateStartDate" />
+          <ScalarProperty Name="PickupPersonLastName" ColumnName="PickupPersonLastName" />
+          <ScalarProperty Name="PickupPersonFirstName" ColumnName="PickupPersonFirstName" />
+          <ScalarProperty Name="SupplierDueDate" ColumnName="SupplierDueDate" />
+          <ScalarProperty Name="WarrantyRepair" ColumnName="WarrantyRepair" />
+          <ScalarProperty Name="ClientComments" ColumnName="ClientComments" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="dateShipped" ColumnName="dateShipped" />
+          <ScalarProperty Name="datePickedUp" ColumnName="datePickedUp" />
+          <ScalarProperty Name="datePickupNotification" ColumnName="datePickupNotification" />
+          <ScalarProperty Name="dateRepairDelay" ColumnName="dateRepairDelay" />
+          <ScalarProperty Name="dateRepairStatus" ColumnName="dateRepairStatus" />
+          <ScalarProperty Name="dateProceedWithService" ColumnName="dateProceedWithService" />
+          <ScalarProperty Name="dateReturnUndone" ColumnName="dateReturnUndone" />
+          <ScalarProperty Name="dateRepairOfferReminder" ColumnName="dateRepairOfferReminder" />
+          <ScalarProperty Name="dateRepairOffer" ColumnName="dateRepairOffer" />
+          <ScalarProperty Name="dateProceedToFactory" ColumnName="dateProceedToFactory" />
+          <ScalarProperty Name="dateReminderToFactory" ColumnName="dateReminderToFactory" />
+          <ScalarProperty Name="dateAuthToFactoryNoCharge" ColumnName="dateAuthToFactoryNoCharge" />
+          <ScalarProperty Name="dateAuthToFactoryCharge" ColumnName="dateAuthToFactoryCharge" />
+          <ScalarProperty Name="dateServiceRequestStatus" ColumnName="dateServiceRequestStatus" />
+          <ScalarProperty Name="dateServiceRequest" ColumnName="dateServiceRequest" />
+          <ScalarProperty Name="dateEstimateRequestStatus" ColumnName="dateEstimateRequestStatus" />
+          <ScalarProperty Name="dateEstimateRequest" ColumnName="dateEstimateRequest" />
+          <ScalarProperty Name="dateReceivedByMessenger" ColumnName="dateReceivedByMessenger" />
+          <ScalarProperty Name="dateReceivedByMail" ColumnName="dateReceivedByMail" />
+          <ScalarProperty Name="strapOrderNotes" ColumnName="strapOrderNotes" />
+          <ScalarProperty Name="strapSpecOrd1200" ColumnName="strapSpecOrd1200" />
+          <ScalarProperty Name="strapSpecOrd600" ColumnName="strapSpecOrd600" />
+          <ScalarProperty Name="strapAccessories" ColumnName="strapAccessories" />
+          <ScalarProperty Name="strapThicknessType" ColumnName="strapThicknessType" />
+          <ScalarProperty Name="strapStitchType" ColumnName="strapStitchType" />
+          <ScalarProperty Name="strapLusterType" ColumnName="strapLusterType" />
+          <ScalarProperty Name="strapTextureType" ColumnName="strapTextureType" />
+          <ScalarProperty Name="strapLength" ColumnName="strapLength" />
+          <ScalarProperty Name="strapBuckle" ColumnName="strapBuckle" />
+          <ScalarProperty Name="strapWidth" ColumnName="strapWidth" />
+          <ScalarProperty Name="strapColor" ColumnName="strapColor" />
+          <ScalarProperty Name="strapMaterialType" ColumnName="strapMaterialType" />
+          <ScalarProperty Name="sparePartsOrderNotes" ColumnName="sparePartsOrderNotes" />
+          <ScalarProperty Name="sparePartsDescription8" ColumnName="sparePartsDescription8" />
+          <ScalarProperty Name="sparePartsPartNumber8" ColumnName="sparePartsPartNumber8" />
+          <ScalarProperty Name="sparePartsQuantity8" ColumnName="sparePartsQuantity8" />
+          <ScalarProperty Name="sparePartsDescription7" ColumnName="sparePartsDescription7" />
+          <ScalarProperty Name="sparePartsPartNumber7" ColumnName="sparePartsPartNumber7" />
+          <ScalarProperty Name="sparePartsQuantity7" ColumnName="sparePartsQuantity7" />
+          <ScalarProperty Name="sparePartsDescription6" ColumnName="sparePartsDescription6" />
+          <ScalarProperty Name="sparePartsPartNumber6" ColumnName="sparePartsPartNumber6" />
+          <ScalarProperty Name="sparePartsQuantity6" ColumnName="sparePartsQuantity6" />
+          <ScalarProperty Name="sparePartsDescription5" ColumnName="sparePartsDescription5" />
+          <ScalarProperty Name="sparePartsPartNumber5" ColumnName="sparePartsPartNumber5" />
+          <ScalarProperty Name="sparePartsQuantity5" ColumnName="sparePartsQuantity5" />
+          <ScalarProperty Name="sparePartsDescription4" ColumnName="sparePartsDescription4" />
+          <ScalarProperty Name="sparePartsPartNumber4" ColumnName="sparePartsPartNumber4" />
+          <ScalarProperty Name="sparePartsQuantity4" ColumnName="sparePartsQuantity4" />
+          <ScalarProperty Name="sparePartsDescription3" ColumnName="sparePartsDescription3" />
+          <ScalarProperty Name="sparePartsPartNumber3" ColumnName="sparePartsPartNumber3" />
+          <ScalarProperty Name="sparePartsQuantity3" ColumnName="sparePartsQuantity3" />
+          <ScalarProperty Name="sparePartsDescription2" ColumnName="sparePartsDescription2" />
+          <ScalarProperty Name="sparePartsPartNumber2" ColumnName="sparePartsPartNumber2" />
+          <ScalarProperty Name="sparePartsQuantity2" ColumnName="sparePartsQuantity2" />
+          <ScalarProperty Name="sparePartsDescription1" ColumnName="sparePartsDescription1" />
+          <ScalarProperty Name="sparePartsPartNumber1" ColumnName="sparePartsPartNumber1" />
+          <ScalarProperty Name="sparePartsQuantity1" ColumnName="sparePartsQuantity1" />
+          <ScalarProperty Name="shippingToSupplierExpectedArrivalDate" ColumnName="shippingToSupplierExpectedArrivalDate" />
+          <ScalarProperty Name="shippingToSupplierMailingDate" ColumnName="shippingToSupplierMailingDate" />
+          <ScalarProperty Name="shippingToSupplierShippingType" ColumnName="shippingToSupplierShippingType" />
+          <ScalarProperty Name="shippingToSupplierCarrier" ColumnName="shippingToSupplierCarrier" />
+          <ScalarProperty Name="shippingToSupplierDestinationType" ColumnName="shippingToSupplierDestinationType" />
+          <ScalarProperty Name="shippingToSupplierSalesperson" ColumnName="shippingToSupplierSalesperson" />
+          <ScalarProperty Name="shippingToSupplierInsurance" ColumnName="shippingToSupplierInsurance" />
+          <ScalarProperty Name="shippingToSupplierValue" ColumnName="shippingToSupplierValue" />
+          <ScalarProperty Name="shippingToCustomerExpectedArrivalDate" ColumnName="shippingToCustomerExpectedArrivalDate" />
+          <ScalarProperty Name="shippingToCustomerMailingDate" ColumnName="shippingToCustomerMailingDate" />
+          <ScalarProperty Name="shippingToCustomerShippingType" ColumnName="shippingToCustomerShippingType" />
+          <ScalarProperty Name="shippingToCustomerCarrier" ColumnName="shippingToCustomerCarrier" />
+          <ScalarProperty Name="shippingToCustomerDestinationType" ColumnName="shippingToCustomerDestinationType" />
+          <ScalarProperty Name="shippingToCustomerSalesperson" ColumnName="shippingToCustomerSalesperson" />
+          <ScalarProperty Name="shippingToCustomerInsurance" ColumnName="shippingToCustomerInsurance" />
+          <ScalarProperty Name="shippingToCustomerValue" ColumnName="shippingToCustomerValue" />
+          <ScalarProperty Name="letterToCustomer" ColumnName="letterToCustomer" />
+          <ScalarProperty Name="notesToFactory" ColumnName="notesToFactory" />
+          <ScalarProperty Name="notesToCustomer" ColumnName="notesToCustomer" />
+          <ScalarProperty Name="repairComments" ColumnName="repairComments" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="tax" ColumnName="tax" />
+          <ScalarProperty Name="taxable" ColumnName="taxable" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="task1And2Combined" ColumnName="task1And2Combined" />
+          <ScalarProperty Name="shipping" ColumnName="shipping" />
+          <ScalarProperty Name="task7Decline" ColumnName="task7Decline" />
+          <ScalarProperty Name="task7Price" ColumnName="task7Price" />
+          <ScalarProperty Name="task7Description" ColumnName="task7Description" />
+          <ScalarProperty Name="task6Decline" ColumnName="task6Decline" />
+          <ScalarProperty Name="task6Price" ColumnName="task6Price" />
+          <ScalarProperty Name="task6Description" ColumnName="task6Description" />
+          <ScalarProperty Name="task5Decline" ColumnName="task5Decline" />
+          <ScalarProperty Name="task5Price" ColumnName="task5Price" />
+          <ScalarProperty Name="task5Description" ColumnName="task5Description" />
+          <ScalarProperty Name="task4Decline" ColumnName="task4Decline" />
+          <ScalarProperty Name="task4Price" ColumnName="task4Price" />
+          <ScalarProperty Name="task4Description" ColumnName="task4Description" />
+          <ScalarProperty Name="task3Decline" ColumnName="task3Decline" />
+          <ScalarProperty Name="task3Price" ColumnName="task3Price" />
+          <ScalarProperty Name="task3Description" ColumnName="task3Description" />
+          <ScalarProperty Name="task2Decline" ColumnName="task2Decline" />
+          <ScalarProperty Name="task2Price" ColumnName="task2Price" />
+          <ScalarProperty Name="task2Description" ColumnName="task2Description" />
+          <ScalarProperty Name="task1Decline" ColumnName="task1Decline" />
+          <ScalarProperty Name="task1Price" ColumnName="task1Price" />
+          <ScalarProperty Name="task1Description" ColumnName="task1Description" />
+          <ScalarProperty Name="notesToEngraver" ColumnName="notesToEngraver" />
+          <ScalarProperty Name="engravingMessage" ColumnName="engravingMessage" />
+          <ScalarProperty Name="engravingCapitalizationId" ColumnName="engravingCapitalizationId" />
+          <ScalarProperty Name="engravingFontId" ColumnName="engravingFontId" />
+          <ScalarProperty Name="appraiserTitleId" ColumnName="appraiserTitleId" />
+          <ScalarProperty Name="appraiserId" ColumnName="appraiserId" />
+          <ScalarProperty Name="appraisalComments" ColumnName="appraisalComments" />
+          <ScalarProperty Name="appraisalValue" ColumnName="appraisalValue" />
+          <ScalarProperty Name="factoryDelayReason" ColumnName="factoryDelayReason" />
+          <ScalarProperty Name="factoryDelayType" ColumnName="factoryDelayType" />
+          <ScalarProperty Name="factoryDelayTime" ColumnName="factoryDelayTime" />
+          <ScalarProperty Name="authorizedPickup" ColumnName="authorizedPickup" />
+          <ScalarProperty Name="idSecurityId" ColumnName="idSecurityId" />
+          <ScalarProperty Name="wempePreviousRepairNumber" ColumnName="wempePreviousRepairNumber" />
+          <ScalarProperty Name="supplierPreviousRepairNumber" ColumnName="supplierPreviousRepairNumber" />
+          <ScalarProperty Name="dueDateFactory" ColumnName="dueDateFactory" />
+          <ScalarProperty Name="dueDateFactoryType" ColumnName="dueDateFactoryType" />
+          <ScalarProperty Name="dueDateFactoryTime" ColumnName="dueDateFactoryTime" />
+          <ScalarProperty Name="dueDateFactoryStartDate" ColumnName="dueDateFactoryStartDate" />
+          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+          <ScalarProperty Name="dueDateType" ColumnName="dueDateType" />
+          <ScalarProperty Name="dueDateTime" ColumnName="dueDateTime" />
+          <ScalarProperty Name="dueDateStartDate" ColumnName="dueDateStartDate" />
+          <ScalarProperty Name="repairTypeId" ColumnName="repairTypeId" />
+          <ScalarProperty Name="supplierPickupNumber" ColumnName="supplierPickupNumber" />
+          <ScalarProperty Name="supplierRepairNumber" ColumnName="supplierRepairNumber" />
+          <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+          <ScalarProperty Name="giftCertATNumber" ColumnName="giftCertATNumber" />
+          <ScalarProperty Name="boxIncludedId" ColumnName="boxIncludedId" />
+          <ScalarProperty Name="warrantyDocumentId" ColumnName="warrantyDocumentId" />
+          <ScalarProperty Name="wempeInventoryNumber" ColumnName="wempeInventoryNumber" />
+          <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+          <ScalarProperty Name="purchaseLocationId" ColumnName="purchaseLocationId" />
+          <ScalarProperty Name="numberOfJewels" ColumnName="numberOfJewels" />
+          <ScalarProperty Name="caliber" ColumnName="caliber" />
+          <ScalarProperty Name="movementSerialNumber" ColumnName="movementSerialNumber" />
+          <ScalarProperty Name="referenceNumber" ColumnName="referenceNumber" />
+          <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+          <ScalarProperty Name="dialConditionId" ColumnName="dialConditionId" />
+          <ScalarProperty Name="buckleConditionId" ColumnName="buckleConditionId" />
+          <ScalarProperty Name="bandConditionId" ColumnName="bandConditionId" />
+          <ScalarProperty Name="caseConditionId" ColumnName="caseConditionId" />
+          <ScalarProperty Name="lugsConditionId" ColumnName="lugsConditionId" />
+          <ScalarProperty Name="backConditionId" ColumnName="backConditionId" />
+          <ScalarProperty Name="bezelConditionId" ColumnName="bezelConditionId" />
+          <ScalarProperty Name="crystalConditionId" ColumnName="crystalConditionId" />
+          <ScalarProperty Name="dialTypeId" ColumnName="dialTypeId" />
+          <ScalarProperty Name="buckleTypeId" ColumnName="buckleTypeId" />
+          <ScalarProperty Name="bandTypeId" ColumnName="bandTypeId" />
+          <ScalarProperty Name="caseTypeId" ColumnName="caseTypeId" />
+          <ScalarProperty Name="movementTypeId" ColumnName="movementTypeId" />
+          <ScalarProperty Name="styleId" ColumnName="styleId" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+          <ScalarProperty Name="entryDate" ColumnName="entryDate" />
+          <ScalarProperty Name="receiptPrintedFlag" ColumnName="receiptPrintedFlag" />
+          <ScalarProperty Name="statusId" ColumnName="statusId" />
+          <ScalarProperty Name="ticketNumber" ColumnName="ticketNumber" />
+          <ScalarProperty Name="customerNumber" ColumnName="customerNumber" />
+          <ScalarProperty Name="repairNumber" ColumnName="repairNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpRepairLogs">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpRepairLog">
+        <MappingFragment StoreEntitySet="wmpRepairLog">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="changeComment" ColumnName="changeComment" />
+          <ScalarProperty Name="dateStamp" ColumnName="dateStamp" />
+          <ScalarProperty Name="repairNumber" ColumnName="repairNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpRepairSampleTasks">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpRepairSampleTask">
+        <MappingFragment StoreEntitySet="wmpRepairSampleTask">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpRepairTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpRepairType">
+        <MappingFragment StoreEntitySet="wmpRepairType">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="repairType" ColumnName="repairType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpResetPasswords">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpResetPassword">
+        <MappingFragment StoreEntitySet="wmpResetPassword">
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpRoleMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpRoleMaster">
+        <MappingFragment StoreEntitySet="wmpRoleMaster">
+          <ScalarProperty Name="IsMainRole" ColumnName="IsMainRole" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpRoleRelationships">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpRoleRelationship">
+        <MappingFragment StoreEntitySet="wmpRoleRelationship">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpSampleCities">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpSampleCity">
+        <MappingFragment StoreEntitySet="wmpSampleCity">
+          <ScalarProperty Name="CountyID" ColumnName="CountyID" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpShippings">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpShipping">
+        <MappingFragment StoreEntitySet="wmpShipping">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="shippingPrice" ColumnName="shippingPrice" />
+          <ScalarProperty Name="shippingType" ColumnName="shippingType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpShippingTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpShippingType">
+        <MappingFragment StoreEntitySet="wmpShippingType">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="shippingType" ColumnName="shippingType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStates">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpState">
+        <MappingFragment StoreEntitySet="wmpState">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="stateFullName" ColumnName="stateFullName" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStatus">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStatu">
+        <MappingFragment StoreEntitySet="wmpStatus">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="AttrName" ColumnName="AttrName" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="displayOrder" ColumnName="displayOrder" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStolenRepairs">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStolenRepair">
+        <MappingFragment StoreEntitySet="wmpStolenRepair">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStoreInformations">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStoreInformation">
+        <MappingFragment StoreEntitySet="wmpStoreInformation">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="eMailAddress" ColumnName="eMailAddress" />
+          <ScalarProperty Name="faxSegment3" ColumnName="faxSegment3" />
+          <ScalarProperty Name="faxSegment2" ColumnName="faxSegment2" />
+          <ScalarProperty Name="faxSegment1" ColumnName="faxSegment1" />
+          <ScalarProperty Name="telephoneExtension" ColumnName="telephoneExtension" />
+          <ScalarProperty Name="telephoneSegment3" ColumnName="telephoneSegment3" />
+          <ScalarProperty Name="telephoneSegment2" ColumnName="telephoneSegment2" />
+          <ScalarProperty Name="telephoneSegment1" ColumnName="telephoneSegment1" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="addressLine2" ColumnName="addressLine2" />
+          <ScalarProperty Name="addressLine1" ColumnName="addressLine1" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="storeNumber" ColumnName="storeNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStrapAccessories">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStrapAccessory">
+        <MappingFragment StoreEntitySet="wmpStrapAccessories">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="strapAccessories" ColumnName="strapAccessories" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStrapColors">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStrapColor">
+        <MappingFragment StoreEntitySet="wmpStrapColor">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="strapColor" ColumnName="strapColor" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStrapLusterTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStrapLusterType">
+        <MappingFragment StoreEntitySet="wmpStrapLusterType">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="strapLusterType" ColumnName="strapLusterType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStrapStitchTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStrapStitchType">
+        <MappingFragment StoreEntitySet="wmpStrapStitchType">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="strapStitchType" ColumnName="strapStitchType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStrapTextureTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStrapTextureType">
+        <MappingFragment StoreEntitySet="wmpStrapTextureType">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="strapTextureType" ColumnName="strapTextureType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStrapThicknessTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStrapThicknessType">
+        <MappingFragment StoreEntitySet="wmpStrapThicknessType">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="strapThicknessType" ColumnName="strapThicknessType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStyles">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStyle">
+        <MappingFragment StoreEntitySet="wmpStyle">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="style" ColumnName="style" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpSuggestions">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpSuggestion">
+        <MappingFragment StoreEntitySet="wmpSuggestions">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Suggestion" ColumnName="Suggestion" />
+          <ScalarProperty Name="SuggestionId" ColumnName="SuggestionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpSuppliers">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpSupplier">
+        <MappingFragment StoreEntitySet="wmpSupplier">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="billingContactEMailAddress" ColumnName="billingContactEMailAddress" />
+          <ScalarProperty Name="billingContactFaxSegment3" ColumnName="billingContactFaxSegment3" />
+          <ScalarProperty Name="billingContactFaxSegment2" ColumnName="billingContactFaxSegment2" />
+          <ScalarProperty Name="billingContactFaxSegment1" ColumnName="billingContactFaxSegment1" />
+          <ScalarProperty Name="billingContactTelephoneExtension" ColumnName="billingContactTelephoneExtension" />
+          <ScalarProperty Name="billingContactTelephoneSegment3" ColumnName="billingContactTelephoneSegment3" />
+          <ScalarProperty Name="billingContactTelephoneSegment2" ColumnName="billingContactTelephoneSegment2" />
+          <ScalarProperty Name="billingContactTelephoneSegment1" ColumnName="billingContactTelephoneSegment1" />
+          <ScalarProperty Name="billingContact" ColumnName="billingContact" />
+          <ScalarProperty Name="billingWempeAccount" ColumnName="billingWempeAccount" />
+          <ScalarProperty Name="billingStickerCode" ColumnName="billingStickerCode" />
+          <ScalarProperty Name="billingEMailAddress" ColumnName="billingEMailAddress" />
+          <ScalarProperty Name="billingFaxSegment3" ColumnName="billingFaxSegment3" />
+          <ScalarProperty Name="billingFaxSegment2" ColumnName="billingFaxSegment2" />
+          <ScalarProperty Name="billingFaxSegment1" ColumnName="billingFaxSegment1" />
+          <ScalarProperty Name="billingTelephoneExtension" ColumnName="billingTelephoneExtension" />
+          <ScalarProperty Name="billingTelephoneSegment3" ColumnName="billingTelephoneSegment3" />
+          <ScalarProperty Name="billingTelephoneSegment2" ColumnName="billingTelephoneSegment2" />
+          <ScalarProperty Name="billingTelephoneSegment1" ColumnName="billingTelephoneSegment1" />
+          <ScalarProperty Name="billingCountry" ColumnName="billingCountry" />
+          <ScalarProperty Name="billingZipCodePlusFour" ColumnName="billingZipCodePlusFour" />
+          <ScalarProperty Name="billingZipCode" ColumnName="billingZipCode" />
+          <ScalarProperty Name="billingState" ColumnName="billingState" />
+          <ScalarProperty Name="billingCity" ColumnName="billingCity" />
+          <ScalarProperty Name="billingAddressLine2" ColumnName="billingAddressLine2" />
+          <ScalarProperty Name="billingAddressLine1" ColumnName="billingAddressLine1" />
+          <ScalarProperty Name="billingCompany" ColumnName="billingCompany" />
+          <ScalarProperty Name="strapContactEMailAddress" ColumnName="strapContactEMailAddress" />
+          <ScalarProperty Name="strapContactFaxSegment3" ColumnName="strapContactFaxSegment3" />
+          <ScalarProperty Name="strapContactFaxSegment2" ColumnName="strapContactFaxSegment2" />
+          <ScalarProperty Name="strapContactFaxSegment1" ColumnName="strapContactFaxSegment1" />
+          <ScalarProperty Name="strapContactTelephoneExtension" ColumnName="strapContactTelephoneExtension" />
+          <ScalarProperty Name="strapContactTelephoneSegment3" ColumnName="strapContactTelephoneSegment3" />
+          <ScalarProperty Name="strapContactTelephoneSegment2" ColumnName="strapContactTelephoneSegment2" />
+          <ScalarProperty Name="strapContactTelephoneSegment1" ColumnName="strapContactTelephoneSegment1" />
+          <ScalarProperty Name="strapContact" ColumnName="strapContact" />
+          <ScalarProperty Name="strapWempeAccount" ColumnName="strapWempeAccount" />
+          <ScalarProperty Name="strapStickerCode" ColumnName="strapStickerCode" />
+          <ScalarProperty Name="strapEMailAddress" ColumnName="strapEMailAddress" />
+          <ScalarProperty Name="strapFaxSegment3" ColumnName="strapFaxSegment3" />
+          <ScalarProperty Name="strapFaxSegment2" ColumnName="strapFaxSegment2" />
+          <ScalarProperty Name="strapFaxSegment1" ColumnName="strapFaxSegment1" />
+          <ScalarProperty Name="strapTelephoneExtension" ColumnName="strapTelephoneExtension" />
+          <ScalarProperty Name="strapTelephoneSegment3" ColumnName="strapTelephoneSegment3" />
+          <ScalarProperty Name="strapTelephoneSegment2" ColumnName="strapTelephoneSegment2" />
+          <ScalarProperty Name="strapTelephoneSegment1" ColumnName="strapTelephoneSegment1" />
+          <ScalarProperty Name="strapCountry" ColumnName="strapCountry" />
+          <ScalarProperty Name="strapZipCodePlusFour" ColumnName="strapZipCodePlusFour" />
+          <ScalarProperty Name="strapZipCode" ColumnName="strapZipCode" />
+          <ScalarProperty Name="strapState" ColumnName="strapState" />
+          <ScalarProperty Name="strapCity" ColumnName="strapCity" />
+          <ScalarProperty Name="strapAddressLine2" ColumnName="strapAddressLine2" />
+          <ScalarProperty Name="strapAddressLine1" ColumnName="strapAddressLine1" />
+          <ScalarProperty Name="strapCompany" ColumnName="strapCompany" />
+          <ScalarProperty Name="sparePartsContactEMailAddress" ColumnName="sparePartsContactEMailAddress" />
+          <ScalarProperty Name="sparePartsContactFaxSegment3" ColumnName="sparePartsContactFaxSegment3" />
+          <ScalarProperty Name="sparePartsContactFaxSegment2" ColumnName="sparePartsContactFaxSegment2" />
+          <ScalarProperty Name="sparePartsContactFaxSegment1" ColumnName="sparePartsContactFaxSegment1" />
+          <ScalarProperty Name="sparePartsContactTelephoneExtension" ColumnName="sparePartsContactTelephoneExtension" />
+          <ScalarProperty Name="sparePartsContactTelephoneSegment3" ColumnName="sparePartsContactTelephoneSegment3" />
+          <ScalarProperty Name="sparePartsContactTelephoneSegment2" ColumnName="sparePartsContactTelephoneSegment2" />
+          <ScalarProperty Name="sparePartsContactTelephoneSegment1" ColumnName="sparePartsContactTelephoneSegment1" />
+          <ScalarProperty Name="sparePartsContact" ColumnName="sparePartsContact" />
+          <ScalarProperty Name="sparePartsWempeAccount" ColumnName="sparePartsWempeAccount" />
+          <ScalarProperty Name="sparePartsStickerCode" ColumnName="sparePartsStickerCode" />
+          <ScalarProperty Name="sparePartsEMailAddress" ColumnName="sparePartsEMailAddress" />
+          <ScalarProperty Name="sparePartsFaxSegment3" ColumnName="sparePartsFaxSegment3" />
+          <ScalarProperty Name="sparePartsFaxSegment2" ColumnName="sparePartsFaxSegment2" />
+          <ScalarProperty Name="sparePartsFaxSegment1" ColumnName="sparePartsFaxSegment1" />
+          <ScalarProperty Name="sparePartsTelephoneExtension" ColumnName="sparePartsTelephoneExtension" />
+          <ScalarProperty Name="sparePartsTelephoneSegment3" ColumnName="sparePartsTelephoneSegment3" />
+          <ScalarProperty Name="sparePartsTelephoneSegment2" ColumnName="sparePartsTelephoneSegment2" />
+          <ScalarProperty Name="sparePartsTelephoneSegment1" ColumnName="sparePartsTelephoneSegment1" />
+          <ScalarProperty Name="sparePartsCountry" ColumnName="sparePartsCountry" />
+          <ScalarProperty Name="sparePartsZipCodePlusFour" ColumnName="sparePartsZipCodePlusFour" />
+          <ScalarProperty Name="sparePartsZipCode" ColumnName="sparePartsZipCode" />
+          <ScalarProperty Name="sparePartsState" ColumnName="sparePartsState" />
+          <ScalarProperty Name="sparePartsCity" ColumnName="sparePartsCity" />
+          <ScalarProperty Name="sparePartsAddressLine2" ColumnName="sparePartsAddressLine2" />
+          <ScalarProperty Name="sparePartsAddressLine1" ColumnName="sparePartsAddressLine1" />
+          <ScalarProperty Name="sparePartsCompany" ColumnName="sparePartsCompany" />
+          <ScalarProperty Name="mainContactEMailAddress" ColumnName="mainContactEMailAddress" />
+          <ScalarProperty Name="mainContactFaxSegment3" ColumnName="mainContactFaxSegment3" />
+          <ScalarProperty Name="mainContactFaxSegment2" ColumnName="mainContactFaxSegment2" />
+          <ScalarProperty Name="mainContactFaxSegment1" ColumnName="mainContactFaxSegment1" />
+          <ScalarProperty Name="mainContactTelephoneExtension" ColumnName="mainContactTelephoneExtension" />
+          <ScalarProperty Name="mainContactTelephoneSegment3" ColumnName="mainContactTelephoneSegment3" />
+          <ScalarProperty Name="mainContactTelephoneSegment2" ColumnName="mainContactTelephoneSegment2" />
+          <ScalarProperty Name="mainContactTelephoneSegment1" ColumnName="mainContactTelephoneSegment1" />
+          <ScalarProperty Name="mainContact" ColumnName="mainContact" />
+          <ScalarProperty Name="mainWempeAccount" ColumnName="mainWempeAccount" />
+          <ScalarProperty Name="mainStickerCode" ColumnName="mainStickerCode" />
+          <ScalarProperty Name="mainEMailAddress" ColumnName="mainEMailAddress" />
+          <ScalarProperty Name="mainFaxSegment3" ColumnName="mainFaxSegment3" />
+          <ScalarProperty Name="mainFaxSegment2" ColumnName="mainFaxSegment2" />
+          <ScalarProperty Name="mainFaxSegment1" ColumnName="mainFaxSegment1" />
+          <ScalarProperty Name="mainTelephoneExtension" ColumnName="mainTelephoneExtension" />
+          <ScalarProperty Name="mainTelephoneSegment3" ColumnName="mainTelephoneSegment3" />
+          <ScalarProperty Name="mainTelephoneSegment2" ColumnName="mainTelephoneSegment2" />
+          <ScalarProperty Name="mainTelephoneSegment1" ColumnName="mainTelephoneSegment1" />
+          <ScalarProperty Name="mainCountry" ColumnName="mainCountry" />
+          <ScalarProperty Name="mainZipCodePlusFour" ColumnName="mainZipCodePlusFour" />
+          <ScalarProperty Name="mainZipCode" ColumnName="mainZipCode" />
+          <ScalarProperty Name="mainState" ColumnName="mainState" />
+          <ScalarProperty Name="mainCity" ColumnName="mainCity" />
+          <ScalarProperty Name="mainAddressLine2" ColumnName="mainAddressLine2" />
+          <ScalarProperty Name="mainAddressLine1" ColumnName="mainAddressLine1" />
+          <ScalarProperty Name="mainCompany" ColumnName="mainCompany" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpSystems">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpSystem">
+        <MappingFragment StoreEntitySet="wmpSystem">
+          <ScalarProperty Name="mailFromName" ColumnName="mailFromName" />
+          <ScalarProperty Name="mailFrom" ColumnName="mailFrom" />
+          <ScalarProperty Name="mailPassword" ColumnName="mailPassword" />
+          <ScalarProperty Name="mailUsername" ColumnName="mailUsername" />
+          <ScalarProperty Name="mailHost" ColumnName="mailHost" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpTaxRates">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpTaxRate">
+        <MappingFragment StoreEntitySet="wmpTaxRate">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="taxRate" ColumnName="taxRate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpTitles">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpTitle">
+        <MappingFragment StoreEntitySet="wmpTitle">
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpUserMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpUserMaster">
+        <MappingFragment StoreEntitySet="wmpUserMaster">
+          <ScalarProperty Name="IsMainUser" ColumnName="IsMainUser" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpUserTracks">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpUserTrack">
+        <MappingFragment StoreEntitySet="wmpUserTrack">
+          <ScalarProperty Name="LogoutTime" ColumnName="LogoutTime" />
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="Uid" ColumnName="Uid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpWarrantyDocuments">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpWarrantyDocument">
+        <MappingFragment StoreEntitySet="wmpWarrantyDocument">
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="WarrantyDocument" ColumnName="WarrantyDocument" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpWarrantyTypeMasters">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpWarrantyTypeMaster">
+        <MappingFragment StoreEntitySet="wmpWarrantyTypeMaster">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="warrantyType" ColumnName="warrantyType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpWebsitePages">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpWebsitePage">
+        <MappingFragment StoreEntitySet="wmpWebsitePages">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+          <ScalarProperty Name="PageImage" ColumnName="PageImage" />
+          <ScalarProperty Name="footerjavascript" ColumnName="footerjavascript" />
+          <ScalarProperty Name="headerstylescss" ColumnName="headerstylescss" />
+          <ScalarProperty Name="metadescription" ColumnName="metadescription" />
+          <ScalarProperty Name="metakeywords" ColumnName="metakeywords" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="shortdescription" ColumnName="shortdescription" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="PageID" ColumnName="PageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpWebsitePagesLinkings">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpWebsitePagesLinking">
+        <MappingFragment StoreEntitySet="wmpWebsitePagesLinking">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CatID" ColumnName="CatID" />
+          <ScalarProperty Name="PageID" ColumnName="PageID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpZipCodes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpZipCode">
+        <MappingFragment StoreEntitySet="wmpZipCode">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="dbWempeModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="customerType" ColumnName="customerType" />
+          <ScalarProperty Name="contactPreference" ColumnName="contactPreference" />
+          <ScalarProperty Name="secCreditCardExpYear" ColumnName="secCreditCardExpYear" />
+          <ScalarProperty Name="secCreditCardExpMonth" ColumnName="secCreditCardExpMonth" />
+          <ScalarProperty Name="secCreditCardSegment4" ColumnName="secCreditCardSegment4" />
+          <ScalarProperty Name="secCreditCardSegment3" ColumnName="secCreditCardSegment3" />
+          <ScalarProperty Name="secCreditCardSegment2" ColumnName="secCreditCardSegment2" />
+          <ScalarProperty Name="secCreditCardSegment1" ColumnName="secCreditCardSegment1" />
+          <ScalarProperty Name="priCreditCardExpYear" ColumnName="priCreditCardExpYear" />
+          <ScalarProperty Name="priCreditCardExpMonth" ColumnName="priCreditCardExpMonth" />
+          <ScalarProperty Name="priCreditCardSegment4" ColumnName="priCreditCardSegment4" />
+          <ScalarProperty Name="priCreditCardSegment3" ColumnName="priCreditCardSegment3" />
+          <ScalarProperty Name="priCreditCardSegment2" ColumnName="priCreditCardSegment2" />
+          <ScalarProperty Name="priCreditCardSegment1" ColumnName="priCreditCardSegment1" />
+          <ScalarProperty Name="secEMailAddress" ColumnName="secEMailAddress" />
+          <ScalarProperty Name="secFaxSegment3" ColumnName="secFaxSegment3" />
+          <ScalarProperty Name="secFaxSegment2" ColumnName="secFaxSegment2" />
+          <ScalarProperty Name="secFaxSegment1" ColumnName="secFaxSegment1" />
+          <ScalarProperty Name="secCellphoneSegment3" ColumnName="secCellphoneSegment3" />
+          <ScalarProperty Name="secCellphoneSegment2" ColumnName="secCellphoneSegment2" />
+          <ScalarProperty Name="secCellphoneSegment1" ColumnName="secCellphoneSegment1" />
+          <ScalarProperty Name="secTelephoneExtension" ColumnName="secTelephoneExtension" />
+          <ScalarProperty Name="secTelephoneSegment3" ColumnName="secTelephoneSegment3" />
+          <ScalarProperty Name="secTelephoneSegment2" ColumnName="secTelephoneSegment2" />
+          <ScalarProperty Name="secTelephoneSegment1" ColumnName="secTelephoneSegment1" />
+          <ScalarProperty Name="secCountry" ColumnName="secCountry" />
+          <ScalarProperty Name="secZipCodePlusFour" ColumnName="secZipCodePlusFour" />
+          <ScalarProperty Name="secZipCode" ColumnName="secZipCode" />
+          <ScalarProperty Name="secState" ColumnName="secState" />
+          <ScalarProperty Name="secCity" ColumnName="secCity" />
+          <ScalarProperty Name="secAddressLine2" ColumnName="secAddressLine2" />
+          <ScalarProperty Name="secAddressLine1" ColumnName="secAddressLine1" />
+          <ScalarProperty Name="secCompany" ColumnName="secCompany" />
+          <ScalarProperty Name="priEMailAddress" ColumnName="priEMailAddress" />
+          <ScalarProperty Name="priFaxSegment3" ColumnName="priFaxSegment3" />
+          <ScalarProperty Name="priFaxSegment2" ColumnName="priFaxSegment2" />
+          <ScalarProperty Name="priFaxSegment1" ColumnName="priFaxSegment1" />
+          <ScalarProperty Name="priCellphoneSegment3" ColumnName="priCellphoneSegment3" />
+          <ScalarProperty Name="priCellphoneSegment2" ColumnName="priCellphoneSegment2" />
+          <ScalarProperty Name="priCellphoneSegment1" ColumnName="priCellphoneSegment1" />
+          <ScalarProperty Name="priTelephoneExtension" ColumnName="priTelephoneExtension" />
+          <ScalarProperty Name="priTelephoneSegment3" ColumnName="priTelephoneSegment3" />
+          <ScalarProperty Name="priTelephoneSegment2" ColumnName="priTelephoneSegment2" />
+          <ScalarProperty Name="priTelephoneSegment1" ColumnName="priTelephoneSegment1" />
+          <ScalarProperty Name="priCountry" ColumnName="priCountry" />
+          <ScalarProperty Name="priZipCodePlusFour" ColumnName="priZipCodePlusFour" />
+          <ScalarProperty Name="priZipCode" ColumnName="priZipCode" />
+          <ScalarProperty Name="priState" ColumnName="priState" />
+          <ScalarProperty Name="priCity" ColumnName="priCity" />
+          <ScalarProperty Name="priAddressLine2" ColumnName="priAddressLine2" />
+          <ScalarProperty Name="priAddressLine1" ColumnName="priAddressLine1" />
+          <ScalarProperty Name="priCompany" ColumnName="priCompany" />
+          <ScalarProperty Name="asstLastName" ColumnName="asstLastName" />
+          <ScalarProperty Name="asstMiddleInitial" ColumnName="asstMiddleInitial" />
+          <ScalarProperty Name="asstFirstName" ColumnName="asstFirstName" />
+          <ScalarProperty Name="asstTitle" ColumnName="asstTitle" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="middleInitial" ColumnName="middleInitial" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="entryDate" ColumnName="entryDate" />
+          <ScalarProperty Name="customerNumber" ColumnName="customerNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestEntries">
+      <EntityTypeMapping TypeName="dbWempeModel.TestEntry">
+        <MappingFragment StoreEntitySet="TestEntry">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Abbrev" ColumnName="Abbrev" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpBoxIncludeds">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpBoxIncluded">
+        <MappingFragment StoreEntitySet="wmpBoxIncluded">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="boxIncluded" ColumnName="boxIncluded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpStrapLengths">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpStrapLength">
+        <MappingFragment StoreEntitySet="wmpStrapLength">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="strapLength" ColumnName="strapLength" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpstrapMaterialTypes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpstrapMaterialType">
+        <MappingFragment StoreEntitySet="wmpstrapMaterialType">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="MaterialTypeID" ColumnName="MaterialTypeID" />
+          <ScalarProperty Name="strapMaterialType" ColumnName="strapMaterialType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwCustomers">
+      <EntityTypeMapping TypeName="dbWempeModel.vwCustomer">
+        <MappingFragment StoreEntitySet="vwCustomer">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="stateName" ColumnName="stateName" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="priEMailAddress" ColumnName="priEMailAddress" />
+          <ScalarProperty Name="PrimaryPhone" ColumnName="PrimaryPhone" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PrimaryAddress" ColumnName="PrimaryAddress" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="customerNumber" ColumnName="customerNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwRepairs">
+      <EntityTypeMapping TypeName="dbWempeModel.vwRepair">
+        <MappingFragment StoreEntitySet="vwRepair">
+          <ScalarProperty Name="supplierShippingType" ColumnName="supplierShippingType" />
+          <ScalarProperty Name="customerShippingType" ColumnName="customerShippingType" />
+          <ScalarProperty Name="supplierCarrierName" ColumnName="supplierCarrierName" />
+          <ScalarProperty Name="customerCarrierName" ColumnName="customerCarrierName" />
+          <ScalarProperty Name="capitalization" ColumnName="capitalization" />
+          <ScalarProperty Name="font" ColumnName="font" />
+          <ScalarProperty Name="appraiserTitle" ColumnName="appraiserTitle" />
+          <ScalarProperty Name="AppraisalName" ColumnName="AppraisalName" />
+          <ScalarProperty Name="idSecurity" ColumnName="idSecurity" />
+          <ScalarProperty Name="repairType" ColumnName="repairType" />
+          <ScalarProperty Name="supplierName" ColumnName="supplierName" />
+          <ScalarProperty Name="boxIncluded" ColumnName="boxIncluded" />
+          <ScalarProperty Name="dialCondition" ColumnName="dialCondition" />
+          <ScalarProperty Name="BuckleCondition" ColumnName="BuckleCondition" />
+          <ScalarProperty Name="bandCondition" ColumnName="bandCondition" />
+          <ScalarProperty Name="caseCondition" ColumnName="caseCondition" />
+          <ScalarProperty Name="lugsCondition" ColumnName="lugsCondition" />
+          <ScalarProperty Name="BackCondition" ColumnName="BackCondition" />
+          <ScalarProperty Name="bezelCondition" ColumnName="bezelCondition" />
+          <ScalarProperty Name="crystalCondition" ColumnName="crystalCondition" />
+          <ScalarProperty Name="dialType" ColumnName="dialType" />
+          <ScalarProperty Name="BuckleType" ColumnName="BuckleType" />
+          <ScalarProperty Name="BandType" ColumnName="BandType" />
+          <ScalarProperty Name="caseType" ColumnName="caseType" />
+          <ScalarProperty Name="movementType" ColumnName="movementType" />
+          <ScalarProperty Name="style" ColumnName="style" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="employee" ColumnName="employee" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="SupplierdueDateTime" ColumnName="SupplierdueDateTime" />
+          <ScalarProperty Name="SupplierdueDateStartDate" ColumnName="SupplierdueDateStartDate" />
+          <ScalarProperty Name="PickupPersonLastName" ColumnName="PickupPersonLastName" />
+          <ScalarProperty Name="PickupPersonFirstName" ColumnName="PickupPersonFirstName" />
+          <ScalarProperty Name="SupplierDueDate" ColumnName="SupplierDueDate" />
+          <ScalarProperty Name="WarrantyRepair" ColumnName="WarrantyRepair" />
+          <ScalarProperty Name="ClientComments" ColumnName="ClientComments" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="dateShipped" ColumnName="dateShipped" />
+          <ScalarProperty Name="datePickedUp" ColumnName="datePickedUp" />
+          <ScalarProperty Name="datePickupNotification" ColumnName="datePickupNotification" />
+          <ScalarProperty Name="dateRepairDelay" ColumnName="dateRepairDelay" />
+          <ScalarProperty Name="dateRepairStatus" ColumnName="dateRepairStatus" />
+          <ScalarProperty Name="dateProceedWithService" ColumnName="dateProceedWithService" />
+          <ScalarProperty Name="dateReturnUndone" ColumnName="dateReturnUndone" />
+          <ScalarProperty Name="dateRepairOfferReminder" ColumnName="dateRepairOfferReminder" />
+          <ScalarProperty Name="dateRepairOffer" ColumnName="dateRepairOffer" />
+          <ScalarProperty Name="dateProceedToFactory" ColumnName="dateProceedToFactory" />
+          <ScalarProperty Name="dateReminderToFactory" ColumnName="dateReminderToFactory" />
+          <ScalarProperty Name="dateAuthToFactoryNoCharge" ColumnName="dateAuthToFactoryNoCharge" />
+          <ScalarProperty Name="dateAuthToFactoryCharge" ColumnName="dateAuthToFactoryCharge" />
+          <ScalarProperty Name="dateServiceRequestStatus" ColumnName="dateServiceRequestStatus" />
+          <ScalarProperty Name="dateServiceRequest" ColumnName="dateServiceRequest" />
+          <ScalarProperty Name="dateEstimateRequestStatus" ColumnName="dateEstimateRequestStatus" />
+          <ScalarProperty Name="dateEstimateRequest" ColumnName="dateEstimateRequest" />
+          <ScalarProperty Name="dateReceivedByMessenger" ColumnName="dateReceivedByMessenger" />
+          <ScalarProperty Name="dateReceivedByMail" ColumnName="dateReceivedByMail" />
+          <ScalarProperty Name="strapOrderNotes" ColumnName="strapOrderNotes" />
+          <ScalarProperty Name="strapSpecOrd1200" ColumnName="strapSpecOrd1200" />
+          <ScalarProperty Name="strapSpecOrd600" ColumnName="strapSpecOrd600" />
+          <ScalarProperty Name="strapAccessories" ColumnName="strapAccessories" />
+          <ScalarProperty Name="strapThicknessType" ColumnName="strapThicknessType" />
+          <ScalarProperty Name="strapStitchType" ColumnName="strapStitchType" />
+          <ScalarProperty Name="strapLusterType" ColumnName="strapLusterType" />
+          <ScalarProperty Name="strapTextureType" ColumnName="strapTextureType" />
+          <ScalarProperty Name="strapLength" ColumnName="strapLength" />
+          <ScalarProperty Name="strapBuckle" ColumnName="strapBuckle" />
+          <ScalarProperty Name="strapWidth" ColumnName="strapWidth" />
+          <ScalarProperty Name="strapColor" ColumnName="strapColor" />
+          <ScalarProperty Name="strapMaterialType" ColumnName="strapMaterialType" />
+          <ScalarProperty Name="sparePartsOrderNotes" ColumnName="sparePartsOrderNotes" />
+          <ScalarProperty Name="sparePartsDescription8" ColumnName="sparePartsDescription8" />
+          <ScalarProperty Name="sparePartsPartNumber8" ColumnName="sparePartsPartNumber8" />
+          <ScalarProperty Name="sparePartsQuantity8" ColumnName="sparePartsQuantity8" />
+          <ScalarProperty Name="sparePartsDescription7" ColumnName="sparePartsDescription7" />
+          <ScalarProperty Name="sparePartsPartNumber7" ColumnName="sparePartsPartNumber7" />
+          <ScalarProperty Name="sparePartsQuantity7" ColumnName="sparePartsQuantity7" />
+          <ScalarProperty Name="sparePartsDescription6" ColumnName="sparePartsDescription6" />
+          <ScalarProperty Name="sparePartsPartNumber6" ColumnName="sparePartsPartNumber6" />
+          <ScalarProperty Name="sparePartsQuantity6" ColumnName="sparePartsQuantity6" />
+          <ScalarProperty Name="sparePartsDescription5" ColumnName="sparePartsDescription5" />
+          <ScalarProperty Name="sparePartsPartNumber5" ColumnName="sparePartsPartNumber5" />
+          <ScalarProperty Name="sparePartsQuantity5" ColumnName="sparePartsQuantity5" />
+          <ScalarProperty Name="sparePartsDescription4" ColumnName="sparePartsDescription4" />
+          <ScalarProperty Name="sparePartsPartNumber4" ColumnName="sparePartsPartNumber4" />
+          <ScalarProperty Name="sparePartsQuantity4" ColumnName="sparePartsQuantity4" />
+          <ScalarProperty Name="sparePartsDescription3" ColumnName="sparePartsDescription3" />
+          <ScalarProperty Name="sparePartsPartNumber3" ColumnName="sparePartsPartNumber3" />
+          <ScalarProperty Name="sparePartsQuantity3" ColumnName="sparePartsQuantity3" />
+          <ScalarProperty Name="sparePartsDescription2" ColumnName="sparePartsDescription2" />
+          <ScalarProperty Name="sparePartsPartNumber2" ColumnName="sparePartsPartNumber2" />
+          <ScalarProperty Name="sparePartsQuantity2" ColumnName="sparePartsQuantity2" />
+          <ScalarProperty Name="sparePartsDescription1" ColumnName="sparePartsDescription1" />
+          <ScalarProperty Name="sparePartsPartNumber1" ColumnName="sparePartsPartNumber1" />
+          <ScalarProperty Name="sparePartsQuantity1" ColumnName="sparePartsQuantity1" />
+          <ScalarProperty Name="shippingToSupplierExpectedArrivalDate" ColumnName="shippingToSupplierExpectedArrivalDate" />
+          <ScalarProperty Name="shippingToSupplierMailingDate" ColumnName="shippingToSupplierMailingDate" />
+          <ScalarProperty Name="shippingToSupplierShippingType" ColumnName="shippingToSupplierShippingType" />
+          <ScalarProperty Name="shippingToSupplierCarrier" ColumnName="shippingToSupplierCarrier" />
+          <ScalarProperty Name="shippingToSupplierDestinationType" ColumnName="shippingToSupplierDestinationType" />
+          <ScalarProperty Name="shippingToSupplierSalesperson" ColumnName="shippingToSupplierSalesperson" />
+          <ScalarProperty Name="shippingToSupplierInsurance" ColumnName="shippingToSupplierInsurance" />
+          <ScalarProperty Name="shippingToSupplierValue" ColumnName="shippingToSupplierValue" />
+          <ScalarProperty Name="shippingToCustomerExpectedArrivalDate" ColumnName="shippingToCustomerExpectedArrivalDate" />
+          <ScalarProperty Name="shippingToCustomerMailingDate" ColumnName="shippingToCustomerMailingDate" />
+          <ScalarProperty Name="shippingToCustomerShippingType" ColumnName="shippingToCustomerShippingType" />
+          <ScalarProperty Name="shippingToCustomerCarrier" ColumnName="shippingToCustomerCarrier" />
+          <ScalarProperty Name="shippingToCustomerDestinationType" ColumnName="shippingToCustomerDestinationType" />
+          <ScalarProperty Name="shippingToCustomerSalesperson" ColumnName="shippingToCustomerSalesperson" />
+          <ScalarProperty Name="shippingToCustomerInsurance" ColumnName="shippingToCustomerInsurance" />
+          <ScalarProperty Name="shippingToCustomerValue" ColumnName="shippingToCustomerValue" />
+          <ScalarProperty Name="letterToCustomer" ColumnName="letterToCustomer" />
+          <ScalarProperty Name="notesToFactory" ColumnName="notesToFactory" />
+          <ScalarProperty Name="notesToCustomer" ColumnName="notesToCustomer" />
+          <ScalarProperty Name="repairComments" ColumnName="repairComments" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="tax" ColumnName="tax" />
+          <ScalarProperty Name="taxable" ColumnName="taxable" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="task1And2Combined" ColumnName="task1And2Combined" />
+          <ScalarProperty Name="shipping" ColumnName="shipping" />
+          <ScalarProperty Name="task7Decline" ColumnName="task7Decline" />
+          <ScalarProperty Name="task7Price" ColumnName="task7Price" />
+          <ScalarProperty Name="task7Description" ColumnName="task7Description" />
+          <ScalarProperty Name="task6Decline" ColumnName="task6Decline" />
+          <ScalarProperty Name="task6Price" ColumnName="task6Price" />
+          <ScalarProperty Name="task6Description" ColumnName="task6Description" />
+          <ScalarProperty Name="task5Decline" ColumnName="task5Decline" />
+          <ScalarProperty Name="task5Price" ColumnName="task5Price" />
+          <ScalarProperty Name="task5Description" ColumnName="task5Description" />
+          <ScalarProperty Name="task4Decline" ColumnName="task4Decline" />
+          <ScalarProperty Name="task4Price" ColumnName="task4Price" />
+          <ScalarProperty Name="task4Description" ColumnName="task4Description" />
+          <ScalarProperty Name="task3Decline" ColumnName="task3Decline" />
+          <ScalarProperty Name="task3Price" ColumnName="task3Price" />
+          <ScalarProperty Name="task3Description" ColumnName="task3Description" />
+          <ScalarProperty Name="task2Decline" ColumnName="task2Decline" />
+          <ScalarProperty Name="task2Price" ColumnName="task2Price" />
+          <ScalarProperty Name="task2Description" ColumnName="task2Description" />
+          <ScalarProperty Name="task1Decline" ColumnName="task1Decline" />
+          <ScalarProperty Name="task1Price" ColumnName="task1Price" />
+          <ScalarProperty Name="task1Description" ColumnName="task1Description" />
+          <ScalarProperty Name="notesToEngraver" ColumnName="notesToEngraver" />
+          <ScalarProperty Name="engravingMessage" ColumnName="engravingMessage" />
+          <ScalarProperty Name="engravingCapitalizationId" ColumnName="engravingCapitalizationId" />
+          <ScalarProperty Name="engravingFontId" ColumnName="engravingFontId" />
+          <ScalarProperty Name="appraiserTitleId" ColumnName="appraiserTitleId" />
+          <ScalarProperty Name="appraiserId" ColumnName="appraiserId" />
+          <ScalarProperty Name="appraisalComments" ColumnName="appraisalComments" />
+          <ScalarProperty Name="appraisalValue" ColumnName="appraisalValue" />
+          <ScalarProperty Name="factoryDelayReason" ColumnName="factoryDelayReason" />
+          <ScalarProperty Name="factoryDelayType" ColumnName="factoryDelayType" />
+          <ScalarProperty Name="factoryDelayTime" ColumnName="factoryDelayTime" />
+          <ScalarProperty Name="authorizedPickup" ColumnName="authorizedPickup" />
+          <ScalarProperty Name="idSecurityId" ColumnName="idSecurityId" />
+          <ScalarProperty Name="wempePreviousRepairNumber" ColumnName="wempePreviousRepairNumber" />
+          <ScalarProperty Name="supplierPreviousRepairNumber" ColumnName="supplierPreviousRepairNumber" />
+          <ScalarProperty Name="dueDateFactory" ColumnName="dueDateFactory" />
+          <ScalarProperty Name="dueDateFactoryType" ColumnName="dueDateFactoryType" />
+          <ScalarProperty Name="dueDateFactoryTime" ColumnName="dueDateFactoryTime" />
+          <ScalarProperty Name="dueDateFactoryStartDate" ColumnName="dueDateFactoryStartDate" />
+          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+          <ScalarProperty Name="dueDateType" ColumnName="dueDateType" />
+          <ScalarProperty Name="dueDateTime" ColumnName="dueDateTime" />
+          <ScalarProperty Name="dueDateStartDate" ColumnName="dueDateStartDate" />
+          <ScalarProperty Name="repairTypeId" ColumnName="repairTypeId" />
+          <ScalarProperty Name="supplierPickupNumber" ColumnName="supplierPickupNumber" />
+          <ScalarProperty Name="supplierRepairNumber" ColumnName="supplierRepairNumber" />
+          <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+          <ScalarProperty Name="giftCertATNumber" ColumnName="giftCertATNumber" />
+          <ScalarProperty Name="boxIncludedId" ColumnName="boxIncludedId" />
+          <ScalarProperty Name="warrantyDocumentId" ColumnName="warrantyDocumentId" />
+          <ScalarProperty Name="wempeInventoryNumber" ColumnName="wempeInventoryNumber" />
+          <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+          <ScalarProperty Name="purchaseLocationId" ColumnName="purchaseLocationId" />
+          <ScalarProperty Name="numberOfJewels" ColumnName="numberOfJewels" />
+          <ScalarProperty Name="caliber" ColumnName="caliber" />
+          <ScalarProperty Name="movementSerialNumber" ColumnName="movementSerialNumber" />
+          <ScalarProperty Name="referenceNumber" ColumnName="referenceNumber" />
+          <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+          <ScalarProperty Name="dialConditionId" ColumnName="dialConditionId" />
+          <ScalarProperty Name="buckleConditionId" ColumnName="buckleConditionId" />
+          <ScalarProperty Name="bandConditionId" ColumnName="bandConditionId" />
+          <ScalarProperty Name="caseConditionId" ColumnName="caseConditionId" />
+          <ScalarProperty Name="lugsConditionId" ColumnName="lugsConditionId" />
+          <ScalarProperty Name="backConditionId" ColumnName="backConditionId" />
+          <ScalarProperty Name="bezelConditionId" ColumnName="bezelConditionId" />
+          <ScalarProperty Name="crystalConditionId" ColumnName="crystalConditionId" />
+          <ScalarProperty Name="dialTypeId" ColumnName="dialTypeId" />
+          <ScalarProperty Name="buckleTypeId" ColumnName="buckleTypeId" />
+          <ScalarProperty Name="bandTypeId" ColumnName="bandTypeId" />
+          <ScalarProperty Name="caseTypeId" ColumnName="caseTypeId" />
+          <ScalarProperty Name="movementTypeId" ColumnName="movementTypeId" />
+          <ScalarProperty Name="styleId" ColumnName="styleId" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="brandId" ColumnName="brandId" />
+          <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+          <ScalarProperty Name="entryDate" ColumnName="entryDate" />
+          <ScalarProperty Name="receiptPrintedFlag" ColumnName="receiptPrintedFlag" />
+          <ScalarProperty Name="statusId" ColumnName="statusId" />
+          <ScalarProperty Name="ticketNumber" ColumnName="ticketNumber" />
+          <ScalarProperty Name="customerNumber" ColumnName="customerNumber" />
+          <ScalarProperty Name="repairNumber" ColumnName="repairNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpWebsiteThemes">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpWebsiteTheme">
+        <MappingFragment StoreEntitySet="wmpWebsiteTheme">
+          <ScalarProperty Name="ButtonHover" ColumnName="ButtonHover" />
+          <ScalarProperty Name="InnerTableHover" ColumnName="InnerTableHover" />
+          <ScalarProperty Name="InnerTable" ColumnName="InnerTable" />
+          <ScalarProperty Name="SideBarHover" ColumnName="SideBarHover" />
+          <ScalarProperty Name="ActiveSideBar" ColumnName="ActiveSideBar" />
+          <ScalarProperty Name="ActiveTab" ColumnName="ActiveTab" />
+          <ScalarProperty Name="Button" ColumnName="Button" />
+          <ScalarProperty Name="SidebarSubMenu" ColumnName="SidebarSubMenu" />
+          <ScalarProperty Name="ModalPopUp" ColumnName="ModalPopUp" />
+          <ScalarProperty Name="FormControl" ColumnName="FormControl" />
+          <ScalarProperty Name="FormActions" ColumnName="FormActions" />
+          <ScalarProperty Name="PortletBody" ColumnName="PortletBody" />
+          <ScalarProperty Name="PortletTitle" ColumnName="PortletTitle" />
+          <ScalarProperty Name="TabContent" ColumnName="TabContent" />
+          <ScalarProperty Name="PageBar" ColumnName="PageBar" />
+          <ScalarProperty Name="PageContent" ColumnName="PageContent" />
+          <ScalarProperty Name="PageFooter" ColumnName="PageFooter" />
+          <ScalarProperty Name="PageHeader" ColumnName="PageHeader" />
+          <ScalarProperty Name="PageSidebar" ColumnName="PageSidebar" />
+          <ScalarProperty Name="BodyColor" ColumnName="BodyColor" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wmpRepairStatusLogs">
+      <EntityTypeMapping TypeName="dbWempeModel.wmpRepairStatusLog">
+        <MappingFragment StoreEntitySet="wmpRepairStatusLog">
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="RepairNumber" ColumnName="RepairNumber" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LogId" ColumnName="LogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

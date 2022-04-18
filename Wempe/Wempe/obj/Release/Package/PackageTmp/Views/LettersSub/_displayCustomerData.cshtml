@@ -1,0 +1,123 @@
+﻿ @{
+    Layout = null;
+}
+@{
+    string fontSize = this.ViewData.ContainsKey("fontSize") ? this.ViewData["fontSize"].ToString() : string.Empty;
+    string displayName = this.ViewData.ContainsKey("displayName") ? this.ViewData["displayName"].ToString() : string.Empty;
+    string lastLineSpacer = this.ViewData.ContainsKey("lastLineSpacer") ? this.ViewData["lastLineSpacer"].ToString() : string.Empty;
+    string displaySpace1 = this.ViewData.ContainsKey("displaySpace1") ? this.ViewData["displaySpace1"].ToString() : string.Empty;
+    string displayAddress = this.ViewData.ContainsKey("displayAddress") ? this.ViewData["displayAddress"].ToString() : string.Empty;
+    string displaySpace2 = this.ViewData.ContainsKey("displaySpace2") ? this.ViewData["displaySpace2"].ToString() : string.Empty;
+    string displayTelephone = this.ViewData.ContainsKey("displayTelephone") ? this.ViewData["displayTelephone"].ToString() : string.Empty;
+    string displaySpace3 = this.ViewData.ContainsKey("displaySpace3") ? this.ViewData["displaySpace3"].ToString() : string.Empty;
+    string displayFax = this.ViewData.ContainsKey("displayFax") ? this.ViewData["displayFax"].ToString() : string.Empty;
+    
+}
+
+
+@if (displayName == "name")
+{
+    @Model.customerDetail.title @Model.customerDetail.firstName @Model.customerDetail.middleInitial  @Model.customerDetail.lastName 
+}
+@if (displaySpace1 == "space")
+{ @Html.Raw("<br/>")}
+                                                                               
+@*start address if*@
+@if (displayAddress == "address")
+{
+    if (Model.customerDetail.priCompany != "" && Model.customerDetail.priCompany!=null)
+    {
+    @Model.customerDetail.priCompany <br />
+    }
+    if (Model.customerDetail.priAddressLine1 != "" && Model.customerDetail.priAddressLine1 != null)
+    {
+    @Model.customerDetail.priAddressLine1<br />
+    }
+    if (Model.customerDetail.priAddressLine2 != "" && Model.customerDetail.priAddressLine2  != null)
+    {
+    @Model.customerDetail.priAddressLine2<br /> 
+    }     
+                       
+    if (Model.customerDetail.priCountry == "United States")
+    {
+        if (Model.customerDetail.priCountry != "" && Model.customerDetail.priCountry != null)
+        {
+        @Model.customerDetail.priCountry<br />
+        }
+        if (Model.customerDetail.priState != "" && Model.customerDetail.priState != null)
+        {
+         @Model.customerDetail.priState<br />
+        }
+        if (Model.customerDetail.priCity != "" && Model.customerDetail.priCity != null)
+        {
+        @Model.customerDetail.priCity<br />
+        }
+        if (Model.customerDetail.priZipCode != "" && Model.customerDetail.priZipCode != null)
+        {
+        @Model.customerDetail.priZipCode<br />
+         }
+        if (Model.customerDetail.priZipCodePlusFour != "" && Model.customerDetail.priZipCodePlusFour != null)
+        {
+        @Model.customerDetail.priZipCodePlusFour<br />
+        }
+    }
+    else
+    {
+        if (Model.customerDetail.priCity != "" && Model.customerDetail.priCity != null)
+        {
+        @Model.customerDetail.priCity<br />
+        }
+        if (Model.customerDetail.priCountry != "" && Model.customerDetail.priCountry != null)
+        {
+        @Model.customerDetail.priCountry<br />
+        }
+    }
+}
+@*end address if*@
+@if (displaySpace2 == "space"){ @Html.Raw("<br/>")}
+           
+@*start telephone if*@
+@if (displayTelephone == "telephone")
+{
+    @Html.Raw("Cell: &nbsp;&nbsp;")
+    if (Model.customerDetail.priCountry == "United States")
+    {
+        //Prevent display of delimiters if number is blank
+        if (Model.customerDetail.priCellphoneSegment1 != "")
+        { @Model.customerDetail.priCellphoneSegment1 }
+        if (Model.customerDetail.priCellphoneSegment2 != "")
+        { @Model.customerDetail.priCellphoneSegment2  @Html.Raw("-")}
+        if (Model.customerDetail.priCellphoneSegment3 != "")
+        { @Model.customerDetail.priCellphoneSegment3}
+
+    }
+    else
+    { 
+    @Model.customerDetail.priCellphoneSegment1
+    }
+    <br />
+}
+@*end telephone if*@
+@if (displaySpace3 == "space")
+{ @Html.Raw("<br/>")}
+@if (displayFax == "fax")
+{
+    @Html.Raw("Fax: &nbsp;&nbsp;")
+    if (Model.customerDetail.priCountry == "United States")
+    {
+        //Prevent display of delimiters if number is blank
+        if (Model.customerDetail.priFaxSegment1 != "")
+        { @Model.customerDetail.priFaxSegment1}
+        if (Model.customerDetail.priFaxSegment2 != "")
+        { @Model.customerDetail.priFaxSegment2}
+        if (Model.customerDetail.priFaxSegment3 != "")
+        { @Model.customerDetail.priFaxSegment3}
+
+    }
+    else
+    { 
+     @Model.customerDetail.priFaxSegment1
+    }
+
+}
+

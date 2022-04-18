@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <!--<link href="plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" />-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/admin/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/admin/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/admin/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/admin/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    <link href="~/Content/themes/admin/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/admin/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/admin/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+    <!-- BEGIN PAGE STYLES -->
+    <link href="~/Content/themes/admin/pages/css/tasks.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="~/Content/themes/admin/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/admin/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
+
+    @if (Wempe.CommonClasses.SessionMaster.Current.themeName != null)
+    {
+        <link href="~/Content/themes/admin/layout/css/themes/@Wempe.CommonClasses.SessionMaster.Current.themeName" rel="stylesheet" type="text/css" id="style_color" />
+    }
+    else
+    {
+        <link href="~/Content/themes/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" />
+    }
+
+
+    <link href="~/Content/themes/admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/admin/plugins/bootstrap-toastr/toastr.min.css" />
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="~/favicon.ico" />
+
+
+    <style>
+        .sorting_asc {
+            background: url("../Content/themes/admin/img/sort_asc.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+            cursor: pointer;
+        }
+
+        .sorting_desc {
+            background: url("../Content/themes/admin/img/sort_desc.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+            cursor: pointer;
+        }
+
+        .sort {
+            background: url("../Content/themes/admin/img/sort_both.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+            cursor: pointer;
+        }
+    </style>
+    
+
+</head>
+
+
+<body class=" page-quick-sidebar-over-content" >
+   
+    @*<div class="page-header navbar ">
+
+        <div class="page-header-inner">
+          
+           <div class="page-logo" style="width:100%;text-align:center;position: relative;">
+            </div>
+        </div>
+    </div>*@
+    <!-- END HEADER -->
+    <div class="clearfix">
+    </div>
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar-wrapper">
+           
+
+
+</div>
+<!-- END SIDEBAR -->
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper" style="margin-left:0px;">
+    <div style="margin-left:0px!important;padding: 25px 20px 10px 20px;">
+        @RenderBody()
+    </div>
+</div>
+<!-- END CONTENT -->
+<!-- BEGIN QUICK SIDEBAR -->
+
+
+<!-- END QUICK SIDEBAR -->
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<div class="page-footer">
+    <div class="page-footer-inner">
+        @DateTime.Now.Year &copy; WatchServe.
+    </div>
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+    </div>
+</div>
+<div class="row margin-top-10">
+    <div class="col-md-12">
+        <pre id='toastrOptions' style="display: none">
+										 Settings...
+									</pre>
+    </div>
+</div>
+
+<!-- responsive -->
+
+
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="plugins/respond.min.js"></script>
+<script src="plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="~/Scripts/adminJs/Setting.js"></script>
+
+<script src="~/Content/themes/admin/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="~/Content/themes/admin/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="~/Content/themes/admin/scripts/metronic.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/layout/scripts/layout.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/layout/scripts/demo.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/pages/scripts/index.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="~/Content/themes/admin/plugins/bootstrap-toastr/toastr.min.js"></script>
+@*<script src="~/Content/themes/admin/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>*@
+<!-- END PAGE LEVEL SCRIPTS -->
+<script src="~/Content/themes/admin/pages/scripts/ui-toastr.js"></script>
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<!-- END PAGE LEVEL SCRIPTS -->
+<script src="~/Scripts/adminJs/Validation.js"></script>
+<script src="@Url.Content("~/Scripts/jquery.tmpl.min.js")" type="text/javascript"></script>
+
+@*@Scripts.Render("~/bundles/jquery")*@
+@RenderSection("scripts", required: false)
+
+<!-- END JAVASCRIPTS -->
+
+
+
+
+
+</body>
+
+
+<!-- END BODY -->
+</html>
+
+
+
+
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery.mask.min.js"></script>
+<!-- END PAGE LEVEL STYLES -->
+@section scripts{
+    <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+    <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script src="~/Content/themes/admin/pages/scripts/ui-extended-modals.js"></script>
+
+
+}

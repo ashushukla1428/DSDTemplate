@@ -1,0 +1,377 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <li id="WEMPE_CompanyDashboard">
+        <a href="@Url.Action(" Dashboard", "Admin" )">
+            <i class="icon-grid"></i>
+            <span class="title">Dashboard</span>
+        </a>
+    </li>
+
+    <li id="WEMPE_Company">
+        <a href="@Url.Action(" Index", "Company" )">
+            <i class="icon-badge"></i>
+            <span class="title">Company</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="#">
+            <i class="icon-grid"></i>
+            <span class="title">Manage Items</span>
+            <span></span><span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li id="WEMPE_Appraiser">
+                <a href="@Url.Action(" Index", "Appraiser" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Technician</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_AppraiserTitle">
+                <a href="@Url.Action(" AppraiserTitle", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Technician Title</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_BackCondition">
+                <a href="@Url.Action(" Index", "BackCondition" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Back Condition</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_BandCondition">
+                <a href="@Url.Action(" Condition", "Master" , new { @Type="Band" })">
+                    <i class="icon-grid"></i>
+                    <span class="title">Band Condition</span>
+                </a>
+            </li>
+            <li id="WEMPE_BandType">
+                <a href="@Url.Action(" Index", "BandType" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Band Type</span>
+                </a>
+            </li>
+
+
+
+
+            <li id="WEMPE_Bezelcondition">
+                <a href="@Url.Action(" Index", "BezelCondition" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Bezel Condition</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_BoxIncluded">
+                <a href="@Url.Action(" Index", "BoxIncluded" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Box Included</span>
+                </a>
+            </li>
+            <li id="WEMPE_Brand">
+                <a href="@Url.Action(" Index", "Brand" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Brand</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_BuckleCondition">
+                <a href="@Url.Action(" Index", "BuckleCondition" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Buckle Condition</span>
+                </a>
+            </li>
+
+
+
+
+
+            <li id="WEMPE_Buckle">
+                <a href="@Url.Action(" Buckle", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Buckle Type</span>
+                </a>
+            </li>
+
+
+            <li id="WEMPE_Capitalization">
+                <a href="@Url.Action(" Capitalization", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Capitalization</span>
+                </a>
+            </li>
+            <li id="WEMPE_Carrier">
+                <a href="@Url.Action(" Carrier", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Shipper</span>
+                </a>
+            </li>
+            <li id="WEMPE_CaseCondition">
+                <a href="@Url.Action(" Condition", "Master" , new { @Type="Case" })">
+                    <i class="icon-grid"></i>
+                    <span class="title">Case Condition</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_Case">
+                <a href="@Url.Action(" Case", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Case Type</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_CrystalCondition">
+                <a href="@Url.Action(" Condition", "Master" , new { @Type="Crystal" })">
+                    <i class="icon-grid"></i>
+                    <span class="title">Crystal Condition</span>
+                </a>
+            </li>
+            <li id="WEMPE_DialCondition">
+                <a href="@Url.Action(" Condition", "Master" , new { @Type="Dial" })">
+                    <i class="icon-grid"></i>
+                    <span class="title">Dial Condition</span>
+                </a>
+            </li>
+            <li id="WEMPE_Dial">
+                <a href="@Url.Action(" Dial", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Dial Type</span>
+                </a>
+            </li>
+
+            @*ashu 2 start*@
+
+            <li id="WEMPE_Item">
+                <a href="@Url.Action(" Item", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Item</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_LugsCondition">
+                <a href="@Url.Action(" Condition", "Master" , new { @Type="Lugs" })">
+                    <i class="icon-grid"></i>
+                    <span class="title">Lugs Condition</span>
+                </a>
+            </li>
+
+
+
+            <li id="WEMPE_itemlocation">
+                <a href="@Url.Action(" index", "itemlocation" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Manage Supplier</span>
+                </a>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+            <li id="WEMPE_Movement">
+                <a href="@Url.Action(" Movement", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Movement</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_PackagingIncluded">
+                <a href="@Url.Action(" PackagingIncluded", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Packaging Included</span>
+                </a>
+            </li>
+            <li id="WEMPE_PurchaseLocation">
+                <a href="@Url.Action(" PurchaseLocation", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Purchase Location</span>
+                </a>
+            </li>
+            <li id="WEMPE_RepairType">
+                <a href="@Url.Action(" RepairType", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Repair Type</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_Security">
+                <a href="@Url.Action(" Security", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Security</span>
+                </a>
+            </li>
+            <li id="WEMPE_Status">
+                <a href="@Url.Action(" Status", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Status</span>
+                </a>
+            </li>
+            <li id="WEMPE_Style">
+                <a href="@Url.Action(" Style", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Style</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_WarrantyDoc">
+                <a href="@Url.Action(" WarrantyDoc", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Warranty Doc</span>
+                </a>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            @*
+            <li id="WEMPE_LocationOfItem">
+                <a href="@Url.Action(" LocationOfItem", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Location Of Item</span>
+                </a>
+            </li>*@
+
+
+
+
+
+
+
+
+
+
+
+
+            @*ashu 2 end*@
+
+
+
+
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <i class="icon-grid"></i>
+            <span class="title">Manage Cities</span>
+            <span></span><span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+
+            <li id="WEMPE_cities">
+                <a href="@Url.Action(" cities", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">City</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_Country">
+                <a href="@Url.Action(" Countries", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Country</span>
+                </a>
+            </li>
+
+
+
+
+
+
+            <li id="WEMPE_States">
+                <a href="@Url.Action(" States", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">State</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_ManageTax">
+                <a href="@Url.Action(" Index", "ManageTax" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Tax</span>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <i class="icon-grid"></i>
+            <span class="title">Manage Users</span>
+            <span></span><span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+
+
+            <li id="WEMPE_Role">
+                <a href="@Url.Action(" Index", "Role" )">
+                    <i class="icon-badge"></i>
+                    <span class="title">Manage Roles</span>
+                </a>
+            </li>
+
+            <li id="WEMPE_Tasks">
+                <a href="@Url.Action(" Tasks", "Master" )">
+                    <i class="icon-badge"></i>
+                    <span class="title">Manage Tasks</span>
+                </a>
+            </li>
+
+
+            <li id="WEMPE_User">
+                <a href="@Url.Action(" Index", "User" )">
+                    <i class="icon-badge"></i>
+                    <span class="title">Manage Users</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </li>
+
+    <li>
+        <a href="#">
+            <i class="icon-grid"></i>
+            <span class="title">Manage Printers</span>
+            <span></span><span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li id="WEMPE_Font">
+                <a href="@Url.Action(" Font", "Master" )">
+                    <i class="icon-grid"></i>
+                    <span class="title">Font</span>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+</body>
+</html>

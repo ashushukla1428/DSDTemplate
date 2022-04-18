@@ -1,0 +1,404 @@
+﻿<div class="form-horizontal" role="form">
+    <div class="form-body">
+        @*<h2 class="margin-bottom-20">View User Info - Bob Nilson </h2>*@
+        <h3 class="form-section" id="hdnDocStatus">OVERVIEW</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Repair Start:</label>
+                    <div class="col-md-4">
+                        <p class="form-control-static" id="docStatusRepairStart">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Repair Due(CUSTOMER):</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusCustomerRepairDueDate">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Repair Due (SUPPLIER):</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusFactoryRepairDueDate">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Factory Delay:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusFactoryDelay">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+
+        </div>
+
+
+        @*<h3 class="form-section">RECEIPT/SUMMARY</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label" onclick="openPrintBox(1,1,1,0);">Receipt To Client (Envelope)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label"   onclick="openPrintBox(4,1,1,0);">Repair Summary (Envelope)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label"  onclick="openPrintBox(2,1,1,0);">Receipt To Client (Full-Size)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label"  onclick="openPrintBox(5,1,1,0);">Repair Summary (Full-Size)</a>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+
+        <h3 class="form-section">DOCUMENTS BY STATUS</h3>
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Received By Mail:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusReceivedByMail">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Received By Messenger:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusReceivedByMessenger">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Estimate Request:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusEstimateRequest">
+                             (Not Set) 
+                            @*<a class="control-label" href="#">Estimate Request</a>*@
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Estimate Request Status:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusEstimateRequestStatus">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Service Request:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusServiceRequest">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Service Request Status:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusServiceRequestStatus">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Auth. To Factory ($):</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusAuthToFactory$">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Auth. To Factory (N/C):</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusAuthToFactoryNC">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Reminder To Factory:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusReminderToFactory">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Proceed To Factory:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusProceedToFactory">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Repair Offer:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusRepairOffer">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Repair Offer Reminder:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusRepairOfferReminder">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Return Undone:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusReturnUndone">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Proceed With Service:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusProceedWithService">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Repair Status:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusRepairStatus">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Repair Delay:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusRepairDelay">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Pickup Notification:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusPickupNotification">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Picked Up:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusPickedUp">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label col-md-6">Shipped:</label>
+                    <div class="col-md-5">
+                        <p class="form-control-static" id="docStatusShipped">
+                            (Not Set) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        @*<h3 class="form-section">ENVELOPES</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label"  onclick="openPrintBox(6,1,1,0);">Envelope to Customer</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label" onclick="openPrintBox(7,1,1,0);">Envelope to Supplier</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label" onclick="openPrintBox(8,1,1,0);">Return Envelope from Customer</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label" onclick="openPrintBox(9,1,1,0);">Return Envelope from Supplier</a>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+        @*<h3 class="form-section">SHIPPING SLIPS/CUSTOMER LETTER</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label" onclick="openPrintBox(10,1,1,0);">Shipping Slip to Customer</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label"  onclick="openPrintBox(11,1,1,0);">Shipping Slip to Supplier</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label" onclick="openPrintBox(3,1,1,0);">Letter to Customer</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <h3 class="form-section">APPRAISAL/LOG/ATTACHMENTS</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label" onclick="openPrintBox(12,1,1,0);">Appraisal Letter</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <a class="control-label"  onclick="openPrintBox(13,1,1,0);">Detailed Repair Log/History Report</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>*@
+
+
+    </div>
+</div>

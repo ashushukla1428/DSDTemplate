@@ -1,0 +1,12 @@
+﻿@{
+    Layout = null;
+}
+@{
+    string fontSize = this.ViewData.ContainsKey("fontSize") ? this.ViewData["fontSize"].ToString() : string.Empty;
+}
+@if(Model.itemDetail.repairComments!=null){
+<p>
+      <font face="Times New Roman" size="@fontSize">
+          <span style="white-space: pre-line">@Model.itemDetail.repairComments</span>
+      </font>
+</p>}

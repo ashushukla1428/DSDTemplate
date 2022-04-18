@@ -1,0 +1,2297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbWempeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbWempe.dbo.customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customerNumber" />
+    </Key>
+    <Property Name="customerNumber" Type="int" Nullable="false" />
+    <Property Name="entryDate" Type="datetime" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="middleInitial" Type="nvarchar" MaxLength="50" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="asstTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="asstFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="asstMiddleInitial" Type="nvarchar" MaxLength="50" />
+    <Property Name="asstLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="priAddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priAddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCity" Type="nvarchar" MaxLength="75" />
+    <Property Name="priState" Type="nvarchar" MaxLength="50" />
+    <Property Name="priZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="priZipCodePlusFour" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="priTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="priTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCellphoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCellphoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCellphoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="priFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="priEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="secAddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secAddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="secState" Type="nvarchar" MaxLength="50" />
+    <Property Name="secZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="secZipCodePlusFour" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="secTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="secTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCellphoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCellphoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCellphoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="secFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="secEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardSegment4" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardExpMonth" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardExpYear" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardSegment4" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardExpMonth" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardExpYear" Type="nvarchar" MaxLength="50" />
+    <Property Name="contactPreference" Type="nvarchar" MaxLength="50" />
+    <Property Name="customerType" Type="nvarchar" MaxLength="50" />
+    <Property Name="notes" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbWempe.dbo.TestEntry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TestEntry">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="County" Type="varchar" MaxLength="100" />
+    <Property Name="State" Type="varchar" MaxLength="100" />
+    <Property Name="City" Type="varchar" MaxLength="100" />
+    <Property Name="Zip" Type="varchar" MaxLength="20" />
+    <Property Name="Abbrev" Type="varchar" MaxLength="100" />
+    <Property Name="CountryId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wmpAppraiserMaster">
+    <Key>
+      <PropertyRef Name="AppraiserID" />
+    </Key>
+    <Property Name="AppraiserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppraiserTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpAppraiserTitle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="appraiserTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpBackConditionMaster">
+    <Key>
+      <PropertyRef Name="BackConditionID" />
+    </Key>
+    <Property Name="BackConditionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BackCondition" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" Nullable="false" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpBandCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="condition" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpBandTypeMaster">
+    <Key>
+      <PropertyRef Name="BandTypeID" />
+    </Key>
+    <Property Name="BandTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BandType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpBandTypeMaster1">
+    <Key>
+      <PropertyRef Name="BandTypeID" />
+    </Key>
+    <Property Name="BandTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BandType" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wmpBezelConditionMaster">
+    <Key>
+      <PropertyRef Name="BezelConditionID" />
+    </Key>
+    <Property Name="BezelConditionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BezelCondition" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" Nullable="false" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbWempe.dbo.wmpBoxIncluded' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="wmpBoxIncluded">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IsActive" />
+    </Key>
+    <Property Name="boxIncluded" Type="nvarchar" MaxLength="50" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpBoxIncludedMaster">
+    <Key>
+      <PropertyRef Name="BoxIncludedID" />
+    </Key>
+    <Property Name="BoxIncludedID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BoxIncluded" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpBrandMaster">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wmpBuckleConditionMaster">
+    <Key>
+      <PropertyRef Name="BuckleConditionID" />
+    </Key>
+    <Property Name="BuckleConditionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BuckleCondition" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpBuckleType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="buckleType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpCarrier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="carrier" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpCaseCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="condition" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpCaseType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="caseType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpCategoryMaster">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CategoryUrl" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CategoryImage" Type="varchar" MaxLength="500" />
+    <Property Name="CategoryIndex" Type="int" />
+    <Property Name="metaTitel" Type="nvarchar" MaxLength="50" />
+    <Property Name="metakeywords" Type="nvarchar" MaxLength="200" />
+    <Property Name="metaDescription" Type="nvarchar" MaxLength="200" />
+    <Property Name="parentID" Type="bigint" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpCompanyMaster">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="500" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Logo" Type="varchar" MaxLength="200" />
+    <Property Name="WebSite" Type="varchar" MaxLength="100" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerId" Type="bigint" Nullable="false" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="LogoStrip" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="wmpCompanyPackage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="PackageStartDate" Type="nvarchar" MaxLength="100" />
+    <Property Name="PackageRenewalDate" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserLimit" Type="bigint" />
+    <Property Name="PackagePeriod" Type="nvarchar" MaxLength="50" />
+    <Property Name="Payment" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="OwnerId" Type="bigint" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="wmpContactPreference">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contactPreference" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpCountry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="country" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpCounty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="County" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bigint" />
+    <Property Name="StateId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpCrystalCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="condition" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpCustomer">
+    <Key>
+      <PropertyRef Name="customerNumber" />
+    </Key>
+    <Property Name="customerNumber" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="entryDate" Type="datetime" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="middleInitial" Type="nvarchar" MaxLength="100" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="asstTitle" Type="nvarchar" MaxLength="100" />
+    <Property Name="asstFirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="asstMiddleInitial" Type="nvarchar" MaxLength="100" />
+    <Property Name="asstLastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="asstRelation" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCompany" Type="nvarchar" MaxLength="100" />
+    <Property Name="priAddressLine1" Type="nvarchar" MaxLength="200" />
+    <Property Name="priAddressLine2" Type="nvarchar" MaxLength="200" />
+    <Property Name="priCity" Type="nvarchar" MaxLength="75" />
+    <Property Name="priState" Type="bigint" />
+    <Property Name="priZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="priZipCodePlusFour" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCountry" Type="bigint" />
+    <Property Name="priTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="priTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCellphoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCellphoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCellphoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="priFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="priEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="secAddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secAddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="secState" Type="bigint" />
+    <Property Name="secZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="secZipCodePlusFour" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCountry" Type="bigint" />
+    <Property Name="secTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="secTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="secHomephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secHomephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secHomephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="secAssistanatSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secAssistanatSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secAssistanatSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="secAssistanatExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCellphoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCellphoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCellphoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="secFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="secEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="secEmailAddress2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardSegment4" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardExpMonth" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardExpYear" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCreditCardSecurity" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardSegment4" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardExpMonth" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardExpYear" Type="nvarchar" MaxLength="50" />
+    <Property Name="secCreditCardSecurity" Type="nvarchar" MaxLength="50" />
+    <Property Name="contactPreference" Type="bigint" />
+    <Property Name="customerType" Type="bigint" />
+    <Property Name="notes" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="priHomephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priHomephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priHomephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="priAssistanatSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="priAssistanatSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="priAssistanatSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="priAssistanatExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="priEMailAddress2" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdAddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdAddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdState" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdZipCodePlusFour" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdHomephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdHomephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdHomephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdAssistanatSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdAssistanatSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdAssistanatSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdAssistanatExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCellphoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCellphoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCellphoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdEMailAddress2" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCreditCardSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCreditCardSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCreditCardSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCreditCardSegment4" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCreditCardExpMonth" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCreditCardExpYear" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdCreditCardSecurity" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpouseRelation" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpouseTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpousefirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpousemiddleInitial" Type="nvarchar" MaxLength="50" />
+    <Property Name="SpouselastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="priHomePhoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="secHomePhoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="thirdHomePhoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShippingToServiceCenterValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShippingToServiceCenterDecline" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShippingToServiceCenterPrice" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShippingToEuropeValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShippingToEuropeDecline" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShippingToEuropePrice" Type="nvarchar" MaxLength="50" />
+    <Property Name="EstimateFeeValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="EstimateFeeDecline" Type="nvarchar" MaxLength="50" />
+    <Property Name="EstimateFeePrice" Type="nvarchar" MaxLength="50" />
+    <Property Name="ServiceMinimumChargeValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="ServiceMinimumChargeDecline" Type="nvarchar" MaxLength="50" />
+    <Property Name="ServiceMinimumChargePrice" Type="nvarchar" MaxLength="50" />
+    <Property Name="Overhaul" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairValue1" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairPrice1" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairValue2" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairPrice2" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairValue3" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairPrice3" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairValue4" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairPrice4" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairValue5" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairPrice5" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairValue6" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptialWorkPartialRepairPrice6" Type="nvarchar" MaxLength="50" />
+    <Property Name="RepairComment" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubTotal" Type="nvarchar" MaxLength="50" />
+    <Property Name="Shipping" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Total" Type="nvarchar" MaxLength="50" />
+    <Property Name="priCountryCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AlternateCountryCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ThirdCountryCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="wmpCustomerType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpDestinationType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="destinationType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpDialCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="condition" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpDialType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dialType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpDocument">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="shortName" Type="nvarchar" MaxLength="50" />
+    <Property Name="fullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="fileName" Type="nvarchar" MaxLength="50" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+    <Property Name="paperType" Type="nvarchar" MaxLength="50" />
+    <Property Name="print" Type="nvarchar" MaxLength="1" />
+    <Property Name="eMail" Type="nvarchar" MaxLength="1" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpEmployee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employee" Type="nvarchar" MaxLength="50" />
+    <Property Name="employeeFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="employeeLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="UserID" Type="bigint" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImagePath" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="Image" Type="varchar" MaxLength="200" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="wmpEngravingCapitalization">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="capitalization" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpEngravingFont">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="font" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpErrorLog">
+    <Key>
+      <PropertyRef Name="ErrorId" />
+    </Key>
+    <Property Name="ErrorId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ErrorMessage" Type="nvarchar(max)" />
+    <Property Name="TimeStamp" Type="datetime" />
+    <Property Name="PageName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="wmpFileAttachment">
+    <Key>
+      <PropertyRef Name="fileNumber" />
+    </Key>
+    <Property Name="fileNumber" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="repairNumber" Type="int" />
+    <Property Name="dateStamp" Type="nvarchar" MaxLength="50" />
+    <Property Name="fileName" Type="nvarchar" MaxLength="255" />
+    <Property Name="fullPath" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpIDSecurity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idSecurity" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpImportStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="TotalRecords" Type="bigint" />
+    <Property Name="ImportedRecords" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="item" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpLastRecordSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerNumber" Type="bigint" />
+    <Property Name="RepairNumber" Type="bigint" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="OwnderId" Type="bigint" />
+    <Property Name="DateStamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpLugsCondition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="condition" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpMailBox">
+    <Key>
+      <PropertyRef Name="MessageNumber" />
+    </Key>
+    <Property Name="MessageNumber" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MessageId" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FromAddress" Type="varchar" MaxLength="1000" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Subject" Type="varchar" MaxLength="200" />
+    <Property Name="MessageBody" Type="ntext" />
+    <Property Name="DateSent" Type="datetime" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="UserID" Type="bigint" />
+    <Property Name="HaveAttachment" Type="bit" />
+  </EntityType>
+  <EntityType Name="wmpMailBoxEmailAddress">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="MailAddress" Type="varchar" MaxLength="1000" />
+    <Property Name="DisplayName" Type="varchar" MaxLength="50" />
+    <Property Name="HasValidMailAddress" Type="bit" />
+    <Property Name="MailRelId" Type="bigint" />
+    <Property Name="AddressType" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="wmpMenuMaster">
+    <Key>
+      <PropertyRef Name="MenuID" />
+    </Key>
+    <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="100" />
+    <Property Name="PageID" Type="bigint" />
+    <Property Name="PageName" Type="varchar" MaxLength="50" />
+    <Property Name="parentID" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="MenuIndex" Type="int" />
+    <Property Name="MenuIcon" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="wmpMovementType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="movementType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpMVCAuthenticationRights">
+    <Key>
+      <PropertyRef Name="ActionID" />
+    </Key>
+    <Property Name="ActionID" Type="int" Nullable="false" />
+    <Property Name="ControllerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ActionName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RightFor" Type="nvarchar" MaxLength="50" />
+    <Property Name="role" Type="varchar" MaxLength="50" />
+    <Property Name="OtherFunctions" Type="varchar(max)" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="OnlyForCompanyUsers" Type="bit" />
+    <Property Name="ShowInMenu" Type="bit" />
+    <Property Name="MenuText" Type="nvarchar" MaxLength="100" />
+    <Property Name="Id" Type="varchar" MaxLength="50" />
+    <Property Name="cssClass" Type="varchar" MaxLength="50" />
+    <Property Name="MenuIndex" Type="int" />
+    <Property Name="ParentId" Type="int" />
+  </EntityType>
+  <EntityType Name="wmpPrintSetting">
+    <Key>
+      <PropertyRef Name="SettingID" />
+    </Key>
+    <Property Name="SettingID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaperTopMargin" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PaperRightMargin" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PaperBottomMargin" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PaperLeftMargin" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpPurchaseLocation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainAddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainAddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainState" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainZipCodePlusFour" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContact" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="notes" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpRecentRepair">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="viewDate" Type="datetime" />
+    <Property Name="repairNumber" Type="int" />
+    <Property Name="ticketNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpRepair">
+    <Key>
+      <PropertyRef Name="repairNumber" />
+    </Key>
+    <Property Name="repairNumber" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerNumber" Type="bigint" />
+    <Property Name="ticketNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="statusId" Type="bigint" />
+    <Property Name="receiptPrintedFlag" Type="nvarchar" MaxLength="1" />
+    <Property Name="entryDate" Type="datetime" />
+    <Property Name="employeeId" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+    <Property Name="itemId" Type="bigint" />
+    <Property Name="styleId" Type="bigint" />
+    <Property Name="movementTypeId" Type="bigint" />
+    <Property Name="caseTypeId" Type="bigint" />
+    <Property Name="bandTypeId" Type="bigint" />
+    <Property Name="buckleTypeId" Type="bigint" />
+    <Property Name="dialTypeId" Type="bigint" />
+    <Property Name="crystalConditionId" Type="bigint" />
+    <Property Name="bezelConditionId" Type="bigint" />
+    <Property Name="backConditionId" Type="bigint" />
+    <Property Name="lugsConditionId" Type="bigint" />
+    <Property Name="caseConditionId" Type="bigint" />
+    <Property Name="bandConditionId" Type="bigint" />
+    <Property Name="buckleConditionId" Type="bigint" />
+    <Property Name="dialConditionId" Type="bigint" />
+    <Property Name="serialNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="referenceNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="movementSerialNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="caliber" Type="nvarchar" MaxLength="50" />
+    <Property Name="numberOfJewels" Type="nvarchar" MaxLength="50" />
+    <Property Name="purchaseLocationId" Type="bigint" />
+    <Property Name="purchaseDate" Type="datetime" />
+    <Property Name="wempeInventoryNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="warrantyDocumentId" Type="bigint" />
+    <Property Name="boxIncludedId" Type="bigint" />
+    <Property Name="giftCertATNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="supplierId" Type="bigint" />
+    <Property Name="supplierRepairNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="supplierPickupNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="repairTypeId" Type="bigint" />
+    <Property Name="dueDateStartDate" Type="datetime" />
+    <Property Name="dueDateTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="dueDateType" Type="nvarchar" MaxLength="50" />
+    <Property Name="dueDate" Type="datetime" />
+    <Property Name="dueDateFactoryStartDate" Type="datetime" />
+    <Property Name="dueDateFactoryTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="dueDateFactoryType" Type="nvarchar" MaxLength="50" />
+    <Property Name="dueDateFactory" Type="datetime" />
+    <Property Name="supplierPreviousRepairNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="wempePreviousRepairNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="idSecurityId" Type="bigint" />
+    <Property Name="authorizedPickup" Type="nvarchar" MaxLength="50" />
+    <Property Name="factoryDelayTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="factoryDelayType" Type="nvarchar" MaxLength="50" />
+    <Property Name="factoryDelayReason" Type="nvarchar(max)" />
+    <Property Name="appraisalValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="appraisalComments" Type="nvarchar(max)" />
+    <Property Name="appraiserId" Type="bigint" />
+    <Property Name="appraiserTitleId" Type="bigint" />
+    <Property Name="engravingFontId" Type="bigint" />
+    <Property Name="engravingCapitalizationId" Type="bigint" />
+    <Property Name="engravingMessage" Type="nvarchar(max)" />
+    <Property Name="notesToEngraver" Type="nvarchar(max)" />
+    <Property Name="task1Description" Type="nvarchar(max)" />
+    <Property Name="task1Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task1Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task2Description" Type="nvarchar(max)" />
+    <Property Name="task2Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task2Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task3Description" Type="nvarchar(max)" />
+    <Property Name="task3Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task3Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task4Description" Type="nvarchar(max)" />
+    <Property Name="task4Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task4Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task5Description" Type="nvarchar(max)" />
+    <Property Name="task5Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task5Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task6Description" Type="nvarchar(max)" />
+    <Property Name="task6Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task6Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task7Description" Type="nvarchar(max)" />
+    <Property Name="task7Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task7Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="shipping" Type="nvarchar" MaxLength="50" />
+    <Property Name="task1And2Combined" Type="nvarchar" MaxLength="50" />
+    <Property Name="subtotal" Type="nvarchar" MaxLength="50" />
+    <Property Name="taxable" Type="nvarchar" MaxLength="2" />
+    <Property Name="tax" Type="nvarchar" MaxLength="50" />
+    <Property Name="total" Type="nvarchar" MaxLength="50" />
+    <Property Name="repairComments" Type="nvarchar(max)" />
+    <Property Name="notesToCustomer" Type="nvarchar(max)" />
+    <Property Name="notesToFactory" Type="nvarchar(max)" />
+    <Property Name="letterToCustomer" Type="nvarchar(max)" />
+    <Property Name="shippingToCustomerValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerInsurance" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerSalesperson" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerDestinationType" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerCarrier" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerShippingType" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerMailingDate" Type="datetime" />
+    <Property Name="shippingToCustomerExpectedArrivalDate" Type="datetime" />
+    <Property Name="shippingToSupplierValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierInsurance" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierSalesperson" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierDestinationType" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierCarrier" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierShippingType" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierMailingDate" Type="datetime" />
+    <Property Name="shippingToSupplierExpectedArrivalDate" Type="datetime" />
+    <Property Name="sparePartsQuantity1" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber1" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription1" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity2" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber2" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription2" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity3" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber3" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription3" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity4" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber4" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription4" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity5" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber5" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription5" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity6" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber6" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription6" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity7" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber7" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription7" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity8" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber8" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription8" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsOrderNotes" Type="nvarchar(max)" />
+    <Property Name="strapMaterialType" Type="nvarchar" MaxLength="255" />
+    <Property Name="strapColor" Type="nvarchar" MaxLength="255" />
+    <Property Name="strapWidth" Type="nvarchar" MaxLength="255" />
+    <Property Name="strapBuckle" Type="nvarchar" MaxLength="255" />
+    <Property Name="strapLength" Type="nvarchar" MaxLength="255" />
+    <Property Name="strapTextureType" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapLusterType" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapStitchType" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapThicknessType" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapAccessories" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapSpecOrd600" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapSpecOrd1200" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapOrderNotes" Type="nvarchar(max)" />
+    <Property Name="dateReceivedByMail" Type="datetime" />
+    <Property Name="dateReceivedByMessenger" Type="datetime" />
+    <Property Name="dateEstimateRequest" Type="datetime" />
+    <Property Name="dateEstimateRequestStatus" Type="datetime" />
+    <Property Name="dateServiceRequest" Type="datetime" />
+    <Property Name="dateServiceRequestStatus" Type="datetime" />
+    <Property Name="dateAuthToFactoryCharge" Type="datetime" />
+    <Property Name="dateAuthToFactoryNoCharge" Type="datetime" />
+    <Property Name="dateReminderToFactory" Type="datetime" />
+    <Property Name="dateProceedToFactory" Type="datetime" />
+    <Property Name="dateRepairOffer" Type="datetime" />
+    <Property Name="dateRepairOfferReminder" Type="datetime" />
+    <Property Name="dateReturnUndone" Type="datetime" />
+    <Property Name="dateProceedWithService" Type="datetime" />
+    <Property Name="dateRepairStatus" Type="datetime" />
+    <Property Name="dateRepairDelay" Type="datetime" />
+    <Property Name="datePickupNotification" Type="datetime" />
+    <Property Name="datePickedUp" Type="datetime" />
+    <Property Name="dateShipped" Type="datetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="ClientComments" Type="nvarchar(max)" />
+    <Property Name="WarrantyRepair" Type="nvarchar(max)" />
+    <Property Name="SupplierDueDate" Type="nvarchar(max)" />
+    <Property Name="PickupPersonFirstName" Type="nvarchar(max)" />
+    <Property Name="PickupPersonLastName" Type="nvarchar(max)" />
+    <Property Name="SupplierdueDateStartDate" Type="nvarchar(max)" />
+    <Property Name="SupplierdueDateTime" Type="nvarchar(max)" />
+    <Property Name="OrderNumber" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="wmpRepairLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="repairNumber" Type="int" />
+    <Property Name="dateStamp" Type="datetime" />
+    <Property Name="changeComment" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpRepairSampleTask">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="Type" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpRepairStatusLog">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="RepairNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Zipcode" Type="nvarchar" MaxLength="50" />
+    <Property Name="TimeStamp" Type="datetime" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="wmpRepairType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="repairType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpResetPassword">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="bigint" />
+    <Property Name="GUID" Type="varchar" MaxLength="50" />
+    <Property Name="TimeStamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpRoleMaster">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="IsMainRole" Type="bit" />
+  </EntityType>
+  <EntityType Name="wmpRoleRelationship">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="bigint" />
+    <Property Name="UserID" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpSampleCity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="StateId" Type="bigint" />
+    <Property Name="CountyID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpShipping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="shippingType" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingPrice" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpShippingType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="shippingType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="state" Type="nvarchar" MaxLength="50" />
+    <Property Name="stateFullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="CountryId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="displayOrder" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="AttrName" Type="nvarchar" MaxLength="50" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpStolenRepair">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="serialNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpStoreInformation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="storeNumber" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="addressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="addressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" />
+    <Property Name="state" Type="nvarchar" MaxLength="50" />
+    <Property Name="zipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="country" Type="nvarchar" MaxLength="50" />
+    <Property Name="telephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="telephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="telephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="telephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="faxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="faxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="faxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="eMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpStrapAccessories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="strapAccessories" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpStrapColor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="strapColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbWempe.dbo.wmpStrapLength' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="wmpStrapLength">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="IsActive" />
+    </Key>
+    <Property Name="strapLength" Type="nvarchar" MaxLength="50" />
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpStrapLusterType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="strapLusterType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbWempe.dbo.wmpstrapMaterialType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="wmpstrapMaterialType">
+    <Key>
+      <PropertyRef Name="MaterialTypeID" />
+    </Key>
+    <Property Name="strapMaterialType" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaterialTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpStrapStitchType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="strapStitchType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpStrapTextureType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="strapTextureType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpStrapThicknessType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="strapThicknessType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpStyle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="style" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpSuggestions">
+    <Key>
+      <PropertyRef Name="SuggestionId" />
+    </Key>
+    <Property Name="SuggestionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Suggestion" Type="nvarchar(max)" />
+    <Property Name="TimeStamp" Type="datetime" />
+    <Property Name="UserId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpSupplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainCompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainAddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainAddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainState" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainZipCodePlusFour" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainStickerCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainWempeAccount" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContact" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="mainContactEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsCompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsAddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsAddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsState" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsZipCodePlusFour" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsStickerCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsWempeAccount" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsContact" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsContactTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsContactTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsContactTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsContactTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsContactFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsContactFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsContactFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsContactEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapCompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapAddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapAddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapState" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapZipCodePlusFour" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapStickerCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapWempeAccount" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapContact" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapContactTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapContactTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapContactTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapContactTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapContactFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapContactFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapContactFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapContactEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingCompany" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingAddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingAddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingState" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingZipCodePlusFour" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingCountry" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingStickerCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingWempeAccount" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingContact" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingContactTelephoneSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingContactTelephoneSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingContactTelephoneSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingContactTelephoneExtension" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingContactFaxSegment1" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingContactFaxSegment2" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingContactFaxSegment3" Type="nvarchar" MaxLength="50" />
+    <Property Name="billingContactEMailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="notes" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpSystem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mailHost" Type="nvarchar" MaxLength="50" />
+    <Property Name="mailUsername" Type="nvarchar" MaxLength="50" />
+    <Property Name="mailPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="mailFrom" Type="nvarchar" MaxLength="50" />
+    <Property Name="mailFromName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="wmpTaxRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="taxRate" Type="nvarchar" MaxLength="50" />
+    <Property Name="StateId" Type="bigint" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpTitle">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="UpdateBy" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpUserMaster">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Role" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="IsMainUser" Type="bit" />
+  </EntityType>
+  <EntityType Name="wmpUserTrack">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Uid" Type="bigint" />
+    <Property Name="LoginTime" Type="datetime" />
+    <Property Name="LogoutTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpWarrantyDocument">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WarrantyDocument" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpWarrantyTypeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="warrantyType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="wmpWebsitePages">
+    <Key>
+      <PropertyRef Name="PageID" />
+    </Key>
+    <Property Name="PageID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PageName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PageTitle" Type="nvarchar" MaxLength="200" />
+    <Property Name="shortdescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="description" Type="ntext" />
+    <Property Name="metakeywords" Type="nvarchar" MaxLength="200" />
+    <Property Name="metadescription" Type="nvarchar" MaxLength="200" />
+    <Property Name="headerstylescss" Type="varchar(max)" />
+    <Property Name="footerjavascript" Type="varchar(max)" />
+    <Property Name="PageImage" Type="varchar" MaxLength="500" />
+    <Property Name="PageUrl" Type="varchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wmpWebsitePagesLinking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PageID" Type="bigint" />
+    <Property Name="CatID" Type="bigint" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="wmpWebsiteTheme">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="bigint" Nullable="false" />
+    <Property Name="BodyColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageSidebar" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageHeader" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageFooter" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageContent" Type="nvarchar" MaxLength="50" />
+    <Property Name="PageBar" Type="nvarchar" MaxLength="50" />
+    <Property Name="TabContent" Type="nvarchar" MaxLength="50" />
+    <Property Name="PortletTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="PortletBody" Type="nvarchar" MaxLength="50" />
+    <Property Name="FormActions" Type="nvarchar" MaxLength="50" />
+    <Property Name="FormControl" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModalPopUp" Type="nvarchar" MaxLength="50" />
+    <Property Name="SidebarSubMenu" Type="nvarchar" MaxLength="50" />
+    <Property Name="Button" Type="nvarchar" MaxLength="50" />
+    <Property Name="ActiveTab" Type="nvarchar" MaxLength="50" />
+    <Property Name="ActiveSideBar" Type="nvarchar" MaxLength="50" />
+    <Property Name="SideBarHover" Type="nvarchar" MaxLength="50" />
+    <Property Name="InnerTable" Type="nvarchar" MaxLength="50" />
+    <Property Name="InnerTableHover" Type="nvarchar" MaxLength="50" />
+    <Property Name="ButtonHover" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="wmpZipCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityId" Type="bigint" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbWempe.dbo.vwCustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwCustomer">
+    <Key>
+      <PropertyRef Name="customerNumber" />
+      <PropertyRef Name="FullName" />
+      <PropertyRef Name="PrimaryAddress" />
+      <PropertyRef Name="PrimaryPhone" />
+      <PropertyRef Name="priEMailAddress" />
+      <PropertyRef Name="stateName" />
+    </Key>
+    <Property Name="customerNumber" Type="bigint" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="302" Nullable="false" />
+    <Property Name="PrimaryAddress" Type="nvarchar" MaxLength="401" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="4000" />
+    <Property Name="PrimaryPhone" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="priEMailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="stateName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OwnerID" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dbWempe.dbo.vwRepair' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwRepair">
+    <Key>
+      <PropertyRef Name="repairNumber" />
+      <PropertyRef Name="IsActive" />
+    </Key>
+    <Property Name="repairNumber" Type="bigint" Nullable="false" />
+    <Property Name="customerNumber" Type="bigint" />
+    <Property Name="ticketNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="statusId" Type="bigint" />
+    <Property Name="receiptPrintedFlag" Type="nvarchar" MaxLength="1" />
+    <Property Name="entryDate" Type="datetime" />
+    <Property Name="employeeId" Type="bigint" />
+    <Property Name="brandId" Type="bigint" />
+    <Property Name="itemId" Type="bigint" />
+    <Property Name="styleId" Type="bigint" />
+    <Property Name="movementTypeId" Type="bigint" />
+    <Property Name="caseTypeId" Type="bigint" />
+    <Property Name="bandTypeId" Type="bigint" />
+    <Property Name="buckleTypeId" Type="bigint" />
+    <Property Name="dialTypeId" Type="bigint" />
+    <Property Name="crystalConditionId" Type="bigint" />
+    <Property Name="bezelConditionId" Type="bigint" />
+    <Property Name="backConditionId" Type="bigint" />
+    <Property Name="lugsConditionId" Type="bigint" />
+    <Property Name="caseConditionId" Type="bigint" />
+    <Property Name="bandConditionId" Type="bigint" />
+    <Property Name="buckleConditionId" Type="bigint" />
+    <Property Name="dialConditionId" Type="bigint" />
+    <Property Name="serialNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="referenceNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="movementSerialNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="caliber" Type="nvarchar" MaxLength="50" />
+    <Property Name="numberOfJewels" Type="nvarchar" MaxLength="50" />
+    <Property Name="purchaseLocationId" Type="bigint" />
+    <Property Name="purchaseDate" Type="datetime" />
+    <Property Name="wempeInventoryNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="warrantyDocumentId" Type="bigint" />
+    <Property Name="boxIncludedId" Type="bigint" />
+    <Property Name="giftCertATNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="supplierId" Type="bigint" />
+    <Property Name="supplierRepairNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="supplierPickupNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="repairTypeId" Type="bigint" />
+    <Property Name="dueDateStartDate" Type="datetime" />
+    <Property Name="dueDateTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="dueDateType" Type="nvarchar" MaxLength="50" />
+    <Property Name="dueDate" Type="datetime" />
+    <Property Name="dueDateFactoryStartDate" Type="datetime" />
+    <Property Name="dueDateFactoryTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="dueDateFactoryType" Type="nvarchar" MaxLength="50" />
+    <Property Name="dueDateFactory" Type="datetime" />
+    <Property Name="supplierPreviousRepairNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="wempePreviousRepairNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="idSecurityId" Type="bigint" />
+    <Property Name="authorizedPickup" Type="nvarchar" MaxLength="50" />
+    <Property Name="factoryDelayTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="factoryDelayType" Type="nvarchar" MaxLength="50" />
+    <Property Name="factoryDelayReason" Type="nvarchar(max)" />
+    <Property Name="appraisalValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="appraisalComments" Type="nvarchar(max)" />
+    <Property Name="appraiserId" Type="bigint" />
+    <Property Name="appraiserTitleId" Type="bigint" />
+    <Property Name="engravingFontId" Type="bigint" />
+    <Property Name="engravingCapitalizationId" Type="bigint" />
+    <Property Name="engravingMessage" Type="nvarchar(max)" />
+    <Property Name="notesToEngraver" Type="nvarchar(max)" />
+    <Property Name="task1Description" Type="nvarchar(max)" />
+    <Property Name="task1Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task1Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task2Description" Type="nvarchar(max)" />
+    <Property Name="task2Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task2Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task3Description" Type="nvarchar(max)" />
+    <Property Name="task3Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task3Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task4Description" Type="nvarchar(max)" />
+    <Property Name="task4Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task4Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task5Description" Type="nvarchar(max)" />
+    <Property Name="task5Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task5Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task6Description" Type="nvarchar(max)" />
+    <Property Name="task6Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task6Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="task7Description" Type="nvarchar(max)" />
+    <Property Name="task7Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="task7Decline" Type="nvarchar" MaxLength="2" />
+    <Property Name="shipping" Type="nvarchar" MaxLength="50" />
+    <Property Name="task1And2Combined" Type="nvarchar" MaxLength="50" />
+    <Property Name="subtotal" Type="nvarchar" MaxLength="50" />
+    <Property Name="taxable" Type="nvarchar" MaxLength="2" />
+    <Property Name="tax" Type="nvarchar" MaxLength="50" />
+    <Property Name="total" Type="nvarchar" MaxLength="50" />
+    <Property Name="repairComments" Type="nvarchar(max)" />
+    <Property Name="notesToCustomer" Type="nvarchar(max)" />
+    <Property Name="notesToFactory" Type="nvarchar(max)" />
+    <Property Name="letterToCustomer" Type="nvarchar(max)" />
+    <Property Name="shippingToCustomerValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerInsurance" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerSalesperson" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerDestinationType" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerCarrier" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerShippingType" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToCustomerMailingDate" Type="datetime" />
+    <Property Name="shippingToCustomerExpectedArrivalDate" Type="datetime" />
+    <Property Name="shippingToSupplierValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierInsurance" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierSalesperson" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierDestinationType" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierCarrier" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierShippingType" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippingToSupplierMailingDate" Type="datetime" />
+    <Property Name="shippingToSupplierExpectedArrivalDate" Type="datetime" />
+    <Property Name="sparePartsQuantity1" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber1" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription1" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity2" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber2" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription2" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity3" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber3" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription3" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity4" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber4" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription4" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity5" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber5" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription5" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity6" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber6" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription6" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity7" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber7" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription7" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsQuantity8" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsPartNumber8" Type="nvarchar" MaxLength="50" />
+    <Property Name="sparePartsDescription8" Type="nvarchar" MaxLength="255" />
+    <Property Name="sparePartsOrderNotes" Type="nvarchar(max)" />
+    <Property Name="strapMaterialType" Type="nvarchar" MaxLength="255" />
+    <Property Name="strapColor" Type="nvarchar" MaxLength="255" />
+    <Property Name="strapWidth" Type="nvarchar" MaxLength="255" />
+    <Property Name="strapBuckle" Type="nvarchar" MaxLength="255" />
+    <Property Name="strapLength" Type="nvarchar" MaxLength="255" />
+    <Property Name="strapTextureType" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapLusterType" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapStitchType" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapThicknessType" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapAccessories" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapSpecOrd600" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapSpecOrd1200" Type="nvarchar" MaxLength="50" />
+    <Property Name="strapOrderNotes" Type="nvarchar(max)" />
+    <Property Name="dateReceivedByMail" Type="datetime" />
+    <Property Name="dateReceivedByMessenger" Type="datetime" />
+    <Property Name="dateEstimateRequest" Type="datetime" />
+    <Property Name="dateEstimateRequestStatus" Type="datetime" />
+    <Property Name="dateServiceRequest" Type="datetime" />
+    <Property Name="dateServiceRequestStatus" Type="datetime" />
+    <Property Name="dateAuthToFactoryCharge" Type="datetime" />
+    <Property Name="dateAuthToFactoryNoCharge" Type="datetime" />
+    <Property Name="dateReminderToFactory" Type="datetime" />
+    <Property Name="dateProceedToFactory" Type="datetime" />
+    <Property Name="dateRepairOffer" Type="datetime" />
+    <Property Name="dateRepairOfferReminder" Type="datetime" />
+    <Property Name="dateReturnUndone" Type="datetime" />
+    <Property Name="dateProceedWithService" Type="datetime" />
+    <Property Name="dateRepairStatus" Type="datetime" />
+    <Property Name="dateRepairDelay" Type="datetime" />
+    <Property Name="datePickupNotification" Type="datetime" />
+    <Property Name="datePickedUp" Type="datetime" />
+    <Property Name="dateShipped" Type="datetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdateBy" Type="bigint" />
+    <Property Name="OwnerID" Type="bigint" />
+    <Property Name="ClientComments" Type="nvarchar(max)" />
+    <Property Name="WarrantyRepair" Type="nvarchar(max)" />
+    <Property Name="SupplierDueDate" Type="nvarchar(max)" />
+    <Property Name="PickupPersonFirstName" Type="nvarchar(max)" />
+    <Property Name="PickupPersonLastName" Type="nvarchar(max)" />
+    <Property Name="SupplierdueDateStartDate" Type="nvarchar(max)" />
+    <Property Name="SupplierdueDateTime" Type="nvarchar(max)" />
+    <Property Name="OrderNumber" Type="nvarchar(max)" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="employee" Type="nvarchar" MaxLength="50" />
+    <Property Name="BrandName" Type="nvarchar" MaxLength="50" />
+    <Property Name="item" Type="nvarchar" MaxLength="50" />
+    <Property Name="style" Type="nvarchar" MaxLength="50" />
+    <Property Name="movementType" Type="nvarchar" MaxLength="50" />
+    <Property Name="caseType" Type="nvarchar" MaxLength="50" />
+    <Property Name="BandType" Type="nvarchar" MaxLength="50" />
+    <Property Name="BuckleType" Type="nvarchar" MaxLength="50" />
+    <Property Name="dialType" Type="nvarchar" MaxLength="50" />
+    <Property Name="crystalCondition" Type="nvarchar" MaxLength="50" />
+    <Property Name="bezelCondition" Type="nvarchar" MaxLength="100" />
+    <Property Name="BackCondition" Type="nvarchar" MaxLength="100" />
+    <Property Name="lugsCondition" Type="nvarchar" MaxLength="50" />
+    <Property Name="caseCondition" Type="nvarchar" MaxLength="50" />
+    <Property Name="bandCondition" Type="nvarchar" MaxLength="50" />
+    <Property Name="BuckleCondition" Type="nvarchar" MaxLength="100" />
+    <Property Name="dialCondition" Type="nvarchar" MaxLength="50" />
+    <Property Name="boxIncluded" Type="nvarchar" MaxLength="50" />
+    <Property Name="supplierName" Type="nvarchar" MaxLength="50" />
+    <Property Name="repairType" Type="nvarchar" MaxLength="50" />
+    <Property Name="idSecurity" Type="nvarchar" MaxLength="50" />
+    <Property Name="AppraisalName" Type="nvarchar" MaxLength="200" />
+    <Property Name="appraiserTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="font" Type="nvarchar" MaxLength="50" />
+    <Property Name="capitalization" Type="nvarchar" MaxLength="50" />
+    <Property Name="customerCarrierName" Type="nvarchar" MaxLength="50" />
+    <Property Name="supplierCarrierName" Type="nvarchar" MaxLength="50" />
+    <Property Name="customerShippingType" Type="nvarchar" MaxLength="50" />
+    <Property Name="supplierShippingType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_wmpCompanyMaster_wmpUserMaster">
+    <End Role="wmpUserMaster" Type="Self.wmpUserMaster" Multiplicity="1" />
+    <End Role="wmpCompanyMaster" Type="Self.wmpCompanyMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wmpUserMaster">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="wmpCompanyMaster">
+        <PropertyRef Name="OwnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_wmpPrintSetting_wmpPrintSetting">
+    <End Role="wmpPrintSetting" Type="Self.wmpPrintSetting" Multiplicity="1" />
+    <End Role="wmpPrintSetting1" Type="Self.wmpPrintSetting" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="wmpPrintSetting">
+        <PropertyRef Name="SettingID" />
+      </Principal>
+      <Dependent Role="wmpPrintSetting1">
+        <PropertyRef Name="SettingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbWempeModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpAppraiserMaster" EntityType="Self.wmpAppraiserMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpAppraiserTitle" EntityType="Self.wmpAppraiserTitle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpBackConditionMaster" EntityType="Self.wmpBackConditionMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpBandCondition" EntityType="Self.wmpBandCondition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpBandTypeMaster" EntityType="Self.wmpBandTypeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpBandTypeMaster1" EntityType="Self.wmpBandTypeMaster1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpBezelConditionMaster" EntityType="Self.wmpBezelConditionMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpBoxIncludedMaster" EntityType="Self.wmpBoxIncludedMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpBrandMaster" EntityType="Self.wmpBrandMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpBuckleConditionMaster" EntityType="Self.wmpBuckleConditionMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpBuckleType" EntityType="Self.wmpBuckleType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCarrier" EntityType="Self.wmpCarrier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCaseCondition" EntityType="Self.wmpCaseCondition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCaseType" EntityType="Self.wmpCaseType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCategoryMaster" EntityType="Self.wmpCategoryMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCompanyMaster" EntityType="Self.wmpCompanyMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCompanyPackage" EntityType="Self.wmpCompanyPackage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpContactPreference" EntityType="Self.wmpContactPreference" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCountry" EntityType="Self.wmpCountry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCounty" EntityType="Self.wmpCounty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCrystalCondition" EntityType="Self.wmpCrystalCondition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCustomer" EntityType="Self.wmpCustomer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpCustomerType" EntityType="Self.wmpCustomerType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpDestinationType" EntityType="Self.wmpDestinationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpDialCondition" EntityType="Self.wmpDialCondition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpDialType" EntityType="Self.wmpDialType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpDocument" EntityType="Self.wmpDocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpEmployee" EntityType="Self.wmpEmployee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpEngravingCapitalization" EntityType="Self.wmpEngravingCapitalization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpEngravingFont" EntityType="Self.wmpEngravingFont" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpErrorLog" EntityType="Self.wmpErrorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpFileAttachment" EntityType="Self.wmpFileAttachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpIDSecurity" EntityType="Self.wmpIDSecurity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpImportStatus" EntityType="Self.wmpImportStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpItem" EntityType="Self.wmpItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpLastRecordSet" EntityType="Self.wmpLastRecordSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpLugsCondition" EntityType="Self.wmpLugsCondition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpMailBox" EntityType="Self.wmpMailBox" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpMailBoxEmailAddress" EntityType="Self.wmpMailBoxEmailAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpMenuMaster" EntityType="Self.wmpMenuMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpMovementType" EntityType="Self.wmpMovementType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpMVCAuthenticationRights" EntityType="Self.wmpMVCAuthenticationRights" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpPrintSetting" EntityType="Self.wmpPrintSetting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpPurchaseLocation" EntityType="Self.wmpPurchaseLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpRecentRepair" EntityType="Self.wmpRecentRepair" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpRepair" EntityType="Self.wmpRepair" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpRepairLog" EntityType="Self.wmpRepairLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpRepairSampleTask" EntityType="Self.wmpRepairSampleTask" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpRepairStatusLog" EntityType="Self.wmpRepairStatusLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpRepairType" EntityType="Self.wmpRepairType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpResetPassword" EntityType="Self.wmpResetPassword" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpRoleMaster" EntityType="Self.wmpRoleMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpRoleRelationship" EntityType="Self.wmpRoleRelationship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpSampleCity" EntityType="Self.wmpSampleCity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpShipping" EntityType="Self.wmpShipping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpShippingType" EntityType="Self.wmpShippingType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpState" EntityType="Self.wmpState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpStatus" EntityType="Self.wmpStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpStolenRepair" EntityType="Self.wmpStolenRepair" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpStoreInformation" EntityType="Self.wmpStoreInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpStrapAccessories" EntityType="Self.wmpStrapAccessories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpStrapColor" EntityType="Self.wmpStrapColor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpStrapLusterType" EntityType="Self.wmpStrapLusterType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpStrapStitchType" EntityType="Self.wmpStrapStitchType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpStrapTextureType" EntityType="Self.wmpStrapTextureType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpStrapThicknessType" EntityType="Self.wmpStrapThicknessType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpStyle" EntityType="Self.wmpStyle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpSuggestions" EntityType="Self.wmpSuggestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpSupplier" EntityType="Self.wmpSupplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpSystem" EntityType="Self.wmpSystem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpTaxRate" EntityType="Self.wmpTaxRate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpTitle" EntityType="Self.wmpTitle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpUserMaster" EntityType="Self.wmpUserMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpUserTrack" EntityType="Self.wmpUserTrack" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpWarrantyDocument" EntityType="Self.wmpWarrantyDocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpWarrantyTypeMaster" EntityType="Self.wmpWarrantyTypeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpWebsitePages" EntityType="Self.wmpWebsitePages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpWebsitePagesLinking" EntityType="Self.wmpWebsitePagesLinking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpWebsiteTheme" EntityType="Self.wmpWebsiteTheme" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wmpZipCode" EntityType="Self.wmpZipCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [customer].[customerNumber] AS [customerNumber], 
+    [customer].[entryDate] AS [entryDate], 
+    [customer].[title] AS [title], 
+    [customer].[firstName] AS [firstName], 
+    [customer].[middleInitial] AS [middleInitial], 
+    [customer].[lastName] AS [lastName], 
+    [customer].[asstTitle] AS [asstTitle], 
+    [customer].[asstFirstName] AS [asstFirstName], 
+    [customer].[asstMiddleInitial] AS [asstMiddleInitial], 
+    [customer].[asstLastName] AS [asstLastName], 
+    [customer].[priCompany] AS [priCompany], 
+    [customer].[priAddressLine1] AS [priAddressLine1], 
+    [customer].[priAddressLine2] AS [priAddressLine2], 
+    [customer].[priCity] AS [priCity], 
+    [customer].[priState] AS [priState], 
+    [customer].[priZipCode] AS [priZipCode], 
+    [customer].[priZipCodePlusFour] AS [priZipCodePlusFour], 
+    [customer].[priCountry] AS [priCountry], 
+    [customer].[priTelephoneSegment1] AS [priTelephoneSegment1], 
+    [customer].[priTelephoneSegment2] AS [priTelephoneSegment2], 
+    [customer].[priTelephoneSegment3] AS [priTelephoneSegment3], 
+    [customer].[priTelephoneExtension] AS [priTelephoneExtension], 
+    [customer].[priCellphoneSegment1] AS [priCellphoneSegment1], 
+    [customer].[priCellphoneSegment2] AS [priCellphoneSegment2], 
+    [customer].[priCellphoneSegment3] AS [priCellphoneSegment3], 
+    [customer].[priFaxSegment1] AS [priFaxSegment1], 
+    [customer].[priFaxSegment2] AS [priFaxSegment2], 
+    [customer].[priFaxSegment3] AS [priFaxSegment3], 
+    [customer].[priEMailAddress] AS [priEMailAddress], 
+    [customer].[secCompany] AS [secCompany], 
+    [customer].[secAddressLine1] AS [secAddressLine1], 
+    [customer].[secAddressLine2] AS [secAddressLine2], 
+    [customer].[secCity] AS [secCity], 
+    [customer].[secState] AS [secState], 
+    [customer].[secZipCode] AS [secZipCode], 
+    [customer].[secZipCodePlusFour] AS [secZipCodePlusFour], 
+    [customer].[secCountry] AS [secCountry], 
+    [customer].[secTelephoneSegment1] AS [secTelephoneSegment1], 
+    [customer].[secTelephoneSegment2] AS [secTelephoneSegment2], 
+    [customer].[secTelephoneSegment3] AS [secTelephoneSegment3], 
+    [customer].[secTelephoneExtension] AS [secTelephoneExtension], 
+    [customer].[secCellphoneSegment1] AS [secCellphoneSegment1], 
+    [customer].[secCellphoneSegment2] AS [secCellphoneSegment2], 
+    [customer].[secCellphoneSegment3] AS [secCellphoneSegment3], 
+    [customer].[secFaxSegment1] AS [secFaxSegment1], 
+    [customer].[secFaxSegment2] AS [secFaxSegment2], 
+    [customer].[secFaxSegment3] AS [secFaxSegment3], 
+    [customer].[secEMailAddress] AS [secEMailAddress], 
+    [customer].[priCreditCardSegment1] AS [priCreditCardSegment1], 
+    [customer].[priCreditCardSegment2] AS [priCreditCardSegment2], 
+    [customer].[priCreditCardSegment3] AS [priCreditCardSegment3], 
+    [customer].[priCreditCardSegment4] AS [priCreditCardSegment4], 
+    [customer].[priCreditCardExpMonth] AS [priCreditCardExpMonth], 
+    [customer].[priCreditCardExpYear] AS [priCreditCardExpYear], 
+    [customer].[secCreditCardSegment1] AS [secCreditCardSegment1], 
+    [customer].[secCreditCardSegment2] AS [secCreditCardSegment2], 
+    [customer].[secCreditCardSegment3] AS [secCreditCardSegment3], 
+    [customer].[secCreditCardSegment4] AS [secCreditCardSegment4], 
+    [customer].[secCreditCardExpMonth] AS [secCreditCardExpMonth], 
+    [customer].[secCreditCardExpYear] AS [secCreditCardExpYear], 
+    [customer].[contactPreference] AS [contactPreference], 
+    [customer].[customerType] AS [customerType], 
+    [customer].[notes] AS [notes]
+    FROM [dbo].[customer] AS [customer]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TestEntry" EntityType="Self.TestEntry" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TestEntry].[ID] AS [ID], 
+    [TestEntry].[County] AS [County], 
+    [TestEntry].[State] AS [State], 
+    [TestEntry].[City] AS [City], 
+    [TestEntry].[Zip] AS [Zip], 
+    [TestEntry].[Abbrev] AS [Abbrev], 
+    [TestEntry].[CountryId] AS [CountryId]
+    FROM [dbo].[TestEntry] AS [TestEntry]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="wmpBoxIncluded" EntityType="Self.wmpBoxIncluded" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [wmpBoxIncluded].[boxIncluded] AS [boxIncluded], 
+    [wmpBoxIncluded].[Id] AS [Id], 
+    [wmpBoxIncluded].[IsActive] AS [IsActive], 
+    [wmpBoxIncluded].[LastUpdate] AS [LastUpdate], 
+    [wmpBoxIncluded].[UpdateBy] AS [UpdateBy], 
+    [wmpBoxIncluded].[OwnerID] AS [OwnerID]
+    FROM [dbo].[wmpBoxIncluded] AS [wmpBoxIncluded]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="wmpStrapLength" EntityType="Self.wmpStrapLength" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [wmpStrapLength].[strapLength] AS [strapLength], 
+    [wmpStrapLength].[Id] AS [Id], 
+    [wmpStrapLength].[IsActive] AS [IsActive], 
+    [wmpStrapLength].[UpdateBy] AS [UpdateBy], 
+    [wmpStrapLength].[OwnerID] AS [OwnerID], 
+    [wmpStrapLength].[LastUpdate] AS [LastUpdate]
+    FROM [dbo].[wmpStrapLength] AS [wmpStrapLength]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="wmpstrapMaterialType" EntityType="Self.wmpstrapMaterialType" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [wmpstrapMaterialType].[strapMaterialType] AS [strapMaterialType], 
+    [wmpstrapMaterialType].[MaterialTypeID] AS [MaterialTypeID], 
+    [wmpstrapMaterialType].[IsActive] AS [IsActive], 
+    [wmpstrapMaterialType].[LastUpdate] AS [LastUpdate], 
+    [wmpstrapMaterialType].[UpdateBy] AS [UpdateBy], 
+    [wmpstrapMaterialType].[OwnerID] AS [OwnerID]
+    FROM [dbo].[wmpstrapMaterialType] AS [wmpstrapMaterialType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwCustomer" EntityType="Self.vwCustomer" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwCustomer].[customerNumber] AS [customerNumber], 
+    [vwCustomer].[FullName] AS [FullName], 
+    [vwCustomer].[PrimaryAddress] AS [PrimaryAddress], 
+    [vwCustomer].[City] AS [City], 
+    [vwCustomer].[PrimaryPhone] AS [PrimaryPhone], 
+    [vwCustomer].[priEMailAddress] AS [priEMailAddress], 
+    [vwCustomer].[CountryName] AS [CountryName], 
+    [vwCustomer].[stateName] AS [stateName], 
+    [vwCustomer].[OwnerID] AS [OwnerID]
+    FROM [dbo].[vwCustomer] AS [vwCustomer]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwRepair" EntityType="Self.vwRepair" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwRepair].[repairNumber] AS [repairNumber], 
+    [vwRepair].[customerNumber] AS [customerNumber], 
+    [vwRepair].[ticketNumber] AS [ticketNumber], 
+    [vwRepair].[statusId] AS [statusId], 
+    [vwRepair].[receiptPrintedFlag] AS [receiptPrintedFlag], 
+    [vwRepair].[entryDate] AS [entryDate], 
+    [vwRepair].[employeeId] AS [employeeId], 
+    [vwRepair].[brandId] AS [brandId], 
+    [vwRepair].[itemId] AS [itemId], 
+    [vwRepair].[styleId] AS [styleId], 
+    [vwRepair].[movementTypeId] AS [movementTypeId], 
+    [vwRepair].[caseTypeId] AS [caseTypeId], 
+    [vwRepair].[bandTypeId] AS [bandTypeId], 
+    [vwRepair].[buckleTypeId] AS [buckleTypeId], 
+    [vwRepair].[dialTypeId] AS [dialTypeId], 
+    [vwRepair].[crystalConditionId] AS [crystalConditionId], 
+    [vwRepair].[bezelConditionId] AS [bezelConditionId], 
+    [vwRepair].[backConditionId] AS [backConditionId], 
+    [vwRepair].[lugsConditionId] AS [lugsConditionId], 
+    [vwRepair].[caseConditionId] AS [caseConditionId], 
+    [vwRepair].[bandConditionId] AS [bandConditionId], 
+    [vwRepair].[buckleConditionId] AS [buckleConditionId], 
+    [vwRepair].[dialConditionId] AS [dialConditionId], 
+    [vwRepair].[serialNumber] AS [serialNumber], 
+    [vwRepair].[referenceNumber] AS [referenceNumber], 
+    [vwRepair].[movementSerialNumber] AS [movementSerialNumber], 
+    [vwRepair].[caliber] AS [caliber], 
+    [vwRepair].[numberOfJewels] AS [numberOfJewels], 
+    [vwRepair].[purchaseLocationId] AS [purchaseLocationId], 
+    [vwRepair].[purchaseDate] AS [purchaseDate], 
+    [vwRepair].[wempeInventoryNumber] AS [wempeInventoryNumber], 
+    [vwRepair].[warrantyDocumentId] AS [warrantyDocumentId], 
+    [vwRepair].[boxIncludedId] AS [boxIncludedId], 
+    [vwRepair].[giftCertATNumber] AS [giftCertATNumber], 
+    [vwRepair].[supplierId] AS [supplierId], 
+    [vwRepair].[supplierRepairNumber] AS [supplierRepairNumber], 
+    [vwRepair].[supplierPickupNumber] AS [supplierPickupNumber], 
+    [vwRepair].[repairTypeId] AS [repairTypeId], 
+    [vwRepair].[dueDateStartDate] AS [dueDateStartDate], 
+    [vwRepair].[dueDateTime] AS [dueDateTime], 
+    [vwRepair].[dueDateType] AS [dueDateType], 
+    [vwRepair].[dueDate] AS [dueDate], 
+    [vwRepair].[dueDateFactoryStartDate] AS [dueDateFactoryStartDate], 
+    [vwRepair].[dueDateFactoryTime] AS [dueDateFactoryTime], 
+    [vwRepair].[dueDateFactoryType] AS [dueDateFactoryType], 
+    [vwRepair].[dueDateFactory] AS [dueDateFactory], 
+    [vwRepair].[supplierPreviousRepairNumber] AS [supplierPreviousRepairNumber], 
+    [vwRepair].[wempePreviousRepairNumber] AS [wempePreviousRepairNumber], 
+    [vwRepair].[idSecurityId] AS [idSecurityId], 
+    [vwRepair].[authorizedPickup] AS [authorizedPickup], 
+    [vwRepair].[factoryDelayTime] AS [factoryDelayTime], 
+    [vwRepair].[factoryDelayType] AS [factoryDelayType], 
+    [vwRepair].[factoryDelayReason] AS [factoryDelayReason], 
+    [vwRepair].[appraisalValue] AS [appraisalValue], 
+    [vwRepair].[appraisalComments] AS [appraisalComments], 
+    [vwRepair].[appraiserId] AS [appraiserId], 
+    [vwRepair].[appraiserTitleId] AS [appraiserTitleId], 
+    [vwRepair].[engravingFontId] AS [engravingFontId], 
+    [vwRepair].[engravingCapitalizationId] AS [engravingCapitalizationId], 
+    [vwRepair].[engravingMessage] AS [engravingMessage], 
+    [vwRepair].[notesToEngraver] AS [notesToEngraver], 
+    [vwRepair].[task1Description] AS [task1Description], 
+    [vwRepair].[task1Price] AS [task1Price], 
+    [vwRepair].[task1Decline] AS [task1Decline], 
+    [vwRepair].[task2Description] AS [task2Description], 
+    [vwRepair].[task2Price] AS [task2Price], 
+    [vwRepair].[task2Decline] AS [task2Decline], 
+    [vwRepair].[task3Description] AS [task3Description], 
+    [vwRepair].[task3Price] AS [task3Price], 
+    [vwRepair].[task3Decline] AS [task3Decline], 
+    [vwRepair].[task4Description] AS [task4Description], 
+    [vwRepair].[task4Price] AS [task4Price], 
+    [vwRepair].[task4Decline] AS [task4Decline], 
+    [vwRepair].[task5Description] AS [task5Description], 
+    [vwRepair].[task5Price] AS [task5Price], 
+    [vwRepair].[task5Decline] AS [task5Decline], 
+    [vwRepair].[task6Description] AS [task6Description], 
+    [vwRepair].[task6Price] AS [task6Price], 
+    [vwRepair].[task6Decline] AS [task6Decline], 
+    [vwRepair].[task7Description] AS [task7Description], 
+    [vwRepair].[task7Price] AS [task7Price], 
+    [vwRepair].[task7Decline] AS [task7Decline], 
+    [vwRepair].[shipping] AS [shipping], 
+    [vwRepair].[task1And2Combined] AS [task1And2Combined], 
+    [vwRepair].[subtotal] AS [subtotal], 
+    [vwRepair].[taxable] AS [taxable], 
+    [vwRepair].[tax] AS [tax], 
+    [vwRepair].[total] AS [total], 
+    [vwRepair].[repairComments] AS [repairComments], 
+    [vwRepair].[notesToCustomer] AS [notesToCustomer], 
+    [vwRepair].[notesToFactory] AS [notesToFactory], 
+    [vwRepair].[letterToCustomer] AS [letterToCustomer], 
+    [vwRepair].[shippingToCustomerValue] AS [shippingToCustomerValue], 
+    [vwRepair].[shippingToCustomerInsurance] AS [shippingToCustomerInsurance], 
+    [vwRepair].[shippingToCustomerSalesperson] AS [shippingToCustomerSalesperson], 
+    [vwRepair].[shippingToCustomerDestinationType] AS [shippingToCustomerDestinationType], 
+    [vwRepair].[shippingToCustomerCarrier] AS [shippingToCustomerCarrier], 
+    [vwRepair].[shippingToCustomerShippingType] AS [shippingToCustomerShippingType], 
+    [vwRepair].[shippingToCustomerMailingDate] AS [shippingToCustomerMailingDate], 
+    [vwRepair].[shippingToCustomerExpectedArrivalDate] AS [shippingToCustomerExpectedArrivalDate], 
+    [vwRepair].[shippingToSupplierValue] AS [shippingToSupplierValue], 
+    [vwRepair].[shippingToSupplierInsurance] AS [shippingToSupplierInsurance], 
+    [vwRepair].[shippingToSupplierSalesperson] AS [shippingToSupplierSalesperson], 
+    [vwRepair].[shippingToSupplierDestinationType] AS [shippingToSupplierDestinationType], 
+    [vwRepair].[shippingToSupplierCarrier] AS [shippingToSupplierCarrier], 
+    [vwRepair].[shippingToSupplierShippingType] AS [shippingToSupplierShippingType], 
+    [vwRepair].[shippingToSupplierMailingDate] AS [shippingToSupplierMailingDate], 
+    [vwRepair].[shippingToSupplierExpectedArrivalDate] AS [shippingToSupplierExpectedArrivalDate], 
+    [vwRepair].[sparePartsQuantity1] AS [sparePartsQuantity1], 
+    [vwRepair].[sparePartsPartNumber1] AS [sparePartsPartNumber1], 
+    [vwRepair].[sparePartsDescription1] AS [sparePartsDescription1], 
+    [vwRepair].[sparePartsQuantity2] AS [sparePartsQuantity2], 
+    [vwRepair].[sparePartsPartNumber2] AS [sparePartsPartNumber2], 
+    [vwRepair].[sparePartsDescription2] AS [sparePartsDescription2], 
+    [vwRepair].[sparePartsQuantity3] AS [sparePartsQuantity3], 
+    [vwRepair].[sparePartsPartNumber3] AS [sparePartsPartNumber3], 
+    [vwRepair].[sparePartsDescription3] AS [sparePartsDescription3], 
+    [vwRepair].[sparePartsQuantity4] AS [sparePartsQuantity4], 
+    [vwRepair].[sparePartsPartNumber4] AS [sparePartsPartNumber4], 
+    [vwRepair].[sparePartsDescription4] AS [sparePartsDescription4], 
+    [vwRepair].[sparePartsQuantity5] AS [sparePartsQuantity5], 
+    [vwRepair].[sparePartsPartNumber5] AS [sparePartsPartNumber5], 
+    [vwRepair].[sparePartsDescription5] AS [sparePartsDescription5], 
+    [vwRepair].[sparePartsQuantity6] AS [sparePartsQuantity6], 
+    [vwRepair].[sparePartsPartNumber6] AS [sparePartsPartNumber6], 
+    [vwRepair].[sparePartsDescription6] AS [sparePartsDescription6], 
+    [vwRepair].[sparePartsQuantity7] AS [sparePartsQuantity7], 
+    [vwRepair].[sparePartsPartNumber7] AS [sparePartsPartNumber7], 
+    [vwRepair].[sparePartsDescription7] AS [sparePartsDescription7], 
+    [vwRepair].[sparePartsQuantity8] AS [sparePartsQuantity8], 
+    [vwRepair].[sparePartsPartNumber8] AS [sparePartsPartNumber8], 
+    [vwRepair].[sparePartsDescription8] AS [sparePartsDescription8], 
+    [vwRepair].[sparePartsOrderNotes] AS [sparePartsOrderNotes], 
+    [vwRepair].[strapMaterialType] AS [strapMaterialType], 
+    [vwRepair].[strapColor] AS [strapColor], 
+    [vwRepair].[strapWidth] AS [strapWidth], 
+    [vwRepair].[strapBuckle] AS [strapBuckle], 
+    [vwRepair].[strapLength] AS [strapLength], 
+    [vwRepair].[strapTextureType] AS [strapTextureType], 
+    [vwRepair].[strapLusterType] AS [strapLusterType], 
+    [vwRepair].[strapStitchType] AS [strapStitchType], 
+    [vwRepair].[strapThicknessType] AS [strapThicknessType], 
+    [vwRepair].[strapAccessories] AS [strapAccessories], 
+    [vwRepair].[strapSpecOrd600] AS [strapSpecOrd600], 
+    [vwRepair].[strapSpecOrd1200] AS [strapSpecOrd1200], 
+    [vwRepair].[strapOrderNotes] AS [strapOrderNotes], 
+    [vwRepair].[dateReceivedByMail] AS [dateReceivedByMail], 
+    [vwRepair].[dateReceivedByMessenger] AS [dateReceivedByMessenger], 
+    [vwRepair].[dateEstimateRequest] AS [dateEstimateRequest], 
+    [vwRepair].[dateEstimateRequestStatus] AS [dateEstimateRequestStatus], 
+    [vwRepair].[dateServiceRequest] AS [dateServiceRequest], 
+    [vwRepair].[dateServiceRequestStatus] AS [dateServiceRequestStatus], 
+    [vwRepair].[dateAuthToFactoryCharge] AS [dateAuthToFactoryCharge], 
+    [vwRepair].[dateAuthToFactoryNoCharge] AS [dateAuthToFactoryNoCharge], 
+    [vwRepair].[dateReminderToFactory] AS [dateReminderToFactory], 
+    [vwRepair].[dateProceedToFactory] AS [dateProceedToFactory], 
+    [vwRepair].[dateRepairOffer] AS [dateRepairOffer], 
+    [vwRepair].[dateRepairOfferReminder] AS [dateRepairOfferReminder], 
+    [vwRepair].[dateReturnUndone] AS [dateReturnUndone], 
+    [vwRepair].[dateProceedWithService] AS [dateProceedWithService], 
+    [vwRepair].[dateRepairStatus] AS [dateRepairStatus], 
+    [vwRepair].[dateRepairDelay] AS [dateRepairDelay], 
+    [vwRepair].[datePickupNotification] AS [datePickupNotification], 
+    [vwRepair].[datePickedUp] AS [datePickedUp], 
+    [vwRepair].[dateShipped] AS [dateShipped], 
+    [vwRepair].[IsActive] AS [IsActive], 
+    [vwRepair].[LastUpdate] AS [LastUpdate], 
+    [vwRepair].[UpdateBy] AS [UpdateBy], 
+    [vwRepair].[OwnerID] AS [OwnerID], 
+    [vwRepair].[ClientComments] AS [ClientComments], 
+    [vwRepair].[WarrantyRepair] AS [WarrantyRepair], 
+    [vwRepair].[SupplierDueDate] AS [SupplierDueDate], 
+    [vwRepair].[PickupPersonFirstName] AS [PickupPersonFirstName], 
+    [vwRepair].[PickupPersonLastName] AS [PickupPersonLastName], 
+    [vwRepair].[SupplierdueDateStartDate] AS [SupplierdueDateStartDate], 
+    [vwRepair].[SupplierdueDateTime] AS [SupplierdueDateTime], 
+    [vwRepair].[OrderNumber] AS [OrderNumber], 
+    [vwRepair].[status] AS [status], 
+    [vwRepair].[employee] AS [employee], 
+    [vwRepair].[BrandName] AS [BrandName], 
+    [vwRepair].[item] AS [item], 
+    [vwRepair].[style] AS [style], 
+    [vwRepair].[movementType] AS [movementType], 
+    [vwRepair].[caseType] AS [caseType], 
+    [vwRepair].[BandType] AS [BandType], 
+    [vwRepair].[BuckleType] AS [BuckleType], 
+    [vwRepair].[dialType] AS [dialType], 
+    [vwRepair].[crystalCondition] AS [crystalCondition], 
+    [vwRepair].[bezelCondition] AS [bezelCondition], 
+    [vwRepair].[BackCondition] AS [BackCondition], 
+    [vwRepair].[lugsCondition] AS [lugsCondition], 
+    [vwRepair].[caseCondition] AS [caseCondition], 
+    [vwRepair].[bandCondition] AS [bandCondition], 
+    [vwRepair].[BuckleCondition] AS [BuckleCondition], 
+    [vwRepair].[dialCondition] AS [dialCondition], 
+    [vwRepair].[boxIncluded] AS [boxIncluded], 
+    [vwRepair].[supplierName] AS [supplierName], 
+    [vwRepair].[repairType] AS [repairType], 
+    [vwRepair].[idSecurity] AS [idSecurity], 
+    [vwRepair].[AppraisalName] AS [AppraisalName], 
+    [vwRepair].[appraiserTitle] AS [appraiserTitle], 
+    [vwRepair].[font] AS [font], 
+    [vwRepair].[capitalization] AS [capitalization], 
+    [vwRepair].[customerCarrierName] AS [customerCarrierName], 
+    [vwRepair].[supplierCarrierName] AS [supplierCarrierName], 
+    [vwRepair].[customerShippingType] AS [customerShippingType], 
+    [vwRepair].[supplierShippingType] AS [supplierShippingType]
+    FROM [dbo].[vwRepair] AS [vwRepair]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_wmpCompanyMaster_wmpUserMaster" Association="Self.FK_wmpCompanyMaster_wmpUserMaster">
+      <End Role="wmpUserMaster" EntitySet="wmpUserMaster" />
+      <End Role="wmpCompanyMaster" EntitySet="wmpCompanyMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_wmpPrintSetting_wmpPrintSetting" Association="Self.FK_wmpPrintSetting_wmpPrintSetting">
+      <End Role="wmpPrintSetting" EntitySet="wmpPrintSetting" />
+      <End Role="wmpPrintSetting1" EntitySet="wmpPrintSetting" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

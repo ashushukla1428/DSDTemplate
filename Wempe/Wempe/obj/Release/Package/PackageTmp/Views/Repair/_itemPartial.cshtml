@@ -1,0 +1,830 @@
+﻿<div class="form-horizontal">
+    <div class="form-body">
+        <h3 class="form-section">GENERAL   
+
+             <div style="float:right;  ">  
+               <button type="submit" class="btn green" onclick="addItem();">Save</button>
+                        <button type="button" class="btn default" onclick="resetRepair();">Start New Repair</button>
+                 </div>
+        </h3>
+        <div class="row">
+
+            <div class="col-md-4  col-md-offset-7">
+                <div class="form-group">
+                    <label class=" col-md-4">EMPLOYEE *</label>
+                    <div class="col-md-8">
+                        @Html.DropDownList("drptab2Employee", (IEnumerable<SelectListItem>)ViewBag.Employee, "", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label class=" col-md-4">REPAIR/TICKET</label>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-4" style="padding:0"><input type="text" class="form-control" id="txtRepairNumber" placeholder="NEW" value="NEW" readonly></div>
+                            <div class="col-xs-8" style="padding:0"><input type="text" class="form-control" id="txtTicketNumber"></div>
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+            @*<div class="col-md-3">
+
+                <div class="form-group">
+                    <label class=" col-md-4">TICKET *</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="txtTicketNumber">
+                    </div>
+                </div>
+
+            </div>*@
+
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <label class=" col-md-4">ORDER *</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="txtOrderNumber">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+        </div>
+
+
+
+        <h3 class="form-section">ITEM/CONDITION</h3>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet-body">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4 name">BRAND</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2Brand", (IEnumerable<SelectListItem>)ViewBag.Brand, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">CRYSTAL CONDITION</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2CrystalCondition", (IEnumerable<SelectListItem>)ViewBag.CrystalCondition, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">ITEM *</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2Items", (IEnumerable<SelectListItem>)ViewBag.Items, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">BEZEL CONDITION</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2BezelCondition", (IEnumerable<SelectListItem>)ViewBag.BezelCondition, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">STYLE</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2Style", (IEnumerable<SelectListItem>)ViewBag.Style, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">BACK CONDITION</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2BackCondition", (IEnumerable<SelectListItem>)ViewBag.BackCondition, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">MOVEMENT</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2Movement", (IEnumerable<SelectListItem>)ViewBag.Movement, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">LUGS CONDITION</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2LugsCondition", (IEnumerable<SelectListItem>)ViewBag.LugsCondition, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">CASE</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2Case", (IEnumerable<SelectListItem>)ViewBag.Case, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">CASE CONDITION</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2CaseCondition", (IEnumerable<SelectListItem>)ViewBag.CaseCondition, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">BAND</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2Band", (IEnumerable<SelectListItem>)ViewBag.Band, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">BAND CONDITION</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2BandCondition", (IEnumerable<SelectListItem>)ViewBag.BandCondition, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">BUCKLE</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2Buckle", (IEnumerable<SelectListItem>)ViewBag.Buckle, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">BUCKLE CONDITION</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2BuckleCondition", (IEnumerable<SelectListItem>)ViewBag.BuckleCondition, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">DIAL</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2Dial", (IEnumerable<SelectListItem>)ViewBag.Dial, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class=" col-md-4">DIAL CONDITION</label>
+                                <div class="col-md-8">
+                                    @Html.DropDownList("drptab2DialCondition", (IEnumerable<SelectListItem>)ViewBag.DialCondition, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <h3 class="form-section">CLIENT COMMENTS</h3>
+
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet-body">
+                    <div class="row">
+
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                @*<label class=" col-md-4">CLIENT COMMENTS </label>*@
+                                <div class="col-md-11">
+                                    <textarea id="txtClientComments" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-building-o"></i>DETAILS
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title="" id="aDivItemPartial"></a>
+
+                        </div>
+                    </div>
+                    <div class="portlet-body"  id="divItemPartial" style="display: none">
+
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="portlet-body">
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">CASE INDIVIDUAL #</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2Serial" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">LOCATION OF ITEM *</label>
+                                                <div class="col-md-6">
+                                                    @Html.DropDownList("drpTab2Location", (IEnumerable<SelectListItem>)ViewBag.Location, "", new { @class = "form-control" })
+                                                </div>
+
+                                                <div class="col-md-2" style="cursor: pointer;" onclick="ShowPopupSearchByLocation();" title="view location">
+                                                    @*<img src="~/Images/Black_Search.png" onclick="ShowPopupSearchByLocation()" style="height:25px; cursor:pointer;" />*@
+                                                    <i class="fa fa-search-plus"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">REFERENCE #</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2Reference" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">SUPPLIER REPAIR #</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2SupplierRepair" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">MOVEMENT SERIAL #</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2MovementSerial" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">SUPPLIER #</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2SupplierPickup" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">CALIBER</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2Caliber" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">REPAIR TYPE *</label>
+                                                <div class="col-md-8">
+                                                    @Html.DropDownList("drpTab2RepairType", (IEnumerable<SelectListItem>)ViewBag.RepairType, "", new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">NUMBER OF JEWELS</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2NumberofJewels" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">STATUS *</label>
+                                                <div class="col-md-8">
+
+                                                    @Html.DropDownList("drpTab2Status", (IEnumerable<SelectListItem>)ViewBag.Status, "", new { @class = "form-control", @Attr = "fgsdg" })
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">PURCHASE LOCATION</label>
+                                                <div class="col-md-6">
+                                                    @Html.DropDownList("drpTab2PurchaseLocation", (IEnumerable<SelectListItem>)ViewBag.PurchaseLocation, "", new { @class = "form-control" })
+                                                </div>
+
+                                                <div class="col-md-2" onclick="ShowPopupSearchByPurchase()" style="cursor: pointer" title="view purchase location">
+                                                    @*<img src="~/Images/Black_Search.png" onclick="ShowPopupSearchByPurchase()" style="height:25px; cursor:pointer;" />*@
+                                                    <i class="fa fa-search-plus"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">DUE DATE (CUSTOMER)</label>
+                                                <div class="col-md-8">
+
+
+
+                                                    <div class="col-md-3 value">
+                                                        <input type="text" id="txtTab2DueDateCUSTOMERDays" class="form-control" maxlength="3" onkeyup="ChangeDueDateCustomer()" />
+                                                    </div>
+
+                                                    <div class="col-md-5 value">
+                                                        <select class="form-control" id="drpTab2DueDateCUSTOMER" onchange="ChangeDueDateCustomer()">
+                                                            <option value="Week">Weeks</option>
+                                                            <option value="Day">Days</option>
+                                                        </select>
+                                                    </div>
+
+
+                                                    <div class="col-md-4 value">
+                                                        <input type="text" id="txtTab2DueDateCUSTOMERDays2" class="form-control" disabled="disabled" />
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">PURCHASE DATE</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group input-medium date date-picker" data-date-format="dd/mm/yyyy">
+                                                        <input type="text" class="form-control" id="txtTab2PurchaseDate">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn default" type="button" id="btnCalenderShow"><i class="fa fa-calendar"></i></button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">DUE DATE (SUPPLIER)</label>
+                                                <div class="col-md-8">
+
+
+
+                                                    <div class="col-md-3 value">
+                                                        <input type="text" id="txtTab2DueDateSupplierDays" class="form-control" maxlength="3" onkeyup="ChangeDueDateSupplier()" />
+                                                    </div>
+
+                                                    <div class="col-md-5 value">
+                                                        <select class="form-control" id="drpTab2DueDateSupplier" onchange="ChangeDueDateSupplier()">
+                                                            <option value="Week">Weeks</option>
+                                                            <option value="Day">Days</option>
+                                                        </select>
+                                                    </div>
+
+
+                                                    <div class="col-md-4 value">
+                                                        <input type="text" id="txtTab2DueDateSupplierDays2" class="form-control" disabled="disabled" />
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">INVENTORY #</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2Inventory" class="form-control" maxlength="50" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">DELAY DATE (CUSTOMER)</label>
+                                                <div class="col-md-8">
+
+
+
+                                                    <div class="col-md-3 value">
+                                                        <input type="text" id="txtTab2DueDateFactoryDays" class="form-control" maxlength="3" onkeyup="ChangeDueDateFactory()" />
+                                                    </div>
+
+                                                    <div class="col-md-5 value">
+                                                        <select class="form-control" id="drpTab2DueDateFactory" onchange="ChangeDueDateFactory()">
+                                                            <option value="Week">Weeks</option>
+                                                            <option value="Day">Days</option>
+                                                        </select>
+                                                    </div>
+
+
+                                                    <div class="col-md-4 value">
+                                                        <input type="text" id="txtTab2DueDateFactoryDays2" class="form-control" disabled="disabled" />
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">SUPPLIER PREV REPAIR #</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2SupplierPrevRepair" class="form-control" maxlength="50" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">WARRANTY DOC.</label>
+                                                <div class="col-md-8">
+                                                    @Html.DropDownList("drpTab2WarrantyDoc", (IEnumerable<SelectListItem>)ViewBag.WarrantyDoc, "", new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">PREV REPAIR #</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2WepmePrevRepair" class="form-control" maxlength="50" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">PACKAGING INCLUDED</label>
+                                                <div class="col-md-8">
+                                                    @Html.DropDownList("drpTab2BoxIncluded", (IEnumerable<SelectListItem>)ViewBag.BoxIncluded, "", new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">WARRANTY FOR THIS REPAIR</label>
+                                                <div class="col-md-8">
+
+                                                    <div class="input-group input-medium date date-picker" data-date-format="dd/mm/yyyy">
+                                                        <input type="text" id="txtTab2WarrantyforthisRepair" class="form-control" />
+                                                        <span class="input-group-btn">
+                                                            <button class="btn default" type="button" id="btnCalenderShow2"><i class="fa fa-calendar"></i></button>
+                                                        </span>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">AUTHORIZED PICKUP</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2AuthorizedPickup" class="form-control" maxlength="50" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">GIFT CERT/AT #</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtTab2GiftCert" class="form-control" maxlength="50" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class=" col-md-4">SECURITY</label>
+                                                <div class="col-md-8">
+                                                    @Html.DropDownList("drpTab2Security", (IEnumerable<SelectListItem>)ViewBag.Security, "", new { @class = "form-control" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-building-o"></i>FACTORY DELAY
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="display: none">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">DELAY</label>
+
+
+
+                                    <div class="col-md-8">
+
+
+
+                                        <div class="col-md-3 value">
+                                            <input type="text" id="txtTab2Delay" class="form-control" maxlength="10" />
+                                        </div>
+
+                                        <div class="col-md-6 value">
+                                            <select class="form-control" id="drpTab2Delay">
+                                                <option value="Week">Weeks</option>
+                                                <option value="Day">Days</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-3">REASON</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="txtTab2Reason" class="form-control" maxlength="50" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-book"></i>APPRAISAL
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="display: none">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">VALUE $</label>
+                                    <div class="col-md-8">
+
+
+                                        <input type="text" id="txtTab2AppraisalValue" class="form-control" maxlength="10" />
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-3">APPRAISER</label>
+                                    <div class="col-md-9">
+                                        @Html.DropDownList("drptab2APPRAISER", (IEnumerable<SelectListItem>)ViewBag.Employee, "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">COMMENTS</label>
+                                    <div class="col-md-8">
+
+                                        <input type="text" id="txtTab2Comments" class="form-control" maxlength="10" />
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-3">APPRAISER TITLE</label>
+                                    <div class="col-md-9">
+                                        @Html.DropDownList("drptab2AppraiserTitle", (IEnumerable<SelectListItem>)ViewBag.AppraisalTitle, "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-truck"></i>PERSON AUTHORIZED TO PICK UP
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="display: none">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-3">FIRST NAME</label>
+
+
+
+                                    <div class="col-md-9">
+                                        <input type="text" id="txtTab2PickUpFirstName" class="form-control" maxlength="50" />
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-3">LAST NAME</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="txtTab2PickUpLastName" class="form-control" maxlength="50" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-cube"></i>ENGRAVING
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="display: none">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-4">FONT</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("drptab2EngravingFont", (IEnumerable<SelectListItem>)ViewBag.EngravingFont, "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class=" col-md-3">CAPITALIZATION</label>
+                                    <div class="col-md-9">
+                                        @Html.DropDownList("drptab2EngravingCapitalization", (IEnumerable<SelectListItem>)ViewBag.EngravingCapitalization, "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class=" col-md-2">MESSAGE </label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" id="txtTab2Message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class=" col-md-2">NOTES TO ENGRAVER </label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" id="txtTab2NoteToEngraver"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn green" onclick="addItem();">Save</button>
+                        <button type="button" class="btn default" onclick="resetRepair();">Start New Repair</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="idCUSTOMERStartdate" />
+<input type="hidden" id="idFACTORYStartdate" />
+<script src="~/Scripts/adminJs/itemFormValidation.js"></script>

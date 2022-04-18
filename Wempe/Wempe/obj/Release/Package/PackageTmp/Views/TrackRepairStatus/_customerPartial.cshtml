@@ -1,0 +1,1147 @@
+﻿<div class="form-horizontal">
+    <div class="form-body form-custom">
+        <h3 class="form-section">Name
+
+       
+         
+                     <div style="float:right;">  
+                         
+                         <a href="@Url.Action("TrackRepair", "TrackRepairStatus")" class="btn green">Back</a>
+
+
+                         </div>
+                
+           
+ </h3>
+
+
+
+
+        <div class="row">
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label col-md-3">TITLE</label>
+                    <div class="col-md-9">
+                        @Html.DropDownList("drpTitels1", (IEnumerable<SelectListItem>)ViewBag.NameTitles, new { @class = "form-control searchValue2 mw_50", @fieldName = "title" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3">FIRST *</label>
+                    <div class="col-md-9">
+                        <input type="text" id="txtFirstName" fieldName="firstName" class="form-control searchValue" maxlength="100" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label col-md-3">MIDDLE </label>
+                    <div class="col-md-9">
+                        <input type="text" id="txtMiddle" fieldName="middleInitial" class="form-control searchValue" maxlength="100" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3">LAST *</label>
+                    <div class="col-md-9">
+                        <input type="text" id="txtLast" fieldName="lastName" class="form-control searchValue" maxlength="100" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group last-col">
+                    @*<label class="control-label col-md-3"><a onclick="ShowPopupSearchByExistingCustomer()">(CUSTOMER)</a></label>*@
+                </div>
+            </div>
+        </div>
+            @* Spouse *@
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label col-md-3">TITLE</label>
+                    <div class="col-md-9">
+                        @Html.DropDownList("drpTitelsSpouse", (IEnumerable<SelectListItem>)ViewBag.NameTitles, new { @class = "form-control searchValue2 mw_50", @fieldName = "asstTitle" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3">FIRST </label>
+                    <div class="col-md-9">
+                        <input type="text" id="txtFirstNameSpouse" fieldName="SpousefirstName"  class="form-control searchValue" maxlength="100" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label col-md-3">MIDDLE </label>
+                    <div class="col-md-9">
+                        <input type="text" id="txtMiddleSpouse" fieldName="SpousemiddleInitial" class="form-control searchValue" maxlength="100" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3">LAST </label>
+                    <div class="col-md-9">
+                        <input type="text" id="txtLastSpouse" fieldName="SpouselastName" class="form-control searchValue" maxlength="100" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="col-md-12">
+                    <div class="form-group last-col">
+                        @*<label class="control-label col-md-3">Relation</label>*@
+                        <select id="ddlSpouseRelation" fieldName="SpouseRelation" class="form-control mw_50 searchValue">
+                            <option value="0">Select</option>
+                            <option value="Wife">Wife</option>
+                            <option value="Spouse">Spouse</option>
+                            <option value="Husband">Husband</option>
+                            <option value="Assistant">Assistant</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @*row 2*@
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label col-md-3">TITLE</label>
+                    <div class="col-md-9">
+                        @Html.DropDownList("drpTitels2", (IEnumerable<SelectListItem>)ViewBag.NameTitles, new { @class = "form-control searchValue2 mw_50", @fieldName = "SpouseTitle" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3">FIRST </label>
+                    <div class="col-md-9">
+                        <input type="text" id="txtFirstName1" fieldName="asstFirstName" class="form-control searchValue" maxlength="100" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label col-md-3">MIDDLE </label>
+                    <div class="col-md-9">
+                        <input type="text" id="txtMiddle1" fieldName="asstMiddleInitial" class="form-control searchValue" maxlength="100" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label col-md-3">LAST </label>
+                    <div class="col-md-9">
+                        <input type="text" id="txtLast1" fieldName="asstLastName" class="form-control searchValue" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="col-md-12">
+                    <div class="form-group last-col">
+                        @*<label class="control-label col-md-3"><a href="#">(ASSISTANT)</a></label>*@
+
+                        <select id="ddlAssistantRelation" class="form-control mw_50 searchValue" fieldName="AsstRelation">
+                            <option value="0">Select</option>
+                            <option value="Wife">Wife</option>
+                            <option value="Spouse">Spouse</option>
+                            <option value="Husband">Husband</option>
+                            <option value="Assistant">Assistant</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                </div>
+
+        </div>
+
+
+        @* <h3 class="form-section">ADDRESS</h3>*@
+        @*PRIMARY ADDRESS*@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-home"></i>PRIMARY ADDRESS
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        COUNTRY *
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        @Html.DropDownList("drpPrimaryCountry", (IEnumerable<SelectListItem>)ViewBag.Countries, "Select Country", new { @class = "form-control searchValue2", @fieldName = "priCountry" })
+                                    </div>
+                                </div>
+
+
+                               
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        COMPANY
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtCompany" fieldName="priCompany" class="form-control searchValue" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        ADDRESS 1
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtLine1" fieldName="priAddressLine1" class="form-control searchValue" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        ADDRESS 2
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtLine2" fieldName="priAddressLine2"  class="form-control searchValue" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info" id="divZipPrimary">
+                                    <div class="col-sm-4 name">
+                                        ZIP/STATE <a title="Add new state" onclick="showAddStateDiv('1');"> <i class="icon-plus"></i></a>
+                                    </div>
+                                   
+                                    <div class="col-sm-2 col-xs-6 value zip-state-col">
+                                        <input type="text" id="txtStateZip" class="form-control" onblur="FillCountryStateCityByZipCode(1)" maxlength="10" />
+                                    </div>
+                                    <div class="col-sm-2 col-xs-6 value">
+                                        <input type="text" id="txtStateZip1" class="form-control" maxlength="10" />
+                                    </div>
+                                    <div class="clearfix visible-xs"></div>
+                                    <div class="col-sm-4 value">
+                                        <select class="form-control searchValue" id="drpPrimaryStates" fieldName="priState">
+                                            <option value>Please select</option>
+                                        </select>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row static-info" id="divPrimaryAddState" style="display:none;">
+                                    <div class="col-md-4 name">
+                                       
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewPrimaryStateAdd" placeholder="New state name"  class="form-control " maxlength="100" />
+                                       
+
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="button" value="Save" class="btn green" onclick="SaveNewStateName('1')" />
+                                    </div>
+                                    </div>
+
+
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        CITY<a title="Add new city" onclick="showAddCityDiv('1');"> <i class="icon-plus"></i></a>
+                                        
+                                       
+                                    </div>
+                                    <div class="col-md-8 value" id="divUSCityPrimary">
+                                        <select class="form-control searchValue" id="drpPrimaryCites" fieldName="priCity">
+                                            <option value>Please select</option>
+                                        </select>
+                                        @*<br />
+                                        <input type="text" id="txtPrimaryCites" class="form-control" style="display: none;" />*@
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="row static-info" id="divPrimaryAddCity" style="display:none;">
+                                    <div class="col-md-4 name">
+                                        
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewPrimaryCountyAdd" placeholder="New County name" class="form-control " maxlength="100" />
+
+
+                                    </div>
+
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewPrimaryCityAdd" placeholder="New City name" class="form-control " maxlength="100" />
+
+
+                                    </div>
+
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewPrimaryZipcodeAdd" placeholder="New Zipcode" class="form-control " maxlength="10" />
+
+
+                                    </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="button" value="Save" class="btn green" onclick="SaveNewCityName('1')" />
+                                    </div>
+                                </div>
+
+
+                                <div id="divPrimaryCountryCode" style="display: none;">
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            @*COUNTRY CODE*@
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtPrimaryCountryCode" class="form-control" maxlength="20" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        CREDIT CARD
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-xs-3 value">
+                                                <input type="text" id="txtCreditCard1" class="form-control" maxlength="4" />
+                                            </div>
+                                            <div class="col-xs-3 value">
+                                                <input type="text" id="txtCreditCard2" class="form-control" maxlength="4" />
+                                            </div>
+                                            <div class="col-xs-3 value">
+                                                <input type="text" id="txtCreditCard3" class="form-control" maxlength="4" />
+                                            </div>
+                                            <div class="col-xs-3 value">
+                                                <input type="text" id="txtCreditCard4" class="form-control" maxlength="4" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                <div class="row static-info ">
+                                    <div class="col-md-4 col-xs-6 name">
+                                        EXP
+                                    </div>
+                                    <div class="col-md-4 col-xs-6 experience-row">
+                                        <div class="row">
+                                            <div class="col-xs-6 value">
+                                                <input type="text" id="txtCardExpDay" class="form-control" maxlength="2" placeholder="Month" />
+                                            </div>
+                                            <div class="col-xs-6 value">
+                                                <input type="text" id="txtCardExpYear" class="form-control" maxlength="4" placeholder="Year" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                        <div class="row">
+                                            <div class="col-xs-6 name">SECURITY</div>
+                                            <div class="col-xs-6 value"><input type="text" id="txtCardSecurity" class="form-control" maxlength="3" placeholder="CVV" /></div>
+                                        </div>
+                                    </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row static-info">
+                                            <div class="col-md-4 name">
+                                                PRIMARY EMAIL
+                                            </div>
+                                            <div class="col-md-8 value">
+                                                <input type="email" id="txtEmail" fieldName="priEMailAddress" class="form-control searchValue" maxlength="100" style="text-transform:none;" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row static-info">
+                                            <div class="col-md-4 name">
+                                                SECONDARY EMAIL
+                                            </div>
+                                            <div class="col-md-8 value">
+                                                <input type="email" id="txtEmail2" class="form-control" maxlength="100" style="text-transform:none;" />
+                                            </div>
+                                        </div>
+                                        <div class="row static-info">
+                                            <div class="col-md-4 name">
+                                                OFFICE PHONE
+                                            </div>
+
+                                                <div class="col-md-8 value">
+                                                    <input type="text" id="txtOfficePhone" class="form-control txtPhone1" maxlength="15" />
+                                                </div>
+                                           
+                                        </div>
+
+                                        <div class="row static-info">
+                                            <div class="col-md-4 name">
+                                                HOME PHONE
+                                            </div>
+                                          
+
+                                          
+                                                <div class="col-md-8 value">
+                                                    <input type="text" id="txtHomePhone" class="form-control txtHomePhone1" maxlength="15" />
+                                                </div>
+                                           
+                                        </div>
+                                        <div class="row static-info">
+                                            <div class="col-md-4 name">
+                                                ASSISTANT PHONE
+                                            </div>
+                                           
+
+                                          
+                                                <div class="col-md-8 value">
+                                                    <input type="text" id="txtASSISTANTPhone" class="form-control txtAssistantPhone1" maxlength="15" />
+                                                </div>
+                                          
+                                        </div>
+
+
+                                        <div class="row static-info">
+                                            <div class="col-md-4 name">
+                                                CELL
+                                            </div>
+                                         
+
+                                        
+                                                <div class="col-md-8 value">
+                                                    <input type="text" id="txtCell" class="form-control txtCall1" maxlength="15" />
+                                                </div>
+                                          
+                                        </div>
+
+                                        <div class="row static-info">
+                                            <div class="col-md-4 name">
+                                                FAX
+                                            </div>
+
+                                           
+
+                                            
+                                                <div class="col-md-8 value">
+                                                    <input type="text" id="txtFAX" class="form-control txtFAX1" maxlength="15" />
+                                                </div>
+                                          
+
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/row-->
+        @*ALTERNATE ADDRESS*@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-home"></i>ALTERNATE ADDRESS
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+
+                    <div class="portlet-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        COUNTRY 
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        @Html.DropDownList("drpAltCountry", (IEnumerable<SelectListItem>)ViewBag.Countries, "Select Country", new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+
+                               
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        COMPANY
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtAltCompany" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        LINE 1
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtAltLine1" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        LINE 2
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="text" id="txtAltLine2" class="form-control" maxlength="100" />
+                                    </div>
+                                </div>
+
+                                <div class="row static-info" id="divZipAlt">
+                                    <div class="col-sm-4 name">
+                                        ZIP/STATE
+
+                                        <a title="Add new state" onclick="showAddStateDiv('2');"> <i class="icon-plus"></i></a>
+
+                                    </div>
+                                   
+                                    <div class="col-sm-2 col-xs-6 value zip-state-col">
+                                        <input type="text" id="txtAltStateZip" onblur="FillCountryStateCityByZipCode(2)" class="form-control" maxlength="10" />
+                                    </div>
+                                    <div class="col-sm-2 col-xs-6 value">
+                                        <input type="text" id="txtAltStateZip1" class="form-control" maxlength="10" />
+                                    </div>
+                                    <div class="clearfix visible-xs"></div>
+                                    <div class="col-sm-4 value">
+                                        <select class="form-control" id="drpAltStates">
+                                            <option value>Please select</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="row static-info" id="divAlternateAddState" style="display:none;">
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewAlternateStateAdd" placeholder="New state name" class="form-control " maxlength="100" />
+
+
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="button" value="Save" class="btn green" onclick="SaveNewStateName('2')" />
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        CITY
+
+                                        <a title="Add new city" onclick="showAddCityDiv('2');"> <i class="icon-plus"></i></a>
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <select class="form-control" id="drpAltCites">
+                                            <option value>Please select</option>
+                                        </select>
+                                        @*<br />
+                                        <input type="text" id="txtAltCites" class="form-control" style="display: none;" />*@
+                                    </div>
+                                </div>
+
+
+                                <div class="row static-info" id="divAlternateAddCity" style="display:none;">
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewAlternateCountyAdd" placeholder="New County name" class="form-control " maxlength="100" />
+
+
+                                    </div>
+
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewAlternateCityAdd" placeholder="New City name" class="form-control " maxlength="100" />
+
+
+                                    </div>
+
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewAlternateZipcodeAdd" placeholder="New Zipcode" class="form-control " maxlength="10" />
+
+
+                                    </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="button" value="Save" class="btn green" onclick="SaveNewCityName('2')" />
+                                    </div>
+                                </div>
+
+                                <div id="divAlternateCountryCode" style="display: none;">
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            @*COUNTRY CODE*@
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtAlternateCountryCode" class="form-control" maxlength="10" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        CREDIT CARD
+                                    </div>
+                                    <div class="col-md-2 col-xs-3 value">
+                                        <input type="text" id="txtAltCreditCard1" class="form-control" maxlength="4" />
+                                    </div>
+                                    <div class="col-md-2 col-xs-3 value">
+                                        <input type="text" id="txtAltCreditCard2" class="form-control" maxlength="4" />
+                                    </div>
+                                    <div class="col-md-2 col-xs-3 value">
+                                        <input type="text" id="txtAltCreditCard3" class="form-control" maxlength="4" />
+                                    </div>
+                                    <div class="col-md-2 col-xs-3 value">
+                                        <input type="text" id="txtAltCreditCard4" class="form-control" maxlength="4" />
+                                    </div>
+                                </div>
+
+                                <div class="row static-info ">
+                                    <div class="col-md-4 col-xs-6 name">
+                                        EXP
+                                    </div>
+                                    <div class="col-md-4 col-xs-6 experience-row ">
+                                        <div class="row">
+                                            <div class="col-xs-6 value">
+                                                <input type="text" id="txtAltCardExpDay" class="form-control" maxlength="2" placeholder="Month" />
+                                            </div>
+                                            <div class="col-xs-6 value">
+                                                <input type="text" id="txtAltCardExpYear" class="form-control" maxlength="4" placeholder="Year" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                        <div class="row">
+                                            <div class="col-xs-6 name">SECURITY</div>
+                                            <div class="col-xs-6 value"><input type="text" id="txtAltCardSecurity" class="form-control" maxlength="3" placeholder="CVV" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                               
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        PRIMARY EMAIL
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtAltEmail" class="form-control" maxlength="100" style="text-transform:none;" />
+                                    </div>
+                                </div>
+
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        SECONDARY EMAIL
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtAltEmail2" class="form-control" maxlength="100" style="text-transform:none;" />
+                                    </div>
+                                </div>
+
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        OFFICE PHONE
+                                    </div>
+                                  
+
+                                
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtAltOfficePhone" class="form-control txtAltPhone1" maxlength="15" />
+                                        </div>
+
+                                    
+                                </div>
+
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        HOME PHONE
+                                    </div>
+                                   
+
+                                  
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtAltHomePhone" class="form-control txtAltHomePhone1" maxlength="15" />
+                                        </div>
+
+                                  
+                                </div>
+
+
+
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        ASSISTANT PHONE
+                                    </div>
+                                   
+
+                                  
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtAltAssistantPhone" class="form-control txtAltAssistantPhone1" maxlength="15" />
+                                        </div>
+
+                                    
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        CELL
+                                    </div>
+
+                                    
+
+                                   
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtAltCell" class="form-control txtAltCall1" maxlength="15" />
+                                        </div>
+                                    
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        FAX
+                                    </div>
+                                   
+
+                                   
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtAltFAX" class="form-control txtAltFAX1" maxlength="15" />
+                                        </div>
+                                   
+                                </div>
+
+                               
+
+                               
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*Last ADDRESS*@
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet blue-hoki box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-home"></i>THIRD ADDRESS
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+
+                        </div>
+                    </div>
+
+                    <div class="portlet-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        COUNTRY 
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        @Html.DropDownList("drpthirdCountry", (IEnumerable<SelectListItem>)ViewBag.Countries, "Select Country", new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                              
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            COMPANY
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtthirdCompany" class="form-control" maxlength="100" />
+                                        </div>
+                                    </div>
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            LINE 1
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtthirdLine1" class="form-control" maxlength="100" />
+                                        </div>
+                                    </div>
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            LINE 2
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtthirdLine2" class="form-control" maxlength="100" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row static-info" id="divZipthird">
+                                        <div class="col-sm-4 name">
+                                            ZIP/STATE
+
+                                            <a title="Add new state" onclick="showAddStateDiv('3');"> <i class="icon-plus"></i></a>
+
+
+                                        </div>
+                                       
+                                        <div class="col-sm-2 col-xs-6 value zip-state-col">
+                                            <input type="text" id="txtthirdStateZip" onblur="FillCountryStateCityByZipCode(3)" class="form-control" maxlength="10" />
+                                        </div>
+                                        <div class="col-sm-2 col-xs-6 value">
+                                            <input type="text" id="txtthirdStateZip1" class="form-control" maxlength="10" />
+                                        </div>
+
+                                        <div class="clearfix visible-xs"></div>
+                                        <div class="col-sm-4 value">
+                                            <select class="form-control" id="drpthirdStates">
+                                                <option value>Please select</option>
+                                            </select>
+                                        </div>
+
+
+                                    </div>
+
+
+                                <div class="row static-info" id="divThirdAddState" style="display:none;">
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewThirdStateAdd" placeholder="New state name" class="form-control " maxlength="100" />
+
+
+                                    </div>
+                                    <div class="col-md-2 value">
+                                        <input type="button" value="Save" class="btn green" onclick="SaveNewStateName('3')" />
+                                    </div>
+                                </div>
+
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            CITY
+                                            <a title="Add new city" onclick="showAddCityDiv('3');"> <i class="icon-plus"></i></a>
+                                            
+                                           
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <select class="form-control" id="drpthirdCites">
+                                                <option value>Please select</option>
+                                            </select>
+                                            @*<br />
+                                            <input type="text" id="txtthirdCites" class="form-control" style="display: none;" />*@
+                                        </div>
+                                    </div>
+
+
+
+                                <div class="row static-info" id="divThirdAddCity" style="display:none;">
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewThirdCountyAdd" placeholder="New County name" class="form-control " maxlength="100" />
+
+
+                                    </div>
+
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewThirdCityAdd" placeholder="New City name" class="form-control " maxlength="100" />
+
+
+                                    </div>
+
+                                    <div class="col-md-4 name">
+
+                                    </div>
+                                    <div class="col-md-6 value">
+                                        <input type="text" id="txtNewThirdZipcodeAdd" placeholder="New Zipcode" class="form-control " maxlength="10" />
+
+
+                                    </div>
+
+                                    <div class="col-md-2 value">
+                                        <input type="button" value="Save"  class="btn green" onclick="SaveNewCityName('3')" />
+                                    </div>
+                                </div>
+
+
+                                <div id="divThirdCountryCode" style="display: none;">
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            @*COUNTRY CODE*@
+                                        </div>
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtThirdCountryCode" class="form-control" maxlength="10" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                    <div class="row static-info">
+                                        <div class="col-md-4 name">
+                                            CREDIT CARD
+                                        </div>
+                                        <div class="col-md-2 col-xs-3 value">
+                                            <input type="text" id="txtthirdCreditCard1" class="form-control" maxlength="4" />
+                                        </div>
+                                        <div class="col-md-2 col-xs-3 value">
+                                            <input type="text" id="txtthirdCreditCard2" class="form-control" maxlength="4" />
+                                        </div>
+                                        <div class="col-md-2 col-xs-3 value">
+                                            <input type="text" id="txtthirdCreditCard3" class="form-control" maxlength="4" />
+                                        </div>
+                                        <div class="col-md-2 col-xs-3 value">
+                                            <input type="text" id="txtthirdCreditCard4" class="form-control" maxlength="4" />
+                                        </div>
+                                    </div>
+
+                                <div class="row static-info ">
+                                    <div class="col-md-4 col-xs-6 name">
+                                        EXP
+                                    </div>
+                                    <div class="col-md-4 col-xs-6 experience-row">
+                                        <div class="row">
+                                            <div class="col-xs-6 value">
+                                                <input type="text" id="txtthirdCardExpDay" class="form-control" maxlength="2" placeholder="Month" />
+                                            </div>
+                                            <div class="col-xs-6 value">
+                                                <input type="text" id="txtthirdCardExpYear" class="form-control" maxlength="4" placeholder="Year" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                        <div class="row">
+                                            <div class="col-xs-6 name">SECURITY</div>
+                                            <div class="col-xs-6 value"><input type="text" id="txtthirdCardSecurity" class="form-control" maxlength="3" placeholder="CVV" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                </div>
+                            <div class="col-md-6">
+
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        PRIMARY EMAIL
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtthirdEmail" class="form-control" maxlength="100" style="text-transform:none;" />
+                                    </div>
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        SECONDARY EMAIL
+                                    </div>
+                                    <div class="col-md-8 value">
+                                        <input type="email" id="txtthirdEmail2" class="form-control" maxlength="100" style="text-transform:none;" />
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        OFFICE PHONE
+                                    </div>
+                                   
+
+                                   
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtthirdOfficePhone" class="form-control txtthirdPhone1" maxlength="15" />
+                                        </div>
+
+                                    
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        HOME PHONE
+                                    </div>
+                                   
+
+                                 
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtthirdHomePhone" class="form-control txtthirdHomePhone" maxlength="15" />
+                                        </div>
+
+                                   
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        ASSISTANT PHONE
+                                    </div>
+                                   
+
+                                   
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtthirdAssistantPhone" class="form-control txtthirdAssistantPhone1" maxlength="15" />
+                                        </div>
+
+                                  
+                                </div>
+
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        CELL
+                                    </div>
+
+                                   
+
+                                   
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtthirdCell" class="form-control txtthirdAssistantCall1" maxlength="15" />
+                                        </div>
+                                   
+                                </div>
+                                <div class="row static-info">
+                                    <div class="col-md-4 name">
+                                        FAX
+                                    </div>
+                                  
+
+                                 
+                                        <div class="col-md-8 value">
+                                            <input type="text" id="txtthirdFAX" class="form-control txtthirdFAX1" maxlength="15" />
+                                        </div>
+                                    
+                                </div>
+
+                                
+
+                              
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--/row-->
+        <!--/row-->
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="portlet blue-hoki box form-custom">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-pencil-square-o"></i>NOTES
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="expand" data-original-title="" title=""></a>
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">CONTACT PREFERENCES</label>
+                                    <div class="col-md-8">
+                                        @Html.DropDownList("drpContactPrefrences", (IEnumerable<SelectListItem>)ViewBag.ContactPrefrences, "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">CUSTOMER TYPE</label>
+                                    <div class="col-md-9">
+                                        @Html.DropDownList("drpCustomerType", (IEnumerable<SelectListItem>)ViewBag.CustomerType, "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">OTHER NOTES </label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" id="txtNote"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--/row-->
+    </div>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <a href="@Url.Action("TrackRepair", "TrackRepairStatus")" class="btn green">Back</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/adminJs/customerFormValidation.js"></script>
+
+
+@*New Code 26 October 2016*@
+
+

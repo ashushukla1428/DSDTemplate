@@ -1,0 +1,121 @@
+﻿@*@using Wempe.Models;*@
+@{
+    Layout = null;
+}
+<style>
+    .tdStyle_table tr td {
+        font-size: 12px;
+        font-family: 'Times New Roman';
+        line-height: 14px;
+    }
+
+    .tdStyle {
+        font-weight: bold;
+        font-size: 12px;
+        font-family: 'Times New Roman';
+        width: 40%;
+    }
+</style>
+
+<div align="center">
+    <table border="0" width="590" id="table1">
+        <tr>
+            <td>
+                <p align="center">
+
+                    <font face="Times New Roman" size="2">
+			<img border="0" src="~/images/logo.gif" width="162" height="47"><br>
+			<br>
+			@*<img border="0" src="~/images/logoAddress.gif" width="494" height="21"><br>*@
+			<br>
+			<br>
+			<br>
+			</font>
+                </p>
+                <table border="0" width="100%" id="table2">
+                    <tr>
+                        <td>
+                            <p align="right">
+                                <b><font face="Times New Roman">SYSTEM OVERVIEW</font></b><font face="Times New Roman"><br>
+					</font>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <table border="0" width="100%" id="table3">
+                    <tr>
+                        <td width="100%" colspan="2"><b>Report Summary: </b>This report displays totals of all repairs grouped by status.<br /></td>
+                      
+                    </tr>
+
+                    <tr>
+                        <td width="60%"><b>Total Repairs: </b>@ViewBag.SystemOverViewNumerofTotalRepairs<br />
+                        </td>
+                        <td width="40%" align="left" valign="top">
+                            <font face="Times New Roman" size="2">
+			
+					
+                       
+					</font>
+                        </td>
+                    </tr>
+                </table>
+                <font face="Times New Roman" size="2">
+			<br>
+			</font>
+                <table border="0" width="100%" id="table4">
+                    <tr>
+                        <td>
+                            <br>
+
+                            <p>
+                                <font face="Times New Roman" size="2">
+					
+					
+			<div class="portlet-body">
+                
+                <div class="table-scrollable">
+                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+                        <thead>
+                            <tr>
+                                <th class="sort" onclick="setSorting(this,'NumberOfRepairs',[0,1]);">Numbers of Repairs
+                                </th>
+                                <th class="sort" onclick="setSorting(this,'status',[0,1]);">Status
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyDetailsSystemOverview">
+                            @foreach (var item in Model.TotalRepairs)
+                            {
+                                <tr>
+                                    <td>@item.NumberofRepairs</td>
+                                    <td>@item.Status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+                                @*displayEngraving*@
+
+
+                            <p>
+                                <font face="Times New Roman" size="2">
+                    </tr>
+                    <tr>
+                        <td>
+                            <p align="center">
+                                <font face="Times New Roman" size="2"><br><br>
+                                @*   Thank you very much for the opportunity to assist you,*@
+
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+

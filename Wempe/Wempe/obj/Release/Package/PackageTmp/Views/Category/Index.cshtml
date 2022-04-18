@@ -1,0 +1,366 @@
+﻿ 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="portlet yellow-crusta box">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="fa fa-cogs"></i>List
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                        <div class="portlet-body">
+                                          <div id="menuTree">
+                                            @*Categories Tree*@
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="portlet blue-hoki box">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="fa fa-cogs"></i>Details
+                                                <button type="button" data-dismiss="modal"  class="btn btn-default" id="btnCreate">Create</button>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Category Name:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    <input type="text" value="" id="txtCategoryName" class="form-control form-filter input-sm" />
+                                                </div>
+                                            </div>
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                  Category Url:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    <input type="text" value="" id="txtCategoryUrl" class="form-control form-filter input-sm" />
+                                                </div>
+                                            </div>
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Sort By:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    <input type="text" value="" id="txtCategoryIndex" class="form-control form-filter input-sm" />
+                                                </div>
+                                            </div>
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                   Meta Titel:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    <input type="text" value="" id="txtmetaTitel" class="form-control form-filter input-sm" />
+                                                </div>
+                                            </div>
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Meta keywords:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    <input type="text" value="" id="txtmetakeywords" class="form-control form-filter input-sm" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                   Meta Description:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    <input type="text" value="" id="txtmetaDescription" class="form-control form-filter input-sm" />
+                                                </div>
+                                            </div>
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Status:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    <input type="checkbox" id="txtIsActive" />
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <input type="file" id="UploadImg" onchange="previewImage(this)"><br />
+                                                <img height="200" id="imgPreview" width="200">
+
+                                            </div>
+
+                                          <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                
+                                                      
+                                                      <button type="button" class="btn blue" onclick="AddCategory();" >Save </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+<input type="hidden" value="0" id="hdnCategoryID" />
+<input type="hidden" value="0" id="hdnPCategoryID" />
+<!-- responsive -->
+
+
+
+<!-- BEGIN PAGE LEVEL STYLES onclick="Add();"-->
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css"/>
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
+<!-- END PAGE LEVEL STYLES -->
+@section scripts{
+
+<script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<script src="~/Content/themes/admin/pages/scripts/ui-extended-modals.js"></script>
+    <script src="~/jstree/jquery.jstree.js"></script>
+<script src="~/Scripts/adminJs/wmpMenu.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            activemenu('eCommerce_Brands');
+           
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+            QuickSidebar.init(); // init quick sidebar
+            Demo.init(); // init demo features
+            UIExtendedModals.init();
+            //UIToastr.init();
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+
+            getMenus();
+            jQuery(".page-number").live("click", function () {
+                
+                getList(parseInt($(this).html()));
+            });
+        });
+
+        function getMenus() {
+           
+            $('#menuTree').jstree({
+                "json_data": {
+                    "ajax": {
+                        "url": siteUrl + "/Category/getMenus",
+                        "type": "POST",
+                        headers: { "requestType": "client" },
+                        data: {},
+                        "dataType": "json",
+                        "contentType": "application/json charset=utf-8"
+                    }
+                },
+                "themes": {
+                    "theme": "default",
+                    "dots": false,
+                    "icons": true,
+                    "url": siteUrl + "/content/themes/default/style.css"
+                },
+
+                "plugins": ["themes", "json_data", "ui", "state", "crrm", "changed"]
+
+            });
+            $("#menuTree").bind('select_node.jstree', function (e, data) {
+                // gather ids of selected nodes
+                var node = data.rslt.obj;
+                var _parentId = node.parents('li').attr('id');
+                //alert(_parentId);
+                var selected_ids = [];
+
+                $("#menuTree").jstree('get_selected').each(function () {
+                    var inst = data.inst;
+                    level = inst.get_path().length;
+
+                    var parentNode = data.inst._get_parent();
+                    // alert(JSON.stringify(parentNode.inst));
+                     // alert(this.id);
+                    // alert(level);
+                    selected_ids.push(this.id);
+                });
+                // do summit with them
+                // alert(level-1);
+                $('#hdnPCategoryID').val(_parentId);
+                getCategoryDetail(selected_ids, level - 1);
+                
+               // $('#hdCategoryID').val(selected_ids);
+                //alert(selected_ids);
+            });
+
+        }
+        function getCategoryDetail(_cid, _level) {
+            $('#hdnCategoryID').val(_cid);
+           // alert(_cid);
+          //  alert(_level);
+            if (_cid != '' && _cid > 0) {
+                $.ajax({
+                    url: siteUrl + 'Category/getCategoryDetail',
+                    type: 'get',
+                    //dataType: "json",
+                    data: { ID: $.trim(_cid) },
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+
+                        //  var a = data.AdShow ? alert("true") : alert("false");
+                        $('#txtCategoryName').val(data.CategoryName);
+                        $('#btnCreate').html('Create category under "'+data.CategoryName+'"');
+                        if (data.IsActive == 0) {
+                            $('#txtIsActive').val('false');
+                        }
+                        else {
+                            $('#txtIsActive').val('true');
+                        }
+                        $('#txtCategoryUrl').val(data.CategoryUrl);
+                        $('#txtCategoryIndex').val(data.CategoryIndex);
+                        $('#txtmetaTitel').val(data.metaTitel);
+                        $('#txtmetakeywords').val(data.metakeywords);
+                        $('#txtmetaDescription').val(data.metaDescription);
+                        $("#imgPreview").attr('src', '/Upload/' + data.CategoryImage);
+                        //$('#HFImageName').val(data.CategoryPhoto);
+                        // $('#UploadedImage').attr("src", 'http://images.com/Preview/160/160/' + data.CategoryPhoto);
+
+                        //alert(data.Category);
+
+                    },
+                    error: function (_data) {
+
+                        alert(_errorMessage);
+
+                    }
+                });
+            }
+            else {
+                $('#btnCreate').html('Create category under "Root"');
+                $('#hdnCategoryID').val("0");
+            }
+        }
+
+      
+        $('#btnCreate').click(function () {
+
+            $('#hdnPCategoryID').val($('#hdnCategoryID').val());
+            $('#hdnCategoryID').val("0");
+            resetForm();
+
+        });
+        
+        
+        function AddCategory() {
+           
+            var model =
+            {
+                CategoryID: parseInt($('#hdnCategoryID').val()),
+                parentID: parseInt($('#hdnPCategoryID').val()),
+                CategoryName: $('#txtCategoryName').val(),
+                CategoryUrl: $('#txtCategoryUrl').val(),
+                metaTitel: $('#txtmetaTitel').val(),
+                metakeywords: $('#txtmetakeywords').val(),
+                metaDescription: $('#txtmetaDescription').val(),
+                CategoryIndex:parseInt( $('#txtCategoryIndex').val()),
+                CategoryImage: 'cat_' + $('#UploadImg').val().split('\\').pop(),
+                IsActive: $('#chkIsActive').is(':checked')
+            };
+
+
+            $.ajax({
+                url: siteUrl + 'Category/Add',
+                type: 'POST',
+                headers: { "requestType": "client" },
+                data: JSON.stringify(model),
+                contentType: 'application/json;charset=utf-8',
+                success: function (data) {
+                    if (data.Status) {
+                        uploadImage();
+
+                        $('#responsive').modal('toggle');
+                        showMessage('Success', 'success', data.Message, 'toast-top-right');
+                        $('#UploadImg').val('');
+                        getMenus();
+
+                        $('#hdnPCategoryID').val('0');
+                        $('#hdnCategoryID').val("0");
+
+                        resetForm();
+                        $('#btnCreate').html('Create category under "Root"');
+                    }
+                    else {
+                        showMessage('Oops', 'error', data.Message, 'toast-top-right');
+                    }
+                },
+                error: function (_data) {
+                    showMessage('Oops', 'error', _errorMessage, 'toast-top-right');
+                }
+            });
+        }
+        function resetForm()
+        {
+            $('#txtCategoryName').val('');
+            $('#txtCategoryUrl').val('');
+            $('#txtCategoryIndex').val('');
+            $('#txtmetaTitel').val('');
+            $('#txtmetakeywords').val('');
+            $('#txtmetaDescription').val('');
+        }
+        function previewImage(input) {
+            var preview = document.getElementById('imgPreview');
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.setAttribute('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.setAttribute('src', 'placeholder.png');
+            }
+        }
+        $("#UploadImg").change(function () {
+           // uploadImage();
+        });
+
+        function uploadImage()
+        {
+            var data = new FormData();
+            var files = $("#UploadImg").get(0).files;
+            if (files.length > 0) {
+                data.append("MyImages", files[0]);
+            }
+
+            $.ajax({
+                url: "/Category/UploadFile",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    //code after success
+                  //  $("#txtImg").val(response);
+                    $("#imgPreview").attr('src', '/Upload/' + response);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        }
+</script>
+}
+
+

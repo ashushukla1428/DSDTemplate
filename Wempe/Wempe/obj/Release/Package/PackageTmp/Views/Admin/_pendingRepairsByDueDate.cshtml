@@ -1,0 +1,38 @@
+﻿@using Wempe.Models;
+<div class="form-horizontal" role="form">
+    <div class="form-body">
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    Total Repairs Pending: <span id="SystemOverviewRepairCount">@ViewBag.SystemOverViewNumerofPendingRepairs</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-scrollable">
+                    <table class="table table-striped table-bordered table-hover" id="sample_1">
+                        <thead>
+                            <tr>
+                                <th>Due Date
+                                </th>
+                                <th>Repair Number
+                                </th>
+                                <th>Status
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyDetailsPendingRepairs">
+                            @foreach (var item in Model.PendingRepairs)
+                            {
+                                <tr>
+                                    <td>@item.dueDate</td>
+                                    <td><a href="../Repair/NewRepair?Id=@item.customerNumber&Rid=@item.repairNumber">@item.repairNumberComplete</a></td>
+                                    <td>@item.Status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

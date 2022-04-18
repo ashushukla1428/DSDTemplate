@@ -1,0 +1,235 @@
+/* here you can put your own css to customize and override the theme */
+
+/***
+Rounded Portlets
+***/
+/*
+.portlet {
+	border-radius: 4px !important;
+}
+
+.portlet .portlet-title {
+	border-radius: 4px 4px 0px 0px !important;
+}
+
+.portlet .portlet-body,
+.portlet .portlet-body .form-actions  {
+	border-radius: 0px 0px 4px 4px !important;
+}
+*/
+
+/*
+Change Quick Sidebar Width
+*/
+
+/*
+.page-quick-sidebar-wrapper {
+  right: -370px;
+  width: 370px;
+}
+
+.page-quick-sidebar-open.page-quick-sidebar-push-content .page-sidebar-wrapper {
+  margin-left: -370px;
+}
+
+.page-quick-sidebar-open.page-quick-sidebar-push-content .page-footer {
+  margin-right: 370px;
+  margin-left: -370px;
+}
+
+.page-sidebar-reversed.page-quick-sidebar-open.page-quick-sidebar-push-content .page-sidebar-wrapper {
+  margin-right: 370px;
+}
+
+.page-quick-sidebar-open.page-quick-sidebar-push-content.page-quick-sidebar-full-height .page-header {
+  margin-left: -370px;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-list {
+  width: 370px !important;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item {
+  width: 370px !important;
+  margin-left: 370px;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list {
+  margin-left: -370px;
+}
+*/
+.page-header.navbar .page-logo {
+    /*background: url(../img/strip.jpg) bottom left repeat-x;*/
+}
+
+    .page-header.navbar .page-logo .site-logo {
+        float: none;
+        margin-top: 26px;
+    }
+    .page-header-fixed {
+        padding-top:156px !important;
+    }
+    .page-header.navbar {
+        position:fixed;
+        left:0;
+        top:0;
+        right:0;
+        z-index:11;
+    }
+.static-info .value.zip-state-col {
+    position:relative;
+}
+.static-info .value.zip-state-col:after {
+    content: "-";
+    position: absolute;
+    right: -4px;
+    top: 0px;
+    font-size: 24px;
+    line-height: 24px;
+}
+/* Theme color change (20-12-2016)*/
+body {
+    background-color: #fff;
+}
+.green.btn, .btn.default, .yellow.btn, .blue.btn {
+    background-color: #82CAFF;
+    border:none;
+    color: #000;
+}
+.green.btn:hover, .btn.default:hover, .yellow.btn:hover, .blue.btn:hover  {
+    background-color: #657383;
+    color: #fff;
+}
+.yellow.btn:hover, .yellow.btn:focus, .yellow.btn:active, .yellow.btn.active {
+    background-color: #657383;
+    color: #fff;
+}
+.yellow.btn:active:hover, .yellow.btn.active:hover {
+    background-color: #82CAFF;
+    color: #000;
+}
+.portlet.box.blue-hoki > .portlet-title {
+    background-color: #f2f2f2;
+}
+.page-content, .tabbable-custom > .tab-content {
+    background-color: #fff;
+}
+.page-bar {
+    background-color: #657383;
+    color: #fff;
+}
+.page-bar .page-breadcrumb > li > a, .page-bar .page-breadcrumb > li > span, .page-bar .page-breadcrumb > li > i {
+    color: #fff;
+}
+.tabbable-reversed ul.nav li.active a, .tabbable-reversed ul.nav li.active a:hover {
+    background-color: #fff;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover, .page-sidebar {
+    background-color: #fff;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-toggler, .page-sidebar .sidebar-toggler {
+    opacity:1;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li:hover > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.open > a, .page-sidebar .page-sidebar-menu > li:hover > a, .page-sidebar .page-sidebar-menu > li.open > a {
+    background-color: #f2f2f2;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a,
+.page-sidebar .page-sidebar-menu > li.active > a, .page-sidebar .page-sidebar-menu > li.active.open > a {
+    background-color: #f2f2f2;
+}
+.page-sidebar .page-sidebar-menu .sub-menu li > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a {
+background-color: #f2f2f2;
+}
+.table tr.heading > th {
+background-color: #f2f2f2 !important;
+}
+.tabbable-reversed ul.nav li a {
+    color: #657383;
+}
+.tabbable-custom > .nav-tabs > li.active {
+    border-color: #657383;
+}
+.portlet.box.blue-hoki > .portlet-title > .caption, .portlet.box.blue-hoki > .portlet-title > .caption > i {
+    color: #657383;
+    font-weight:500;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a, .page-sidebar .page-sidebar-menu > li > a {
+    color: #657383;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i[class^="icon-"], .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i[class*="icon-"], .page-sidebar .page-sidebar-menu > li > a > i[class^="icon-"], .page-sidebar .page-sidebar-menu > li > a > i[class*="icon-"] {
+    color: #657383;
+}
+.ViewBagLogo {
+    text-align:center;
+}
+.ViewBagLogo img {
+    max-width:150px;
+    width:100%;
+}
+
+.page-sidebar .page-sidebar-menu {
+    position:fixed;
+    bottom:0;
+    overflow-y:auto;
+    top:150px;
+}
+.page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {
+    position:fixed;
+    overflow:visible; z-index:10;
+}
+/* END Theme color change (20-12-2016)
+
+    Resposive Start Here
+*/
+@media (max-width: 1023px) {
+
+    .page-sidebar .page-sidebar-menu.page-sidebar-menu-closed {
+    position:static;
+    
+}
+}
+@media (max-width: 991px) {
+    .page-header.navbar .page-logo > a {
+    margin-top: 0px !important;
+}
+    .page-header.navbar .page-logo .logo-default {
+        margin-top:5px;
+    }
+    .page-header.navbar .menu-toggler.responsive-toggler {
+        margin-top: 10px;
+    }
+    .page-sidebar .page-sidebar-menu {
+        position:static;
+    }
+
+      .menu-toggler i.icon-grid {
+display:none; }
+.sidebar-toggler {
+margin-right:14px; text-align:right;}
+
+    .menu-toggler > img {
+
+        transition:all ease 0.5s;
+        -moz-transition:all ease 0.5s;
+        -webkit-transition:all ease 0.5s;
+
+    transform:rotate(-180deg);
+    -moz-transform:rotate(-180deg);
+    -webkit-transform:rotate(-180deg);
+
+
+    }
+
+        .menu-toggler.opp > img {
+
+       
+    transform:rotate(-360deg);
+    -moz-transform:rotate(-360deg);
+    -webkit-transform:rotate(-360deg);
+
+
+    }
+}
+@media (min-width: 768px) {
+}

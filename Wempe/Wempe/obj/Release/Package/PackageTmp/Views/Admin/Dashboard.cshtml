@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css"/>
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
+
+<!-- END PAGE LEVEL STYLES -->
+@section scripts{
+<script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+<script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<script src="~/Content/themes/admin/pages/scripts/ui-extended-modals.js"></script>
+    <script src="~/PrintPageScript/jquery.printPage.js"></script>
+    }
+
+<script src="~/Content/themes/admin/plugins/jquery.min.js" type="text/javascript"></script>
+
+<script src="~/Scripts/jquery.tablesorter.js"></script>
+<script src="~/Scripts/jquery.tablesorter.min.js"></script>
+<script src="~/Scripts/jquery.tablesorter.widgets.js"></script>
+
+<script src="~/Scripts/adminJs/Dashboard.js"></script>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <div class="page-content-wrapper">
+        <div class="">
+            <div class="page-bar">
+                <ul class="page-breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a href="#">Home</a>
+                        <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN DASHBOARD STATS -->
+            @*  <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat blue-madison">
+                        <div class="visual">
+                            <i class="fa fa-comments"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                1349
+                            </div>
+                            <div class="desc">
+                                New Feedbacks
+                            </div>
+                        </div>
+                        <a class="more" href="#">View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat red-intense">
+                        <div class="visual">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                12,5M$
+                            </div>
+                            <div class="desc">
+                                Total Profit
+                            </div>
+                        </div>
+                        <a class="more" href="#">View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat green-haze">
+                        <div class="visual">
+                            <i class="fa fa-shopping-cart"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                549
+                            </div>
+                            <div class="desc">
+                                New Orders
+                            </div>
+                        </div>
+                        <a class="more" href="#">View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat purple-plum">
+                        <div class="visual">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                +89%
+                            </div>
+                            <div class="desc">
+                                Brand Popularity
+                            </div>
+                        </div>
+                        <a class="more" href="#">View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>*@
+            <!-- END DASHBOARD STATS -->
+            <div class="clearfix">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tabbable tabbable-custom boxless tabbable-reversed">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#tab_0" data-toggle="tab">System Overview </a>
+                            </li>
+                            <li>
+                                <a href="#tab_1" data-toggle="tab">Pending Repairs by Due Date</a>
+                            </li>
+                            <li>
+                                <a href="#tab_2" data-toggle="tab">Completed Repairs </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_0">
+                                @Html.Partial("_systemOverview")
+                            </div>
+                            <div class="tab-pane" id="tab_1">
+                                @Html.Partial("_pendingRepairsByDueDate")
+
+                            </div>
+                            <div class="tab-pane" id="tab_2">
+                                @Html.Partial("_completedRepairs")
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ <script>
+     jQuery(document).ready(function () {
+         Metronic.init(); // init metronic core components
+         Layout.init(); // init current layout
+         QuickSidebar.init(); // init quick sidebar
+         Demo.init(); // init demo features
+         UIExtendedModals.init();
+
+
+         activemenu('liDashboard');
+
+     });
+</script>
+
+ <input type="hidden" id="hdnCallType" value="0" />
+
+
+<div id="responsivePrintAdmin" class="modal fade" tabindex="-1" data-width="760">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Report</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row" id="divPrintAdmin" style='overflow:auto; height:400px;'>
+          Loading....
+        </div>
+    </div>
+    <div class="modal-footer">
+      @*  <button type="button" class="btn btn-default" id="divAlternate" onclick="openPrintBox(0,0,0,1);">USE ALTERNATE ADDRESS</button>
+        <button type="button" class="btn btn-default" id="divPrimary" onclick="openPrintBox(0,0,0,1);" style="display:none">USE PRIMARY ADDRESS</button>*@
+        <button type="button" data-dismiss="modal"  class="btn btn-default">Close</button>
+        <button type="button" class="btn blue btnPrint"  >Print</button>
+        <input type="hidden" id="hdnid" value="0" />
+    </div>
+</div>

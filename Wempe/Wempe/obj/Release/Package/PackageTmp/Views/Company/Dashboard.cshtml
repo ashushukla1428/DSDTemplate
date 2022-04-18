@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/themes/admin/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+<!-- END PAGE LEVEL STYLES -->
+@section scripts{
+    <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
+    <script src="~/Content/themes/admin/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <script src="~/Content/themes/admin/pages/scripts/ui-extended-modals.js"></script>
+    <script src="~/PrintPageScript/jquery.printPage.js"></script>
+    <link href="~/Content/DatePicker/datepicker3.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+}
+<script src="~/Content/themes/admin/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="~/Scripts/adminJs/DashboardCompany.js"></script>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <div class="page-content-wrapper">
+        <div class="">
+            <div class="page-bar">
+                <ul class="page-breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a>Home</a>
+                        <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END PAGE HEADER-->
+
+            <div class="clearfix">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tabbable tabbable-custom boxless tabbable-reversed">
+                        <ul class="nav nav-tabs" id="ulListCompanyDashboard">
+                              <li class="active" id="Li3">
+                                <a href="#tab_0" data-toggle="tab"><b>Search</b> (By Due Date Start)</a>
+                            </li>
+
+                            <li  id="Li1">
+                                <a href="#tab_0" data-toggle="tab"><b>Today Tasks</b></a>
+                            </li>
+                            <li id="Li2">
+                                <a href="#tab_0" data-toggle="tab"><b>This Week's Tasks</b></a>
+                            </li>
+                          
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_0">
+                                @Html.Partial("_companyDashboard")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(document).ready(function () {
+        activemenu('WEMPE_Dashboard');
+        Metronic.init(); // init metronic core components
+        Layout.init(); // init current layout
+        QuickSidebar.init(); // init quick sidebar
+        // Demo.init(); // init demo features
+        // UIExtendedModals.init();
+    });
+</script>
+

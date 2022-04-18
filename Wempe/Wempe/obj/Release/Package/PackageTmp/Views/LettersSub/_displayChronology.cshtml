@@ -1,0 +1,124 @@
+﻿@{
+    Layout = null;
+}
+@{
+    string fontSize = this.ViewData.ContainsKey("fontSize") ? this.ViewData["fontSize"].ToString() : string.Empty;
+    string numberOfChronologyColumns = this.ViewData.ContainsKey("numberOfChronologyColumns") ? this.ViewData["numberOfChronologyColumns"].ToString() : string.Empty;
+}
+<table border="0" width="100%" cellspacing="0" cellpadding="0" id="tableItemMain">
+    <tr>
+        <td width="50%" valign="top">
+            <table class="tdStyle_table" style="font-family:'Times New Roman';width:100%; font-size:12px;" border="0" cellpadding="0" cellspacing="0">
+                @if (Model.itemDetail.entryDate != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.entryDate), "Entry Date", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dueDate != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dueDate), "Due Date (Customer)", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dueDateFactory != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dueDateFactory), "Due Date (Fcty.)", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateReceivedByMail != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateReceivedByMail), "Recv. By Mail", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateReceivedByMessenger != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateReceivedByMessenger), "Recv. By Messenger", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateEstimateRequest != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateEstimateRequest), "Estimate Req.", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateEstimateRequestStatus != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateEstimateRequestStatus), "Estimate Req. Status", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateServiceRequest != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateServiceRequest), "Service Req.", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateServiceRequestStatus != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateServiceRequestStatus), "Service Req. Status.", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateAuthToFactoryCharge != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateAuthToFactoryCharge), "Auth. To Fcty. ($)", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateAuthToFactoryNoCharge != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateAuthToFactoryNoCharge), "Auth. To Fcty. (N/C)", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateReminderToFactory != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateReminderToFactory), "Reminder To Fcty.", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateProceedToFactory != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateProceedToFactory), "Proceed To Fcty.", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateRepairOffer != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateRepairOffer), "Repair Offer", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateRepairOfferReminder != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateRepairOfferReminder), "Repair Offer Rmdr.", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateReturnUndone != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateReturnUndone), "Return Undone", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateProceedWithService != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateProceedWithService), "Proceed With Service", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateRepairStatus != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateRepairStatus), "Repair Status", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateRepairDelay != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateRepairDelay), "Repair Delay", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.datePickedUp != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.datePickedUp), "Picked Up", fontSize, numberOfChronologyColumns);
+                }
+                @if (Model.itemDetail.dateShipped != null)
+                {
+                    @displayItemInformation(String.Format("{0:MMM d, yyyy}", Model.itemDetail.dateShipped), "Shipped", fontSize, numberOfChronologyColumns);
+                }
+            </table>
+        </td>
+    </tr>
+</table>
+@{
+
+    @helper displayItemInformation(string databaseValue, string displayName, string fontSize, string numberOfChronologyColumns)
+    {
+if (databaseValue != "" && databaseValue != null && numberOfChronologyColumns == "1")
+{
+        <tr>
+            <td class="tdStyle">
+                <font face="Times New Roman" size="@fontSize"><b>@displayName :</b></font>
+            </td>
+            <td>
+                <font face="Times New Roman" size="@fontSize">@databaseValue </font>
+            </td>
+        </tr>
+}
+else
+{
+    if (databaseValue != "" && databaseValue != null && numberOfChronologyColumns == "2")
+    {
+            <div style="float:left;width:25%;font-family:'Times New Roman'"><font size="@fontSize"><b>@displayName :</b></font></div>
+            <div style="float:left;width:25%;font-family:'Times New Roman'"><font size="@fontSize">@databaseValue</font></div>
+    }
+}
+}
+}

@@ -1,0 +1,212 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+ @model Wempe.Models.CompanyUserModel
+@using (Html.BeginForm("Index", "ComapnyProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken(); 
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12">
+        <!-- Begin: life time stats -->
+        <div class="portlet">
+            <div class="portlet-title">
+                 <div class="caption">
+                    <i class="fa fa-gift"></i>Create new company
+                            <input type="hidden" value="0" id="hdnid" />
+                              
+                </div>
+                <div class="actions">
+                  
+                    <button class="btn green" type="submit"><i class="fa fa-check"></i>Save</button>
+                </div>
+            </div>
+
+            <div class="portlet-body">
+                <div class="tabbable">
+                    <ul class="nav nav-tabs nav-tabs-lg">
+                        <li class="active">
+                            <a href="#tab_1" data-toggle="tab">General </a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="portlet yellow-crusta box">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="fa fa-cogs"></i>Login Details
+                                            </div>
+                                          
+                                        </div>
+                                        <div class="portlet-body">
+                                                   <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                   First Name:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                      @Html.TextBoxFor(m => m.FirstName)
+                                                </div>
+                                            </div>
+
+                                             <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                  Last Name:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                      @Html.TextBoxFor(m => m.LastName)
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    User Name:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.UserEmail)
+                                                </div>
+                                            </div>
+                                              
+                                                    @Html.HiddenFor(m => m.CompanyID)
+                                               
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="portlet blue-hoki box">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="fa fa-cogs"></i>Other Information
+                                            </div>
+
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Company Name:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.CompanyName)
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Website:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.Website, new { placeholder = "http://www.web.com" })
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Phone Number:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.PhoneNumber)
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                    Email Address:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextBoxFor(m => m.EmailAddress)
+                                                </div>
+                                            </div>
+
+                                               <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                     Address1:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextAreaFor(m => m.Address1)
+                                                </div>
+                                            </div>
+
+                                            <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                     Address2:
+                                                </div>
+                                                <div class="col-md-7 value">
+                                                    @Html.TextAreaFor(m => m.Address2)
+                                                </div>
+                                            </div>
+                                            
+                                             <div class="row static-info">
+                                                <div class="col-md-5 name">
+                                                     Logo:
+                                                </div>
+
+                                                <div class="col-md-7 value">
+                                                      
+                                                            <img src="@Model.LogoPath" style="max-width:56px;max-height:14px"/>   
+                                                     
+                                                        @Html.TextBoxFor(m => m.Logo, new { type = "file" })
+                                                    [56X14]
+                                                </div>
+                                            </div>
+                                            
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                         
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet-title">
+                
+                <div class="actions">
+                  
+                    <button class="btn green" type="submit"><i class="fa fa-check"></i>Save</button>
+                </div>
+            </div>
+        </div>
+        <!-- End: life time stats -->
+    </div>
+</div>
+<!-- END PAGE CONTENT-->
+}
+<div>
+
+      
+</div>
+
+<style>
+    
+    td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    .input-validation-error {
+        border: 1px solid red !important;
+    }
+
+</style>
+@section scripts{     
+   <script>
+    jQuery(document).ready(function () {
+            activemenu('WEMPE_companyProfile');
+    });
+       </script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script> 
+}

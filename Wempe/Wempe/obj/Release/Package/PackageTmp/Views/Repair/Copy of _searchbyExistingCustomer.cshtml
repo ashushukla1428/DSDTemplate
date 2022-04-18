@@ -1,0 +1,149 @@
+﻿<div id="divSearchbyExistingCustomer" class="modal fade" tabindex="-1" data-width="90%">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Existing Customer Search</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Search Type</h4>
+                <p>
+                    <select class="form-control" id="drpSearchbyExistingCustomer">
+                        <option value="LastName">Last Name </option>
+                        <option value="FirstName">First Name</option>
+                        <option value="middleInitial">Middle Name</option>
+                        <option value="0">--------------------</option>
+                        <option value="asstLastName">Last Name (Assistant)</option>
+                        <option value="asstFirstName">First Name (Assistant)</option>
+                        <option value="asstMiddleInitial">Middle Name (Assistant)</option>
+                        <option value="0">--------------------</option>
+                        <option value="priCompany">Company</option>
+                        <option value="priAddressLine1">Address (Line 1)</option>
+                        <option value="priAddressLine2">Address (Line 2)</option>
+                        <option value="priCity">City</option>
+                        <option value="priState">State (U.S.)</option>
+                        <option value="priZipCode">Zip Code (5-digit U.S.)</option>
+                        <option value="priCountry">Country</option>
+                        <option value="0">--------------------</option>
+                        <option value="priTelephoneSegment1US">Telephone/Cell/Fax (U.S.)</option>
+                        <option value="priTelephoneSegment1">Telephone/Cell/Fax (Non-U.S.)</option>
+                        <option value="0">--------------------</option>
+
+                        <option value="priEMailAddress">Email Address</option>
+                        <option value="0">--------------------</option>
+
+                        <option value="ViewAll">View All Customers</option>
+                    </select>
+                </p>
+
+            </div>
+            <div class="col-md-6">
+                <h4>Search Term</h4>
+
+                <p>
+                    <div id="divCommonforseacrh">
+                        <input class="form-control" type="text" id="txtSearchbyExistingCustomer" />
+                    </div>
+
+                    <div id="divforUSPhoneseacrh" style="display: none;">
+                        <div class="col-md-12">
+
+
+
+                            <div class="col-md-4 value">
+                                <input class="form-control" type="text" id="txtUSPhoneSearch1" maxlength="4" />
+                            </div>
+
+                            <div class="col-md-4 value">
+                                <input class="form-control" type="text" id="txtUSPhoneSearch2" maxlength="4" />
+                            </div>
+
+
+                            <div class="col-md-4 value">
+                                <input class="form-control" type="text" id="txtUSPhoneSearch3" maxlength="4" />
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+        <button type="button" class="btn blue" onclick="getListExistingCustomer(1);">Search</button>
+        <input type="hidden" id="hdnid" value="0" />
+    </div>
+
+    <div style=" margin:0px 12px 0px 12px;">
+
+    <div class="row" id="divExistingCustomerList" style="display: none;">
+        <div class="col-md-12">
+            <div class="portlet box blue-hoki">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-grid"></i>Listing
+                    </div>
+                    <div class="tools">
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <input type="hidden" id="hdnPageNoExsitingCustomer" value="1" />
+                    <div class="table-scrollable" style="overflow-y: scroll; max-height:150px;">
+                        <table class="table table-striped table-bordered table-hover" id="sample_1">
+                            <thead>
+                                <tr>
+                                    <th>Full Name
+                                    </th>
+                                    <th>Primary Address
+                                    </th>
+                                    <th>State/Country
+                                    </th>
+                                    <th>Primary Phone
+                                    </th>
+
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyDetails">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 col-sm-12">
+                            <div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite"></div>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div class="dataTables_paginate paging_simple_numbers" id="sample_1_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button previous" aria-controls="sample_1" tabindex="0" id="sample_1_previous"><a><i class="fa fa-angle-left"></i></a></li>
+                                    <li class="paginate_button next" aria-controls="sample_1" tabindex="0" id="sample_1_next"><a><i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <script id="tbodyTemplate" type="text/html">
+                        <tr>
+                            <td>${FullName}
+                            </td>
+                            <td>${PrimaryAddress}
+                            </td>
+                            <td>${City}
+                            </td>
+                            <td>${PrimaryPhone}
+                            </td>
+                            <td>
+                                <a onclick="EditExistingCustomer(${customerNumber});" class="btn default btn-xs blue-stripe">Choose </a>
+                            </td>
+                        </tr>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+</div>

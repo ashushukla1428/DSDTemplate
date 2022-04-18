@@ -1,0 +1,231 @@
+﻿@model Wempe.Models.ThemeSettingModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.BodyColor)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtBodyColor" value="@Model.BodyColor" onchange="ApplyFilter(event);" />
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.PageSidebar)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtPageSidebar" value="@Model.PageSidebar" />
+                        <label></label>
+                    </div>
+                </div>
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.PageContent)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtPageContent" value="@Model.PageContent" />
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.PageBar)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtPageBar" value="@Model.PageBar" />
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.TabContent)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtTabContent" value="@Model.TabContent" />
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.PortletTitle)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtPortletTitle" value="@Model.PortletTitle" />
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.SidebarSubMenu)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtSidebarSubMenu" value="@Model.SidebarSubMenu" />
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.Button)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtButton" value="@Model.Button" />
+                        <label></label>
+                    </div>
+                </div>
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.ActiveTab)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtActiveTab" value="@Model.ActiveTab" />
+                        <label></label>
+                    </div>
+                </div>
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.ActiveSideBar)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtActiveSideBar" value="@Model.ActiveSideBar" />
+                        <label></label>
+                    </div>
+                </div>
+                           </div>
+            <div class="col-md-6">
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.PageHeader)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtPageHeader" value="@Model.PageHeader" />
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.PageFooter)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtPageFooter" value="@Model.PageFooter" />
+                        <label></label>
+                    </div>
+                </div>
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.PortletBody)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtPortletBody" value="@Model.PortletBody" />
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.FormActions)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtFormActions" value="@Model.FormActions" />
+                        <label></label>
+                    </div>
+                </div>
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.FormControl)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtFormControl" value="@Model.FormControl" />
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.ModalPopUp)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtModalPopUp" value="@Model.ModalPopUp" />
+                        <label></label>
+                    </div>
+                </div>
+
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.SideBarHover)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtSideBarHover" value="@Model.SideBarHover" />
+                        <label></label>
+                    </div>
+                </div>
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.InnerTable)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtInnerTable" value="@Model.InnerTable" />
+                        <label></label>
+                    </div>
+                </div>
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.InnerTableHover)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtInnerTableHover" value="@Model.InnerTableHover" />
+                        <label></label>
+                    </div>
+                </div>
+                <div class="row static-info">
+                    <div class="col-md-4 name">
+                        @Html.LabelFor(model => model.ButtonHover)
+                    </div>
+                    <div class="col-md-8 value">
+                        <input type="color" id="txtButtonHover" value="@Model.ButtonHover" />
+                        <label></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="button" value="Update" onclick="show();" />
+    
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/adminJs/Theme.js"></script>
+<script>   
+    
+    function ApplyFilter(event) {
+        var k = event.target.value;        
+         $('#' + event.target.id).parent().find('label').html(k);
+    };
+</script>
+}
