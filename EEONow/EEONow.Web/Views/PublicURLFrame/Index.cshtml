@@ -1,0 +1,148 @@
+﻿@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Public URL Frame";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+@*<link href="~/Content/kendo/kendo.material.min.css" rel="stylesheet" />*@
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+    .editor-label {
+        width: 10% !important;
+        text-align: left !important;
+    }
+    .editor-field {
+        width: 85% !important;
+    }
+    .k-textbox {
+        width: 90% !important;
+    }
+    .k-edit-form-container {
+        width: auto;
+    }
+    .k-i-edit {
+        display: none;
+    }
+</style>
+<h2 class="main_title_row">Organization Public url list</h2>
+
+@(Html.Kendo().Grid<EEONow.Models.PublicURLModel>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.OrgainisationId).Width(120);
+            columns.Bound(p => p.Active).Width(120).Hidden();
+
+            columns.Bound(p => p.OrgainisationName);
+
+            columns.Command(command => { command.Edit().Text("Get Public Url"); }).Width(150);
+            columns.Command(command => command.Custom("Re-Generate").Text("").Click("ReGenerateKey")).Width(130);
+            columns.Command(command => command.Custom("Active").Text("").Click("ActivateUrl")).Width(120);
+        })
+        .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("Public Url list").Width(800))).Events(e => e.Edit("onPopOpen"))
+        .Pageable()
+        .Sortable()
+        .Scrollable()
+        .Events(e => e.DataBound("dataBound"))
+        .HtmlAttributes(new { style = "height:550px;" })
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .Model(model =>
+            {
+                model.Id(p => p.PublicURLId);
+                model.Field(p => p.OrgainisationId).Editable(false);
+                model.Field(p => p.Token).Editable(false);
+                model.Field(p => p.OrgainisationName).Editable(false);
+                model.Field(p => p.PublicLink).Editable(false);
+            })
+        .Read(read => read.Action("BindPublicURLFrameModel", "PublicURLFrame"))
+        .Update(update => update.Action("UpdateCounty", "County"))
+    )
+)
+
+@section css{
+    <link href="~/Content/Custom/login.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/alertifyjs/alertify.js"></script>
+    <script src="~/Content/alertifyjs/alertify.min.js"></script>
+    <script type="text/javascript">
+        function onPopOpen(e) {
+            $('[name="OrgainisationName"]').attr("readonly", true);
+            $('[name="Version1"]').attr("readonly", true);
+            $(".k-edit-buttons").hide();
+        }
+        function dataBound(e) {
+            var grid = this;
+            grid.tbody.find("tr[role='row']").each(function () {
+                var model = grid.dataItem(this);
+                if (model.Active == true) {
+                    $(this).find(".k-grid-Active").html("De-Activate");
+                } else {
+                    $(this).find(".k-grid-Active").html("Activate");
+                } 
+            });
+        }
+        function ReGenerateKey(e) {
+            e.preventDefault();
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+             
+            if (confirm('Are you sure you want to re-generate Key for this organization?')) {
+                $.ajax({
+                    url: '/PublicURLFrame/ReGenerateKey',
+                    method: 'get',
+                    async: false,
+                    data: {
+                        'OrgainisationId': dataItem.OrgainisationId
+                    },
+                    success: function (res) {
+                        $('#grid').data('kendoGrid').dataSource.read();
+                        $('#grid').data('kendoGrid').refresh(); 
+                    },
+                    erorr: function (err) {
+                        console.log(err);
+                    }
+                });
+            } else { 
+                console.log('NO Action.');
+            }
+            
+        }
+        function ActivateUrl(e) {
+            e.preventDefault();
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+             
+            $.ajax({
+                url: '/PublicURLFrame/ActivateUrl',
+                method: 'get',
+                async: false,
+                data: {
+                    'OrgainisationId': dataItem.OrgainisationId
+                },
+                success: function (res) {
+                    var grid = $("#grid").data("kendoGrid");
+                    $('#grid').data('kendoGrid').dataSource.read();
+                    $('#grid').data('kendoGrid').refresh(); 
+                },
+                erorr: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+    </script>
+
+}

@@ -1,0 +1,143 @@
+﻿@using Kendo.Mvc.UI
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "Age Range";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+@*<link href="~/Content/kendo/kendo.material.min.css" rel="stylesheet" />*@
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+
+    .k-state-focused, .k-textbox:focus, .k-state-hover {
+        /*-webkit-box-shadow: none !important;*/
+        box-shadow: none !important;
+    }
+    .k-edit-form-container .editor-label, .k-edit-label {
+        width: 45%;
+    }
+
+    .k-edit-field, .k-edit-form-container .editor-field {
+        width: 45%;
+    }
+</style>
+
+<h2 class="main_title_row">Age Range List</h2>
+<input type="hidden" id="HfUserRoleInfo" value="@LoginInfo.Roles" />
+
+@(Html.Kendo().Grid<EEONow.Models.AgeRangeModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        //columns.Bound(p => p.Number).Width(120);
+        columns.Bound(p => p.Name).Width(120).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+        columns.Bound(p => p.Description).Filterable(false);
+        columns.ForeignKey(p => p.OrganizationId, (System.Collections.IEnumerable)ViewBag.OrganisationList, "Value", "Text").Title("Organization");
+        columns.Bound(p => p.Number).Width(100).EditorTemplateName("Integer").Filterable(false);
+        columns.Bound(p => p.DisplayColorCode).Width(120).Filterable(false);
+
+        columns.Bound(p => p.Active).Width(120).Filterable(false);
+        columns.Command(command => { command.Edit().Text((LoginInfo.IsEdit==true?"Edit":"View")); }).Width(100);
+    })
+    .ToolBar(toolbar => toolbar.Create())
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("Edit Age Range").Width(600))).Events(e => e.Edit("onPopOpen"))
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .Events(events =>
+        {
+            //events.Error("error_handler");
+            events.RequestEnd("onRequestEnd");
+        })
+        .Model(model => model.Id(p => p.AgeRangeId))
+        .Create(update => update.Action("CreateAgeRange", "AgeRange"))
+        .Read(read => read.Action("BindAgeRangeModel", "AgeRange"))
+        .Update(update => update.Action("UpdateAgeRange", "AgeRange"))
+    //.Destroy(update => update.Action("Destroy", "Home"))
+    )
+)
+
+@section css{
+    <link href="~/Content/Custom/login.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/alertifyjs/alertify.js"></script>
+    <script src="~/Content/alertifyjs/alertify.min.js"></script>
+    <script type="text/javascript">
+
+
+        function onRequestEnd(e, status) {
+
+            if (e.response.Errors) {
+                var grid = $("#grid").data("kendoGrid");
+                grid.cancelChanges();
+                var message = "";
+                $.each(e.response.Errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alertify.error(message);
+            }
+            //Check request type
+            if (e.type == "create" && !e.response.Errors) {
+                alertify.success("Create record is successfull");
+            }
+            if (e.type == "update" && !e.response.Errors) {
+                alertify.success("Update record is successfull");
+            }
+        }
+        function onPopOpen(e) {
+            $("#DisplayColorCode").kendoColorPicker({
+                messages: {
+                    apply: "Update"
+                }
+            })
+            $("#Number").addClass("k-textbox");
+
+            if (e.model.id == 0) {
+                $(".k-window-title").html('Add Age Range');
+                $(".k-grid-update").html('<span class="k-icon k-i-check"></span>Save');
+            }else
+            {
+             if ('@LoginInfo.IsEdit.ToString()' == "True")
+             {
+                 $(".k-edit-form-container .k-edit-buttons").show();
+             }
+             else {
+                 $(".k-edit-form-container .k-edit-buttons").hide();
+                 $(".k-edit-form-container .k-edit-buttons").html(''); $(".k-window-title").html("View Detail");
+             }
+            }
+        }
+    </script>
+
+}

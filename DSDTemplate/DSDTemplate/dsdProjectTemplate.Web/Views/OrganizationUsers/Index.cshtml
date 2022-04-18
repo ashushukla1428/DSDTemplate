@@ -1,0 +1,236 @@
+﻿@using Kendo.Mvc.UI
+@using dsdProjectTemplate.Utility;
+
+@{
+    ViewBag.Title = "Organization Users";
+}
+
+<style>
+   
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">@ViewData["Title"]</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                @(Html.Kendo().Grid<dsdProjectTemplate.ViewModel.User.Organizations_UsersList>()
+    .Name("grid")
+
+
+     .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("Edit User").Width(500))).Events(e => e.Edit("onPopOpen"))
+    .Scrollable(s=>s.Enabled(true))
+    .Sortable()
+    .Pageable()
+    .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+    .HtmlAttributes(new { style = "height:550px;" })
+       .Columns(columns =>
+       {
+           // columns.ForeignKey(p => p.OrganizationId, (System.Collections.IEnumerable)ViewBag.OrganizationsList, "Value", "Text").Title("Organization").Width(300);
+           columns.Bound(p => p.Organization).Filterable(true);
+           columns.Bound(p => p.UserName) .Filterable(true);
+           columns.Bound(p => p.Role).Filterable(true);
+           columns.Bound(p => p.FirstName).Filterable(false).Width(130);
+           columns.Bound(p => p.LastName).Filterable(false).Width(130);
+           columns.Bound(p => p.EmailAddress).Filterable(true);
+
+           //columns.Bound(p => p.ShortDescription).Filterable(false);
+           //columns.Bound(p => p.LongDescription).Filterable(false);
+           columns.Bound(p => p.IsActive).ClientTemplate(
+         "# if (IsActive) { #" +
+             "<input type='checkbox' data='${Id}' class='chkToggle2' onchange='ActiveOrDeActiveUser(this);' data-on='Yes' data-off='No' checked data-size='xs'/>" +
+         "# } else { #" +
+             "<input type='checkbox' data='${Id}' class='chkToggle2' onchange='ActiveOrDeActiveUser(this);' data-on='Yes' data-off='No' data-size='xs'/> " + "#}#").Width(130).Filterable(true);
+
+           //columns.Bound(p => p.IsActive).ClientTemplate(
+           //"# if (IsActive) { #" +
+           //    "<span class='badge bg-success'>YES</span>" +
+           //"# } else { #" +
+           //    "<span class='badge bg-danger'>NO</span> " + "#}#").Width(130).Filterable(true);
+           //  columns.Command(command => { command.Edit().Text((UserSession.Current.CanEditRecords == true ? "Edit" : "View")); }).Width(90);
+           // columns.Command(command => command.Custom("Organizations").Click("showUserAndOrganizations")).Width(130);
+       })
+        .Events(events => events.DataBound("onDataBound"))
+       .DataSource(dataSource => dataSource
+       .Ajax()
+
+        .PageSize(20)
+            .Events(events =>
+            {
+                //events.Error("error_handler");
+                events.RequestEnd("onRequestEnd");
+            })
+        .Model(model => model.Id(p => p.Id) )
+
+        // .Create(update => update.Action("Save", "OrganizationUsers"))
+        //.Update(update => update.Action("Save", "OrganizationUsers"))
+        .Read(read => read.Action("BindData", "OrganizationUsers"))
+        ))
+            </div>
+        </div>
+    </div>
+</section>
+
+@(Html.Kendo().Window().Name("UserAndOrganizations")
+    .Title("User And Organizations")
+ .Draggable(true)
+    .Resizable()
+    .Scrollable(false)
+    .Width(1000)
+    .Height(500)
+    .Visible(false)
+    .Iframe(true)
+    .Modal(true)
+ .Actions(actions => actions.Minimize().Maximize().Close())
+)
+
+<!-- /.content-header -->
+<script type="text/javascript">
+    function ActiveOrDeActiveUser(_this) {
+       // console.log(JSON.stringify(dataItem));
+      //  alert($(_this).attr('data'));
+       
+        $.ajax({
+            type: 'POST',
+            data: { Id: $(_this).attr('data') },
+            url:   '/OrganizationUsers/ActiveOrDeActiveOrganizations_UserAsync',
+            success: function (data) {
+                //  alert(JSON.stringify(data));
+                if (data.Status) {
+                    toastr.success(data.Message, '', { timeOut: 1000 })
+                    //window.location.href = "/dashboard";
+                    //location.reload();
+                }
+                else {
+                    toastr.error(data.Message, 'Warning', { timeOut: 1500 });
+                }
+
+                //$('#divLoadStep3').html(data);
+            },
+            failure: function (response) {
+                // alert(response.responseText);
+                swal("Sorry!", response.responseText, "error");
+                $('#btnLogin').html("Login");
+            },
+            error: function (response) {
+                swal("Sorry!", response.responseText, "error");
+                $('#btnLogin').html("Login");
+            }
+        });
+    }
+    function onDataBound(e) {
+        $('.chkToggle2').bootstrapToggle();
+    }
+    function showUserAndOrganizations(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        //console.log(JSON.stringify(dataItem));
+        var wnd = $("#UserAndOrganizations").data("kendoWindow");
+
+        wnd.refresh({
+            url: "/Users/UserAndOrganizations?id=" + dataItem.Id
+        });
+
+        //  wnd.("Manage Filters");
+        wnd.title('User Name: ' + dataItem.UserName);
+        wnd.center();
+        wnd.open();
+
+
+    }
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+    function onRequestEnd(e, status) {
+        
+
+        if (e.response.Errors) {
+            var grid = $("#grid").data("kendoGrid");
+            grid.cancelChanges();
+            var message = "";
+            $.each(e.response.Errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            toastr.error(message, 'Warning', { timeOut: 1500 });
+        }
+        if (e.type == "create" && !e.response.Errors) {
+            toastr.success(_recordSaved, '', { timeOut: 1000 });
+        }
+        if (e.type == "update" && !e.response.Errors) {
+            toastr.success(_recordUpdated, '', { timeOut: 1000 });
+        }
+    }
+   
+   
+    function onPopOpen(e) {
+        //$("#BeginDate").kendoDatePicker();
+        //$("#EndDate").kendoDatePicker();
+      
+        if (e.model.id == 0) {
+            $(".k-window-title").html('Add User');
+            $(".k-grid-update").html('<span class="k-icon k-i-check"></span>Save');
+            $(".k-grid-Organizations").hide();
+        }
+        else {
+           if ('@UserSession.Current.CanEditRecords' == "False") {
+                $(".k-edit-form-container .k-edit-buttons").hide();
+                $(".k-grid-update").hide();
+            }
+            else {
+                $(".k-edit-form-container .k-edit-buttons").show();
+
+                //$(".k-window-title").html("View Detail");
+            }
+
+           // alert('ok');
+        }
+      
+        //
+    }
+
+</script>

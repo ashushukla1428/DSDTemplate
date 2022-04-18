@@ -1,0 +1,24 @@
+Message :An error occurred while executing the command definition. See the inner exception for details.
+Date :4/16/2018 2:06:17 PM
+Method Name :GetDBLegendList
+File Name :DashboardService.cs
+
+
+-----------------------------------------------------------------------------
+
+Message :The underlying provider failed on Open.
+Date :4/16/2018 2:07:01 PM
+Method Name :ValidateUserRole
+File Name :AccountService.cs
+
+
+-----------------------------------------------------------------------------
+
+Message :The underlying provider failed on Open.
+Date :4/16/2018 2:07:54 PM
+Method Name :GetDBLegendList
+File Name :DashboardService.cs
+
+
+-----------------------------------------------------------------------------
+

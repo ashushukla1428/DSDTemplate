@@ -1,0 +1,92 @@
+﻿
+@using Kendo.Mvc.UI
+@using dsdProjectTemplate.Utility;
+@{
+    Layout = "~/Views/Shared/_PopupWindowLayout.cshtml";
+}
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+</style>
+<section class="content">
+    <div class="card">
+
+        <div class="card-body" id="formTwoFactorAuthentication">
+
+            <div class="row">
+                <div class="col-12">
+                    <input type="text" id="txtTwoFactorAuthentication_Code" class="form-control" placeholder="Code" message="code is a required field." required autocapitalize="off" autocorrect="off" autofocus="autofocus">
+                   
+                </div>
+            </div>
+            
+            <div class="row">
+
+                <div class="col-12">
+                    <br />
+                    @if (ViewBag.reqType == 1)
+                    {
+                        <button type="submit" class="btn btn-primary btn-block" onclick="AddUpdateMobileNumber_TwoFactorAuthentication_Async();">Verify</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary btn-block" onclick="AddUpdateEmail_TwoFactorAuthentication_Async();">Verify</button>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ <!-- /.content-header -->
+<script type="text/javascript">
+    function AddUpdateMobileNumber_TwoFactorAuthentication_Async() {
+        $.ajax({
+            url: '/MyProfile/AddUpdateMobileNumber_TwoFactorAuthentication_Async',
+            type: 'POST',
+            data: { 'code': $("#txtTwoFactorAuthentication_Code").val(), 'flag': '@ViewBag.flag' },
+            success: function (data) {
+                if (data.Status) {
+                    toastr.success(data.Message, '', { timeOut: 1000 });
+                     $("#txtTwoFactorAuthentication_Code").val('');
+                    // window.location.reload();
+                }
+                else {
+                    toastr.error(data.Message, '', { timeOut: 1500 });
+                }
+
+            },
+            erorr: function (err) {
+                console.log(err);
+            }
+        });
+    }
+    function AddUpdateEmail_TwoFactorAuthentication_Async() {
+        $.ajax({
+            url: '/MyProfile/AddUpdateEmail_TwoFactorAuthentication_Async',
+            type: 'POST',
+            data: { 'code': $("#txtTwoFactorAuthentication_Code").val(), 'flag': '@ViewBag.flag' },
+            success: function (data) {
+                if (data.Status) {
+                    toastr.success(data.Message, '', { timeOut: 1000 });
+                    $("#txtTwoFactorAuthentication_Code").val('');
+    //window.location.reload();
+                }
+                else {
+                    toastr.error(data.Message, '', { timeOut: 1500 });
+                }
+
+            },
+            erorr: function (err) {
+                console.log(err);
+            }
+        });
+    }
+</script>
+

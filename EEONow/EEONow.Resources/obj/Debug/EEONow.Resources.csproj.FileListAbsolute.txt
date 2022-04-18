@@ -1,0 +1,10 @@
+D:\RavinderKumar\Projects\EEONow\EEONow.Resources\bin\Debug\DSD.Resources.dll
+D:\RavinderKumar\Projects\EEONow\EEONow.Resources\bin\Debug\DSD.Resources.pdb
+D:\RavinderKumar\Projects\EEONow\EEONow.Resources\bin\Debug\fr\DSD.Resources.resources.dll
+D:\RavinderKumar\Projects\EEONow\EEONow.Resources\obj\Debug\EEONow.Resources.Resources.Resource.resources
+D:\RavinderKumar\Projects\EEONow\EEONow.Resources\obj\Debug\EEONow.Resources.Resources.Resource.fr.resources
+D:\RavinderKumar\Projects\EEONow\EEONow.Resources\obj\Debug\EEONow.Resources.csproj.GenerateResource.cache
+D:\RavinderKumar\Projects\EEONow\EEONow.Resources\obj\Debug\EEONow.Resources.csproj.CoreCompileInputs.cache
+D:\RavinderKumar\Projects\EEONow\EEONow.Resources\obj\Debug\fr\DSD.Resources.resources.dll
+D:\RavinderKumar\Projects\EEONow\EEONow.Resources\obj\Debug\DSD.Resources.dll
+D:\RavinderKumar\Projects\EEONow\EEONow.Resources\obj\Debug\DSD.Resources.pdb

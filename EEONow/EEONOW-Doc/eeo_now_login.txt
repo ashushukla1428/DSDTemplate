@@ -1,0 +1,47 @@
+Upwork => manpreetsingh / Imp$ol^msup
+TFS : manpreet.impinge@gmail.com/ sol!mp2^5sp
+dev.eeo-now.com
+
+http://dev.eeo-now.com for DEV
+
+http://uat.eeo-now.com for UAT
+
+
+1) support@definedsoftware.com \ Eeo123! ----> Software Administrator Role
+
+2) david@definedsoftware.com \ Eeo123! -----> Org 1 Administrator User
+
+3) info@definedsoftware.com \ Eeo123! ------> Org 2 Administrator User
+
+http://localhost:54549//Account/SetPassword?key=/cn4+2a8lallhkfAppGhyw==
+
+
+
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+FTP Account EEONow Development WebSite:
+NOTE: 
+Use FileZilla Software. Download a copy from:
+https://filezilla-project.org/
+
+IP Address: 172.16.139.62
+Port: 21
+UserName: ftp_dev_eeo
+Password: c5u7GbY2B3Uwr4sF
+Default Folder Path: C:\websites\01_dev_eeonow
+-----------------------------------------------------------
+-----------------------------------------------------------
+-----------------------------------------------------------
+Cisco VPN Account and Password:
+NOTE: Use Cisco AnyConnect Secure Mobilily Client
+You can download from here:
+https://software.cisco.com/download/home/286281283/type/282364313/release/4.10.03104
+
+
+IP Address: 69.167.138.174
+UserName: manpreet
+Password: s7fgWwo4gN
+-----------------------------------------------------------
+-----------------------------------------------------------
+-----------------------------------------------------------

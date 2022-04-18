@@ -1,0 +1,55 @@
+﻿.Scroll-Button {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    text-indent: -9999px;
+    display: none;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+}
+
+    .Scroll-Button span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -12px;
+        height: 0;
+        width: 0;
+        border: 8px solid transparent;
+        border-bottom-color: #ffffff;
+    }
+
+.rate-base-layer {
+    color: #aaa;
+}
+
+.rate-hover-layer {
+    color: orange;
+}
+
+.im {
+    background-image: url('/images/star-active.png');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 32px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#divRate .rate-base-layer span, #rate7 .rate-base-layer span {
+    opacity: 0.3;
+    /*opacity: 0;*/
+}
+
+.ui-front {
+    z-index: 1060;
+}
+
+

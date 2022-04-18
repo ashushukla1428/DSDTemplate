@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "EEORatingTypeList";
+}
+
+@using System.Collections
+@model System.Int32
+@(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewBag.EEORatingTypeList)
+.OptionLabel("- Select EEO Rating Type - ")
+.DataValueField("Value")
+.DataTextField("Text")
+.Name("EEORatingTypeId")
+) 

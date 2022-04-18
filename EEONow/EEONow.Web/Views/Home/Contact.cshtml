@@ -1,0 +1,71 @@
+﻿{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+@using Kendo.Mvc.UI
+@model EEONow.Web.Controllers.KendoModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+<h2>Index</h2>
+@*<h2>@EEONow.Resources.Resources.Resource.State</h2>*@
+
+<div>
+    @using (Html.BeginForm("SaveDetail", "State", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <ul>
+            <li>
+                <label for="name">Name:</label>
+                @(Html.Kendo().TextBoxFor(m => m.Name)
+            .Name("name")
+                )
+            </li>
+            <li>
+                <label for="color">Color:</label>
+                @(Html.Kendo().DropDownListFor(m => m.colorId)
+            .DataTextField("Text")
+            .DataValueField("Value")
+            .BindTo(Model.colors)
+            .Name("colorId")
+                )
+            </li>
+            <li>
+                @(Html.Kendo().DateTimePickerFor(m => m.CreateDateTime)
+.Name("CreateDateTime")
+.DateInput(true)
+                )
+            </li>
+            <li>
+                @(Html.Kendo().Button()
+.Name("Save")
+.Content("Save")
+.HtmlAttributes(new { type = "submit" })
+                )
+
+            </li>
+        </ul>
+    }
+</div>

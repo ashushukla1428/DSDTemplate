@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="de8d5f31ee124f9fb246ef3170f0e25c" Name="Diagram1" ZoomLevel="61">
+        <EntityTypeShape EntityType="dev_eeoModel.AgencyYearsOfService" Width="1.5" PointX="10.5" PointY="80.875" />
+        <EntityTypeShape EntityType="dev_eeoModel.AgeRange" Width="1.5" PointX="10.5" PointY="61.375" />
+        <EntityTypeShape EntityType="dev_eeoModel.AssignMenuHeader" Width="1.5" PointX="15.75" PointY="33.125" />
+        <EntityTypeShape EntityType="dev_eeoModel.AssignRole" Width="1.5" PointX="13.5" PointY="29.125" />
+        <EntityTypeShape EntityType="dev_eeoModel.AvailableLaborMarketData" Width="1.5" PointX="15.75" PointY="71.125" />
+        <EntityTypeShape EntityType="dev_eeoModel.AvailableLaborMarketFileVersion" Width="1.5" PointX="10.5" PointY="101.875" />
+        <EntityTypeShape EntityType="dev_eeoModel.County" Width="1.5" PointX="10.5" PointY="70.25" />
+        <EntityTypeShape EntityType="dev_eeoModel.DefaultLabelField" Width="1.5" PointX="11.25" PointY="50.875" />
+        <EntityTypeShape EntityType="dev_eeoModel.EEOJobCategory" Width="1.5" PointX="10.5" PointY="55.25" />
+        <EntityTypeShape EntityType="dev_eeoModel.EmployeeLevel" Width="1.5" PointX="15" PointY="75" />
+        <EntityTypeShape EntityType="dev_eeoModel.Employee" Width="1.5" PointX="12.75" PointY="68.625" />
+        <EntityTypeShape EntityType="dev_eeoModel.FileSubmissionError" Width="1.5" PointX="17.25" PointY="84.125" />
+        <EntityTypeShape EntityType="dev_eeoModel.FileSubmissionRecord" Width="1.5" PointX="15" PointY="81" />
+        <EntityTypeShape EntityType="dev_eeoModel.FileSubmission" Width="1.5" PointX="12.75" PointY="80.25" />
+        <EntityTypeShape EntityType="dev_eeoModel.FileSubmissionStatu" Width="1.5" PointX="10.5" PointY="76.75" />
+        <EntityTypeShape EntityType="dev_eeoModel.Gender" Width="1.5" PointX="10.5" PointY="37.375" />
+        <EntityTypeShape EntityType="dev_eeoModel.GenerateCSV" Width="1.5" PointX="16" PointY="67.5" />
+        <EntityTypeShape EntityType="dev_eeoModel.GraphOrganizationMaster" Width="1.5" PointX="14.25" PointY="46.75" />
+        <EntityTypeShape EntityType="dev_eeoModel.GraphOrganizationView" Width="1.5" PointX="16.5" PointY="59.625" />
+        <EntityTypeShape EntityType="dev_eeoModel.LastPerformanceRating" Width="1.5" PointX="10.5" PointY="41.25" />
+        <EntityTypeShape EntityType="dev_eeoModel.MenuHeaderConfiguration" Width="1.5" PointX="13.5" PointY="32.375" />
+        <EntityTypeShape EntityType="dev_eeoModel.Organization" Width="1.5" PointX="8.25" PointY="57.25" />
+        <EntityTypeShape EntityType="dev_eeoModel.PositionYearsOfService" Width="1.5" PointX="10.5" PointY="105.875" />
+        <EntityTypeShape EntityType="dev_eeoModel.Race" Width="1.5" PointX="10.5" PointY="46" />
+        <EntityTypeShape EntityType="dev_eeoModel.SalaryRange" Width="1.5" PointX="10.5" PointY="92.5" />
+        <EntityTypeShape EntityType="dev_eeoModel.State" Width="1.5" PointX="3.75" PointY="50.5" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_ALLData" Width="1.5" PointX="3" PointY="55.875" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_BoardingOccupationGroups" Width="1.5" PointX="7.5" PointY="66.25" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_DataVersion" Width="1.5" PointX="0.75" PointY="58" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_EEO_OccupationCodes" Width="1.5" PointX="3" PointY="63.125" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_EEOJobClasificationCategories" Width="1.5" PointX="5.25" PointY="111.625" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_EmployeeStatusRecode" Width="1.5" PointX="3" PointY="69.125" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_GeographyTypes" Width="1.5" PointX="5.25" PointY="62.5" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_MajorOccupationGroups" Width="1.5" PointX="3" PointY="66.25" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_MinorOccupationGroups" Width="1.5" PointX="5.25" PointY="66.25" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_Occupations" Width="1.5" PointX="9.75" PointY="66.25" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_Occupations_EEOJobClasificationCategories" Width="1.5" PointX="12" PointY="89" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_PUMAResidenceCodes" Width="1.5" PointX="6" PointY="58.375" />
+        <EntityTypeShape EntityType="dev_eeoModel.USCensus_PUMAWorksiteCodes" Width="1.5" PointX="6" PointY="55.375" />
+        <EntityTypeShape EntityType="dev_eeoModel.VacancyRange" Width="1.5" PointX="10.5" PointY="97.125" />
+        <AssociationConnector Association="dev_eeoModel.FK_AgencyYearsOfService_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_AgencyYearsOfService" />
+        <AssociationConnector Association="dev_eeoModel.FK_AgeRange_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_AgeRange" />
+        <AssociationConnector Association="dev_eeoModel.FK_AssignMenuHeader_MenuHeaderConfiguration" />
+        <AssociationConnector Association="dev_eeoModel.FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion" />
+        <AssociationConnector Association="dev_eeoModel.FK_AvailableLaborMarketData_EEOJobCategories" />
+        <AssociationConnector Association="dev_eeoModel.FK_AvailableLaborMarketData_Races" />
+        <AssociationConnector Association="dev_eeoModel.FK_AvailableLaborMarketFileVersion_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_FileSubmissions_AvailableLaborMarketFileVersion" />
+        <AssociationConnector Association="dev_eeoModel.FK_Counties_States" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_Counties" />
+        <AssociationConnector Association="dev_eeoModel.FK_EEOJobCategories_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_EEOJobCategories" />
+        <AssociationConnector Association="dev_eeoModel.FK_EmployeeLevel_Employees" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_FileSubmissions" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_Gender" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_LastPerformanceRating" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_PositionYearsOfService" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_Races" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_SalaryRange" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_States" />
+        <AssociationConnector Association="dev_eeoModel.FK_Employees_VacancyRange" />
+        <AssociationConnector Association="dev_eeoModel.FK_FileSubmissionErrors_FileSubmissionRecords" />
+        <AssociationConnector Association="dev_eeoModel.FK_FileSubmissionRecords_FileSubmissions" />
+        <AssociationConnector Association="dev_eeoModel.FK_FileSubmissions_FileSubmissionStatus" />
+        <AssociationConnector Association="dev_eeoModel.FK_FileSubmissions_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_GenerateCSV_FileSubmissions" />
+        <AssociationConnector Association="dev_eeoModel.FK_Gender_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_GenerateCSV_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_GraphOrganizationView_GraphOrganizationMaster" />
+        <AssociationConnector Association="dev_eeoModel.FK_GraphOrganizationView_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_LastPerformanceRating_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_Organizations_States" />
+        <AssociationConnector Association="dev_eeoModel.FK_Organizations_StatesALMDefault" />
+        <AssociationConnector Association="dev_eeoModel.FK_Organizations_USCensus_EEO_OccupationCodes" />
+        <AssociationConnector Association="dev_eeoModel.FK_PositionYearsOfService_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_Races_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_SalaryRange_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_VacancyRange_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_CountyPUMACodes_States" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_PUMAWorksiteCodes_States" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensusData_USCensus_DataVersion" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_Occupations_USCensus_BoardingOccupationGroups" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_CountyPUMACodes_USCensus_DataVersion" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_GeographyTypes_USCensus_DataVersion" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_MajorOccupationGroups_USCensus_DataVersion" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensusEEO_OccupationCodes_USCensus_DataVersion" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_EEOJobClasificationCategories" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups" />
+        <AssociationConnector Association="dev_eeoModel.FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_Occupations" />
+        <AssociationConnector Association="dev_eeoModel.USCensus_GeographyType_EmployeeStatusRecodes" />
+        <EntityTypeShape EntityType="dev_eeoModel.User" Width="1.5" PointX="12.75" PointY="37.375" />
+        <EntityTypeShape EntityType="dev_eeoModel.UserRole" Width="1.5" PointX="10.5" PointY="19.25" />
+        <AssociationConnector Association="dev_eeoModel.FK_AssignRole_UserRoles" />
+        <AssociationConnector Association="dev_eeoModel.FK_MenuHeaderConfiguration_UserRoles" />
+        <AssociationConnector Association="dev_eeoModel.FK_UserRoles_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_Users_UserRoles" />
+        <EntityTypeShape EntityType="dev_eeoModel.MenuConfiguration" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="dev_eeoModel.FK_AssignMenuHeader_MenuConfiguration" />
+        <AssociationConnector Association="dev_eeoModel.FK_AssignRole_MenuConfiguration" />
+        <EntityTypeShape EntityType="dev_eeoModel.AssignedGraphOrganizationView" Width="1.5" PointX="18.75" PointY="41" />
+        <AssociationConnector Association="dev_eeoModel.FK_AssignedGraphOrganizationViews_GraphOrganizationView1" />
+        <AssociationConnector Association="dev_eeoModel.FK_AssignedGraphOrganizationViews_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_AssignedGraphOrganizationViews_UserRoles" />
+        <EntityTypeShape EntityType="dev_eeoModel.OrganizationLabelField" Width="1.5" PointX="13.5" PointY="42.5" />
+        <AssociationConnector Association="dev_eeoModel.FK_OrganizationLabelField_DefaultLabelField" />
+        <AssociationConnector Association="dev_eeoModel.FK_OrganizationLabelField_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_OrganizationLabelField_UserRoles" />
+        <EntityTypeShape EntityType="dev_eeoModel.DefaultEmployeeField" Width="1.5" PointX="13.5" PointY="51" />
+        <EntityTypeShape EntityType="dev_eeoModel.EmployeeActiveField" Width="1.5" PointX="15.75" PointY="40.75" />
+        <AssociationConnector Association="dev_eeoModel.FK_EmployeeActiveFields_DefaultEmployeeFields" />
+        <AssociationConnector Association="dev_eeoModel.FK_EmployeeActiveFields_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_EmployeeActiveFields_UserRoles" />
+        <EntityTypeShape EntityType="dev_eeoModel.PublicURL" Width="1.5" PointX="10.5" PointY="34" />
+        <AssociationConnector Association="dev_eeoModel.FK_PublicURL_Organizations" />
+        <EntityTypeShape EntityType="dev_eeoModel.EmailAuthenticateLog" Width="1.5" PointX="18.25" PointY="44.625" />
+        <AssociationConnector Association="dev_eeoModel.FK_EmailAuthenticateLog_Users" />
+        <EntityTypeShape EntityType="dev_eeoModel.LoginDeviceInfo" Width="1.5" PointX="16" PointY="50.375" />
+        <AssociationConnector Association="dev_eeoModel.FK_EmailAuthenticateLog_LoginDeviceInfo" />
+        <AssociationConnector Association="dev_eeoModel.FK_LoginDeviceInfo_Organizations" />
+        <AssociationConnector Association="dev_eeoModel.FK_LoginDeviceInfo_Users" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

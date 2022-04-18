@@ -1,0 +1,362 @@
+﻿@model EEONow.Models.EEOProgressReportByRegionModel
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "EEO Progress Report By Region";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+}
+
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+<script src="~/Scripts/bootstrap-multiselect.js"></script>
+<link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+<link href="~/Content/Reports.css" rel="stylesheet" />
+<link href="~/Content/toastr/toastr.min.css" rel="stylesheet" />
+<script src="~/Content/toastr/toastr.min.js"></script>
+<style>
+    #RenderReport {
+        min-width: 1500px;
+    }
+
+    .AVExport {
+        margin-right: -90px;
+    }
+    .render-outer {
+        overflow-y: hidden;
+    }
+</style>
+<input type="hidden" id="HfUserRoleInfo" value="@LoginInfo.Roles" />
+<h2 class="main_title_row">Search By:</h2>
+<div id="SearchPannel">
+    <div class="row">
+        <div class="col-md-3" style="@(LoginInfo.Roles=="DefinedSoftwareAdministrator"? "display:block" : "display:none")">
+            <div class="row">
+                <div class="col-lg-12">Organization :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("organization")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("OrganizationName")
+              .DataValueField("OrganizationId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetOrganizationsList", "EEOProgressReportByRegion");
+                  });
+              })
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">File Submissions :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("filesubmission")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("FileName")
+              .DataValueField("FileSubmissionId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetFileViaOrganisation", "EEOProgressReportByRegion")
+                          .Data("filterFiles");
+                  })
+                  .ServerFiltering(true);
+              })
+              .Events(e => e
+                    .Change("getSupervisors")
+                    .DataBound("getSupervisors")
+                )
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("organization")
+
+                    )
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">Program Office :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("eeoprogramoffice")
+              .HtmlAttributes(new { style = "width:100%" })
+              .OptionLabel("--Select All--")
+              .DataTextField("EEOProgramOfficeName")
+              .DataValueField("EEOProgramOfficeId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetEEOProgramOffice", "EEOCompensationReport")
+                          .Data("filterEEOProgramOffice");
+                  })
+                  .ServerFiltering(true);
+              })
+              .Events(e => e
+                    .Change("getSupervisors")
+                    .DataBound("getSupervisors")
+                )
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("filesubmission")
+                    )
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">Region :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("region")
+              .HtmlAttributes(new { style = "width:100%" })
+              .OptionLabel("--Select All--")
+              .DataTextField("RegionName")
+              .DataValueField("RegionId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetEEORegion", "EEOProgressReportByRegion")
+                          .Data("filterEEORegion");
+                  })
+                  .ServerFiltering(true);
+              })
+              .Events(e => e
+                    .Change("getSupervisors")
+                    .DataBound("getSupervisors")
+                )
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("filesubmission")
+                    )
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">Supervisor :</div>
+                <div class="col-lg-12">
+                    <input id="Supervisors" style="width: 100%" />
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">Begin Date :</div>
+                <div class="col-lg-12">
+
+                    @(Html.Kendo().DatePicker()
+          .Name("begindate")
+          .Value(DateTime.Now.Month < 7 ? new DateTime(DateTime.Now.Year -1, 7, 1).ToString() : new DateTime(DateTime.Now.Year, 7, 1).ToString())
+          .Events(e => e.Change("startChange"))
+          .HtmlAttributes(new { style = "width: 100%", title = "datepicker" })
+                    )
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">End Date :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DatePicker()
+          .Name("enddate")
+          .Value(System.DateTime.Today.ToShortDateString())
+          .Events(e => e.Change("endChange"))
+          .HtmlAttributes(new { style = "width: 100%", title = "datepicker" })
+                    )
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-lg-12">&nbsp;</div>
+                <div class="col-lg-12">
+                    <input type="button" id="btnSubmit" onclick="BindEEOProgressReportByRegion();" style="width:100%" class="k-primary k-button" value="Search" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<h2 class="main_title_row">EEO Progress Report By Region:</h2>
+
+<div class="render-outer">
+    <div id="RenderReport">
+    </div>
+</div>
+<div class="BodyLoader-outer">
+    <div class="BodyLoader">
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            });
+            $(".BodyLoader").hide();
+            $(".BodyLoader-outer").hide();
+            //$(".render-outer").height($(".main-content").height() - 250);
+            $("#div-tablebody").height($(".main-content").height() - 250);
+            var _startPicker = $("#begindate").data("kendoDatePicker");
+            var _startDate = _startPicker.value();
+            var _endPicker = $("#enddate").data("kendoDatePicker");
+            var _endDate = _endPicker.value();
+            if (_startDate) {
+                _startDate = new Date(_startDate);
+                _startDate.setDate(_startDate.getDate() + 1);
+                _endPicker.min(_startDate);
+            }
+            if (_endDate) {
+                _endDate = new Date(_endDate);
+                _endDate.setDate(_endDate.getDate() - 1);
+                _startPicker.max(_endDate);
+            }
+        });
+
+        function getSupervisors() {
+            var prgOffice = $("#eeoprogramoffice").val();
+            var regionselected = $("#region").val();
+            $.ajax({
+                url: '/EEOProgressReportByRegion/GetSupervisors',
+                method: 'get',
+                async: false,
+                data: { 'filesubmission': $("#filesubmission").val(), 'organization': $("#organization").val(), 'prgoffice': prgOffice, 'region': regionselected },
+                success: function (res) {
+                    $("#Supervisors").kendoDropDownList({
+                        optionLabel: "Select Supervisor",
+                        dataTextField: "Text",
+                        dataValueField: "Value",
+                        filter: "contains",
+                        dataSource: res
+                    }).data("kendoDropDownList");
+                    $("#Supervisors").data("kendoDropDownList");
+
+                },
+                erorr: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+        function filterEEOProgramOffice() {
+            return {
+                organization: $("#organization").val(),
+                filesubmission: $("#filesubmission").val()
+            };
+
+        }
+        function startChange() {
+            var endPicker = $("#enddate").data("kendoDatePicker"),
+                startDate = this.value();
+            if (startDate) {
+                startDate = new Date(startDate);
+                startDate.setDate(startDate.getDate() + 1);
+                endPicker.min(startDate);
+            }
+        }
+
+        function endChange() {
+            var startPicker = $("#begindate").data("kendoDatePicker"),
+                endDate = this.value();
+
+            if (endDate) {
+                endDate = new Date(endDate);
+                endDate.setDate(endDate.getDate() - 1);
+                startPicker.max(endDate);
+            }
+        }
+        function ExportEEOReport() {
+            $(".BodyLoader").show();
+            $(".BodyLoader-outer").show();
+              var organization= $("#organization").val();
+              var filesubmission= $("#filesubmission").val();
+              var region = $("#region").val();
+              var eeoprogramoffice = escape( $("#eeoprogramoffice").val());
+              var begindate = $("#begindate").val();
+              var enddate = $("#enddate").val();
+              var supervisor = $("#Supervisors").val();
+              location.href = '@Url.Action("ExportToPDF", "EEOProgressReportByRegion")?organization=' + organization + '&filesubmission=' + filesubmission + '&region=' + region + '&eeoprogramoffice=' + eeoprogramoffice + '&begindate=' + begindate + '&enddate=' + enddate + '&supervisor=' + supervisor;
+              $(".BodyLoader").hide();
+              $(".BodyLoader-outer").hide();
+
+        }
+        function BindEEOProgressReportByRegion() {            
+            $(".BodyLoader").show();
+            $(".BodyLoader-outer").show();
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "/EEOProgressReportByRegion/GetEEOProgressReportByRegion",
+                data: {
+                    organization: $("#organization").val(),
+                    filesubmission: $("#filesubmission").val(),
+                    region: $("#region").val(),
+                    eeoprogramoffice : $("#eeoprogramoffice").val(),
+                    begindate : $("#begindate").val(),
+                    enddate : $("#enddate").val(),
+                    supervisor: $("#Supervisors").val()
+                },
+                success: function (response) {
+                    $("#RenderReport").html(response);
+                    $(".BodyLoader").hide();
+                    $(".BodyLoader-outer").hide();
+                },
+                error: function (errorResponse) {
+                    $(".BodyLoader").hide();
+                    $(".BodyLoader-outer").hide();
+                    console.log(errorResponse);
+                }
+            });
+        }
+        function filterFiles() {
+            return {
+                organization: $("#organization").val()
+            };
+        }
+        function filterEEORegion() {
+            return {
+                organization: $("#organization").val(),
+                filesubmission: $("#filesubmission").val()
+            };
+        }
+
+    </script>
+}

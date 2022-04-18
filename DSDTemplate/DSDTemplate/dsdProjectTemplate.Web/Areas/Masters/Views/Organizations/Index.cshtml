@@ -1,0 +1,198 @@
+﻿@using Kendo.Mvc.UI
+@using dsdProjectTemplate.Utility;
+@{
+    ViewBag.Title = "ORGANIZATION LIST";
+}
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">@ViewData["Title"]</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                @(Html.Kendo().Grid<dsdProjectTemplate.ViewModel.Organization.OrganizationViewModel>()
+    .Name("grid")
+       .ToolBar(toolbar =>
+     {
+         if (UserSession.Current.CanAddRecords)
+         {
+             toolbar.Create();
+         }
+     })
+     .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("Edit Organization").Width(580))).Events(e => e.Edit("onPopOpen"))
+    .Scrollable()
+    .Sortable()
+    .Pageable()
+    .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+    .HtmlAttributes(new { style = "height:550px;" })
+       .Columns(columns =>
+       {
+           columns.Bound(p => p.Name) .Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+           columns.ForeignKey(p => p.StateId, (System.Collections.IEnumerable)ViewBag.StateList, "Value", "Text").Title("State").Width(300);
+           columns.Bound(p => p.IsAdminOnly).ClientTemplate(
+                  "# if (IsAdminOnly) { #" +
+                      "<span class='badge bg-success'>YES</span>" +
+                  "# } else { #" +
+                      "<span class='badge bg-danger'>NO</span> " + "#}#").Width(150).Filterable(true);
+           columns.Bound(p => p.IsActive).ClientTemplate(
+           "# if (IsActive) { #" +
+               "<span class='badge bg-success'>YES</span>" +
+           "# } else { #" +
+               "<span class='badge bg-danger'>NO</span> " + "#}#").Width(150).Filterable(true);
+           columns.Command(command => { command.Edit().Text((UserSession.Current.CanEditRecords == true ? "Edit" : "View")); }).Width(90);
+       })
+       .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+            .Events(events =>
+            {
+                // events.Error("error_handler");
+                events.RequestEnd("onRequestEnd");
+
+            })
+        .Model(model => model.Id(p => p.Id))
+        .Create(update => update.Action("Save", "Organizations"))
+        .Update(update => update.Action("Save", "Organizations"))
+        .Read(read => read.Action("BindData", "Organizations"))
+        ))
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content-header -->
+<script type="text/javascript">
+      var preventCloseOnSave = false;
+
+    function error_handler(e) {
+        if (e.errors) {
+            //var message = "Errors:\n";
+            //$.each(e.errors, function (key, value) {
+            //    if ('errors' in value) {
+            //        $.each(value.errors, function () {
+            //            message += this + "\n";
+            //        });
+            //    }
+            //});
+            //alert(message);
+        }
+    }
+    function onRequestEnd(e, status) {
+        if (e.response.Errors) {
+          //  e.preventDefault();
+            var grid = $("#grid").data("kendoGrid");
+
+            grid.cancelChanges();
+            var message = "";
+            $.each(e.response.Errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            toastr.error(message, 'Warning', { timeOut: 1500 });
+        }
+        if (e.type == "create" && !e.response.Errors) {
+            toastr.success(_recordSaved, '', { timeOut: 1000 });
+        }
+        if (e.type == "update" && !e.response.Errors) {
+            toastr.success(_recordUpdated, '', { timeOut: 1000 });
+        }
+    }
+
+    var StateList =@Html.Raw(Json.Encode(ViewBag.StateList));
+    var CityList =@Html.Raw(Json.Encode(ViewBag.CityList));
+    var OrganizationList =@Html.Raw(Json.Encode(ViewBag.OrganizationList));
+    function onPopOpen(e) {
+        $("#Description").kendoTextArea({
+            rows: 4
+        });
+        if (e.model.id == 0) {
+            $(".k-window-title").html('Add Organization');
+            $(".k-grid-update").html('<span class="k-icon k-i-check"></span>Save');
+        }
+        else {
+            if ('@UserSession.Current.CanEditRecords' == "False") {
+                $(".k-edit-form-container .k-edit-buttons").hide();
+                $(".k-grid-update").hide();
+            }
+            else {
+                $(".k-edit-form-container .k-edit-buttons").show();
+
+                //$(".k-window-title").html("View Detail");
+            }
+        }
+
+        $("#StateId").kendoDropDownList({
+            //optionLabel: "Select Project Task ID",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: StateList
+        }).data("kendoDropDownList");
+        var ProjectTaskID_Dropdownlist = $("#StateId").data("kendoDropDownList");
+        // ProjectTaskID_Dropdownlist.select(0);
+        ProjectTaskID_Dropdownlist.trigger("change");
+
+        $("#CityId").kendoDropDownList({
+            //optionLabel: "Select Project Task ID",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: CityList
+        }).data("kendoDropDownList");
+        var CityId_Dropdownlist = $("#CityId").data("kendoDropDownList");
+        CityId_Dropdownlist.trigger("change");
+
+
+        $.ajax({
+            url: '/Organizations/OrganizationList',
+            method: 'get',
+            async: false,
+            data: {  },
+            success: function (res) {
+                $("#ParentOrganizationId").kendoDropDownList({
+                    //optionLabel: "Select Project Task ID",
+                    dataTextField: "Text",
+                    dataValueField: "Value",
+                    dataSource: res
+                }).data("kendoDropDownList");
+                var ParentOrganizationId_Dropdownlist = $("#ParentOrganizationId").data("kendoDropDownList");
+                // ProjectTaskID_Dropdownlist.select(0);
+                ParentOrganizationId_Dropdownlist.trigger("change");
+            },
+            erorr: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
+</script>

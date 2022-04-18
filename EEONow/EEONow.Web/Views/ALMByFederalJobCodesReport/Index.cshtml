@@ -1,0 +1,750 @@
+﻿@model EEONow.Models.DefaultALMValue
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "ALM By Federal Job Codes Report";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+}
+
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+<script src="~/Scripts/bootstrap-multiselect.js"></script>
+<link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+<link href="~/Content/Reports.css" rel="stylesheet" />
+<style>
+    #RenderReport {
+        min-width: 1500px;
+    }
+
+    .AVExport {
+        margin-right: -90px;
+    }
+
+    .k-widget.k-multiselect.k-multiselect-clearable {
+        max-height: 28px;
+        overflow-y: scroll;
+    }
+
+
+
+    .k-widget.k-dropdowntree.k-dropdowntree-clearable {
+        max-height: 28px;
+        overflow-y: scroll;
+    }
+
+    span.k-icon.k-clear-value.k-i-close {
+        display: none !important;
+    }
+
+    .k-multiselect-wrap.k-floatwrap.k-state-hover {
+        /*color: #2e2e2e;*/
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
+
+    .k-checkbox:indeterminate + .k-checkbox-label:after {
+        left: 7px;
+        top: 7px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .col-md-6 {
+        padding-bottom: 10px;
+    }
+    .render-outer {
+        overflow-y: hidden;
+    }
+</style>
+<style>
+    /* Style the tab */
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        margin-top: 10px;
+    }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 4px 10px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+                background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+                background-color: #ccc;
+            }
+
+    /* Style the tab content */
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+</style>
+<input type="hidden" id="HfUserRoleInfo" value="@LoginInfo.Roles" />
+<h2 class="main_title_row">Search By:</h2>
+<div id="SearchPannel">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-lg-12">US Census Data Version :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("uscensusdataversion")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("USCensusDataVersionName")
+              .DataValueField("USCensusDataVersionId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetUSCensusDataVersionDropDown", "ALMByFederalJobCodesReport");
+                  });
+              })
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-lg-12">State :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("state")
+              .OptionLabel("--Select All--")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("StateName")
+              .DataValueField("StateId")
+              .Value(Model.DefaultALMState.ToString())
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetStateDropDown", "ALMByFederalJobCodesReport");
+                  });
+              }).Events(e =>
+              {
+                  e.Change("filterpumacodesViaState");
+
+              })
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-lg-12"> US Census Occupations :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("uscensusoccupations")
+              //.OptionLabel("--Select All--")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("USCensusOccupationsName")
+              .DataValueField("USCensusOccupationsId")
+              .Value(Model.DefaultALMOccupationalCode.ToString())
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetUSCensusOccupationsDropDown", "ALMByFederalJobCodesReport");
+                  });
+              })
+              .Events(e =>
+              {
+                  e.Change("filtereeocategories");
+              })
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-lg-12">Geography Types :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("uscensusgeographytypes")
+              // .OptionLabel("--Select All--")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("USCensusGeographyTypesName")
+              .DataValueField("USCensusGeographyTypesId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetUSCensusGeographyTypesDropDown", "ALMByFederalJobCodesReport");
+                  });
+              }).Events(e =>
+              {
+                  e.Change("filterpumacodes");
+              })
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-lg-12">Employment Status :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownTree()
+                    .AutoWidth(true)
+                    .Name("employmentstatus")
+                    .HtmlAttributes(new { style = "width: 100%" })
+                    .CheckAll(true)
+                    .AutoClose(false)
+                    .AutoBind(false)
+                    .DataTextField("EmploymentStatusName")
+                    .DataValueField("EmploymentStatusId")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetEmploymentStatusDropDown", "ALMByFederalJobCodesReport").Data("bindemploymentstatus");
+                        });
+                    })
+                    .Checkboxes(checkboxes => checkboxes
+                        .Name("checkedFiles")
+                        .CheckChildren(true)
+                    )
+
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+                <div class="col-lg-12">PUMA Codes :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownTree()
+                    .AutoWidth(true)
+                    .Name("pumacodes")
+                    .HtmlAttributes(new { style = "width: 100%" })
+                    .CheckAll(true)
+                    .AutoClose(false)
+                    .AutoBind(false)
+                    .DataTextField("PUMACodesName")
+                    .DataValueField("PUMACodesId")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetPUMACodesDropDown", "ALMByFederalJobCodesReport").Data("bindpumacodes");
+                        });
+
+                    })
+                    .Checkboxes(checkboxes => checkboxes
+                        .Name("checkedFiles")
+                        .CheckChildren(true)
+                    )
+
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="tab">
+        <button class="tablinks active" onclick="openFilterSection(event, 'DivEEOCategory')">Search by EEO Category</button>
+        <button class="tablinks" onclick="openFilterSection(event, 'DivOccupationalCodes')">Search by Occupational Codes</button>
+    </div>
+
+    <div id="DivEEOCategory" style="display: block;" class="tabcontent">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-lg-12">EEO Categories :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownList()
+              .Name("eeocategories")
+              .OptionLabel("--Select All--")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("ValueName")
+              .DataValueField("DisplayValue")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetEEOCategories", "ALMByFederalJobCodesReport").Data("bindeeocategories");
+                  });
+              })
+              .Events(e =>
+                    {
+                        e.Change("filtereeooccupations");
+                    })
+              .AutoBind(false)
+                        )
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-lg-12">Occupations :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownTree()
+                    .AutoWidth(true)
+                    .Name("eeooccupations")
+                    .HtmlAttributes(new { style = "width: 100%" })
+                    .CheckAll(true)
+                    .AutoClose(false)
+                    .AutoBind(false)
+                    .DataTextField("ValueName")
+                    .DataValueField("DisplayValue")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetOccupationswithEEO", "ALMByFederalJobCodesReport").Data("bindeeooccupations");
+                        }).ServerFiltering(true);
+
+                    })
+                    .Enable(false)
+                    .Checkboxes(checkboxes => checkboxes
+                        .Name("checkedFiles")
+                        .CheckChildren(true)
+
+                    )
+                        )
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="DivOccupationalCodes" class="tabcontent">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-lg-12">Major Occupational Group :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownList()
+                    .Name("majoroccupationalgroup")
+                    .HtmlAttributes(new { style = "width:100%" })
+                    .DataTextField("ValueName")
+                    .DataValueField("DisplayValue")
+                    .OptionLabel("--Select All--")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetMajorOccupationalGroup", "ALMByFederalJobCodesReport");
+                        });
+                    })
+                    .AutoBind(false)
+                        )
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-lg-12">Minor Occupational Group :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownList()
+                    .Name("minoroccupationalgroup")
+                    .HtmlAttributes(new { style = "width:100%" })
+                     .DataTextField("ValueName")
+                    .DataValueField("DisplayValue")
+                    .OptionLabel("--Select All--")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetMinorOccupationalGroup", "ALMByFederalJobCodesReport").Data("bindminoroccupationalgroup");
+                        }).ServerFiltering(true);
+                    })
+                    .Enable(false)
+                    .AutoBind(false)
+                    .CascadeFrom("majoroccupationalgroup")
+                        )
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-lg-12">Boarding Occupational :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownList()
+                    .Name("boardingoccupationalgroup")
+                    .HtmlAttributes(new { style = "width:100%" })
+                    .DataTextField("ValueName")
+                    .DataValueField("DisplayValue")
+                    .OptionLabel("--Select All--")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetBoardingOccupationalGroup", "ALMByFederalJobCodesReport").Data("bindboardingoccupationalgroup");
+                        }).ServerFiltering(true);
+                    })
+                    .Enable(false)
+                    .AutoBind(false)
+                    .CascadeFrom("minoroccupationalgroup")
+                    .Events(e =>
+                    {
+                        e.Change("filteroccupations");
+                    })
+                        )
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-lg-12">Occupations :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownTree()
+                        .AutoWidth(true)
+                        .Name("occupations")
+                        .HtmlAttributes(new { style = "width: 100%" })
+                        .CheckAll(true)
+                        .AutoClose(false)
+                        .AutoBind(false)
+                        .DataTextField("ValueName")
+                        .DataValueField("DisplayValue")
+                        .DataSource(source =>
+                        {
+                            source.Read(read =>
+                            {
+                                read.Action("GetOccupations", "ALMByFederalJobCodesReport").Data("bindoccupations");
+                            }).ServerFiltering(true);
+
+                        })
+                        .Enable(false)
+                        .Checkboxes(checkboxes => checkboxes
+                            .Name("checkedFiles")
+                            .CheckChildren(true)
+                        )
+                        )
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div style="margin-top: 10px;" class="row">
+        <div class="col-lg-10">&nbsp;</div>
+        <div class="col-lg-2">
+            <input type="button" id="btnSubmit" onclick="BindALMByFederalJobCodesReport();" style="width:100%" class="k-primary k-button" value="Search" />
+        </div>
+    </div>
+</div>
+
+
+<h2 class="main_title_row">ALM By Federal Job Codes Report:</h2>
+
+<div class="render-outer">
+    <div id="RenderReport">
+    </div>
+</div>
+<div class="BodyLoader-outer">
+    <div class="BodyLoader">
+    </div>
+</div>
+<input type="hidden" value="0" id="hffilterType" />
+@section css{
+    <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Content/alertifyjs/alertify.js"></script>
+    <script src="~/Content/alertifyjs/alertify.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            });
+            $(".BodyLoader").hide();
+            $(".BodyLoader-outer").hide();
+            $(".render-outer").height($(".main-content").height() - 350);
+        });
+        function filterpumacodes() {
+
+            //kendoDropDownTree
+
+            //var dropdownlist = $("#employmentstatus").data("kendoMultiSelect");
+            //dropdownlist.value([]);
+            //dropdownlist.dataSource.read();
+
+            //var MultiSelect = $("#pumacodes").data("kendoMultiSelect");
+            //MultiSelect.value([]);
+            //MultiSelect.dataSource.read();
+
+            var dropdownlist = $("#employmentstatus").data("kendoDropDownTree");
+            dropdownlist.value([]);
+            dropdownlist.dataSource.read();
+
+
+            var kendoDropDownTree = $("#pumacodes").data("kendoDropDownTree");
+            kendoDropDownTree.value([]);
+            kendoDropDownTree.dataSource.read();
+
+
+        }
+        function bindpumacodes() {
+            return {
+                stateid: $("#state").val(),
+                uscensusgeographytypesid: $("#uscensusgeographytypes").val()
+            };
+        }
+        function bindemploymentstatus()
+        {
+            return {
+                uscensusgeographytypesid: $("#uscensusgeographytypes").val()
+            };
+        }
+        function ExportALMByFederalJobCodesReport() {
+            $(".BodyLoader").show();
+            $(".BodyLoader-outer").show();
+
+            var occupations = '';
+            var eeocategories = '';
+            var majoroccupationalgroup = null;
+            var minoroccupationalgroup = null;
+            var boardingoccupationalgroup = null;
+
+            if ($("#hffilterType").val() == 0) {
+                if ($("#eeooccupations").data("kendoDropDownTree").value().length > 0) {
+                    occupations = JSON.stringify($("#eeooccupations").data("kendoDropDownTree").value()).replace(']', '').replace('[', '').replace(/"/g, '');
+                }
+                eeocategories = $("#eeocategories").val();
+            } else {
+                majoroccupationalgroup = $("#majoroccupationalgroup").val();
+                minoroccupationalgroup = $("#minoroccupationalgroup").val();
+                boardingoccupationalgroup = $("#boardingoccupationalgroup").val();
+                if ($("#occupations").data("kendoDropDownTree").value().length > 0) {
+                    occupations = JSON.stringify($("#occupations").data("kendoDropDownTree").value()).replace(']', '').replace('[', '').replace(/"/g, '');
+                }
+            }
+
+            var uSCensusVersionID = $("#uscensusdataversion").val();
+            var stateID= $("#state").val();
+            var eEOOccupationCodeID = escape($("#uscensusoccupations").val());
+            var searchByWorkSite =escape( $("#uscensusgeographytypes").val());
+            var eSRCodes = JSON.stringify($("#employmentstatus").data("kendoDropDownTree").value()).replace(']', '').replace('[', '').replace(/"/g, '');
+            var pUMA_CODES = JSON.stringify($("#pumacodes").data("kendoDropDownTree").value()).replace(']', '').replace('[', '').replace(/"/g, '');
+
+
+            location.href = '@Url.Action("ExportToPDF", "ALMByFederalJobCodesReport")?uSCensusVersionID=' + uSCensusVersionID + '&stateID=' + stateID + '&eEOOccupationCodeID=' + eEOOccupationCodeID + '&eEOCategoryCodeNbr=' + eeocategories + '&searchByWorkSite=' + searchByWorkSite + '&eSRCodes=' + eSRCodes + '&pUMA_CODES=' + pUMA_CODES + '&pUMA_CODES=' + pUMA_CODES + '&majorOccupationGroup=' + majoroccupationalgroup + '&minorOccupationGroupID=' + minoroccupationalgroup + '&boardingOccupationGroupID=' + boardingoccupationalgroup + '&occupationIDs=' + occupations;
+            $(".BodyLoader").hide();
+            $(".BodyLoader-outer").hide();
+        }
+        function BindALMByFederalJobCodesReport() {
+
+            if ($("#employmentstatus").data("kendoDropDownTree").value().length > 0) {
+
+                console.log(JSON.stringify($("#employmentstatus").data("kendoDropDownTree").value()).replace(']', '').replace('[', '').replace(/"/g, ''));
+
+                var occupations = null;
+                var eeocategories = null;
+                var majoroccupationalgroup = null;
+                var minoroccupationalgroup = null;
+                var boardingoccupationalgroup = null;
+
+                if ($("#hffilterType").val() == 0)
+                {
+                    if ($("#eeooccupations").data("kendoDropDownTree").value().length > 0) {
+                        occupations = JSON.stringify($("#eeooccupations").data("kendoDropDownTree").value()).replace(']', '').replace('[', '').replace(/"/g, '');
+                    }
+                    eeocategories = $("#eeocategories").val();
+                } else
+                {
+                    majoroccupationalgroup = $("#majoroccupationalgroup").val();
+                    minoroccupationalgroup = $("#minoroccupationalgroup").val();
+                    boardingoccupationalgroup = $("#boardingoccupationalgroup").val();
+                     if ($("#occupations").data("kendoDropDownTree").value().length > 0) {
+                         occupations = JSON.stringify($("#occupations").data("kendoDropDownTree").value()).replace(']', '').replace('[', '').replace(/"/g, '');
+                     }
+                }
+
+                $(".BodyLoader").show();
+                $(".BodyLoader-outer").show();
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: "/ALMByFederalJobCodesReport/GetALMByFederalJobCodesReport",
+                    data: {
+                        uSCensusVersionID: $("#uscensusdataversion").val(),
+                        stateID: $("#state").val(),
+                        eEOOccupationCodeID: $("#uscensusoccupations").val(),
+                        eEOCategoryCodeNbr: eeocategories,
+                        searchByWorkSite: $("#uscensusgeographytypes").val(),
+                        eSRCodes: JSON.stringify($("#employmentstatus").data("kendoDropDownTree").value()).replace(']', '').replace('[', '').replace(/"/g, ''),
+                        pUMA_CODES: JSON.stringify($("#pumacodes").data("kendoDropDownTree").value()).replace(']', '').replace('[', '').replace(/"/g, ''),
+                        majorOccupationGroup: majoroccupationalgroup,
+                        minorOccupationGroupID: minoroccupationalgroup,
+                        boardingOccupationGroupID: boardingoccupationalgroup,
+                        occupationIDs: occupations,
+                    },
+                    success: function (response) {
+                        //console.log(response)
+                        $("#RenderReport").html(response);
+                        $(".BodyLoader").hide();
+                        $(".BodyLoader-outer").hide();
+                    },
+                    error: function (errorResponse) {
+                        $(".BodyLoader").hide();
+                        $(".BodyLoader-outer").hide();
+                        console.log(errorResponse);
+                    }
+                });
+            } else
+            {
+                alertify.error("Please select at least one Employment Status");
+            }
+        }
+
+        function filtereeocategories() {
+            var dropdownlist = $("#eeocategories").data("kendoDropDownList");
+            dropdownlist.dataSource.read();
+
+        }
+        function bindeeocategories() {
+            return {
+                CensusOccupationsId: $("#uscensusoccupations").val()
+            };
+        }
+
+
+
+        //function filterminoroccupationalgroup(){
+        //    var dropdownlist = $("#minoroccupationalgroup").data("kendoDropDownList");
+        //    dropdownlist.dataSource.read();
+        //}
+        function bindminoroccupationalgroup() {
+
+            return {
+                MajorId: $("#majoroccupationalgroup").val()
+            };
+        }
+        //function filterboardingoccupationalgroup(){
+        //    var dropdownlist = $("#boardingoccupationalgroup").data("kendoDropDownList");
+        //    dropdownlist.dataSource.read();
+        //}
+        function bindboardingoccupationalgroup() {
+
+            return {
+                MinorId: $("#minoroccupationalgroup").val()
+            };
+        }
+        function filteroccupations(){
+            var kendoDropDownTree = $("#occupations").data("kendoDropDownTree");
+            kendoDropDownTree.value([]);
+            kendoDropDownTree.dataSource.read();
+        }
+        function bindoccupations() {
+
+            if ($("#boardingoccupationalgroup").val().length > 0) {
+                $("#occupations").data("kendoDropDownTree").enable(true);
+                return {
+                    BoardingId: $("#boardingoccupationalgroup").val()
+                };
+            } else {
+                $("#occupations").data("kendoDropDownTree").enable(false);
+                return {
+                    BoardingId: 0
+                };
+            }
+
+        }
+
+
+        function filtereeooccupations() {
+            var kendoDropDownTree = $("#eeooccupations").data("kendoDropDownTree");
+
+            kendoDropDownTree.value([]);
+            kendoDropDownTree.dataSource.read();
+        }
+        function bindeeooccupations() {
+
+            if ($("#eeocategories").val().length > 0)
+            {
+                $("#eeooccupations").data("kendoDropDownTree").enable(true);
+                return {
+                    EEOCategoriesId: $("#eeocategories").val()
+                };
+            } else
+            {
+                $("#eeooccupations").data("kendoDropDownTree").enable(false);
+                return {
+                    EEOCategoriesId: 0
+                };
+            }
+
+
+        }
+        //bindeeooccupations
+
+
+        function filterpumacodesViaState() {
+            var kendoDropDownTree = $("#pumacodes").data("kendoDropDownTree");
+            kendoDropDownTree.value([]);
+            kendoDropDownTree.dataSource.read();
+        }
+
+        function openFilterSection(evt, SectionName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(SectionName).style.display = "block";
+            evt.currentTarget.className += " active";
+
+            if (SectionName =="DivEEOCategory")
+            {
+                $("#hffilterType").val(0);
+            } else
+            {
+                $("#hffilterType").val(1);
+            }
+
+
+
+
+            $("#eeocategories").data("kendoDropDownList").value(null);
+            $("#majoroccupationalgroup").data("kendoDropDownList").value(null);
+            $("#minoroccupationalgroup").data("kendoDropDownList").value(null);
+            $("#boardingoccupationalgroup").data("kendoDropDownList").value(null);
+            $("#eeooccupations").data("kendoDropDownTree").enable(false);
+            $("#occupations").data("kendoDropDownTree").enable(false);
+            if ($("#eeooccupations").data("kendoDropDownTree").value().length > 0)
+            {
+                $("#eeooccupations").data("kendoDropDownTree").value([]);
+            }
+            if ($("#occupations").data("kendoDropDownTree").value().length > 0) {
+                $("#occupations").data("kendoDropDownTree").value([]);
+            }
+
+        }
+    </script>
+}

@@ -1,0 +1,453 @@
+﻿@model EEONow.Models.AvailableLaborMarketFileVersionModel
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "Available Labor Market Data";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+    var TempOrgId = AppUtility.GetOrgIdForAdminView();
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+<style>
+    .k-textbox, .k-dropdown {
+        width: 100%
+    }
+
+    .market-data h3 {
+        font-weight: 400;
+        font-size: 1.275rem;
+        margin-bottom: 15px;
+    }
+
+    .market-data .k-widget {
+        margin-bottom: 10px;
+    }
+
+    .market-data li {
+        color: #555;
+        padding-top: 5px;
+    }
+
+    .btn {
+        padding: 4px 20px;
+    }
+</style>
+<br />
+<h2 class="main_title_row">Available Labor Market Data</h2>
+
+
+@if (LoginInfo.Roles == "DefinedSoftwareAdministrator")
+{
+    <style>
+        body {
+            background: #fff !important;
+        }
+
+        .main_title_row {
+            margin: -10px 0 10px 0;
+        }
+
+        #control-export-menu {
+            top: 10px !important;
+        }
+
+        #divSearch, #divSearchIcon {
+            top: 10px !important;
+            left: 0px !important;
+        }
+
+        fieldset {
+            display: block;
+            margin-inline-start: 2px;
+            margin-inline-end: 2px;
+            padding-block-start: 0.35em;
+            padding-inline-start: 0.75em;
+            padding-inline-end: 0.75em;
+            padding-block-end: 0.625em;
+            min-inline-size: min-content;
+            border-width: 2px;
+            border-style: groove;
+            border-color: threedface;
+            border-image: initial;
+        }
+
+        legend {
+            display: block;
+            padding-inline-start: 2px;
+            padding-inline-end: 2px;
+            border-width: initial;
+            border-style: none;
+            border-color: initial;
+            border-image: initial;
+            margin-bottom: 0px !important;
+            font-size: 14px !important;
+            /*font-weight: 700;*/
+            width: auto !important;
+        }
+
+        .pdfsettinglabel {
+            margin-top: 5px;
+            text-align: right;
+            /*font-weight: 700;*/
+        }
+
+        .back-section {
+            min-width: 100% !important;
+        }
+    </style>
+    <style>
+        #SearchPannel {
+            margin-top: 2px;
+            background: white;
+            padding-left: 10px;
+        }
+    </style>
+    <div id="SearchPannel">
+        <div class="row">
+            <div class="col-md-5">
+                <fieldset>
+                    <legend>Organization:</legend>
+                    <div class="row">
+                        <div class="col-lg-9">
+                            @(Html.Kendo().DropDownList()
+                  .Name("organization")
+                  .HtmlAttributes(new { style = "width:100%" })
+                  .OptionLabel("--Select Organization--")
+                  .DataTextField("OrganizationName")
+                  .DataValueField("OrganizationId")
+                  .DataSource(source =>
+                  {
+                      source.Read(read =>
+                      {
+                          read.Action("GetOrganizationsList", "EEOGenderCompensationReport");
+                      });
+                  }).Events(e =>
+                  {
+                      e.Change("BindDashboardForAdmin");
+                  })
+                            )
+                        </div>
+
+                    </div>
+                </fieldset>
+            </div>
+
+        </div>
+    </div>
+}
+@if (LoginInfo.Roles == "DefinedSoftwareAdministrator" && TempOrgId.Length == 0)
+{
+}
+else
+{
+    <input type="hidden" id="HfUserRoleInfo" value="@LoginInfo.Roles" />
+
+    <div id="SearchPannel">
+        <div class="row">
+            <div class="col-lg-3">File Version</div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                @(Html.Kendo().DropDownList()
+      .Name("FileVersion")
+      .HtmlAttributes(new { style = "width:100%" })
+      //.OptionLabel("--Select File Version--")
+      .DataTextField("FileVersionName")
+      .DataValueField("AvailableLaborMarketFileVersionId")
+      .DataSource(source =>
+      {
+          source.Read(read =>
+          {
+              read.Action("GetFileVersionMarketData", "AvailableLaborMarketData");
+          });
+      })
+     .Events(e =>
+     {
+         e.Change("onFileVersionChange").DataBound("onDataBound");
+     })
+                )
+            </div>
+            <div class="col-lg-6">
+                <button id="setValue" style="display:none">setValue</button>
+                <button style="@(LoginInfo.IsEdit == true?"": LoginInfo.IsAdd==true?"":"display:none")" onclick="AddNewLaborMarketData()" class="btn btn-default">Add New</button>
+                @if (Model.AvailableLaborMarketFileVersionId > 0)
+                {
+                    <a onclick="ExportPdfLaborMarketData();" class="btn btn-default">Export Pdf</a>
+                }
+                @if (!Model.Active)
+                {
+                    <a onclick="MarkasCurrentLaborMarketData();" style="@(LoginInfo.IsEdit == true?"": LoginInfo.IsAdd==true?"":"display:none")" class="btn btn-default">Mark as Current</a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="market-data">
+
+                @using (Html.BeginForm("Index", "AvailableLaborMarketData", null, FormMethod.Post, new { id = "formAvailableLaborMarketData" }))
+                {
+                    <input type="hidden" id="AvailableLaborMarketFileVersionId" name="AvailableLaborMarketFileVersionId" value="@Model.AvailableLaborMarketFileVersionId" />
+                    <input type="hidden" name="FileVersionNumber" value="@Model.FileVersionNumber" />
+                    <input type="hidden" name="Notes" value="@Model.Notes" />
+                    <input type="hidden" name="SubmissionDateTime" value="@Model.SubmissionDateTime" />
+                    var _EEOCount = 0;
+                    if (Model.ListAvailableLaborMarketEEOJobCategory == null || Model.ListAvailableLaborMarketEEOJobCategory.Count() == 0)
+                    {
+                        <div><h2>There is no EEO job categories associated with your organisation</h2></div>
+                    }
+                    else if (Model.ListAvailableLaborMarketEEOJobCategory[0].ListAvailableLaborMarketData == null || Model.ListAvailableLaborMarketEEOJobCategory[0].ListAvailableLaborMarketData.Count() == 0)
+                    {
+                        <div><h2> There is no Race associated with your organisation</h2></div>
+                    }
+                    else
+                    {
+                        foreach (var _AlmEEOJobCategory in Model.ListAvailableLaborMarketEEOJobCategory.OrderBy(e => e.EEOJobCategoryNumber))
+                        {
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h3>@(_AlmEEOJobCategory.EEOJobCategoryNumber)&nbsp;-&nbsp;@_AlmEEOJobCategory.EEOJobCategoryName</h3>
+                                </div>
+                            </div>
+                            <input type="hidden" name="ListAvailableLaborMarketEEOJobCategory[@_EEOCount].EEOJobCategoryId" value="@_AlmEEOJobCategory.EEOJobCategoryId" />
+                            <input type="hidden" name="ListAvailableLaborMarketEEOJobCategory[@_EEOCount].EEOJobCategoryName" value="@_AlmEEOJobCategory.EEOJobCategoryName" />
+
+                            var _RaceCount = 0;
+                            <div class="row">
+                                <div class="col-lg-6">
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b>Male</b>
+                                </div><div class="col-lg-2">
+                                    <b>Female</b>
+                                </div>
+                            </div>
+
+                            foreach (var _AvailableLaborMarketData in _AlmEEOJobCategory.ListAvailableLaborMarketData)
+                            {
+                                <input type="hidden" name="ListAvailableLaborMarketEEOJobCategory[@_EEOCount].ListAvailableLaborMarketData[@_RaceCount].AvailableLaborMarketDataId" value="@_AvailableLaborMarketData.AvailableLaborMarketDataId" />
+                                <input type="hidden" name="ListAvailableLaborMarketEEOJobCategory[@_EEOCount].ListAvailableLaborMarketData[@_RaceCount].EEOJobCategoryId" value="@_AvailableLaborMarketData.EEOJobCategoryId" />
+                                <input type="hidden" name="ListAvailableLaborMarketEEOJobCategory[@_EEOCount].ListAvailableLaborMarketData[@_RaceCount].RaceId" value="@_AvailableLaborMarketData.RaceId" />
+                                <input type="hidden" name="ListAvailableLaborMarketEEOJobCategory[@_EEOCount].ListAvailableLaborMarketData[@_RaceCount].RaceName" value="@_AvailableLaborMarketData.RaceName" />
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <ul>
+                                            <li>@_AvailableLaborMarketData.RaceName</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        @if (Model.Active)
+                                        {
+                                            @(Html.Kendo().NumericTextBox<decimal>()
+                         .Name("ListAvailableLaborMarketEEOJobCategory[" + @_EEOCount + "].ListAvailableLaborMarketData[" + @_RaceCount + "].MaleValue")
+                         .Format("n")
+                         .Min(0)
+                         //.Max(1000000)
+                         .Value(_AvailableLaborMarketData.MaleValue)
+                         .HtmlAttributes(new { style = "width: 100%", title = _AvailableLaborMarketData.RaceName })
+                                            )
+                                        }
+                                        else
+                                        {
+                                            <label name="ListAvailableLaborMarketEEOJobCategory[@_EEOCount].ListAvailableLaborMarketData[@_RaceCount].MaleValue">@_AvailableLaborMarketData.MaleValue</label>
+                                        }
+                                    </div>
+                                    <div class="col-lg-2">
+                                        @if (Model.Active)
+                                        {
+                                            @(Html.Kendo().NumericTextBox<decimal>()
+                 .Name("ListAvailableLaborMarketEEOJobCategory[" + @_EEOCount + "].ListAvailableLaborMarketData[" + @_RaceCount + "].FemaleValue")
+                 .Format("n")
+                 .Min(0)
+                 // .Max(1000000)
+                 .Value(_AvailableLaborMarketData.FemaleValue)
+                 .HtmlAttributes(new { style = "width: 100%", title = _AvailableLaborMarketData.RaceName })
+                                            )
+                                        }
+                                        else
+                                        {
+                                            <label name="ListAvailableLaborMarketEEOJobCategory[@_EEOCount].ListAvailableLaborMarketData[@_RaceCount].FemaleValue">@_AvailableLaborMarketData.FemaleValue</label>
+                                        }
+                                    </div>
+                                </div>
+                                _RaceCount = _RaceCount + 1;
+                            }
+
+                            _EEOCount = _EEOCount + 1;
+
+                        }
+                    }
+
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                        </div>
+                        <div class="col-lg-2">
+                        </div>
+                        <div class="col-lg-2">
+
+                            @if (Model.Active && Model.ListAvailableLaborMarketEEOJobCategory.Count() > 0 && Model.ListAvailableLaborMarketEEOJobCategory[0].ListAvailableLaborMarketData != null)
+                            {
+
+                                <input type="submit" style="width:100% @(LoginInfo.IsEdit == true?"": LoginInfo.IsAdd==true?"":"display:none")" id="btnSubmit" class="k-primary k-button" value="Save" />
+
+                            }
+                        </div>
+                    </div>
+
+                    <div id="divValidationSummary" style="display:none">
+                        @Html.ValidationSummary()
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @section css{
+        <link href="~/Content/Custom/login.css" rel="stylesheet" />
+        <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+    }
+    @section scripts{
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Content/alertifyjs/alertify.js"></script>
+        <script src="~/Content/alertifyjs/alertify.min.js"></script>
+        <script>
+
+        $(document).ready(function () {
+            var _status = @ViewBag.CompleteStatus;
+            if (_status == 0)
+            {
+                alertify.error("Fail to save data")
+            }
+            if (_status == 1) {
+                alertify.success("Data successfully saved")
+            }
+            if (_status == 2) {
+                alertify.success("Data updated Successfully")
+            }
+            $("#btnSubmit").click(function (e) {
+                var IsValid = $("#formRegister").valid();
+                if (!IsValid) {
+                    var validationSummary = $("#divValidationSummary").html();
+                    alertify.error(validationSummary);
+                }
+            });
+            if ($("#divValidationSummary").text().trim().length > 0) {
+                var validationSummary = $("#divValidationSummary").html();
+                alertify.error(validationSummary);
+            }
+
+
+
+        });
+
+        function onFileVersionChange() {
+            ddlItem = parseInt(this.value());
+            location.href = '@Url.Action("Index", "AvailableLaborMarketData")?AvailableLaborMarketFileVersionId=' + ddlItem;
+        }
+        function AddNewLaborMarketData()
+        {
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "/AvailableLaborMarketData/AddNewLaborMarketDataAction",
+                success: function (response) {
+
+                    if (response.Succeeded)
+                    {
+                        location.href = '@Url.Action("Index", "AvailableLaborMarketData")';
+                    }
+                }
+            });
+        }
+
+        function ExportPdfLaborMarketData() {
+            ddlItem = parseInt($("#FileVersion").val());
+            location.href = '@Url.Action("ExportPdfLaborMarketData", "AvailableLaborMarketData")?AvailableLaborMarketFileVersionId=' + ddlItem;
+        }
+
+        function MarkasCurrentLaborMarketData() {
+            ddlItem = parseInt($("#FileVersion").val());
+            location.href = '@Url.Action("MarkasCurrentLaborMarketData", "AvailableLaborMarketData")?AvailableLaborMarketFileVersionId=' + ddlItem;
+        }
+        </script>
+
+
+        <script>
+            $(document).ready(function () {
+
+                var dropdownlist = $("#FileVersion").data("kendoDropDownList"),
+                    setValue = function (e) {
+                        if (e.type != "keypress" || kendo.keys.ENTER == e.keyCode)
+                            dropdownlist.value($("#AvailableLaborMarketFileVersionId").val());
+                    };
+                $("#setValue").click(setValue);
+
+                if (@TempOrgId.Length>0)
+                {
+                    $("#organization").data("kendoDropDownList").value(@TempOrgId);
+                }
+
+            });
+            function onDataBound(e) {
+                $("#setValue").trigger("click");
+            };
+        </script>
+    }
+}
+
+
+<script>
+
+
+            $(document).ready(function () {
+                if (@TempOrgId.Length>0)
+                {
+                    $("#organization").data("kendoDropDownList").value(@TempOrgId);
+                }
+            });
+
+        function BindDashboardForAdmin()
+        {
+            ddlItem = parseInt(this.value());
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "/Dashboard/BindDashboardForAdmin",
+                data: {
+                    orgId: ddlItem
+                },
+                success: function (response) {
+                    location.href = '@Url.Action("Index", "AvailableLaborMarketData")';
+                },
+                error: function (errorResponse) {
+                    console.log(errorResponse);
+                }
+            });
+
+        }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

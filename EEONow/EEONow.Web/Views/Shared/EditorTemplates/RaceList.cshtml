@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "RaceList";
+}
+
+@using System.Collections
+@model System.Int32
+@(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewBag.RaceList)
+.OptionLabel("- Select Race - ")
+.DataValueField("Value")
+.DataTextField("Text")
+.Name("RaceId")
+) 

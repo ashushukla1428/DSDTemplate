@@ -1,0 +1,228 @@
+﻿@using Kendo.Mvc.UI
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "Graph Organization View";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+@*<link href="~/Content/kendo/kendo.material.min.css" rel="stylesheet" />*@
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+</style>
+@if (LoginInfo.Roles == "DefinedSoftwareAdministrator")
+{
+    <h2 class="main_title_row">Search By Organization:</h2>
+    <div id="SearchPannel">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-lg-12">Organization :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownList()
+            .Name("DDLorganization")
+            .HtmlAttributes(new { style = "width:100%" })
+           // .OptionLabel("--Select organization--")
+            .DataTextField("OrganizationName")
+            .DataValueField("OrganizationId")
+            .DataSource(source =>
+            {
+                source.Read(read =>
+                {
+                    read.Action("GetOrganizationsList", "GraphOrganizationView");
+                });
+            })
+                        //.Events(e => e.Change("BindGrid"))
+                        )
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-lg-12">Roles :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownList()
+              .Name("FilterRoleId")
+              .HtmlAttributes(new { style = "width:100%" })
+              //.OptionLabel("--Select Role--")
+              .DataTextField("RoleName")
+              .DataValueField("RoleId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetRolesList", "GraphOrganizationView").Data("filterRoles"); ;
+                  }).ServerFiltering(true);
+              })
+              .Events(e => e.Change("BindGrid").DataBound("BindGrid"))
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("DDLorganization")
+                        )
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br />
+}
+else
+{
+    <input type="hidden" id="DDLorganization" value="0" />
+}
+<h2 class="main_title_row">Manage Graph Organization View</h2>
+<input type="hidden" id="HfUserRoleInfo" value="@LoginInfo.Roles" />
+<input type="hidden" id="Hforganization" value="0" />
+ 
+
+    @(Html.Kendo().Grid<EEONow.Models.AssigGraphOrganizationViewModel>
+            ()
+            .Name("grid")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.GraphLevelName).Width(200).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+                columns.Bound(p => p.Organization).Width(250).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+                columns.Bound(p => p.RoleName).Width(250).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+                columns.Bound(p => p.ListGraphOrganizationView).ClientTemplate("#= rendermultiselecttext(data.ListGraphOrganizationView) #").Filterable(false);
+                columns.Command(command => { command.Edit().Text((LoginInfo.IsEdit == true ? "Edit" : "View")); }).Width(200);
+            })
+            .Editable(editable => editable.Mode(GridEditMode.InLine).Window(w => w.Title("Edit Graph Organization View").Width(500))).Events(e => e.Edit("onPopOpen"))
+            .Pageable()
+            .Sortable()
+            .Scrollable()
+            .Filterable(ftb => ftb
+        .Mode(GridFilterMode.Row)
+        .Extra(false)
+        )
+            .HtmlAttributes(new { style = "height:550px;" })
+            .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .Events(events =>
+            {
+                events.RequestStart("onRequestEnd");
+            })
+            .Model(model =>
+            {
+                model.Id(p => p.GraphLevelId);
+                model.Field(p => p.GraphLevelName).Editable(false);
+                model.Field(p => p.Organization).Editable(false);
+            }
+        )
+        .Read(read => read.Action("BindColorAssignmentModel", "GraphOrganizationView").Data("filterOrganization"))
+        .Update(update => update.Action("UpdateColorAssignmentSelector", "GraphOrganizationView"))
+        )
+    )
+ 
+@section css{
+    <link href="~/Content/Custom/login.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/alertifyjs/alertify.js"></script>
+    <script src="~/Content/alertifyjs/alertify.min.js"></script>
+    <script type="text/javascript">
+
+        function onRequestEnd(e, status) {
+
+            if (e.errors) {
+                var grid = $("#grid").data("kendoGrid");
+                grid.cancelChanges();
+                var message = "";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alertify.error(message);
+            }
+            //Check request type
+            if (e.type == "create" && !e.errors) {
+                alertify.success("Create record is successfull");
+            }
+            if (e.type == "update" && !e.errors) {
+                alertify.success("Update record is successfull");
+            }
+        }
+        function filterRoles() {
+            return {
+                organization: $("#DDLorganization").val()
+            };
+        }
+        function rendermultiselecttext(selectlistarray) {
+            if (selectlistarray != undefined && selectlistarray[0] != undefined) {
+                var displaytext;
+                $.each(selectlistarray, function (index) {
+                    if (displaytext == undefined) {
+                        displaytext = selectlistarray[index].Text + ',';
+                    } else {
+                        displaytext = displaytext + selectlistarray[index].Text + ',';
+                    }
+                });
+                return displaytext.slice(0, -1);
+
+            }
+            else {
+                return "";
+            }
+        }
+        //function doOnRowSelect(e) {
+        //    alert(1);
+        //    $("#Hforganization").val(e.model.id)
+        //}
+        function filterOrganization() {
+            return {
+                organization: $("#DDLorganization").val(),
+                roleid: $("#FilterRoleId").val()
+            };
+        }
+        function BindGrid(e) {
+            ddlItem = this.text();
+
+
+            var grid = $("#grid").data("kendoGrid");
+            grid.dataSource.read();
+
+        }
+           function onPopOpen(e) {
+         
+
+            if (e.model.id == 0) {
+                
+            }else
+            {
+             if ('@LoginInfo.IsEdit.ToString()' == "True")
+             {
+                 $(".k-grid-update").show();
+             }
+             else {
+
+                 $(".k-grid-update").hide();
+             }
+            }
+        }
+    </script>
+
+}

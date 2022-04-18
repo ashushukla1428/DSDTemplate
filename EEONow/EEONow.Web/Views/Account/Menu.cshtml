@@ -1,0 +1,55 @@
+﻿ @model List<EEONow.Models.MenuModel>
+<ul id="menu-content" class="menu-content collapse out">
+    <li class="active">
+        <a href="~/Dashboard/Dashboard">
+            <i class="fa fa-dashboard fa-lg"></i> Dashboard
+        </a>
+    </li>
+    <li data-toggle="collapse" data-target="#products" class="collapsed">
+        <a href="#"><i class="fa fa-gift fa-lg"></i> Admin section <span class="arrow"></span></a>
+    </li>
+    <ul class="sub-menu collapse" id="products">
+        <li class="active"><a href="~/Admin/Gender">Gender</a></li>
+        <li><a href="~/Admin/Category">Category</a></li>
+        <li><a href="~/Admin/SubCategory">Sub-Category</a></li>
+        <li><a href="~/Admin/Decision">Decision</a></li>
+        <li><a href="~/Admin/EarningTier">Earning Tier</a></li>
+        <li><a href="~/Admin/ExceptionLog">Exception & Log</a></li>
+
+        <li><a href="~/Admin/Users">Users</a></li>
+    </ul>
+
+    <li data-toggle="collapse" data-target="#service" class="collapsed">
+        <a href="#"><i class="fa fa-globe fa-lg"></i> Graphs/Reports <span class="arrow"></span></a>
+    </li>
+    <ul class="sub-menu collapse" id="service">
+        <li><a href="~/Reports/MonthlyAmountSpent">Monthly Amount Spent</a></li>
+        <li><a href="~/Reports/CategoryForecastSummary">Forecast Summary</a></li>
+        <li><a href="~/Reports/CategoryWiseForecast">Category Wise Forecast</a></li>
+        <li><a href="~/Reports/ForcastByDatesTableur">Detail Forcast for Category</a></li>
+        <li><a href="~/Dashboard/DecisionReports">Decision Reports</a></li>
+
+
+    </ul>
+    <li data-toggle="collapse" data-target="#new" class="collapsed">
+        <a href="#"><i class="fa fa-car fa-lg"></i> services <span class="arrow"></span></a>
+    </li>
+    <ul class="sub-menu collapse" id="new">
+        <li><a href="~/Import/Index">Import CSV</a></li>
+        <li><a href="~/Import/Mapping?SortOrder=0">Categorize</a></li>
+        <li><a href="~/Budget/Index">Adjust Budget</a></li>
+        @*<li><a href="~/Import/Processed?SortOrder=0">Processed Records </a></li>*@
+    </ul>
+    @* <li>
+            <a href="#">
+                <i class="fa fa-user fa-lg"></i> Profile
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-users fa-lg"></i> Users
+            </a>
+        </li>*@
+    <li class="mobonly"><a href="/Account/Logout"><i class="fa fa-lock fa-lg"></i>@(User.Identity.IsAuthenticated == true ? "Logout" : "Login")</a><span class="nav-text">@(User.Identity.IsAuthenticated == true ? User.Identity.Name : "")</span></li>
+</ul>
+

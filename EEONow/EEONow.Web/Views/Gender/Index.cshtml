@@ -1,0 +1,132 @@
+﻿@using Kendo.Mvc.UI
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "Gender";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+@*<link href="~/Content/kendo/kendo.material.min.css" rel="stylesheet" />*@
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+</style>
+<h2 class="main_title_row">Gender List</h2>
+
+@(Html.Kendo().Grid<EEONow.Models.GenderModel>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.Organization).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+            columns.Bound(p => p.MaleDisplayColorCode).Width(120).Filterable(false);
+            columns.Bound(p => p.FemaleDisplayColorCode).Width(120).Filterable(false);
+            columns.Bound(p => p.Active).Width(120).Filterable(false);
+            columns.Command(command => { command.Edit().Text((LoginInfo.IsEdit == true ? "Edit" : "View")); }).Width(200);
+        })
+        .Editable(editable => editable.Mode(GridEditMode.InLine).Window(w => w.Title("Edit Gender").Width(500))).Events(e => e.Edit("onPopOpen"))
+        .Pageable()
+        .Sortable()
+        .Scrollable()
+        .Filterable(ftb => ftb
+        .Mode(GridFilterMode.Row)
+        .Extra(false)
+        )
+        .HtmlAttributes(new { style = "height:550px;" })
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .Events(events =>
+            {
+                events.RequestEnd("onRequestEnd");
+
+
+            })
+            .Model(model =>
+            {
+                model.Id(p => p.OrganizationId);
+                model.Field(p => p.Organization).Editable(false);
+            }
+            )
+            .Read(read => read.Action("BindGenderModel", "Gender"))
+            .Update(update => update.Action("UpdateGender", "Gender"))
+        )
+)
+
+@section css{
+    <link href="~/Content/Custom/login.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/alertifyjs/alertify.js"></script>
+    <script src="~/Content/alertifyjs/alertify.min.js"></script>
+    <script type="text/javascript">
+
+        function onRequestEnd(e, status) {
+            if (e.response.Errors) {
+                var grid = $("#grid").data("kendoGrid");
+                grid.cancelChanges();
+                var message = "";
+                $.each(e.response.Errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alertify.error(message);
+            }
+            //Check request type
+            if (e.type == "create" && !e.response.Errors) {
+                alertify.success("Create record is successfull");
+            }
+            if (e.type == "update" && !e.response.Errors) {
+                alertify.success("Update record is successfull");
+            }
+        }
+        function onPopOpen(e) {
+            $("#MaleDisplayColorCode").kendoColorPicker({
+                messages: {
+                    apply: "Update"
+                }
+            })
+            $("#FemaleDisplayColorCode").kendoColorPicker({
+                messages: {
+                    apply: "Update"
+                }
+            })
+
+            if (e.model.id == 0) {
+                $(".k-window-title").html('Add Gender');
+                $(".k-grid-update").html('<span class="k-icon k-i-check"></span>Save');
+            }else
+            {
+             if ('@LoginInfo.IsEdit.ToString()' == "True")
+             {
+                 $(".k-grid-update").show();
+             }
+             else {
+                 
+                 $(".k-grid-update").hide();
+             }
+            }
+        }
+
+
+    </script>
+
+}

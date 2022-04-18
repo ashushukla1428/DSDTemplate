@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "USCensusOccupationsList";
+}
+
+@using System.Collections
+@model System.Int32
+@(Html.Kendo().DropDownList()
+        .BindTo((IEnumerable)ViewBag.USCensusOccupationsList)
+        .OptionLabel("- Select EEO Occupational Code - ")
+        .DataValueField("Value")
+        .DataTextField("Text")
+        .Name("DefaultEEOOccupationalCodeID")
+        .HtmlAttributes(new { tabindex = "5" , required = "required" })
+) 

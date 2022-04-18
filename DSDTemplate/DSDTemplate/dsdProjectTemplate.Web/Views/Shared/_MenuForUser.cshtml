@@ -1,0 +1,87 @@
+﻿@model IEnumerable<dsdProjectTemplate.ViewModel.Menu.UserMenuList>
+    <input type="hidden" id="hdIsSuperAdmin" value="@dsdProjectTemplate.Utility.UserSession.Current.IsSuperAdmin"/>
+@if (Model.Count() == 0)
+{
+
+    <li class="nav-item">
+        <a data-toggle="modal" href="" data-target="#modelMenuHeader" class="nav-link">
+            <i class="nav-icon"></i>
+            <p>
+                No menu assigned <br />
+                Please contact with admin
+            </p>
+        </a>
+    </li>
+}
+else
+{
+    var counter = 0;
+    var subMenuCounter = 0;
+
+    foreach (var menu in Model)
+    {
+        var customCounter = "MenuHeader" + Convert.ToString(counter);
+
+        <li class="nav-item" id="@customCounter">
+            <a href="@Url.Action(menu.MenuAction, menu.MenuController, new { Area = menu.AreaName })" class="nav-link @dsdProjectTemplate.Web.Models.MakeActiveMenu.MakeActive(menu.MenuController)">
+                <i class="@menu.MenuIcon"></i>
+                <p>
+                    @menu.Name
+                    @if (menu.SubMenus != null && menu.SubMenus.Count > 0)
+                    {
+                        <i class="right fas fa-angle-left"></i>
+                    }
+                </p>
+            </a>
+            @if (menu.SubMenus != null && menu.SubMenus.Count > 0)
+            {
+                <ul class="nav nav-treeview">
+                    @foreach (var subMenu in menu.SubMenus)
+                    {
+                        var customSubMenu = "subMenu" + Convert.ToString(subMenuCounter);
+                        <li class="nav-item">
+                            <a id="@customSubMenu" href="@Url.Action(subMenu.MenuAction, subMenu.MenuController, new { Area = subMenu.AreaName })" onclick="setMenuSetting(@customCounter,@customSubMenu)" class="nav-link @dsdProjectTemplate.Web.Models.MakeActiveMenu.MakeActive(subMenu.MenuController)">
+                                <i class="@subMenu.MenuIcon"></i>
+                                @*<i class="far fa-circle nav-icon"></i>*@
+                                <p>@subMenu.Name</p>
+                            </a>
+                        </li>
+                        subMenuCounter++;
+                    }
+                </ul>
+            }
+        </li>
+        counter++;
+    }
+}
+
+<script type="text/javascript">
+    function setMenuSetting(customCounter, customSubMenu) {
+        var isSuperAdmin = $("#hdIsSuperAdmin").val();
+        if (isSuperAdmin == "") {
+            localStorage.customCounter = customCounter.id;
+            localStorage.customSubMenu = customSubMenu.id;
+        }        
+    }
+    $(document).ready(function () {
+        if (localStorage.customCounter != undefined) {
+            var isSuperAdmin = $("#hdIsSuperAdmin").val();
+            if (isSuperAdmin == "") {                
+                var customHeader = "#" + localStorage.customCounter;
+                var customsubMenu = "#" + localStorage.customSubMenu;
+                $(customHeader).addClass("menu-open");
+                $(customsubMenu).addClass("active");
+
+            }
+            
+        }
+
+
+    });
+
+
+</script>
+
+
+
+

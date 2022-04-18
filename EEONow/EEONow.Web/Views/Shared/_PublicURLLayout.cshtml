@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="google-site-verification" content="zyRw7CxzAUPg2RoX1Hc8besePcGOPaIhAfVrlWY-phQ" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEONow - Powered by Defined Software</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="~/Content/Custom/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    @RenderSection("css", false)
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        .k-operator-hidden {
+            padding: 0px;
+        }
+
+        #grid .k-filtercell > span > .k-button, .k-autocomplete.k-state-hover > .k-i-close, .k-clear-value, .k-i-close, .k-dropdown-operator {
+            display: none;
+        }
+
+        .k-filtercell > span {
+            padding-right: 0px;
+        }
+        .panel-CopyRightEM {
+            /*color: #212823;
+            font-size: 12px;
+            font-weight: bold;
+            background: white;
+            width: 100%;
+            text-align: right;
+            padding: 0px 10px 5px 0px;*/
+            padding: 2px 0px 0px 0px;
+            color: #212823;
+            font-size: 12px;
+            font-weight: bold;
+            float: right;
+            position: absolute;
+            right: 17px;
+            background: #ffffff;
+            /*z-index: 3;*/
+            width: 25%;
+            text-align: right;
+        }
+        .copy-right-logo {
+            /*width: 72%;*/
+        }
+        .back-section {
+            width: 100%;
+            background: white;
+            float: right;
+            height: 34px;
+        }
+        .App-Region {
+            font-size: 28px;
+            font-weight: 700;
+            color: red;
+            margin-top: 8px;
+            margin-left: 30px;
+            align-items: center;
+            /*width: 100%;*/
+            position: absolute;
+            z-index: 999;
+            left: 50%;
+        }
+    </style>     
+</head>
+<body style="background: #f2f3f4;">
+    <span class="App-Region">@(System.Configuration.ConfigurationManager.AppSettings["CurrentRegion"])</span>
+    <div class="main-content">
+        @RenderBody()
+        <div class="back-section">
+            <div class="panel-CopyRightEM">
+                @(System.Configuration.ConfigurationManager.AppSettings["AppVersion"]) © 2017-@(System.DateTime.Now.Year.ToString()) - All rights reserved. <a href="https://definedSoftware.com" target="_blank"><img class="copy-right-logo" src="~/Content/Logo/Powered_by_DSD-Logo.png" /></a>
+            </div>
+        </div>
+    </div>
+    @RenderSection("scripts", false)
+</body>
+</html>

@@ -1,0 +1,369 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark"> @ViewData["Title"] </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>                    
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <!-- Info boxes -->
+    <div class="row">
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>567</h3>
+
+                    <p>Records</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="/Campaigns" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>454</h3>
+                    <p>Customers</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="/Customers" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>20</h3>
+                    <p>Groups</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="/Groups" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+        
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box" style="color:green">
+                    <div class="inner">
+                        <h3>40</h3>
+                        <p>Tool's Users</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="/Users" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+         
+        <!-- ./col -->
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success" title="Total Sent SMS">
+                <div class="inner">
+                    <h3>80</h3>
+
+                    <p>Records</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-textsms"></i>
+                </div>
+                @*<a href="/Campaigns" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>*@
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6" title="Total Mobile Numbers">
+            <!-- small box -->
+            <div class="small-box  bg-info">
+                <div class="inner">
+                    <h3>50</h3>
+
+                    <p>Records</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-textsms"></i>
+                </div>
+                @*<a href="/Campaigns" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>*@
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6" title="Total Active Numbers">
+            <!-- small box -->
+            <div class="small-box" style="color:green">
+                <div class="inner">
+                    <h3>23</h3>
+
+                    <p>Records</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-textsms"></i>
+                </div>
+                @*<a href="/Campaigns" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>*@
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6" title="Total Unsubscribed Numbers">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3>300</h3>
+
+                    <p>Records</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-textsms"></i>
+                </div>
+                <a href="/UnsubscribedCustomers" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        @*<div class="col-lg-3 col-6" title="Total Email Address">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>@Model.TotalEmailAddress</h3>
+                        <p>Emails</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-email"></i>
+                    </div>
+                </div>
+            </div>*@
+
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="col-md-12 card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">   Leads(Last 30 Days)</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <canvas id="smsLeadsLineChart" width="400" height="200">Loading..Please wait</canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="col-md-12 card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Line Chart</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <canvas id="UnsubscribedBarChart" width="400" height="200">Loading..Please wait</canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="col-md-12 card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Last 30 Days' Bar Chart</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <canvas id="myChart" width="400" height="200">Loading..Please wait</canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+             
+        </div>
+    </div>
+    <!-- /.row -->
+</div><!--/. container-fluid -->
+@section Scripts {
+    <script>
+        var canvas = document.getElementById('myChart');
+        var _varChartData = [];
+        var _labels = [];
+        $.get("/dashboard/GetDashboardBarChart", function (data) {
+            $.each(data.data, function (index, value) {
+                //   alert(value.NumberOfSMS);
+               // _varChartData.push([value.ModifiedDate, value.NumberOfSMS, value.Color, value.Name + '\nTotal SMS: ' + value.NumberOfSMS + '\nDate & Time:' + value.ModifiedDate]);
+                _labels.push(value.ModifiedDate);
+                _varChartData.push(value.NumberOfSMS);
+            });
+            drawChart();
+        });
+
+        var canvasUnsubscribed = document.getElementById('UnsubscribedBarChart');
+        var _varChartDataUnsubscribed = [];
+        var _labelsUnsubscribed = [];
+
+        $.get("/dashboard/GetChartUnsubscribedCustomers", function (data) {
+            $.each(data.data, function (index, value) {
+                _labelsUnsubscribed.push(value.ModifiedDate);
+                _varChartDataUnsubscribed.push(value.NumbersForChartData);
+            });
+            drawUnsubscribedChart();
+        });
+
+        function drawChart() {
+            var data = {
+                labels: _labels,
+                datasets: [
+                    {
+                        label: "Sent SMSs",
+                        backgroundColor: "#5feb7e",
+                        borderColor: "#0f3c19",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "#5d9cdf",
+                        hoverBorderColor: "#007bff",
+                        data: _varChartData,
+                    }
+                ]
+            };
+            var option = {
+                animation: {
+                    duration: 5000
+                }
+
+            };
+
+
+            var myBarChart = Chart.Bar(canvas, {
+                data: data,
+                options: option
+            });
+
+        }
+
+        function drawUnsubscribedChart() {
+            var data = {
+                labels: _labelsUnsubscribed,
+                datasets: [
+                    {
+                        label: "Unsubscribed Customes",
+                        lineTension: 0,
+                        fill: false,
+                        borderColor: '#ef2020',
+                        backgroundColor: 'transparent',
+                        borderDash: [5, 5],
+                        pointBorderColor: '#dc3545',
+                        pointBackgroundColor: '#ef2020',
+                        pointRadius: 5,
+                        pointHoverRadius: 10,
+                        pointHitRadius: 30,
+                        pointBorderWidth: 2,
+                        pointStyle: 'rectRounded',
+                        data: _varChartDataUnsubscribed,
+                    }
+                ]
+            };
+            var option = {
+                animation: {
+                    duration: 5000
+                }
+                
+
+            };
+
+
+          
+
+            var myLineChart = new Chart(canvasUnsubscribed, {
+                type: 'line',
+                data: data,
+                options: option
+            });
+
+        }
+
+        //smsLeadsLineChart
+        var canvasLeadsLineChart = document.getElementById('smsLeadsLineChart');
+        var _varLeadsLineChartData = [];
+        var _labelsLeadsLineChart = [];
+
+        $.get("/dashboard/GetChartSMSLeads", function (data) {
+            $.each(data.data, function (index, value) {
+                _labelsLeadsLineChart.push(value.ModifiedDate);
+                _varLeadsLineChartData.push(value.NumbersForChartData);
+            });
+            drawLeadsLineChart();
+        });
+        function drawLeadsLineChart() {
+            var data = {
+                labels: _labelsLeadsLineChart,
+                datasets: [
+                    {
+                        label: "SMS Leads",
+                        lineTension: 0,
+                        fill: false,
+                        borderColor: '#5feb7e',
+                        backgroundColor: 'transparent',
+                        borderDash: [5, 5],
+                        pointBorderColor: '#5feb7e',
+                        pointBackgroundColor: '#5feb7e',
+                        pointRadius: 5,
+                        pointHoverRadius: 10,
+                        pointHitRadius: 30,
+                        pointBorderWidth: 2,
+                        pointStyle: 'rectRounded',
+                        data: _varLeadsLineChartData,
+                    }
+                ]
+            };
+            var option = {
+                animation: {
+                    duration: 5000
+                }
+
+
+            };
+
+
+
+
+            var myLeadsLineChart = new Chart(canvasLeadsLineChart, {
+                type: 'line',
+                data: data,
+                options: option
+            });
+
+        }
+
+    </script>
+
+}

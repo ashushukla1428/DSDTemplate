@@ -1,0 +1,146 @@
+﻿@using Kendo.Mvc.UI
+@using dsdProjectTemplate.Utility;
+
+@{
+    ViewBag.Title = "Registration Request Types";
+}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">@ViewData["Title"]</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                @(Html.Kendo().Grid<dsdProjectTemplate.ViewModel.User.Registration.RegistrationRequestTypeViewModel>()
+    .Name("grid")
+       .ToolBar(toolbar =>
+       {
+           if (UserSession.Current.CanAddRecords)
+           {
+               toolbar.Create();
+           }
+       })
+     .Editable(editable => editable.Mode(GridEditMode.InLine).Window(w => w.Title("Edit Menu Header").Width(500))).Events(e => e.Edit("onPopOpen"))
+    .Scrollable()
+    .Sortable()
+    .Pageable()
+    .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+    .HtmlAttributes(new { style = "height:550px;" })
+       .Columns(columns =>
+       {
+           columns.ForeignKey(p => p.OrganizationId, (System.Collections.IEnumerable)ViewBag.OrganizationsList, "Value", "Text").Title("Organization").Width(300);
+           columns.Bound(p => p.TypeName) .Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+           columns.Bound(p => p.IsActive).ClientTemplate(
+           "# if (IsActive) { #" +
+               "<span class='badge bg-success'>YES</span>" +
+           "# } else { #" +
+               "<span class='badge bg-danger'>NO</span> " + "#}#").Width(150).Filterable(true);
+           columns.Command(command => { command.Edit().Text((UserSession.Current.CanEditRecords == true ? "Edit" : "View")); }).Width(90);
+       })
+       .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+            .Events(events =>
+            {
+                //events.Error("error_handler");
+                events.RequestEnd("onRequestEnd");
+            })
+        .Model(model => model.Id(p => p.Id))
+        .Create(update => update.Action("Save", "RegistrationRequestTypes"))
+        .Update(update => update.Action("Save", "RegistrationRequestTypes"))
+        .Read(read => read.Action("BindData", "RegistrationRequestTypes"))
+        ))
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content-header -->
+<script type="text/javascript">
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+    function onRequestEnd(e, status) {
+        if (e.response.Errors) {
+            var grid = $("#grid").data("kendoGrid");
+            grid.cancelChanges();
+            var message = "";
+            $.each(e.response.Errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            toastr.error(message, 'Warning', { timeOut: 1500 });
+        }
+        if (e.type == "create" && !e.response.Errors) {
+            toastr.success(_recordSaved, '', { timeOut: 1000 });
+        }
+        if (e.type == "update" && !e.response.Errors) {
+            toastr.success(_recordUpdated, '', { timeOut: 1000 });
+        }
+    }
+
+    var OrganizationsList =@Html.Raw(Json.Encode(ViewBag.OrganizationsList));
+    function onPopOpen(e) {
+        if (e.model.id == 0) {
+            $(".k-window-title").html('Add Firms');
+            $(".k-grid-update").html('<span class="k-icon k-i-check"></span>Save');
+        }
+        else {
+
+	    if ('@UserSession.Current.CanEditRecords' == "False") {
+                $(".k-edit-form-container .k-edit-buttons").hide();
+                $(".k-grid-update").hide();
+            }
+            else {
+                $(".k-edit-form-container .k-edit-buttons").show();
+
+                //$(".k-window-title").html("View Detail");
+            }
+        }
+
+        $("#OrganizationId").kendoDropDownList({
+            //optionLabel: "Select Project Task ID",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: OrganizationsList
+        }).data("kendoDropDownList");
+        var ProjectTaskID_Dropdownlist = $("#OrganizationId").data("kendoDropDownList");
+        // ProjectTaskID_Dropdownlist.select(0);
+        ProjectTaskID_Dropdownlist.trigger("change");
+
+        //
+    }
+
+</script>

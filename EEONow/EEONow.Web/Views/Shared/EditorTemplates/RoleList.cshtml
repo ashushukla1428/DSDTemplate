@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "RoleList";
+}
+
+@using System.Collections
+@model System.Int32
+@(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewBag.RoleList)
+.OptionLabel("- Select Role - ")
+.DataValueField("Value")
+.DataTextField("Text")
+.Name("RoleId")
+.HtmlAttributes(new { required = "required" })
+) 

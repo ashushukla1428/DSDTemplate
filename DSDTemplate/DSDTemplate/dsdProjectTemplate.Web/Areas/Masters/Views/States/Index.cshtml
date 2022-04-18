@@ -1,0 +1,132 @@
+﻿@using Kendo.Mvc.UI
+@using dsdProjectTemplate.Utility;
+@{
+    ViewBag.Title = "States";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewBag.Title</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">@ViewBag.Title</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                @(Html.Kendo().Grid<dsdProjectTemplate.ViewModel.State.StateResponse>()
+    .Name("grid")
+      .ToolBar(toolbar =>
+      {
+          if (UserSession.Current.CanAddRecords)
+          {
+              toolbar.Create();
+          }
+      })
+  .Editable(editable => editable.Mode(GridEditMode.InLine).Window(w => w.Title("States ").Width(500))).Events(e => e.Edit("onPopOpen"))
+    .Scrollable()
+    .Sortable()
+    .Pageable()
+    .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+    .HtmlAttributes(new { style = "height:550px;" })
+       .Columns(columns =>
+       {
+           columns.Bound(p => p.Name) .Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+           columns.Bound(p => p.IsActive).ClientTemplate(
+                "# if (IsActive) { #" +
+                    "<span class='badge bg-success'>YES</span>" +
+                "# } else { #" +
+                    "<span class='badge bg-danger'>NO</span> " + "#}#").Width(150).Filterable(true);
+           columns.Command(command => { command.Edit().Text((UserSession.Current.CanEditRecords == true ? "Edit" : "View")); }).Width(90);
+       })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+         .Events(events =>
+         {
+             //events.Error("error_handler");
+             events.RequestEnd("onRequestEnd");
+         })
+        .Model(model => model.Id(p => p.Id))
+        .Create(update => update.Action("Save", "States"))
+        .Update(update => update.Action("Save", "States"))
+        .Read(read => read.Action("BindStates", "States"))
+        ))
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content-header -->
+<script type="text/javascript">
+    function error_handler(e) {
+        //console.log(JSON.stringify(e));
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+    function onRequestEnd(e, status) {
+        //console.log(JSON.stringify(e.response));
+        if (e.response.Errors) {
+            console.log(JSON.stringify(e.response));
+            var grid = $("#grid").data("kendoGrid");
+            grid.cancelChanges();
+            var message = "";
+            $.each(e.response.Errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            toastr.error(message, 'Warning', { timeOut: 1500 });
+        }
+        if (e.type == "create" && !e.response.Errors) {
+            toastr.success(_recordSaved, '', { timeOut: 1000 });
+        }
+        if (e.type == "update" && !e.response.Errors) {
+            toastr.success(_recordUpdated, '', { timeOut: 1000 });
+        }
+    }
+    function onPopOpen(e) {
+        if (e.model.id == 0) {
+            $(".k-window-title").html('Add Firms');
+            $(".k-grid-update").html('<span class="k-icon k-i-check"></span>Save');
+        }
+        else {
+          if ('@UserSession.Current.CanEditRecords' == "False") {
+                $(".k-edit-form-container .k-edit-buttons").hide();
+                $(".k-grid-update").hide();
+            }
+            else {
+                $(".k-edit-form-container .k-edit-buttons").show();
+
+                //$(".k-window-title").html("View Detail");
+            }
+        }
+    }
+</script>

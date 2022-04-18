@@ -1,0 +1,192 @@
+﻿@using Kendo.Mvc.UI
+@model dsdProjectTemplate.ViewModel.User.UserProfileViewModel
+@{
+    ViewBag.Title = "Two Factor Authentication";
+}
+<style>
+    .k-textbox, .k-dropdown {
+        width: 100%
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewBag.Title </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="card-body">
+        <div class="form-group mb-4">
+            <div class="row">
+                @if (string.IsNullOrEmpty(Model.EmailAddress))
+                {
+                    <div class="col-md-4">
+                        <p>Pleaes add email address from <a href="/MyProfile">My Profile</a></p>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-4">
+                        <p>Email Address</p>
+                        <label>@Model.EmailAddress</label>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Email Authentication</p>
+                        @(Html.Kendo().Switch()
+                    .Name("EmailTwoFactorAuthentication")
+                    .Checked(Model.EmailTwoFactorAuthentication)
+                    .Events(e => e
+                        .Change("SendTwoFactorAuthenticationCodeOnEmail")
+                    )
+                    .Messages(c => c.Checked("ON").Unchecked("OFF"))
+                )
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <hr />
+            @if (string.IsNullOrEmpty(Model.EmailAddress))
+            {
+                <div class="col-md-4">
+                    <p>Pleaes add mobile number from <a href="/MyProfile">My Profile</a></p>
+                </div>
+            }
+            else
+            {
+             <div class="row">
+            <div class="col-md-4">
+                <p>Mobile Number</p>
+                <label>@Model.RegistrationCellPhoneNumber</label>
+            </div>
+            <div class="col-md-4">
+                <p>SMS Authentication</p>
+                @(Html.Kendo().Switch()
+                    .Name("SMSTwoFactorAuthentication")
+                    .Checked(Model.SMSTwoFactorAuthentication)
+                    .Events(e => e
+                            .Change("SendTwoFactorAuthenticationCodeOnPhone")
+                        )
+                        .Messages(c => c.Checked("ON").Unchecked("OFF"))
+                )
+            </div>
+
+        </div>
+            }
+            
+        </div>
+    </div>
+</section>
+@(Html.Kendo().Window().Name("TwoFactorAuthentication")
+    .Title("Two Factor Authentication")
+ .Draggable(true)
+    //.Resizable()
+    .Scrollable(false)
+    .Width(400)
+    .Height(200)
+    .Visible(false)
+    .Iframe(true)
+    .Modal(true)
+ .Actions(actions => actions.Minimize().Maximize().Close())
+)
+<input type="hidden" value="@Model.RegistrationCellPhoneNumber" id="hdnMobile"/>
+<script>
+
+
+      function SendTwoFactorAuthenticationCodeOnEmail(e) {
+
+      $.ajax({
+                type: 'POST',
+                //data: dataModel,
+                url: '/MyProfile/SendTwoFactorAuthenticationCodeOnEmail',
+                success: function (data) {
+
+                    if (data.Status) {
+                        showWindow(1,2);
+                        toastr.success(data.Message, '', { timeOut: 1000 });
+                    }
+                    else {
+                       swal("Sorry!", data.Message, "warning");
+                    }
+
+                },
+                failure: function (response) {
+                    $("#validation-success").html("");
+                    // alert(response.responseText);
+                    swal("Sorry!", response.responseText, "error");
+                },
+                error: function (response) {
+                    swal("Sorry!", response.responseText, "error");
+                    
+                }
+
+            });
+            //Handle the change event.
+        }
+
+    
+      function SendTwoFactorAuthenticationCodeOnPhone(e) {
+        if($('#hdnMobile').val()==''){
+     swal("Sorry!", 'Please add your mobile number from my profile', "warning");
+    return;
+    }
+      $.ajax({
+                type: 'POST',
+                //data: dataModel,
+                url: '/MyProfile/SendTwoFactorAuthenticationCodeOnPhone',
+          success: function (data) {              
+                    
+                    if (data.Status) {
+                        showWindow(1,1);
+                        toastr.success(data.Message, '', { timeOut: 1000 });
+                    }
+                    else {
+                       swal("Sorry!", data.Message, "warning");
+                    }
+
+                },
+          failure: function (response) {              
+                    $("#validation-success").html("");
+                    // alert(response.responseText);
+                    swal("Sorry!", response.responseText, "error");
+                },
+          error: function (response) {              
+              swal("Sorry!", response.responseText, "error");
+
+                }
+
+            });
+            //Handle the change event.
+        }
+
+    function showWindow(flag, reqType) {
+        var wnd = $("#TwoFactorAuthentication").data("kendoWindow");
+
+        wnd.refresh({
+            url: "/MyProfile/ShowwoFactorAuthentication?flag=true&reqType=" + reqType
+        });
+
+        //  wnd.("Manage Filters");
+       // wnd.title('User Name: ' + dataItem.UserName);
+        wnd.center();
+        wnd.open();
+    }
+
+</script>
+ 
+
+

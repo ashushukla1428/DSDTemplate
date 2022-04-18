@@ -1,0 +1,331 @@
+﻿@model EEONow.Models.StaffLevelReportModel
+@{
+    ViewBag.Title = "Staff Level Report";
+    Layout = "~/Views/Shared/_PartialViewLayout.cshtml";
+}
+<style>
+    table {
+        width: 100%;
+    }
+
+    .Bg-AlaternateTr {
+        background: #f0f0f0;
+    }
+
+    tr.bg-blue:hover td {
+        color: #fff;
+        background: #04418c;
+    }
+
+    tr.bg-blue td {
+        color: #000;
+    }
+
+    .color-Black {
+        color: #000;
+    }
+
+    inspector-stylesheet:1 tr.bg-blue:hover {
+        background: #04418c;
+        color: #fff;
+    }
+
+    .table-grid {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table-grid > tbody > tr > th {
+            padding: 1;
+        }
+
+        .table-grid > thead > tr > th,
+        .table-grid > tbody > tr > th,
+        .table-grid > tfoot > tr > th,
+        .table-grid > thead > tr > td,
+        .table-grid > tbody > tr > td,
+        .table-grid > tfoot > tr > td {
+            border: 1px solid #04418c;
+        }
+
+
+
+        .table-grid .table-grid td,
+        .table-grid .table-grid th {
+            border-top: 1px solid #04418c;
+            border-right: 1px solid #04418c;
+            border-bottom: 0;
+            border-left: 0;
+        }
+
+            .table-grid .table-grid td:last-child,
+            .table-grid .table-grid th:last-child {
+                border-right: 0;
+            }
+
+    td {
+        /*border: 1px solid #04418c;*/
+        color: #04418c;
+        /*border-collapse: collapse;*/
+        vertical-align: top;
+    }
+
+    .noborder {
+        border: none;
+    }
+
+    /*.Alm-Img {
+        width: 100px;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .Alm-imgtext {
+        float: left;
+        margin-top: 40px;
+    }*/
+    .Alm-text {
+        vertical-align: middle;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+
+    .td-top-none {
+        border-top: none !important;
+        /*vertical-align :middle;*/
+    }
+
+    .td-bottom-none {
+        border-bottom: none !important;
+    }
+
+    .td-left-none {
+        border-left: none !important;
+    }
+
+    .td-right-none {
+        border-right: none !important;
+    }
+
+    .aligncenter {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .alignmiddle {
+        vertical-align: middle;
+        padding-left: 3px
+    }
+
+    .alignRight {
+        text-align: right;
+        padding-right: 3px !important;
+    }
+
+    .nohover {
+        background: none !important;
+        color: #000 !important;
+    }
+
+    .AVExport {
+        float: right;
+        margin-top: 3px;
+        margin-right: -70px;
+        text-decoration: underline;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .AVExport:hover {
+            font-size: 16px;
+        }
+
+    .tdgrandtotal {
+        text-align: right;
+        padding-right: 10px;
+        font-size: 18px;
+    }
+
+    .tdEmployeeTotal {
+        text-align: center;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .tdTitle {
+        font-weight: 700;
+    }
+
+    td.td-top-none.alignmiddle.formatNumber {
+        text-align: center;
+    }
+</style>
+<table class="table-grid">
+    <tbody>
+        <tr>
+            <td class="Alm-text" colspan="2" width="23%">
+                @Model.OrganizationName
+            </td>
+            <td width="78%">
+                <table class="table-grid aligncenter">
+                    <tr>
+                        <th class="td-top-none td-right-none" colspan="12" height="25px" style="text-align:center; font-size:20px">
+                            Staff Level Report
+                        </th>
+                        <th class="td-top-none" colspan="2"><span onclick="ExportStaffLevelReport();" class="AVExport">Export to PDF</span></th>
+                    </tr>
+                    <tr>
+                        @foreach (var item in Model.ListOfRaces)
+                        {
+                            <td class="noborder" width="12.5%" colspan="2" id="TdRaces@(item.RacesId)">
+                                @item.RacesName
+                            </td>
+                        }
+                        <td class="noborder alignmiddle" width="8.5%" rowspan="2" colspan="2">
+                            Total Employees
+                        </td>
+                    </tr>
+                    <tr style="text-align:center">
+
+
+                        @foreach (var item in Model.ListOfRaces)
+                        {
+                            <td width="6.25%">M</td>
+                            <td class="border_right" width="6.25%">F</td>
+                        }
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        @{int countEEORow = 0;
+            foreach (var itemStaffLevel in Model.ListStaffLevel)
+            {
+                countEEORow = countEEORow + 1;
+                <tr>
+                    <td class="@(countEEORow % 2 == 1?"color-Black":"color-Black Bg-AlaternateTr")" style="text-align: center; vertical-align: middle;" width="11%">
+                        <span class="tdTitle">@itemStaffLevel.LevelName</span>
+                    </td>
+                    <td width="12%">
+                        <table class="table-grid">
+                            <tr>
+                                <th class="td-top-none color-Black alignRight" height="20px">Total Workforce</th>
+                            </tr>
+                            <tr class="Bg-AlaternateTr">
+                                <th class="color-Black alignRight" height="20px">% Workforce</th>
+                            </tr>
+
+                        </table>
+                    </td>
+                    <td width="78%">
+
+                        <table class="table-grid">
+                            @*Employee Number Count*@
+                            <tr class="bg-blue">
+                                @if (Model.ListOfRaces != null)
+                                {
+                                    foreach (var ItemOfRaces in Model.ListOfRaces)
+                                    {
+                                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">
+                                            @Model.NumberOfStaffEmployee.Where(e => e.RacesId == ItemOfRaces.RacesId && e.LevelId == itemStaffLevel.LevelId && e.GenderId == 1).Select(e => e.NoOfStaff).FirstOrDefault()
+                                        </td>
+                                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">
+                                            @Model.NumberOfStaffEmployee.Where(e => e.RacesId == ItemOfRaces.RacesId && e.LevelId == itemStaffLevel.LevelId && e.GenderId == 2).Select(e => e.NoOfStaff).FirstOrDefault()
+                                        </td>
+                                    }
+                                }
+                                <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal border_left" rowspan="7" colspan="2" width="8.5%">
+                                    <b>
+                                        @Model.NumberOfStaffEmployee.Where(e => e.LevelId == itemStaffLevel.LevelId).Sum(e => e.NoOfStaff)
+                                    </b>
+                                </td>
+                            </tr>
+                            @*% Employee Number Count*@
+                            <tr class="bg-blue Bg-AlaternateTr">
+                                @if (Model.ListOfRaces != null)
+                                {
+                                    foreach (var ItemOfRaces in Model.ListOfRaces)
+                                    {
+                                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%">
+                                            @{
+                                                decimal RaceStaffM = Model.NumberOfStaffEmployee.Where(e => e.RacesId == ItemOfRaces.RacesId && e.LevelId == itemStaffLevel.LevelId && e.GenderId == 1).Select(e => e.NoOfStaff * 100).FirstOrDefault();
+                                                decimal TotalStaffM = Model.NumberOfStaffEmployee.Where(e => e.LevelId == itemStaffLevel.LevelId).Sum(e => e.NoOfStaff);
+                                                if (TotalStaffM > 0 && RaceStaffM > 0)
+                                                {
+                                                    @((RaceStaffM / TotalStaffM).ToString("N3"))
+                                                }
+                                                else
+                                                { @(0) }
+                                            }%
+
+                                        </td>
+                                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%">
+                                            @{
+                                                decimal FRaceStaff = Model.NumberOfStaffEmployee.Where(e => e.RacesId == ItemOfRaces.RacesId && e.LevelId == itemStaffLevel.LevelId && e.GenderId == 2).Select(e => e.NoOfStaff * 100).FirstOrDefault();
+                                                decimal FTotalStaff = Model.NumberOfStaffEmployee.Where(e => e.LevelId == itemStaffLevel.LevelId).Sum(e => e.NoOfStaff);
+                                                if (FTotalStaff > 0 && FRaceStaff > 0)
+                                                {
+                                                    @((FRaceStaff / FTotalStaff).ToString("N3"))
+                                                }
+                                                else
+                                                { @(0) }
+                                            }%
+                                        </td>
+                                                    }
+                                                }
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+                                                }
+        }
+
+        <tr>
+            <th colspan="2" class="alignRight" width="23%">
+
+            </th>
+
+            <th class="alignmiddle" height="20px" width="78%">
+                <table class="table-grid">
+                    <tr class="bg-blue">
+                        <td class="td-top-none alignmiddle nohover tdgrandtotal"> Grand Total</td>
+                        <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal" style="font-size:15px" width="9%" height="30px">
+                            <b> @Model.NumberOfStaffEmployee.Sum(e => e.NoOfStaff)</b>
+                        </td>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+@section scripts{
+    <script src="/Scripts/jquery-3.2.1.js"></script>
+    <script src="/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //$(this).find('td').each(function (e) {
+            //    console.log(e);
+            //})
+            //$('.formatNumber').text(formatNumber($('.formatNumber').text()))
+            //console.log($('.formatNumber').text());
+
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            })
+
+        })
+
+
+
+    </script>
+}

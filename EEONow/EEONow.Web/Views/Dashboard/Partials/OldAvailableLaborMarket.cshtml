@@ -1,0 +1,340 @@
+﻿@model EEONow.Models.ALMViaRacesEeoModel
+@{
+    ViewBag.Title = "Available Labor Market";
+    Layout = "~/Views/Shared/_PartialViewLayout.cshtml";
+}
+<style>
+    table {
+        width: 100%;
+    }
+
+    .Bg-AlaternateTr {
+        background: #f0f0f0;
+    }
+
+    tr.bg-blue:hover td {
+        color: #fff;
+        background: #04418c;
+    }
+
+    tr.bg-blue td {
+        color: #000;
+    }
+
+    .color-Black {
+        color: #000;
+    }
+
+    inspector-stylesheet:1 tr.bg-blue:hover {
+        background: #04418c;
+        color: #fff;
+    }
+
+    .table-grid {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table-grid > tbody > tr > th {
+            padding: 0;
+        }
+
+        .table-grid > thead > tr > th,
+        .table-grid > tbody > tr > th,
+        .table-grid > tfoot > tr > th,
+        .table-grid > thead > tr > td,
+        .table-grid > tbody > tr > td,
+        .table-grid > tfoot > tr > td {
+            border: 1px solid #04418c;
+        }
+
+
+
+        .table-grid .table-grid td,
+        .table-grid .table-grid th {
+            border-top: 1px solid #04418c;
+            border-right: 1px solid #04418c;
+            border-bottom: 0;
+            border-left: 0;
+        }
+
+            .table-grid .table-grid td:last-child,
+            .table-grid .table-grid th:last-child {
+                border-right: 0;
+            }
+
+    td {
+        /*border: 1px solid #04418c;*/
+        color: #04418c;
+        /*border-collapse: collapse;*/
+        vertical-align: top;
+    }
+
+    .noborder {
+        border: none;
+    }
+
+    /*.Alm-Img {
+        width: 100px;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .Alm-imgtext {
+        float: left;
+        margin-top: 40px;
+    }*/
+    .Alm-text {
+        vertical-align: middle;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+
+    .td-top-none {
+        border-top: none !important;
+        /*vertical-align :middle;*/
+    }
+
+    .td-bottom-none {
+        border-bottom: none !important;
+    }
+
+    .td-left-none {
+        border-left: none !important;
+    }
+
+    .td-right-none {
+        border-right: none !important;
+    }
+
+    .aligncenter {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .alignmiddle {
+        vertical-align: middle;
+        padding-left: 3px
+    }
+
+    .alignRight {
+        text-align: right;
+        padding-right: 3px !important;
+    }
+    .nohover{
+        background:none!important;
+        color:#000!important;
+    }
+</style>
+<table class="table-grid">
+    <tbody>
+        <tr>
+            <td class="Alm-text" colspan="2" width="23%">
+                @Model.ManagerName
+                @*<img class="Alm-Img" style="" src="//www.gravatar.com/avatar/3c695183cd5842d6e1985ae98697b348?d=identicon&amp;s=48&amp;s=200">
+                    <div class="Alm-imgtext">
+                        <b></b><br>
+                    </div*@
+            </td>
+
+            <td width="78%">
+
+                <table class="table-grid aligncenter">
+                    <tr><th class="td-top-none" colspan="14" height="25px" style="text-align:center">Available Labor Market by Race / Ethnicity</th></tr>
+                    <tr>
+                        @foreach (var item in Model.ListRacesForALM)
+                        {
+                            <td class="noborder" width="12.5%" colspan="2" id="TdRaces@(item.RacesId)">
+                                @item.RacesName
+                            </td>
+                        }
+                        <td class="noborder alignmiddle" width="8.5%" rowspan="2" colspan="2">
+                            Total Employees
+                        </td>
+                    </tr>
+                    <tr style="text-align:center">
+
+
+                        @foreach (var item in Model.ListRacesForALM)
+                        {
+                            <td width="6.25%">M</td>
+                            <td width="6.25%">F</td>
+                        }
+
+                        @*<td width="6.25%">M</td>
+                            <td width="6.25%">F</td>*@
+                        @*<th width="6.25%">M</th>
+                            <th width="6.25%">F</th>*@
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        @{int countEEORow = 0;
+            foreach (var itemEEO in Model.ListEEOForALM)
+            {
+                countEEORow = countEEORow + 1;
+                <tr>
+                    <td class="@(countEEORow % 2 == 1?"color-Black":"color-Black Bg-AlaternateTr")" style="text-align: center; vertical-align: middle;" width="8%">
+                        <span>@itemEEO.EEOName</span>
+                    </td>
+                    <td width="15%">
+                        <table class="table-grid">
+                            <tr>
+                                <th class="td-top-none color-Black alignRight" height="20px">Total Workforce</th>
+                            </tr>
+                            <tr class="Bg-AlaternateTr">
+                                <th class="color-Black alignRight" height="20px">% Workforce</th>
+                            </tr>
+                            <tr>
+                                <th class="color-Black alignRight" height="20px">% ALM</th>
+                            </tr>
+                            <tr class="Bg-AlaternateTr">
+                                <th class="color-Black alignRight" height="20px">80% of ALM</th>
+                            </tr>
+                            <tr>
+                                <th class="color-Black alignRight" height="20px">Parity</th>
+                            </tr>
+                            <tr class="Bg-AlaternateTr">
+                                <th class="color-Black alignRight" height="20px">Underutilized</th>
+                            </tr>
+                            <tr>
+                                <th class="color-Black alignRight" height="20px">Goal</th>
+                            </tr>
+                            @*<tr class="Bg-AlaternateTr">
+                                    <th class="color-Black alignRight" height="20px">Total Employees by EEO/Race/Gender</th>
+                                </tr>*@
+                        </table>
+                    </td>
+                    <td width="78%">
+
+                        <table class="table-grid">
+
+                            @*Total Workforce*@
+                            <tr class="bg-blue">
+                                @foreach (var itemALM in Model.ListRacesForALM)
+                                {
+                                    <td class="td-top-none alignmiddle" height="20px" width="6.25%">
+                                        @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceMale).FirstOrDefault()
+                                    </td>
+                                    <td class="td-top-none alignmiddle" height="20px" width="6.25%">
+                                        @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceFemale).FirstOrDefault()
+                                    </td>
+                                }
+                                <td class="td-top-none alignmiddle nohover" rowspan="7" colspan="2" width="8.5%">
+                                    <b>
+                                        @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale + r.TotalWorkforceFemale)).FirstOrDefault()
+                                    </b>
+                                </td>
+                            </tr>
+                            @*% Workforce*@
+                            <tr class="bg-blue Bg-AlaternateTr">
+                                @foreach (var itemALM in Model.ListRacesForALM)
+                                {
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => ((e.TotalWorkforceMale * 100) / e.TotalSelectedEEOMale) + " %").FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => ((e.TotalWorkforceFemale * 100) / e.TotalSelectedEEOFemale) + " %").FirstOrDefault()
+                                </td>
+                                }
+
+                            </tr>
+                            @*% ALM*@
+                            <tr class="bg-blue">
+                                @foreach (var itemALM in Model.ListRacesForALM)
+                                {
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => ((e.AMLMale * 100) / e.AMLSelectedEEOMale) + " %").FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => ((e.AMLFemale * 100) / e.AMLSelectedEEOFemale) + " %").FirstOrDefault()
+                                </td>
+                                }
+
+                            </tr>
+                            @* 80 % ALM*@
+                            <tr class="bg-blue Bg-AlaternateTr">
+                                @foreach (var itemALM in Model.ListRacesForALM)
+                                {
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => (((e.AMLMale * 100) / e.AMLSelectedEEOMale) * .80) + " %").FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => (((e.AMLFemale * 100) / e.AMLSelectedEEOFemale) * .80) + " %").FirstOrDefault()
+                                </td>
+                                }
+
+                            </tr>
+                            @*Parity*@
+                            <tr class="bg-blue">
+                                @foreach (var itemALM in Model.ListRacesForALM)
+                                {
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => Convert.ToInt32(e.TotalSelectedEEOMale * (((e.AMLMale * 100) / e.AMLSelectedEEOMale) * .0080))).FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => Convert.ToInt32(e.TotalSelectedEEOFemale * (((e.AMLFemale * 100) / e.AMLSelectedEEOFemale) * .0080))).FirstOrDefault()
+                                </td>
+                                }
+
+                            </tr>
+                            @*Underutilized*@
+                            <tr class="bg-blue Bg-AlaternateTr">
+                                @foreach (var itemALM in Model.ListRacesForALM)
+                                {
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => ((e.TotalSelectedEEOMale * (((e.AMLMale * 100) / e.AMLSelectedEEOMale) * .0080)) - e.TotalWorkforceMale) > 0 ? "Y" : "N").FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => ((e.TotalSelectedEEOFemale * (((e.AMLFemale * 100) / e.AMLSelectedEEOFemale) * .0080)) - e.TotalWorkforceFemale) > 0 ? "Y" : "N").FirstOrDefault()
+                                </td>
+                                }
+
+                            </tr>
+                            @*Goal*@
+                            <tr class="bg-blue">
+                                @foreach (var itemALM in Model.ListRacesForALM)
+                                {
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => Convert.ToInt32((e.TotalSelectedEEOMale * (((e.AMLMale * 100) / e.AMLSelectedEEOMale) * .0080)) - e.TotalWorkforceMale)).FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="6.25%">
+                                    @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => Convert.ToInt32((e.TotalSelectedEEOFemale * (((e.AMLFemale * 100) / e.AMLSelectedEEOFemale) * .0080)) - e.TotalWorkforceFemale)).FirstOrDefault()
+                                </td>
+                                }
+
+                            </tr>
+
+                            @*<tr class="bg-blue">
+                                    <td class="alignmiddle" style="font-size:15px" height="30px">
+                                        <b>  @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale)).FirstOrDefault()</b>
+                                    </td>
+                                    <td class="alignmiddle" style="font-size:15px" height="30px" colspan="13">
+                                        <b>  @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceFemale)).FirstOrDefault()</b>
+                                    </td>
+                                </tr>*@
+                        </table>
+                    </td>
+                </tr>
+            }
+        }
+        <tr>
+                <th colspan="2" class="alignRight" width="23%">
+                    Grant total
+                </th>
+
+                <th class="alignmiddle" height="20px" width="78%">
+                    <table class="table-grid">
+                        <tr class="bg-blue">
+                            <td class="td-top-none alignmiddle" style="font-size:15px" width="7.20%" height="30px">
+                                <b>  @Model.ListComputeALMValue.Sum(e => e.TotalWorkforceMale+ e.TotalWorkforceFemale)</b>
+                            </td> 
+                        </tr>
+                    </table> 
+                </th>
+            </tr>
+    </tbody>
+</table>

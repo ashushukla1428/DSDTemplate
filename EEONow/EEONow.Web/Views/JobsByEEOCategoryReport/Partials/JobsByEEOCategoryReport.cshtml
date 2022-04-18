@@ -1,0 +1,135 @@
+﻿@model EEONow.Models.JobsByEEOCategoryReportModel
+@{
+    ViewBag.Title = "Jobs By EEO Category Report";
+    Layout = "~/Views/Shared/_PartialViewLayout.cshtml";
+}
+<style>
+    #div-tablebody {
+        /*overflow:hidden;*/
+        overflow-y: scroll;
+    }
+</style>
+<table class="table-grid" style="width:98.7%">
+    <tbody>
+        <tr>
+            <td class="Alm-text" colspan="2" width="22%">
+                @Model.OrganizationName
+            </td>
+            <td width="78%">
+                <table class="table-grid aligncenter">
+                    <tr>
+                        <th class="td-top-none td-right-none" colspan="2" height="25px" style="text-align:center; font-size:20px">
+                            Jobs By EEO Category Report
+                        </th>
+                        <th class="td-top-none" colspan="2"><span onclick="ExportJobsByEEOCategoryReport();" class="AVExport">Export to PDF</span></th>
+                    </tr>
+                    <tr>
+                        <td class="noborder" width="50%" colspan="2" style="vertical-align: middle;text-align: left;padding-left: 10px;font-size: 14px;" id="TdPosition">
+                            Position Title
+                        </td>
+                        <td class="noborder" width="50%" colspan="2" style="vertical-align: middle;text-align: left;padding-left: 10px;font-size: 14px;" id="TdProgram">
+                            Program Office(s)
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="div-tablebody">
+    <table class="table-grid">
+        <tbody>
+            @{int countEEORow = 0;
+            foreach (var itemJobsByEEOCategory in Model.ListJobsByEEOCategory)
+            {
+                countEEORow = countEEORow + 1;
+                    <tr>
+                        <td colspan="2" class="@(countEEORow % 2 == 1 ? "color-Black" : "color-Black Bg-AlaternateTr")" style="padding: 10px;font-size: 14px;" width="22%">
+                            <span class="tdTitle">@itemJobsByEEOCategory.EEOJobCategoryName</span>
+                        </td>
+
+                        <td width="78%">
+
+                            <table class="table-grid">
+                                @{int countInnerEEORow = 0;
+                                foreach (var ItemOfPositionAndProgram in Model.ListPositionAndProgram.Where(e => e.EEOJobCategoryNumber == itemJobsByEEOCategory.EEOJobCategoryNumber).ToList())
+                                {
+                                    countInnerEEORow = countInnerEEORow + 1;
+                            <tr class="@(countInnerEEORow % 2 == 1 ? "bg-blue" : "bg-blue Bg-AlaternateTr")">
+                                <td class="td-top-none innertext" height="20px" width="50%">
+                                    @ItemOfPositionAndProgram.PositionTitle
+                                </td>
+                                <td class="td-top-none innertext" height="20px" width="50%">
+                                    @for (int i = 0; i < ItemOfPositionAndProgram.ProgramOfficeName.Count; i++)
+                                            {
+                                                if (i < (ItemOfPositionAndProgram.ProgramOfficeName.Count - 1))
+                                                {
+                                            @(ItemOfPositionAndProgram.ProgramOfficeName[i] + " , ")
+                                                }
+                                                else
+                                                {
+                                            @(ItemOfPositionAndProgram.ProgramOfficeName[i])
+                                                }
+                                            }
+                                </td>
+                            </tr>
+                                }
+                                }
+                            </table>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td colspan="2" class="@(countEEORow % 2 == 1 ? "color-Black" : "color-Black Bg-AlaternateTr")" style="padding: 10px;font-size: 14px;" width="22%"></td>
+                        <td width="78%">
+                            <table class="table-grid">
+                                <tr class="@(countEEORow % 2 == 1 ? "color-Black" : "color-Black Bg-AlaternateTr")">
+                                    <td class="td-top-none innertext" style="text-align:right" height="20px" width="50%">
+                                        <span class="tdTitle">Sub Total: @(Model.ListPositionAndProgram.Where(e => e.EEOJobCategoryNumber == itemJobsByEEOCategory.EEOJobCategoryNumber).Count()) &nbsp;</span>
+                                    </td>
+                                    <td class="td-top-none innertext" height="20px" width="50%">
+                                        @*   <span class="tdTitle">Total : @(Model.ListPositionAndProgram.Where(e => e.EEOJobCategoryNumber == itemJobsByEEOCategory.EEOJobCategoryNumber).SelectMany(e => e.ProgramOfficeName).Count())</span>*@
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                                    }
+            }
+            <tr>
+                <td colspan="2"></td>
+                <td width="78%">
+                    <table class="table-grid">
+                        <tr class="bg-blue">
+                            <td class="td-top-none innertext" height="20px" width="50%" style="text-align:right"><span class="tdTitle">Grand Total : @(Model.ListPositionAndProgram.Count()) &nbsp;</span></td>
+                            <td class="td-top-none innertext" height="20px" width="50%"></td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+
+
+    @section scripts{
+        <script src="~/Scripts/custom.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+
+                $('.formatNumber').each(function (e, elm) {
+                    $(elm).text(formatNumber($(elm).text()));
+                })
+                $("#div-tablebody").height($(".main-content").height() - 335);
+            })
+
+
+
+        </script>
+    }

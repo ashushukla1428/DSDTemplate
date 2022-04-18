@@ -1,0 +1,378 @@
+﻿@using Kendo.Mvc.UI
+@using dsdProjectTemplate.Utility;
+@{
+    ViewBag.Title = "Menu Header Configuration";
+}
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewBag.Title</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <div id="SearchPannel">
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        @(Html.Kendo().DropDownList()
+                  .Name("organization")
+                  .HtmlAttributes(new { style = "width:100%" })
+                  .DataTextField("Text")
+                  .DataValueField("Value")
+                  .DataSource(source =>
+                  {
+                      source.Read(read =>
+                      {
+                          read.Action("GetOrganizations", "Main", new { area = "" });
+                      });
+                  })
+            )
+                    </div>
+
+
+                    <div class="col-lg-6">
+                        @(Html.Kendo().DropDownList()
+              .Name("FilterRoleId")
+              .HtmlAttributes(new { style = "width:100%" })
+              .OptionLabel("--Select Role--")
+              .DataTextField("Text")
+              .DataValueField("Value")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetRolesList", "Main", new { area = "" }).Data("filterRoles"); ;
+                  }).ServerFiltering(true);
+              })
+              .Events(e => e.Change("BindGrid").DataBound("BindGrid"))
+              .Enable(true)
+              .AutoBind(false)
+              .CascadeFrom("organization")
+            )
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+
+            <div class="row" id="grid1">
+
+                @(Html.Kendo().Grid<dsdProjectTemplate.ViewModel.Menu.MenuHeaderConfigurationViewModel>
+    ()
+    .Name("grid")
+    .ToolBar(toolbar =>
+    {
+        if (UserSession.Current.CanAddRecords)
+        {
+            toolbar.Create();
+        }
+    })
+    .Editable(editable => editable.Mode(GridEditMode.InLine).Window(w => w.Title("Menu Header Configuration").Width(500))).Events(e => e.Edit("onPopOpen"))
+    .Scrollable()
+    .Sortable()
+    .Pageable()
+    .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+    .HtmlAttributes(new { style = "height:550px;" })
+    .Columns(columns =>
+    {
+        columns.ForeignKey(p => p.OrganizationId, (System.Collections.IEnumerable)ViewBag.OrganizationsList, "Value", "Text").Title("Organization").Width(300).Filterable(false);
+        columns.ForeignKey(p => p.UserRoleId, (System.Collections.IEnumerable)ViewBag.RoleList, "Value", "Text").Title("Role").Width(200).Filterable(false);
+        columns.ForeignKey(p => p.MainMenuId, (System.Collections.IEnumerable)ViewBag.MenuList, "Value", "Text").Title("Menu Page").Width(200).Filterable(false);
+
+        columns.Bound(p => p.Name).Width(200).Filterable(true);
+        // columns.Bound(p => p.ListMenu).ClientTemplate("#= rendermultiselecttext(data.ListMenu) #").Width(300).Filterable(false);
+        columns.Bound(p => p.DisplayOrder).Width(120).Filterable(false);
+        // columns.Bound(p => p.IsHeader).Width(120).Filterable(false);
+
+        columns.Bound(p => p.IsActive).ClientTemplate(
+        "# if (IsActive) { #" +
+        "<span class='badge bg-success'>YES</span>" +
+        "# } else { #" +
+        "<span class='badge bg-danger'>NO</span> " + "#}#").Width(150).Filterable(true);
+        columns.Bound(p => p.ListMenu).ClientTemplate("#= rendermultiselecttext(data.ListMenu) #").Width(500).Filterable(false);
+        columns.Command(command => { command.Edit().Text((UserSession.Current.CanEditRecords == true ? "Edit" : "View")); }).Width(90);
+
+        //columns.Command(command => command.Custom("Sub Menus").Click("showSubMenu")).Width(90);
+    })
+    .DataSource(dataSource => dataSource
+    .Ajax()
+    .PageSize(20)
+    .Events(events =>
+    {
+        //events.Error("error_handler");
+        events.RequestEnd("onRequestEnd");
+    })
+    .Model(model => model.Id(p => p.Id))
+    .Create(update => update.Action("Save", "MenuHeaderConfiguration"))//.Events(e=>e.Error("error_handler2"))
+    .Update(update => update.Action("Save", "MenuHeaderConfiguration"))
+    .Read(read => read.Action("BindData", "MenuHeaderConfiguration").Data("HeaderMenuSearchModel"))
+    ))
+    
+            </div>
+        </div>
+    </div>
+</section>
+ 
+@(Html.Kendo().Window().Name("subMenusModal")
+    .Title("Sub Menus")
+ .Draggable(true)
+    .Resizable()
+    .Scrollable(false)
+    .Width(900)
+    .Height(500)
+    .Visible(false)
+    .Iframe(true)
+    .Modal(true)
+ .Actions(actions => actions.Minimize().Maximize().Close())
+)
+    
+    <!-- /.content-header -->
+<script type="text/javascript">
+    function error_handler2(e) {
+
+        //if (e.errors) {
+        //    if (e.errors) {
+        //        var message = "Error:n";
+        //        $.each(e.errors, function (key, value) {
+        //            if (value.errors) {
+        //                message += value.errors.join("n");
+        //            }
+        //        });
+        //        this.cancelChanges();
+        //        alert(message);
+        //    }
+            //e.preventDefault();
+            //$("#grid").data("kendoGrid").bind("dataBinding", function (e) {
+            //    e.preventDefault();
+            //});
+            //var grid = $("#grid").data("kendoGrid");
+            //e.preventDefault();
+            //grid.cancelChanges();
+        }
+    
+    function HeaderMenuSearchModel() {
+      //  alert($("#organization").val());
+        return {
+            
+            OrganizationId: $("#organization").val(),
+            RoleId: $("#FilterRoleId").val()
+        }
+    }
+    function filterRoles() {
+        return {
+            orgId: $("#organization").val()
+        };
+    }
+    function BindGrid(e) {
+
+        var grid = $("#grid").data("kendoGrid");
+        grid.dataSource.read();
+
+    }
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+    function onRequestEnd(e, status) {
+        if (e.response.Errors) {
+            var grid = $("#grid").data("kendoGrid");
+            grid.cancelChanges();
+            var message = "";
+            $.each(e.response.Errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            toastr.error(message, 'Warning', { timeOut: 1500 });
+        }
+        if (e.type == "create" && !e.response.Errors) {
+            toastr.success(_recordSaved, '', { timeOut: 1000 });
+        }
+        if (e.type == "update" && !e.response.Errors) {
+            toastr.success(_recordUpdated, '', { timeOut: 1000 });
+        }
+    }
+
+    var OrganizationsList =@Html.Raw(Json.Encode(ViewBag.OrganizationsList));
+    var MenuList =@Html.Raw(Json.Encode(ViewBag.MenuList));
+    function onPopOpen(e) {
+        //alert('ok');
+        //$("#BeginDate").kendoDatePicker();
+        //$("#EndDate").kendoDatePicker();
+        if (e.model.id == 0) {
+           // $(".k-window-title").html('Add Menu Header Configuration');
+            $(".k-grid-update").html('<span class="k-icon k-i-check"></span>Save');
+            $(".k-grid-SubMenus").hide();
+        }
+        else {
+           if ('@UserSession.Current.CanEditRecords' == "False") {
+                $(".k-edit-form-container .k-edit-buttons").hide();
+                $(".k-grid-update").hide();
+            }
+            else {
+                $(".k-edit-form-container .k-edit-buttons").show();
+
+                //$(".k-window-title").html("View Detail");
+            }
+        }
+   // console.log(OrganizationsList);
+       // alert($("#OrganizationId").val());
+        $("#MainMenuId").kendoDropDownList({
+            //optionLabel: "Select Project Task ID",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: MenuList
+        }).data("kendoDropDownList");
+        $("#OrganizationId").kendoDropDownList({
+            //optionLabel: "Select Project Task ID",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: OrganizationsList
+        }).data("kendoDropDownList");
+        var ProjectTaskID_Dropdownlist = $("#OrganizationId").data("kendoDropDownList");
+         //ProjectTaskID_Dropdownlist.select(0);
+        //$("#OrganizationId").trigger("change");
+
+        getRoles();
+       // getMenus();
+        $("#OrganizationId").change(function (e) {
+            getRoles();
+        });
+
+        function getRoles() {
+            $.ajax({
+                url: '/Main/GetRolesList',
+                method: 'get',
+                async: false,
+                data: { 'orgId': $("#OrganizationId").val() },
+                success: function (res) {
+                    $("#UserRoleId").kendoDropDownList({
+                        optionLabel: "Select Role",
+                        dataTextField: "Text",
+                        dataValueField: "Value",
+                        dataSource: res
+                    }).data("kendoDropDownList");
+                    $("#UserRoleId").data("kendoDropDownList");
+
+                },
+                erorr: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+
+        function getMenus() {
+            $.ajax({
+                url: '/Main/GetMenuList',
+                method: 'get',
+                async: false,
+                //data: { 'orgId': $("#OrganizationId").val() },
+                success: function (res) {
+                    $("#ListMenu").kendoMultiSelect({
+                        optionLabel: "Select Menus",
+                        dataTextField: "Text",
+                        dataValueField: "Value",
+                        dataSource: res
+                    }).data("kendoMultiSelect");
+                    $("#ListMenu").data("kendoMultiSelect");
+
+                },
+                erorr: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        //
+    }
+    function showSubMenu(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        //console.log(JSON.stringify(dataItem));
+        var wnd = $("#subMenusModal").data("kendoWindow");
+
+        wnd.refresh({
+            url: "/Masters/MenuHeaderConfiguration/SubMenuConfiguration?id=" + dataItem.Id
+        });
+
+       // wnd("Manage Filters");
+        wnd.center();
+        wnd.open();
+
+        //  $.ajax({
+        //         cache: false,
+        //         type: "GET",
+        //      url: "/MenuHeaderConfiguration/SubMenuConfiguration",
+        //      data: { "mainMenuId": dataItem.Id},
+        //        success: function (data)
+        //        {
+        //            wnd.content('');
+        //            wnd.content(data);
+        //        },
+        //        error: function (xhr, ajaxOptions, thrownError)
+        //        {
+        //           // alert('Failed to retrieve books.');
+        //        }
+        //  });
+
+        //wnd.center().open();
+
+    }
+    function rendermultiselecttext(selectlistarray) {
+        if (selectlistarray != undefined && selectlistarray[0] != undefined) {
+            var displaytext;
+            $.each(selectlistarray, function (index) {
+                if (displaytext == undefined) {
+                    displaytext = selectlistarray[index].Text + ',';
+                } else {
+                    displaytext = displaytext + selectlistarray[index].Text + ',';
+                }
+            });
+            return displaytext.slice(0, -1);
+
+        }
+        else {
+            return "";
+        }
+    }
+</script>
+

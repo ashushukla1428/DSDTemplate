@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "RaceList";
+}
+
+@using System.Collections
+
+@(Html.Kendo().Upload()
+        .Name("Upload")
+.Multiple(false)
+.Async(async => async.Save("SaveFile", "Employee"))
+) 

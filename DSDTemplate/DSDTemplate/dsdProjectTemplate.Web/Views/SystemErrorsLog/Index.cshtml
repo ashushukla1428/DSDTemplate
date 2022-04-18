@@ -1,0 +1,73 @@
+﻿@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "System Errors";
+}
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">@ViewData["Title"]</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                @(Html.Kendo().Grid<dsdProjectTemplate.ViewModel.ErrorLogViewModel>
+    ()
+    .Name("grid")
+    //.ToolBar(toolbar => toolbar.Create())
+    //.Editable(editable => editable.Mode())
+    .Scrollable()
+    .Sortable()
+    .Pageable()
+    .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+    .HtmlAttributes(new { style = "height:550px;" })
+    .Columns(columns =>
+    {
+    columns.Bound(p => p.LogType).Title("Priority").Width(100).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+    columns.Bound(p => p.LogTitle).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+    columns.Bound(p => p.LogMessage).Title("Message").Filterable(false);
+    columns.Bound(p => p.LogDate).Title("Date").Width(100).Filterable(false);
+    })
+    .DataSource(dataSource => dataSource
+    .Ajax()
+    .PageSize(20)
+
+    .Read(read => read.Action("BindData", "SystemErrorsLog"))
+    ))
+</div>
+        </div>
+    </div>
+</section>
+<!-- /.content-header -->
+<script type="text/javascript">
+     
+
+</script>

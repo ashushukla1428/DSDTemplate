@@ -1,0 +1,203 @@
+﻿@model EEONow.Models.EEOReportbyRegionModel
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "EEO Report by Region";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+}
+
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+<script src="~/Scripts/bootstrap-multiselect.js"></script>
+<link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+<link href="~/Content/Reports.css" rel="stylesheet" />
+<style>
+    #RenderReport { 
+        min-width: 1500px;
+      
+    }
+    .AVExport { 
+        margin-right: -90px;
+        
+    }
+    
+   .render-outer {     
+        overflow-y: hidden;     
+    }
+</style>
+<input type="hidden" id="HfUserRoleInfo" value="@LoginInfo.Roles" />
+<h2 class="main_title_row">Search By:</h2>
+<div id="SearchPannel">
+    <div class="row">
+        <div class="col-md-3" style="@(LoginInfo.Roles=="DefinedSoftwareAdministrator"? "display:block" : "display:none")">
+            <div class="row">
+                <div class="col-lg-12">Organization :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("organization")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("OrganizationName")
+              .DataValueField("OrganizationId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetOrganizationsList", "EEOReportbyRegion");
+                  });
+              })
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">File Submissions :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("filesubmission")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("FileName")
+              .DataValueField("FileSubmissionId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetFileViaOrganisation", "EEOReportbyRegion")
+                          .Data("filterFiles");
+                  })
+                  .ServerFiltering(true);
+              })
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("organization")
+
+                    )
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">Region :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("region")
+              .HtmlAttributes(new { style = "width:100%" })
+              .OptionLabel("--Select All--")
+              .DataTextField("RegionName")
+              .DataValueField("RegionId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetEEORegion", "EEOReportbyRegion")
+                          .Data("filterEEORegion");
+                  })
+                  .ServerFiltering(true);
+              })
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("filesubmission")
+                    )
+                </div>
+
+            </div>
+        </div>
+                 
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-lg-12">&nbsp;</div>
+                <div class="col-lg-12">
+                    <input type="button" id="btnSubmit" onclick="BindEEOReportbyRegion();" style="width:100%" class="k-primary k-button" value="Search" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>
+ 
+
+<h2 class="main_title_row">EEO Report By Region:</h2>
+
+<div class="render-outer">
+    <div id="RenderReport">
+    </div>
+</div>
+<div class="BodyLoader-outer">
+    <div class="BodyLoader">
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            });
+            $(".BodyLoader").hide();
+            $(".BodyLoader-outer").hide();
+            $(".render-outer").height($(".main-content").height() - 215);
+        });
+        function ExportEEOReport() {
+            $(".BodyLoader").show();
+            $(".BodyLoader-outer").show();
+              var organization= $("#organization").val();
+              var filesubmission=escape( $("#filesubmission").val());
+              var region = $("#region").val(); 
+              location.href = '@Url.Action("ExportToPDF", "EEOReportbyRegion")?organization=' + organization + '&filesubmission=' + filesubmission + '&region=' + region;
+              $(".BodyLoader").hide();
+              $(".BodyLoader-outer").hide();
+
+        }
+        function BindEEOReportbyRegion() {
+            $(".BodyLoader").show();
+            $(".BodyLoader-outer").show();
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "/EEOReportbyRegion/GetEEOReportbyRegion",
+                data: {
+                    organization: $("#organization").val(),
+                    filesubmission: $("#filesubmission").val(),
+                    region: $("#region").val() 
+                },
+                success: function (response) {
+                    $("#RenderReport").html(response);
+                    $(".BodyLoader").hide();
+                    $(".BodyLoader-outer").hide();
+                },
+                error: function (errorResponse) {
+                    $(".BodyLoader").hide();
+                    $(".BodyLoader-outer").hide();
+                    console.log(errorResponse);
+                }
+            });
+        }
+        function filterFiles() {
+            return {
+                organization: $("#organization").val()
+            };
+        }
+        function filterEEORegion() {
+            return {
+                organization: $("#organization").val(),
+                filesubmission: $("#filesubmission").val()
+            };
+        }
+        
+    </script>
+}

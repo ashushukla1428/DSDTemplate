@@ -1,0 +1,328 @@
+﻿@model EEONow.Models.OrhChartDashborad
+@{
+    ViewBag.Title = "EEO Compensation Report";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<link href="~/Content/OrgChartContent/OrgStyle.css" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+<link href="~/Content/Dashboard.css" rel="stylesheet" />
+<style>
+    .main_title_row {
+        margin: -10px 0 10px 0;
+    }
+
+    #control-export-menu {
+        top: 10px !important;
+    }
+
+    #divSearch, #divSearchIcon {
+        top: 10px !important;
+        left: 0px !important;
+    }
+
+    fieldset {
+        display: block;
+        margin-inline-start: 2px;
+        margin-inline-end: 2px;
+        padding-block-start: 0.35em;
+        padding-inline-start: 0.75em;
+        padding-inline-end: 0.75em;
+        padding-block-end: 0.625em;
+        min-inline-size: min-content;
+        border-width: 2px;
+        border-style: groove;
+        border-color: threedface;
+        border-image: initial;
+    }
+
+    legend {
+        display: block;
+        padding-inline-start: 2px;
+        padding-inline-end: 2px;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        margin-bottom: 0px !important;
+        font-size: 14px !important;
+        /*font-weight: 700;*/
+        width: auto !important;
+    }
+
+    .pdfsettinglabel {
+        margin-top: 5px;
+        text-align: right;
+        /*font-weight: 700;*/
+    }
+
+    .back-section {
+        min-width: 100% !important;
+    }
+</style>
+<h2 class="main_title_row">Live Org Chart:</h2>
+<div id="SearchPannel">
+    <div class="row">
+        <div class="col-md-5">
+            <fieldset>
+                <legend>File Submissions:</legend>
+
+                <div class="row">
+                    <div class="col-lg-9">
+                        @(Html.Kendo().DropDownList()
+                          .Name("filesubmission")
+                          .HtmlAttributes(new { style = "width:100%" })
+                          .DataTextField("Text")
+                          .DataValueField("Value")
+                          .BindTo(Model.ListFileSubmission)
+                          .Enable(true)
+                          .Events(e =>
+                          {
+                              e.Change("onFileSubmissionChange");
+                          })
+                        )
+                    </div>
+                    <div class="col-lg-3" style="padding:0; top:4px">
+                        <input type="checkbox" id="ChkDisplayName" checked="checked" /><span>&nbsp;Diplay Names</span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="col-md-7">
+            <fieldset>
+                <legend>PDF Export Settings:</legend>
+                <div class="row">
+                    <div class="col-lg-3 pdfsettinglabel"> PDF Export Title :</div>
+                    <div class="col-lg-3">
+                        @(Html.Kendo().TextBoxFor(m => m.Title).HtmlAttributes(new { placeholder = "Title", type = "text", @class = "form-control" }))
+                    </div>
+                    <div class="col-lg-3 pdfsettinglabel">PDF Export Sub Title :</div>
+                    <div class="col-lg-3">
+                        @(Html.Kendo().TextBoxFor(m => m.SubTitle).HtmlAttributes(new { placeholder = "Sub Title", type = "text", @class = "form-control" }))
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+</div>
+@(Html.HiddenFor(e => e.FileSubmissionId))
+@(Html.HiddenFor(e => e.FilePath))
+@(Html.HiddenFor(e => e.OrganizationId))
+@(Html.HiddenFor(e => e.OrganizationName))
+@(Html.HiddenFor(e => e.EffectiveDate))
+<div class="BodyLoader-outer">
+    <div class="BodyLoader">
+    </div>
+</div>
+<div class="render-outer">
+    <div id="orgchart">
+    </div>
+</div>
+<div id="pdf-export" style="display: none;">
+    <div style="float:left; width:100%;">
+        <div id="divOrg" style="float:left;width:50%;"></div>
+        <div id="divEffectiveDate" style="float:left;width:50%;text-align:right;"></div>
+    </div>
+    <div style="float:left; width:100%;">
+        <div id="divTitle" style="float:left;width:50%;"></div>
+    </div>
+    <div style="float:left; width:100%;">
+        <div id="divSubtitle" style="float:left;width:50%;"></div>
+    </div>
+
+</div>
+@section scripts{
+
+    <script src="~/Content/OrgChartContent/orgchartPrototype.js" type="text/javascript"></script>
+    <script src="~/Content/OrgChartContent/papaparse.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var chart
+        function GenerateOrgChart(FilePath) {
+            var allText;
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", FilePath, false);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status == 0) {
+                        allText = rawFile.responseText;
+                    }
+                }
+            }
+            rawFile.send(null);
+            var results = Papa.parse(allText, {
+                header: true
+            }) 
+            chart = new OrgChart(document.getElementById("orgchart"), {
+                onExportStart: function (sender, type, filename) {
+                    $(".BodyLoader").show();
+                    $(".BodyLoader-outer").show();
+                },
+                onExportEnd: function (sender, type, filename) {
+                    $(".BodyLoader").hide();
+                    $(".BodyLoader-outer").hide();
+                },
+                scaleInitial: BALKANGraph.match.boundary,
+                layout: BALKANGraph.tree,
+                template: "olivia",
+                lazyLoading: true,
+                enableSearch: true,
+                toolbar: {
+                    layout: true,
+                    zoom: true,
+                    fit: true,
+                    expandAll: false
+                },
+                mouseScrool: BALKANGraph.action.zoom,
+                menu: {
+                    pdf: {
+                        text: "Export PDF",
+                        onClick: pdf
+                    }
+                },
+                nodeMenu: {
+                    pdf: {
+                        text: "Export PDF",
+                        onClick: pdf
+                    }
+                },
+                collapse: {
+                    level: 2,
+                    allChildren: true
+                },
+              //  searchFields: ["Position Number","Name", "Title", ],
+                onSearchClick: function (sender, id) {
+                    chart.center(id, {
+                        parentState: BALKANGraph.COLLAPSE_PARENT_NEIGHBORS,
+                        childrenState: 0,//BALKANGraph.COLLAPSE_SUB_CHILDRENS,
+                        rippleId: id
+                    });
+                    return false;
+                },
+                nodeBinding: {
+                    //field_0: function (sender, node) {
+                    //    var data = sender.get(node.id);
+                    //    var name = data["Name"]; 
+                    //    if ($("#ChkDisplayName").prop("checked") == true) {                            
+                    //        return name
+                    //    }
+                    //    else if ($("#ChkDisplayName").prop("checked") == false) {
+                    //        return ''
+                    //    } 
+                    //},               
+                    field_0: "DisplayName",
+                    field_1: "Title",
+                    field_2: "Position Number",
+                    field_3: "Sample1",
+                    field_4: "Sample2",
+                    field_5: "Sample3",
+                    field_6: "Sample4", 
+                    field_7: "Name", 
+                 
+                    // img_0: "img"
+                },
+                nodes: manipulateNodes(results.data),
+                align: OrgChart.ORIENTATION,
+            });
+            $(".BodyLoader").hide();
+            $(".BodyLoader-outer").hide();
+        }
+        function manipulateNodes(nodedata) {
+            return nodedata.map((node) => {
+                let _node = {
+                    "id": node.position,
+                    "Name": node.first + ' ' + node.last, 
+                    "DisplayName": node.first + ' ' + node.last, 
+                    "Phone": node.phone,
+                    "Email": node.email,
+                    "Gender": node.gender,
+                    "Title": node.positionTitle,
+                    "Program office": node.programOffice,
+                    "Age": node.age,
+                    "Address": node.address,
+                    "City": node.city,
+                    "County": node.county,
+                    "Salary": node.salary,
+                    "State": node.state,
+                    "Zip Code": node.zipCode,
+                    "supervisorFlag": node.supervisorFlag,
+                    "Position Number": node.position,
+                    "Sample1": "10-1011-03", 
+                    "Sample2": "25", 
+                    "Sample3": "9741", 
+                    "Sample4": "950", 
+                };
+                if (node.parent) {
+                    _node.pid = node.parent
+                }
+                return _node
+            });
+        };
+        function pdf(nodeId) {
+
+            $("#divOrg").html($("#OrganizationName").val());
+            $("#divTitle").html($("#Title").val());
+            $("#divSubtitle").html($("#SubTitle").val());
+            $("#divEffectiveDate").html("Effective Date :" + $("#EffectiveDate").val());
+
+            chart.exportPDF({
+                format: "A4",
+                nodeId: nodeId,
+                landscape: true,
+                extraHtml: $("#pdf-export").html()
+            });
+        }
+
+        $("#ChkDisplayName").click(function () {           
+            if ($(this).prop("checked") == true) {
+                
+                chart.config.nodeBinding.field_0 = 'DisplayName'; 
+            }
+            else if ($(this).prop("checked") == false) {
+                delete chart.config.nodeBinding.field_0; 
+
+            }
+            chart.draw();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            GenerateOrgChart('@Model.FilePath');
+        });
+        function onFileSubmissionChange()
+        {
+            $(".BodyLoader").show();
+            $(".BodyLoader-outer").show();
+            ddlItem = parseInt(this.value());
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "/Dashboard/GetFileSubmissionDetail",
+                data: {
+                    FileSubmissionId: ddlItem,
+                },
+                success: function (response) {
+                    $("#FileSubmissionId").val(response.FileSubmissionId);
+                    $("#FilePath").val(response.FilePath);
+                    $("#OrganizationId").val(response.OrganizationId);
+                    $("#OrganizationName").val(response.OrganizationName);
+                    $("#EffectiveDate").val(response.EffectiveDate);
+                    GenerateOrgChart(response.FilePath);
+                },
+                error: function (errorResponse) {
+                    console.log(errorResponse);
+                }
+            });
+        }
+    </script>
+}
+

@@ -1,0 +1,139 @@
+﻿@using Kendo.Mvc.UI
+@using dsdProjectTemplate.Utility;
+@{
+Layout = "~/Views/Shared/_PopupWindowLayout.cshtml";
+}<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+</style>
+<section class="content">
+    <div class="card">
+
+        <div class="card-body">
+
+            <div class="row">
+
+                @(Html.Kendo().Grid<dsdProjectTemplate.ViewModel.Menu.SubMenuConfigurationViewModel>
+    ()
+    .Name("grid")
+    .ToolBar(toolbar =>
+    {
+        if (UserSession.Current.CanAddRecords)
+        {
+            toolbar.Create();
+        }
+    })
+    .Editable(editable => editable.Mode(GridEditMode.InLine).Window(w => w.Title("Sub Menu").Width(500))).Events(e => e.Edit("onPopOpen"))
+    .Scrollable()
+    .Sortable()
+    .Pageable()
+    .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+    .HtmlAttributes(new { style = "height:550px;" })
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.MenuHeaderID).Width(200).Hidden(true);
+        columns.Bound(p => p.Name).Width(200).Filterable(false);
+        columns.ForeignKey(p => p.MainMenuId, (System.Collections.IEnumerable)ViewBag.MenuList, "Value", "Text").Title("Menu Page").Width(200).Filterable(false);
+        columns.Bound(p => p.DisplayOrder).Width(120).Filterable(false);
+        columns.Bound(p => p.IsActive).ClientTemplate(
+        "# if (IsActive) { #" +
+        "<span class='badge bg-success'>YES</span>" +
+        "# } else { #" +
+        "<span class='badge bg-danger'>NO</span> " + "#}#").Width(150).Filterable(true);
+        columns.Command(command => { command.Edit().Text((UserSession.Current.CanEditRecords == true ? "Edit" : "View")); }).Width(90);
+
+    })
+    .DataSource(dataSource => dataSource
+    .Ajax()
+    .PageSize(20)
+    .Events(events =>
+    {
+        //events.Error("error_handler");
+        events.RequestEnd("onRequestEnd");
+    })
+    .Model(model => model.Id(p => p.Id))
+    .Create(update => update.Action("SaveSubMenu", "MenuHeaderConfiguration"))
+    .Update(update => update.Action("SaveSubMenu", "MenuHeaderConfiguration"))
+    .Read(read => read.Action("BindSubMenuData", "MenuHeaderConfiguration").Data("HeaderSubMenuSearchModel"))
+    ))
+            </div>
+        </div>
+    </div>
+</section>
+<input type="hidden" value="@ViewBag.MainMenuId" id="mainMenuId" />
+<!-- /.content-header -->
+<script type="text/javascript">
+    var MenuList =@Html.Raw(Json.Encode(ViewBag.MenuList));
+
+    function HeaderSubMenuSearchModel() {
+        return {
+            HeaderMenuId: $('#mainMenuId').val()
+        }
+    }
+    function BindGrid(e) {
+
+        var grid = $("#grid").data("kendoGrid");
+        grid.dataSource.read();
+
+    }
+    function onRequestEnd(e, status) {
+        if (e.response.Errors) {
+            var grid = $("#grid").data("kendoGrid");
+            grid.cancelChanges();
+            var message = "";
+            $.each(e.response.Errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            toastr.error(message, 'Warning', { timeOut: 1500 });
+        }
+        if (e.type == "create" && !e.response.Errors) {
+            toastr.success(_recordSaved, '', { timeOut: 1000 });
+        }
+        if (e.type == "update" && !e.response.Errors) {
+            toastr.success(_recordUpdated, '', { timeOut: 1000 });
+        }
+    }
+    function onPopOpen(e) {
+        //alert('ok');
+        //$("#BeginDate").kendoDatePicker();
+        //$("#EndDate").kendoDatePicker();
+        $("#MenuHeaderID").val($('#mainMenuId').val());
+        $("#MenuHeaderID").trigger("change");
+        $("#MainMenuId").kendoDropDownList({
+            optionLabel: "Select menu page",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: MenuList
+        }).data("kendoDropDownList");
+        if (e.model.id == 0) {
+            // $(".k-window-title").html('Add Menu Header Configuration');
+            $(".k-grid-update").html('<span class="k-icon k-i-check"></span>Save');
+        }
+        else {
+              if ('@UserSession.Current.CanEditRecords' == "False") {
+                $(".k-edit-form-container .k-edit-buttons").hide();
+                $(".k-grid-update").hide();
+            }
+            else {
+                $(".k-edit-form-container .k-edit-buttons").show();
+
+                //$(".k-window-title").html("View Detail");
+            }
+
+        }
+    }
+
+</script>

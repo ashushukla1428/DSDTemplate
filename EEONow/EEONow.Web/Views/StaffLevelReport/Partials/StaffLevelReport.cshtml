@@ -1,0 +1,180 @@
+﻿@model EEONow.Models.StaffLevelReportModel
+@{
+    ViewBag.Title = "Staff Level Report";
+    Layout = "~/Views/Shared/_PartialViewLayout.cshtml";
+}
+<style>
+    #div-tablebody {
+        /*overflow:hidden;*/
+        overflow-y: scroll;
+    }
+</style>
+<table class="table-grid"  style="width:98.98%">
+    <tbody>
+        <tr>
+            <td class="Alm-text" colspan="2" width="23%">
+                @Model.OrganizationName
+            </td>
+            <td width="78%">
+                <table class="table-grid aligncenter">
+                    <tr>
+                        <th class="td-top-none td-right-none" colspan="12" height="25px" style="text-align:center; font-size:20px">
+                            Staff Level Report
+                        </th>
+                        <th class="td-top-none" colspan="2"><span onclick="ExportStaffLevelReport();" class="AVExport">Export to PDF</span></th>
+                    </tr>
+                    <tr>
+                        @foreach (var item in Model.ListOfRaces)
+                        {
+                        <td class="noborder" width="12.5%" colspan="2" id="TdRaces@(item.RacesId)">
+                            @item.RacesName
+                        </td>
+                        }
+                        <td class="noborder alignmiddle" width="8.5%" rowspan="2" colspan="2">
+                            Total Employees
+                        </td>
+                    </tr>
+                    <tr style="text-align:center">
+
+
+                        @foreach (var item in Model.ListOfRaces)
+                        {
+                        <td width="6.25%">M</td>
+                        <td class="border_right" width="6.25%">F</td>
+                        }
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="div-tablebody">
+    <table class="table-grid">
+        <tbody>
+            @{int countEEORow = 0;
+            foreach (var itemStaffLevel in Model.ListStaffLevel)
+            {
+                countEEORow = countEEORow + 1;
+                    <tr>
+                        <td class="@(countEEORow % 2 == 1?"color-Black":"color-Black Bg-AlaternateTr")" style="text-align: center; vertical-align: middle;" width="11%">
+                            <span class="tdTitle">@itemStaffLevel.LevelName</span>
+                        </td>
+                        <td width="12%">
+                            <table class="table-grid">
+                                <tr>
+                                    <th class="td-top-none color-Black alignRight" height="20px">Total Workforce</th>
+                                </tr>
+                                <tr class="Bg-AlaternateTr">
+                                    <th class="color-Black alignRight" height="20px">% Workforce</th>
+                                </tr>
+
+                            </table>
+                        </td>
+                        <td width="78%">
+
+                            <table class="table-grid">
+                                @*Employee Number Count*@
+                                <tr class="bg-blue">
+                                    @if (Model.ListOfRaces != null)
+                                    {
+                                        foreach (var ItemOfRaces in Model.ListOfRaces)
+                                        {
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">
+                                        @Model.NumberOfStaffEmployee.Where(e => e.RacesId == ItemOfRaces.RacesId && e.LevelId == itemStaffLevel.LevelId && e.GenderName.ToUpper() == "MALE").Select(e => e.NoOfStaff).FirstOrDefault()
+                                    </td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">
+                                        @Model.NumberOfStaffEmployee.Where(e => e.RacesId == ItemOfRaces.RacesId && e.LevelId == itemStaffLevel.LevelId && e.GenderName.ToUpper() == "FEMALE").Select(e => e.NoOfStaff).FirstOrDefault()
+                                    </td>
+                                        }
+                                    }
+                                    <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal border_left" rowspan="7" colspan="2" width="8.5%">
+                                        <b>
+                                            @Model.NumberOfStaffEmployee.Where(e => e.LevelId == itemStaffLevel.LevelId).Sum(e => e.NoOfStaff)
+                                        </b>
+                                    </td>
+                                </tr>
+                                @*% Employee Number Count*@
+                                <tr class="bg-blue Bg-AlaternateTr">
+                                    @if (Model.ListOfRaces != null)
+                                    {
+                                        foreach (var ItemOfRaces in Model.ListOfRaces)
+                                        {
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%">
+                                        @{
+                                                    decimal RaceStaffM = Model.NumberOfStaffEmployee.Where(e => e.RacesId == ItemOfRaces.RacesId && e.LevelId == itemStaffLevel.LevelId && e.GenderName.ToUpper() == "MALE").Select(e => e.NoOfStaff * 100).FirstOrDefault();
+                                                    decimal TotalStaffM = Model.NumberOfStaffEmployee.Where(e => e.LevelId == itemStaffLevel.LevelId).Sum(e => e.NoOfStaff);
+                                                    if (TotalStaffM > 0 && RaceStaffM > 0)
+                                                    {
+                                                @((RaceStaffM / TotalStaffM).ToString("N3"))
+                                                    }
+                                                    else
+                                                    { @(0) }
+                                        }%
+
+                                    </td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%">
+                                        @{
+                                                    decimal FRaceStaff = Model.NumberOfStaffEmployee.Where(e => e.RacesId == ItemOfRaces.RacesId && e.LevelId == itemStaffLevel.LevelId && e.GenderName.ToUpper() == "FEMALE").Select(e => e.NoOfStaff * 100).FirstOrDefault();
+                                                    decimal FTotalStaff = Model.NumberOfStaffEmployee.Where(e => e.LevelId == itemStaffLevel.LevelId).Sum(e => e.NoOfStaff);
+                                                    if (FTotalStaff > 0 && FRaceStaff > 0)
+                                                    {
+                                                @((FRaceStaff / FTotalStaff).ToString("N3"))
+                                                    }
+                                                    else
+                                                    { @(0) }
+                                        }%
+                                    </td>
+                                                        }
+                                                    }
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                                            }
+            }
+
+            <tr>
+                <th colspan="2" class="alignRight" width="23%">
+
+                </th>
+
+                <th class="alignmiddle" height="20px" width="78%">
+                    <table class="table-grid">
+                        <tr class="bg-blue">
+                            <td class="td-top-none alignmiddle nohover tdgrandtotal" style="text-align:left"> Grand Total</td>
+                            <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal" style="font-size:15px" width="9%" height="30px">
+                                <b> @Model.NumberOfStaffEmployee.Sum(e => e.NoOfStaff)</b>
+                            </td>
+                        </tr>
+                    </table>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+@section scripts{
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //$(this).find('td').each(function (e) {
+            //    console.log(e);
+            //})
+            //$('.formatNumber').text(formatNumber($('.formatNumber').text()))
+            //console.log($('.formatNumber').text());
+
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            })
+            $("#div-tablebody").height($(".main-content").height() - 375);
+        })
+
+
+
+    </script>
+}

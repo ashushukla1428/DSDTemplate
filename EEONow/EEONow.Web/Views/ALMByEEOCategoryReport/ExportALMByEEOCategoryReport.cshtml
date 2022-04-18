@@ -1,0 +1,415 @@
+﻿@model EEONow.Models.ALMByEEOCategoryReportModel
+@{
+    ViewBag.Title = "ALM By EEO Category Report";
+    Layout = "~/Views/Shared/_PartialViewLayout.cshtml";
+}
+<style>
+    table {
+        width: 100%;
+    }
+
+    .Bg-AlaternateTr {
+        background: #f0f0f0;
+    }
+
+    tr.bg-blue:hover td {
+        color: #fff;
+        background: #04418c;
+    }
+
+    tr.bg-blue td {
+        color: #000;
+    }
+
+    .color-Black {
+        color: #000;
+    }
+
+    inspector-stylesheet:1 tr.bg-blue:hover {
+        background: #04418c;
+        color: #fff;
+    }
+
+    .table-grid {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table-grid > tbody > tr > th {
+            padding: 1;
+        }
+
+        .table-grid > thead > tr > th,
+        .table-grid > tbody > tr > th,
+        .table-grid > tfoot > tr > th,
+        .table-grid > thead > tr > td,
+        .table-grid > tbody > tr > td,
+        .table-grid > tfoot > tr > td {
+            border: 1px solid #04418c;
+        }
+
+
+
+        .table-grid .table-grid td,
+        .table-grid .table-grid th {
+            border-top: 1px solid #04418c;
+            border-right: 1px solid #04418c;
+            border-bottom: 0;
+            border-left: 0;
+        }
+
+            .table-grid .table-grid td:last-child,
+            .table-grid .table-grid th:last-child {
+                border-right: 0;
+            }
+
+    td {
+        /*border: 1px solid #04418c;*/
+        color: #04418c;
+        /*border-collapse: collapse;*/
+        vertical-align: top;
+    }
+
+    .noborder {
+        border: none;
+    }
+
+    /*.Alm-Img {
+        width: 100px;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .Alm-imgtext {
+        float: left;
+        margin-top: 40px;
+    }*/
+    .Alm-text {
+        vertical-align: middle;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+
+    .td-top-none {
+        border-top: none !important;
+        /*vertical-align :middle;*/
+    }
+
+    .td-bottom-none {
+        border-bottom: none !important;
+    }
+
+    .td-left-none {
+        border-left: none !important;
+    }
+
+    .td-right-none {
+        border-right: none !important;
+    }
+
+    .aligncenter {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .alignmiddle {
+        vertical-align: middle;
+        padding-left: 3px
+    }
+
+    .alignRight {
+        text-align: right;
+        padding-right: 3px !important;
+    }
+
+    .nohover {
+        background: none !important;
+        color: #000 !important;
+    }
+
+    .AVExport {
+        float: right;
+        margin-top: 3px;
+        margin-right: -70px;
+        text-decoration: underline;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .AVExport:hover {
+            font-size: 16px;
+        }
+
+    .tdgrandtotal {
+        text-align: right;
+        padding-right: 10px;
+        font-size: 18px;
+    }
+
+    .tdEmployeeTotal {
+        text-align: center;
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .tdTitle {
+        font-weight: normal;
+    }
+
+    td.td-top-none.alignmiddle.formatNumber {
+        text-align: center;
+    }
+    tr.no-bold td, tr.no-bold td {
+        font-weight: normal;
+    }
+    td.Alm-text {
+        font-size: 12px;
+        text-align: left;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-weight: normal;
+    }
+    td {
+        height: 52px;
+    }
+    .tr-Header td {
+        height: 80px;
+        vertical-align: middle;
+    }
+
+</style>
+<table class="table-grid">
+    <tbody>
+        <tr>
+            <td class="Alm-text" colspan="2" width="23%">
+               @Model.DiplatContent
+            </td>
+            <td width="78%">
+                <table class="table-grid aligncenter">
+                    <tr>
+                        <th class="td-top-none td-right-none" colspan="12" height="25px" style="text-align:center; font-size:20px">
+                            ALM BY EEO CATEGORY Report - @Model.DiplatTitleName
+                        </th>
+                        <th class="td-top-none" colspan="2"><span onclick="ExportALMByEEOCategoryReport();" class="AVExport">Export to PDF</span></th>
+                    </tr>
+                    <tr>
+                        @foreach (var item in Model.ListOfRaces)
+                        {
+                            <td class="noborder" width="12.5%" colspan="2" id="TdRaces@(item.RacesId)">
+                                @item.RacesName
+                            </td>
+                        }
+                        <td class="noborder alignmiddle" width="8.5%" rowspan="2" colspan="2">
+                            Grand Total
+                        </td>
+                    </tr>
+                    <tr class="tr-Header" style="text-align:center">
+
+
+                        @foreach (var item in Model.ListOfRaces)
+                        {
+                            <td width="6.25%">M</td>
+                            <td class="border_right" width="6.25%">F</td>
+                        }
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        @{int countEEORow = 0;
+            foreach (var itemALMByEEOCategory in Model.ListALMByEEOCategory)
+            {
+                countEEORow = countEEORow + 1;
+                <tr>
+                    <td colspan="2" class="@(countEEORow % 2 == 1?"color-Black":"color-Black Bg-AlaternateTr")" style="text-align: center; vertical-align: middle;" width="24%">
+                        <span class="tdTitle">@itemALMByEEOCategory.EEOCategoryDesc</span>
+                    </td>
+                    <td width="78%">
+
+
+                        @*Employee Number Count*@
+                        @if (countEEORow % 2 == 1)
+                        {
+
+                            <table class="table-grid">
+                                <tr class="bg-blue">
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mWhite</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fWhite</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mBlackOrAfricanAmerican</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fBlackOrAfricanAmerican</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.hMale</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.hFemale</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mAsian</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fAsian</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mAmericanIndianORAlaskaNative</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fAmericanIndianORAlaskaNative</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mNativeHawaiianOrOtherPacificIslander</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fNativeHawaiianOrOtherPacificIslander</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mTwoOrMoreRaces</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fTwoOrMoreRaces</td>
+                                    <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal border_left" width="8.5%">
+                                        <b>
+                                            @itemALMByEEOCategory.Total
+                                        </b>
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                        else
+                        {
+                            @*% Employee Number Count*@
+                            <table class="table-grid">
+                                <tr class="bg-blue Bg-AlaternateTr">
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mWhite</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fWhite</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mBlackOrAfricanAmerican</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fBlackOrAfricanAmerican</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.hMale</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.hFemale</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mAsian</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fAsian</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mAmericanIndianORAlaskaNative</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fAmericanIndianORAlaskaNative</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mNativeHawaiianOrOtherPacificIslander</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fNativeHawaiianOrOtherPacificIslander</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.mTwoOrMoreRaces</td>
+                                    <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@itemALMByEEOCategory.fTwoOrMoreRaces</td>
+                                    <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal border_left" width="8.5%">
+                                        <b>
+                                            @itemALMByEEOCategory.Total
+                                        </b>
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+
+                    </td>
+                </tr>
+            }
+        }
+
+        <tr class="no-bold">
+            <th colspan="2" class="alignRight" width="23%">
+                Totals by Race and Gender
+            </th>
+            <th class="alignmiddle" height="20px" width="78%">
+                <table class="table-grid">
+                    <tr class="bg-blue">
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.mTotalWhite</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.fTotalWhite</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.mTotalBlackOrAfricanAmerican</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.fTotalBlackOrAfricanAmerican</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.hTotalMale</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.hTotalFemale</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.mTotalAsian</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.fTotalAsian</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.mTotalAmericanIndianORAlaskaNative</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.fTotalAmericanIndianORAlaskaNative</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.mTotalNativeHawaiianOrOtherPacificIslander</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.fTotalNativeHawaiianOrOtherPacificIslander</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.mTotalTwoOrMoreRaces</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@Model.fTotalTwoOrMoreRaces</td>
+                        <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal border_left" width="8.5%">
+                            <b>@Model.GrandTotal</b>
+                        </td>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+
+        @*<tr>
+            <th colspan="2" class="alignRight" width="23%">
+
+            </th>
+            <th class="alignmiddle" height="20px" width="78%">
+
+            </th>
+        </tr>
+        <tr>
+            <th colspan="2" class="alignRight" width="23%">
+
+            </th>
+            <th class="alignmiddle" height="20px" width="78%">
+
+            </th>
+        </tr>*@
+        <tr class="no-bold">
+            <th colspan="2" class="alignRight" width="23%">
+                Percentage by Race and Gender
+            </th>
+            <th class="alignmiddle" height="20px" width="78%">
+                <table class="table-grid">
+                    <tr class="bg-blue">
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.mTotalWhite * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.fTotalWhite * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.mTotalBlackOrAfricanAmerican * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.fTotalBlackOrAfricanAmerican * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.hTotalMale * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.hTotalFemale * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.mTotalAsian * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.fTotalAsian * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.mTotalAmericanIndianORAlaskaNative * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.fTotalAmericanIndianORAlaskaNative * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.mTotalNativeHawaiianOrOtherPacificIslander * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.fTotalNativeHawaiianOrOtherPacificIslander * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.mTotalTwoOrMoreRaces * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="6.25%" style="padding-right:10px">@(Convert.ToDecimal((Model.fTotalTwoOrMoreRaces * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal border_left" width="8.5%">
+                            <b>@((Model.GrandTotal / Model.GrandTotal) * 100.00) %</b>
+                        </td>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+
+        <tr class="no-bold">
+            <th colspan="2" class="alignRight" width="23%">
+                Percentage by Race only
+            </th>
+            <th class="alignmiddle" height="20px" width="78%">
+                <table class="table-grid">
+                    <tr class="bg-blue">
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="12.5%" style="padding-right:10px">@(Convert.ToDecimal(((Model.mTotalWhite + Model.fTotalWhite) * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="12.5%" style="padding-right:10px">@(Convert.ToDecimal(((Model.mTotalBlackOrAfricanAmerican + Model.fTotalBlackOrAfricanAmerican) * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="12.5%" style="padding-right:10px">@(Convert.ToDecimal(((Model.hTotalMale + Model.hTotalFemale) * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="12.5%" style="padding-right:10px">@(Convert.ToDecimal(((Model.mTotalAsian + Model.fTotalAsian) * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="12.5%" style="padding-right:10px">@(Convert.ToDecimal(((Model.mTotalAmericanIndianORAlaskaNative + Model.fTotalAmericanIndianORAlaskaNative) * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="12.5%" style="padding-right:10px">@(Convert.ToDecimal(((Model.mTotalNativeHawaiianOrOtherPacificIslander + Model.fTotalNativeHawaiianOrOtherPacificIslander) * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+                        <td class="td-top-none alignmiddle formatNumber" height="20px" width="12.5%" style="padding-right:10px">@(Convert.ToDecimal(((Model.mTotalTwoOrMoreRaces + Model.fTotalTwoOrMoreRaces) * 100.00) / Model.GrandTotal).ToString("N3")) %</td>
+
+                        <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal border_left" width="8.6%">
+                            <b>@((Model.GrandTotal / Model.GrandTotal) * 100.00) %</b>
+                        </td>
+                    </tr>
+                </table>
+            </th>
+        </tr> 
+    </tbody>
+</table>
+
+@section scripts{
+    <script src="/Scripts/jquery-3.2.1.js"></script>
+    <script src="/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //$(this).find('td').each(function (e) {
+            //    console.log(e);
+            //})
+            //$('.formatNumber').text(formatNumber($('.formatNumber').text()))
+            //console.log($('.formatNumber').text());
+
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            })
+
+        })
+
+
+
+    </script>
+}

@@ -1,0 +1,47 @@
+﻿namespace dsdProjectTemplate.Utility
+{
+    public enum AppTable
+    {
+        AppActionsHistory,
+        Cities,
+        Clients,
+        ClientsContactInformation,
+        ClientsContactTypes,
+        ClientsUsers,
+        Counties,
+        ErrorLogs,
+        Forms,
+        FormsControls,
+        FormsData,
+        FormsGroups,
+        FormsListControlValues,
+        Gender,
+        MenuConfiguration,
+        Organizations,
+        OrganizationYears,
+        OrganizationUsers,
+        Providers,
+        ProvidersContactInformation,
+        ProvidersContactTypes,
+        ProvidersLocation,
+        ProvidersUsers,
+        RegistrationRequestTypes,
+        SecurityQuestions,
+        SoftwareUsers,
+        States,
+        UserMainMenu,
+        Users,
+        UsersLoginPasswords,
+        UsersPendingSteps,
+        UsersRoles,
+        UserSubMenu,
+        UserType,
+        AppAreas,
+        MenuIcons
+    }
+    public enum UserActon
+    {
+        Insert,
+        Update
+    }
+}

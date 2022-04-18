@@ -1,0 +1,123 @@
+﻿@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+@*<link href="~/Content/kendo/kendo.material.min.css" rel="stylesheet" />*@
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+</style>
+<h2 class="main_title_row">Manage Menu Header</h2>
+
+@(Html.Kendo().Grid<EEONow.Models.MenuHeaderAssignmentModel>
+        ()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.MenuHeaderName).Width(200).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));//.EditorTemplateName("ReadOnlyTemplate")
+            //columns.ForeignKey(p => p.MenuId, (System.Collections.IEnumerable)ViewBag.MenuList, "Value", "Text").Title("Menu").Width(150);
+            columns.Bound(p => p.ListMenu).ClientTemplate("#= rendermultiselecttext(data.ListMenu) #").Filterable(false);
+            columns.Command(command => { command.Edit(); }).Width(200);
+        })
+        //.ToolBar(toolbar => toolbar.Create())
+        .Editable(editable => editable.Mode(GridEditMode.InLine).Window(w => w.Title("Edit Menu Screen Role").Width(500)))
+        .Pageable()
+        .Sortable()
+        .Scrollable()
+        .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+        .HtmlAttributes(new { style = "height:550px;" })
+        .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .Events(events =>
+        {
+            //events.Error("error_handler");
+            events.RequestStart("onRequestEnd");
+        })
+        .Model(model =>
+        {
+            model.Id(p => p.MenuHeaderId);
+            model.Field(p => p.MenuHeaderName).Editable(false);
+        }
+    )
+    //.Create(update => update.Action("CreateMenuHeaderAssignment", "RoleAssignment"))
+    .Read(read => read.Action("BindMenuHeaderAssignmentModel", "MenuHeaderAssignment"))
+    .Update(update => update.Action("UpdateMenuHeaderAssignment", "MenuHeaderAssignment"))
+    //.Destroy(update => update.Action("Destroy", "Home"))
+    )
+)
+
+@section css{
+    <link href="~/Content/Custom/login.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/alertifyjs/alertify.js"></script>
+    <script src="~/Content/alertifyjs/alertify.min.js"></script>
+    <script type="text/javascript">
+
+        function onRequestEnd(e, status) {
+
+            if (e.errors) {
+                var grid = $("#grid").data("kendoGrid");
+                grid.cancelChanges();
+                var message = "";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alertify.error(message);
+            }
+            //Check request type
+            if (e.type == "create" && !e.errors) {
+                alertify.success("Record successfully created.");
+            }
+            if (e.type == "update" && !e.errors) {
+                alertify.success("Record successfully updated.");
+            }
+        }
+
+        function rendermultiselecttext(selectlistarray) {
+            if (selectlistarray != undefined && selectlistarray[0] != undefined) {
+                var displaytext;
+                $.each(selectlistarray, function (index) {
+                    if (displaytext == undefined) {
+                        displaytext = selectlistarray[index].Text + ',';
+                    } else {
+                        displaytext = displaytext + selectlistarray[index].Text + ',';
+                    }
+                });
+                return displaytext.slice(0, -1);
+
+            }
+            else {
+                return "";
+            }
+        }
+
+    </script>
+
+}

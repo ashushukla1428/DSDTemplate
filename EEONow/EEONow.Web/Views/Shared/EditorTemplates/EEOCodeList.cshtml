@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "EEOCodeList";
+}
+
+@using System.Collections
+@model System.Int32
+@(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewBag.EEOCodeList)
+.OptionLabel("- Select EEO Job Category - ")
+.DataValueField("Value")
+.DataTextField("Text")
+.Name("EEOCodeId")
+) 

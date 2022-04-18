@@ -1,0 +1,260 @@
+﻿@using Kendo.Mvc.UI
+@using dsdProjectTemplate.Utility;
+
+@{
+    ViewBag.Title = "Actions History";
+}
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">@ViewData["Title"]</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                @(Html.Kendo().Grid<dsdProjectTemplate.ViewModel.ActionsHistoryViewModel>()
+    .Name("grid")
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("Edit User").Width(500))).Events(e => e.Edit("onPopOpen"))
+    .Scrollable(s=>s.Enabled(true))
+    .Sortable()
+    .Pageable()
+    .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+    .HtmlAttributes(new { style = "height:550px;" })
+       .Columns(columns =>
+       {
+           columns.ForeignKey(p => p.OrganizationId, (System.Collections.IEnumerable)ViewBag.OrganizationsList, "Value", "Text").Title("Organization / Master Tables").Width(300);
+           columns.Bound(p => p.TableName).Width(200).Filterable(true);
+
+           //columns.Bound(p => p.ShortDescription).Filterable(false);
+           //columns.Bound(p => p.LongDescription).Filterable(false);
+           columns.Bound(p => p.ActionType).ClientTemplate(
+           "# if (ActionType=='Insert') { #" +
+               "<span class='badge bg-success'>Added Record</span>" +
+           "# } else { #" +
+               "<span class='badge bg-info'>Updated Record</span> " + "#}#").Width(130).Filterable(true);
+           columns.Bound(p => p.ActionDate).Filterable(false).Width(130);
+           //columns.Command(command => { command.Edit().Text((UserSession.Current.CanEditRecords == true ? "Edit" : "View")); }).Width(90);
+           columns.Command(command => command.Custom("View").Click("showUserAndOrganizations")).Width(130);
+       })
+       .DataSource(dataSource => dataSource
+       .Ajax()
+
+        .PageSize(20)
+            .Events(events =>
+            {
+                //events.Error("error_handler");
+                events.RequestEnd("onRequestEnd");
+            })
+        .Model(model => model.Id(p => p.Id) )
+
+
+        .Read(read => read.Action("BindData", "ActionsHistory"))
+        ))
+            </div>
+        </div>
+    </div>
+</section>
+
+@(Html.Kendo().Window().Name("UserAndOrganizations")
+    .Title("User And Organizations")
+ .Draggable(true)
+    .Resizable()
+    .Scrollable(false)
+    .Width(1000)
+    .Height(500)
+    .Visible(false)
+    .Iframe(true)
+    .Modal(true)
+ .Actions(actions => actions.Minimize().Maximize().Close())
+)
+<!-- /.content-header -->
+<script type="text/javascript">
+    function showUserAndOrganizations(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        //console.log(JSON.stringify(dataItem));
+        var wnd = $("#UserAndOrganizations").data("kendoWindow");
+
+        wnd.refresh({
+            url: "/ActionsHistory/ViewJsonData?id=" + dataItem.Id
+        });
+
+        //  wnd.("Manage Filters");
+        wnd.title('JSON Data View ');
+        wnd.center();
+        wnd.open();
+
+
+    }
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+    function onRequestEnd(e, status) {
+        if (e.response.Errors) {
+            var grid = $("#grid").data("kendoGrid");
+            grid.cancelChanges();
+            var message = "";
+            $.each(e.response.Errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            toastr.error(message, 'Warning', { timeOut: 1500 });
+        }
+        if (e.type == "create" && !e.response.Errors) {
+            toastr.success(_recordSaved, '', { timeOut: 1000 });
+        }
+        if (e.type == "update" && !e.response.Errors) {
+            toastr.success(_recordUpdated, '', { timeOut: 1000 });
+        }
+    }
+
+    var OrganizationsList =@Html.Raw(Json.Encode(ViewBag.OrganizationsList));
+    function onPopOpen(e) {
+        //$("#BeginDate").kendoDatePicker();
+        //$("#EndDate").kendoDatePicker();
+
+        if (e.model.id == 0) {
+            $(".k-window-title").html('Add User');
+            $(".k-grid-update").html('<span class="k-icon k-i-check"></span>Save');
+            $(".k-grid-Organizations").hide();
+        }
+        else {
+           if ('@UserSession.Current.CanEditRecords' == "False") {
+                $(".k-edit-form-container .k-edit-buttons").hide();
+                $(".k-grid-update").hide();
+            }
+            else {
+                $(".k-edit-form-container .k-edit-buttons").show();
+
+                //$(".k-window-title").html("View Detail");
+            }
+
+           // alert('ok');
+        }
+        $("#OrganizationId").kendoDropDownList({
+            //optionLabel: "Select Project Task ID",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: OrganizationsList
+        }).data("kendoDropDownList");
+        var ProjectTaskID_Dropdownlist = $("#OrganizationId").data("kendoDropDownList");
+
+        //$("#OrganizationId").trigger("change");
+        getUserTypes();
+        getRoles();
+        getRegistrationRequestType();
+        $("#OrganizationId").change(function (e) {
+            getRoles();
+            getRegistrationRequestType();
+        });
+
+        function getRoles() {
+            $.ajax({
+                url: '/Main/GetRolesList',
+                method: 'get',
+                async: false,
+                data: { 'orgId': $("#OrganizationId").val() },
+                success: function (res) {
+                    $("#RoleId").kendoDropDownList({
+                        optionLabel: "Select Role",
+                        dataTextField: "Text",
+                        dataValueField: "Value",
+                        dataSource: res
+                    }).data("kendoDropDownList");
+                    $("#RoleId").data("kendoDropDownList");
+
+                },
+                erorr: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+        function getRegistrationRequestType() {
+            $.ajax({
+                url: '/Main/GetRegistrationRequestTypeList',
+                method: 'get',
+                async: false,
+                data: { 'orgId': $("#OrganizationId").val() },
+                success: function (res) {
+                    $("#RegistrationRequestTypeId").kendoDropDownList({
+                        optionLabel: "Select Registration Request",
+                        dataTextField: "Text",
+                        dataValueField: "Value",
+                        dataSource: res
+                    }).data("kendoDropDownList");
+                    $("#RegistrationRequestTypeId").data("kendoDropDownList");
+
+                },
+                erorr: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+        function getUserTypes() {
+            $.ajax({
+                url: '/Main/GetUserTypesList',
+                method: 'get',
+                async: false,
+                data: { 'orgId': $("#OrganizationId").val() },
+                success: function (res) {
+                    $("#UserTypeId").kendoDropDownList({
+                        optionLabel: "Select User Type",
+                        dataTextField: "Text",
+                        dataValueField: "Value",
+                        dataSource: res
+                    }).data("kendoDropDownList");
+                    $("#UserTypeId").data("kendoDropDownList");
+
+                },
+                erorr: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+        //
+    }
+
+</script>

@@ -1,0 +1,192 @@
+﻿@using Kendo.Mvc.UI
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+@*<link href="~/Content/kendo/kendo.material.min.css" rel="stylesheet" />*@
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+
+    .k-state-focused, .k-textbox:focus, .k-state-hover {
+        /*-webkit-box-shadow: none !important;*/
+        box-shadow: none !important;
+    }
+    .k-edit-form-container .editor-label, .k-edit-label {
+        width: 45%;
+    }
+
+    .k-edit-field, .k-edit-form-container .editor-field {
+        width: 45%;
+    }
+    .k-dropdown-operator{
+        display:none !important;
+    }
+    span.k-filtercell span {
+        width: 90%;
+    }
+    .k-i-close {
+        display: none !important;
+    }
+</style>
+<h2 class="main_title_row">EEO Rating Range List</h2>
+<input type="hidden" id="HfUserRoleInfo" value="@LoginInfo.Roles" />
+@(Html.Kendo().Grid<EEONow.Models.EEORatingModel>()
+    .Name("grid")
+    .Columns(columns =>
+    {
+        //columns.Bound(p => p.Number).Width(120);
+        columns.Bound(p => p.OrganizationName).Width(120).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+        columns.ForeignKey(p => p.OrganizationId, (System.Collections.IEnumerable)ViewBag.OrganisationList, "Value", "Text").Title("Organization");
+        columns.ForeignKey(p => p.EEORatingTypeId, (System.Collections.IEnumerable)ViewBag.EEORatingTypeList, "Value", "Text").Title("EEORating Type");
+        columns.Bound(p => p.NonSupervisorColorCode).Width(120).Filterable(false);
+        columns.Bound(p => p.RaceColorCode).Width(120).Filterable(false);
+        columns.Bound(p => p.GenderColorCode).Width(120).Filterable(false);
+        columns.Bound(p => p.GenderAndRaceColorCode).Width(120).Filterable(false);
+        //columns.Bound(p => p.Active).Width(120).Filterable(false);
+        //columns.Bound(p => p.Remarks).Width(120).Filterable(false); 
+        columns.Command(command => { command.Edit().Text(LoginInfo.Roles == "Organization User" ? "Detail" : "Edit"); }).Width(100);
+
+    })
+    .ToolBar(toolbar => toolbar.Create())
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("Edit EEO Rating Range").Width(600))).Events(e => e.Edit("onPopOpen"))
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable(ftb => ftb
+    .Mode(GridFilterMode.Row)
+    .Extra(false)
+    )
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(20)
+        .Events(events =>
+        {
+            //events.Error("error_handler");
+            events.RequestEnd("onRequestEnd");
+        })
+        .Model(model => model.Id(p => p.EEORatingId))
+        .Create(update => update.Action("CreateEEORating", "EEORating"))
+        .Read(read => read.Action("BindEEORatingModel", "EEORating"))
+        .Update(update => update.Action("UpdateEEORating", "EEORating"))
+    //.Destroy(update => update.Action("Destroy", "Home"))
+    )
+)
+
+@section css{
+    <link href="~/Content/Custom/login.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/alertifyjs/alertify.js"></script>
+    <script src="~/Content/alertifyjs/alertify.min.js"></script>
+    <script type="text/javascript">
+        
+         $(document).ready(function () {
+            if (parseInt(@ViewBag.IsFilter) == 0)
+            {
+                $(".k-filter-row").hide()
+            }
+            else {
+                $(".k-filter-row").show()
+            }
+            if ($("#HfUserRoleInfo").val() == "Organization User") {
+                $("#grid .k-grid-toolbar").hide();
+            }
+        });
+        function textAreaEditor(container, options) {
+            alert(1)
+            $('<textarea class="k-textbox" name="' + options.field + '" style="width:100%;height:100%;" />').appendTo(container);
+        }
+        function onRequestEnd(e, status) {
+
+            if (e.response.Errors) {
+                var grid = $("#grid").data("kendoGrid");
+                grid.cancelChanges();
+                var message = "";
+                $.each(e.response.Errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alertify.error(message);
+            }
+            //Check request type
+            if (e.type == "create" && !e.response.Errors) {
+                alertify.success("Create record is successfull");
+            }
+            if (e.type == "update" && !e.response.Errors) {
+                alertify.success("Update record is successfull");
+            }
+        }
+        function onPopOpen(e) {
+            $("#NonSupervisorColorCode").kendoColorPicker({
+                messages: {
+                    apply: "Update"
+                }
+            })
+            $("#RaceColorCode").kendoColorPicker({
+                messages: {
+                    apply: "Update"
+                }
+            })
+            $("#GenderColorCode").kendoColorPicker({
+                messages: {
+                    apply: "Update"
+                }
+            })
+            $("#GenderAndRaceColorCode").kendoColorPicker({
+                messages: {
+                    apply: "Update"
+                }
+            }) 
+            $("#Number").addClass("k-textbox");
+
+            if (e.model.id == 0) {
+                $(".k-window-title").html('Add EEO Rating Range');
+                $(".k-grid-update").html('<span class="k-icon k-i-check"></span>Save');
+            }
+            $('.k-dropdown').attr("style", "width:95%");
+            $('#NonSupervisorLabelDisplay').attr("style", "width:95%");
+            $('#RaceLabelDisplay').attr("style", "width:95%");
+            $('#GenderLabelDisplay').attr("style", "width:95%");
+            $('#RaceValueIndicator').attr("style", "width:95%");
+            $('#RaceValueIndicator').addClass("k-textbox");
+            $('#GenderValueIndicator').attr("style", "width:95%");
+            $('#GenderValueIndicator').addClass("k-textbox");
+            $('#Remarks').attr("style", "width:95%");
+            $('#GenderAndRaceLabelDisplay').attr("style", "width:95%");
+            GenderAndRaceLabelDisplay
+            
+           //EEORatingTypeId EEORatingTypeName NonSupervisorLabelDisplay     NonSupervisorColorCode
+            if ($("#HfUserRoleInfo").val() == "Organization User") {
+                $(".k-widget.k-window .k-edit-buttons").hide()
+                $(".k-window-title").html('View EEO Rating Range');
+            }
+        }
+    </script>
+
+}

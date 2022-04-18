@@ -1,0 +1,769 @@
+﻿@using Kendo.Mvc.UI
+@model EEONow.Models.EmployeeSearchModel
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "Employee Data View";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+<script src="~/Scripts/bootstrap-multiselect.js"></script>
+<link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+@*<link href="~/Content/kendo/kendo.material.min.css" rel="stylesheet" />*@
+<style>
+    /*Hide Update and cancle button*/
+    .k-edit-buttons {
+        display: none
+    }
+
+    .k-i-edit {
+        display: none;
+    }
+
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-i-close {
+        display: block;
+    }
+
+    #SearchPannel .k-header {
+        width: 100%;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+
+        .k-edit-form-container .editor-label, .k-edit-label {
+            width: 40%;
+        }
+
+        .k-edit-field, .k-edit-form-container .editor-field {
+            width: 50%;
+        }
+
+        .k-edit-form-container .editor-label, .k-edit-label {
+            float: left;
+            clear: both;
+            width: 30%;
+            padding: 0.1em 0 0.1em;
+            margin-left: 6%;
+            text-align: left;
+        }
+        /*.k-window .k-textbox {
+         display: none;
+     }*/
+        .k-edit-field, .k-edit-form-container .editor-field {
+            padding: 0 0 0.7em;
+        }
+
+    .main_title_row {
+        margin: 0px 0px 10px 0;
+        padding: 0px 0 10px 0;
+    }
+</style>
+<style>
+    /* Page Template for the exported PDF */
+    .page-template {
+        font-family: "DejaVu Sans", "Arial", sans-serif;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+        .page-template .header {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            border-bottom: 1px solid #888;
+            color: #888;
+        }
+
+        .page-template .footer {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            border-top: 1px solid #888;
+            text-align: center;
+            color: #888;
+        }
+
+        .page-template .watermark {
+            font-weight: bold;
+            font-size: 400%;
+            text-align: center;
+            margin-top: 30%;
+            color: #aaaaaa;
+            opacity: 0.1;
+            transform: rotate(-35deg) scale(1.7, 1.5);
+        }
+
+    /* Content styling */
+    .customer-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-left: 5px;
+    }
+
+    .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+    }
+
+
+    .custom_dropdown .btn-default {
+        border-radius: 4px;
+        width: 100%;
+        border: 1px solid #c5c5c5;
+        text-align: left;
+        text-transform: none;
+        min-height: 1.65em;
+        line-height: 1.65em;
+        padding: .177em 5px;
+        background-image: url(textures/highlight.png);
+        background-image: none,-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,.6)),to(rgba(255,255,255,0)));
+        background-image: none,-webkit-linear-gradient(top,rgba(255,255,255,.6) 0,rgba(255,255,255,0) 100%);
+        background-image: none,linear-gradient(to bottom,rgba(255,255,255,.6) 0,rgba(255,255,255,0) 100%);
+        background-position: 50% 50%;
+        background-color: #eae8e8;
+    }
+
+    .custom_dropdown .multiselect-container {
+        width: 100%;
+    }
+
+    .custom_dropdown .btn-default .caret {
+        float: right;
+        margin: 10px 5px 0 0;
+        font-weight: 400;
+        color: #2e2e2e
+    }
+
+    .custom_dropdown .btn-default .multiselect-selected-text {
+        font-weight: 400;
+        color: #2e2e2e;
+    }
+
+
+    .multiselect-container > li > a > label.radio, .multiselect-container > li > a > label.checkbox {
+        white-space: normal;
+    }
+
+    .custom_dropdown .multiselect-search {
+        text-align: left;
+        height: 31px;
+    }
+
+    .custom_dropdown .multiselect-clear-filter {
+        height: 31px;
+    }
+
+
+    .custom_dropdown .btn-group {
+        width: 100%;
+    }
+
+
+    .custom_dropdown .multiselect-clear-filter:hover i,
+    .custom_dropdown .multiselect-clear-filter:hover {
+        color: #333;
+    }
+
+    span.multiselect-native-select {
+        position: relative;
+        width: 100%;
+        display: block;
+    }
+    /*.Export-button-class {
+        float: right;
+        text-align: right;
+        margin-top: 2px;
+        position: absolute;
+        z-index: 1;
+        right: 16px;
+        background: transparent;
+        border: none;
+    }*/
+    .Export-button-class {
+        margin-top: 2px;
+        position: absolute;
+        z-index: 1;
+        background: transparent;
+        border: none;
+        left: 210px;
+    }
+
+    .Reset-button-class {
+        margin-top: 2px;
+        position: absolute;
+        z-index: 1;
+        background: transparent;
+        border: none;
+        right: 30px;
+        /*left: 210px;*/
+    }
+</style>
+<h2 class="main_title_row">Employee Data Files Search By:</h2>
+
+
+<div style="display:none" ">
+    @(Html.Kendo().DropDownList()
+                              .Name("organization")
+                              .HtmlAttributes(new { style = "width:100%" })
+                              .DataTextField("OrganizationName")
+                              .DataValueField("OrganizationId")
+                              .DataSource(source =>
+                              {
+                                  source.Read(read =>
+                                  {
+                                      read.Action("GetOrganizationsList", "Employee");
+                                  });
+                              })
+    )
+</div>
+
+@if (LoginInfo.IsAdd == false)
+{
+    @*<style>
+            div#grid {
+                top:40px;
+            }
+            .Export-button-class {
+                 left: 15px;
+            }
+        </style>*@
+}
+<div id="SearchPannel">
+    <div class="row">
+
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">Columns : </div>
+                <div class="col-md-12 custom_dropdown">
+
+                    @Html.DropDownListFor(m => m.EmployeeActiveColumnId, Model.ListEmployeeActiveColumn, new { id = "gridColumns", @class = "k-widget k-dropdown k-header", multiple = "multiple" })
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+
+                <div class="col-md-12">File Submissions :</div>
+                <div class="col-md-12">
+                    @(Html.Kendo()
+                        .DropDownListFor(m => m.FileSubmissionFilterId)
+                        .DataTextField("Text")
+                        .DataValueField("Value")
+                        .OptionLabel("--Please select--")
+                        .BindTo(Model.ListFileSubmissionFilter)
+                        .Name("filesubmissionid")
+                       // .Enable(false)
+                        .AutoBind(false)
+                        .Events(e =>
+                            {
+                                    e.Change("onFileSubmissionChange");
+                            })
+                        .HtmlAttributes(new { placeholder = "File Version" }))
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-6" style="clear:left">
+            <div class="row">
+
+                <div class="col-md-12">Region :</div>
+                <div class="col-md-12">
+                    @(Html.Kendo().DropDownList()
+                              .Name("region")
+                              .HtmlAttributes(new { style = "width:100%" })
+                              .OptionLabel("--Select All--")
+                              .DataTextField("RegionName")
+                              .DataValueField("RegionId")
+                              .DataSource(source =>
+                              {
+                                  source.Read(read =>
+                                  {
+                                      read.Action("GetEEORegion", "EEOProgressReportByRegion")
+                                          .Data("filterEEORegion");
+                                  })
+                                  .ServerFiltering(true);
+                              })
+                              .Enable(false)
+                              .AutoBind(false)
+                              .CascadeFrom("filesubmissionid")
+                              .Events(e => e.Change("onFileSubmissionChange"))
+                    )
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<br />
+<h2 class="main_title_row">Employee Data</h2>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="k-header k-grid-toolbar k-grid-top Export-button-class">
+            <button id="btnExcelExport" onclick="javascript:ExportToExcel();" class="k-button k-button-icontext k-grid-excel" type="button" tabindex="36"><span class="k-icon k-i-excel"></span>Export all records</button>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="k-header k-grid-toolbar k-grid-top Reset-button-class">
+            <button id="btnResetGrid" onclick="javascript:ResetGrid();" class="k-button k-button-icontext k-grid-excel" type="button" tabindex="36"><span class="k-icon k-i-filter"></span>Reset Filter</button>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="HfUserRoleInfo" value="@LoginInfo.Roles" />
+@(Html.Kendo().Grid<EEONow.Models.EmployeesModel>()
+            .Name("grid")
+              .Columns(columns =>
+              {
+                  columns.Command(command => { command.Edit().Text((LoginInfo.IsEdit == true ? "Edit" : "View")); }).Width(100);
+                  columns.Bound(p => p.FirstName).Width(200);
+                  columns.Bound(p => p.MiddleName).Width(200);
+                  columns.Bound(p => p.LastName).Width(200);
+                  columns.Bound(p => p.PhoneNumber).ClientTemplate("#= formatPhoneNumber(data) #").Width(200);
+                  columns.ForeignKey(p => p.OrganizationId, (System.Collections.IEnumerable)ViewBag.OrganisationList, "Value", "Text").Title("Organization").Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false))).Width(200);
+                  columns.Bound(p => p.Email).Width(200);
+                  columns.Bound(p => p.Filled).Width(200);//.Filterable(false);
+                                                          //columns.Bound(p => p.CountyName).Width(200);
+                                                          // columns.ForeignKey(p => p.PositionTitle, (System.Collections.IEnumerable)ViewBag.PositionTitleList, "Value", "Text").Title("PositionTitle").Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false))).Width(200);
+                                                          //  columns.ForeignKey(p => p.ProgramOfficeName, (System.Collections.IEnumerable)ViewBag.ProgramOfficeList, "Value", "Text").Title("ProgramOfficeName").Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false))).Width(200);
+      columns.Bound(p => p.PositionTitle).Width(200);
+                  columns.Bound(p => p.ProgramOfficeName).Width(200);
+                  columns.Bound(p => p.VacancyDate).Width(200).Format("{0:d}").Filterable(filterable => filterable.Extra(true));
+                  columns.ForeignKey(p => p.VacancyDateRangeId, (System.Collections.IEnumerable)ViewBag.VacancyDateRangeList, "Value", "Text").Title("Vacancy Date Range").Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false))).Width(200);
+                  columns.Bound(p => p.Salary).Format("{0:c}").Width(200);
+                  columns.ForeignKey(p => p.SalaryRangeId, (System.Collections.IEnumerable)ViewBag.SalaryRangeList, "Value", "Text").Title("Salary Range").Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false))).Width(200);
+                  columns.Bound(p => p.PositionNumber).Width(200);
+                  columns.Bound(p => p.SupervisorPositionNumber).Width(200);
+                  columns.Bound(p => p.NationalOrigin).Width(200);
+                  columns.Bound(p => p.Age).Width(200);
+                  columns.ForeignKey(p => p.AgeRangeId, (System.Collections.IEnumerable)ViewBag.AgeRangeList, "Value", "Text").Title("Age Range").Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false))).Width(200);
+                  columns.Bound(p => p.PositionDateOfHire).Width(200).Format("{0:d}").Filterable(filterable => filterable.Extra(true));
+                  columns.Bound(p => p.AgencyDateOfHire).Width(200).Format("{0:d}").Filterable(filterable => filterable.Extra(true));
+                  columns.ForeignKey(p => p.GenderId, (System.Collections.IEnumerable)ViewBag.GenderList, "Value", "Text").Title("Gender").Width(200).Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false)));
+                  columns.Bound(p => p.GenderIndex).Width(200);
+                  columns.ForeignKey(p => p.StateId, (System.Collections.IEnumerable)ViewBag.StateList, "Value", "Text").Title("Work State").Width(200).Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false)));
+                  columns.ForeignKey(p => p.CountyId, (System.Collections.IEnumerable)ViewBag.CountyList, "Value", "Text").Title("County").Width(200).Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false)));
+                  columns.ForeignKey(p => p.EEOCodeId, (System.Collections.IEnumerable)ViewBag.EEOCodeList, "Value", "Text").Title("EEO Code").Width(200).Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false)));
+                  columns.ForeignKey(p => p.AgencyYearsOfServiceId, (System.Collections.IEnumerable)ViewBag.AgencyYearsOfServiceList, "Value", "Text").Title("Agency Years Of Service").Width(200).Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false)));
+                  columns.ForeignKey(p => p.PositionYearsOfServiceId, (System.Collections.IEnumerable)ViewBag.PositionYearsOfServiceList, "Value", "Text").Title("Position Years Of Service").Width(200).Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false)));
+                  columns.ForeignKey(p => p.RaceId, (System.Collections.IEnumerable)ViewBag.RaceList, "Value", "Text").Title("Race").Width(200).Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false)));
+                  columns.Bound(p => p.RaceIndex).Width(200);
+                  columns.Bound(p => p.Region).Width(200);
+                  columns.Bound(p => p.SpanOfControl).Width(200);
+                  columns.ForeignKey(p => p.LastPerformanceRatingId, (System.Collections.IEnumerable)ViewBag.LastPerformanceRatingList, "Value", "Text").Title("LastPerformanceRating").Width(200).Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false)));
+                  columns.Bound(p => p.LastPerformanceRatingValue).Width(200);
+                  columns.Bound(p => p.WorkAddress).Width(200);
+                  columns.Bound(p => p.WorkCity).Width(200);
+                  columns.Bound(p => p.WorkZipCode).Width(200);
+                  columns.Bound(p => p.OPSPosition).Width(200); //.Filterable(false).Width(200);
+      columns.Bound(p => p.SupervisorFlag).Width(200);
+                  columns.Bound(p => p.StateCumulativeMonthsOfService).Width(200);
+                  columns.ForeignKey(p => p.EmployeeLevel, (System.Collections.IEnumerable)ViewBag.EmployeeLevelList, "Value", "Text").Title("Employee Level").Filterable(filterable => filterable.Multi(true).Cell(e => e.ShowOperators(false))).Width(200);
+      //.Filterable(false).Width(200);
+  })
+
+                .Editable(editable => editable.Mode(GridEditMode.PopUp).Window(w => w.Title("Edit Employee").Height(400).Width(650))).Events(e => e.Edit("onPopOpen"))
+                .Pageable()
+                .Sortable()
+                .Scrollable()
+                .Excel(excel => excel
+                .FileName("EmployeeList.xlsx")
+                .Filterable(true)
+                .AllPages(true)
+                 //.ProxyURL(Url.Action("Employee_Excel_Export", "Employee"))
+                 )
+                .ToolBar(tools => tools.Excel().Text("Export filtered records"))
+                .Selectable()
+                .Filterable(filterable => filterable
+                    .Extra(false)
+                           .Mode(GridFilterMode.Menu)
+                           //.Operators(ops => ops.ForEnums(e => e.Clear().Equals("Equals"))
+                           //     )
+                           .Operators(ops => ops
+                               .ForString(str => str.Clear()
+                                   .Contains("Contains")
+                                  ))
+                           .Operators(opt => opt
+                            .ForNumber(num => num.Clear()
+                            .IsGreaterThan("Greater Than")
+                            .IsEqualTo("Equal")
+                            .IsLessThan("Less Than")
+                        ))
+                        ).Events(
+                                 e =>
+                                 {
+                                     e.FilterMenuInit("filterMenuInit");
+                                     e.FilterMenuOpen("filterMenuopen");
+                                 }
+                               )
+
+            .HtmlAttributes(new { style = "height:550px;" })
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .PageSize(200)
+                .Events(events =>
+                {
+                    events.RequestEnd("onRequestEnd");
+                })
+                .Model(model =>
+                {
+                    model.Id(p => p.EmployeeId);
+
+                })
+                .Read(read => read.Action("BindEmployeeModel", "Employee").Data("EmployeeSearchModel"))
+                .Update(update => update.Action("UpdateEmployee", "Employee"))
+            )
+)
+
+@section css{
+    <link href="~/Content/Custom/login.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/alertifyjs/alertify.js"></script>
+    <script src="~/Content/alertifyjs/alertify.min.js"></script>
+    <script type="text/javascript">
+        function filterMenuInit(e) {
+            var firstValueDropDown = e.container.find("select:eq(0)").data("kendoDropDownList");
+            if (typeof (firstValueDropDown) != "undefined") {
+                if (firstValueDropDown.options.value == "contains" || firstValueDropDown.options.value == "eq") {
+                    firstValueDropDown.wrapper.hide();
+                }
+
+            }
+
+            //if (e.field === 'VacancyDate') {
+
+            //    var ddl1 = e.container.find('[data-role="dropdownlist"]').first().data('kendoDropDownList');
+            //    var ddl2 = e.container.find('[data-role="dropdownlist"]').last().data('kendoDropDownList');
+            //    var logicDDL = $(e.container.find('[data-role="dropdownlist"]')[1]).data('kendoDropDownList');
+
+            //    ddl1.value('gte');
+            //    ddl1.trigger('change');
+            //    ddl2.value('lte');
+            //    ddl2.trigger('change');
+            //    //ddl1.wrapper.hide();
+            //    //ddl2.wrapper.hide();
+            //    //logicDDL.wrapper.hide();
+            //}
+            //if (e.field === 'PositionDateOfHire') {
+            //    var ddl1 = e.container.find('[data-role="dropdownlist"]').first().data('kendoDropDownList');
+            //    var ddl2 = e.container.find('[data-role="dropdownlist"]').last().data('kendoDropDownList');
+            //    var logicDDL = $(e.container.find('[data-role="dropdownlist"]')[1]).data('kendoDropDownList');
+
+            //    ddl1.value('gte');
+            //    ddl1.trigger('change');
+            //    ddl2.value('lte');
+            //    ddl2.trigger('change');
+            //    //ddl1.wrapper.hide();
+            //    //ddl2.wrapper.hide();
+            //    //logicDDL.wrapper.hide();
+            //}
+            //if (e.field === 'AgencyDateOfHire') {
+            //    var ddl1 = e.container.find('[data-role="dropdownlist"]').first().data('kendoDropDownList');
+            //    var ddl2 = e.container.find('[data-role="dropdownlist"]').last().data('kendoDropDownList');
+            //    var logicDDL = $(e.container.find('[data-role="dropdownlist"]')[1]).data('kendoDropDownList');
+
+            //    ddl1.value('gte');
+            //    ddl1.trigger('change');
+            //    ddl2.value('lte');
+            //    ddl2.trigger('change');
+            //    //ddl1.wrapper.hide();
+            //    //ddl2.wrapper.hide();
+            //    //logicDDL.wrapper.hide();
+            //}
+        }
+
+        function filterMenuopen(e) {
+            console.log(e.field);
+            if (e.field === 'VacancyDate') {
+
+                var ddl1 = e.container.find('[data-role="dropdownlist"]').first().data('kendoDropDownList');
+                var ddl2 = e.container.find('[data-role="dropdownlist"]').last().data('kendoDropDownList');
+                var logicDDL = $(e.container.find('[data-role="dropdownlist"]')[1]).data('kendoDropDownList');
+
+                ddl1.value('gte');
+                ddl1.trigger('change');
+                ddl2.value('lte');
+                ddl2.trigger('change');
+                ddl1.wrapper.hide();
+                ddl2.wrapper.hide();
+                logicDDL.wrapper.hide();
+            }
+            if (e.field === 'PositionDateOfHire') {
+                var ddl1 = e.container.find('[data-role="dropdownlist"]').first().data('kendoDropDownList');
+                var ddl2 = e.container.find('[data-role="dropdownlist"]').last().data('kendoDropDownList');
+                var logicDDL = $(e.container.find('[data-role="dropdownlist"]')[1]).data('kendoDropDownList');
+
+                ddl1.value('gte');
+                ddl1.trigger('change');
+                ddl2.value('lte');
+                ddl2.trigger('change');
+                ddl1.wrapper.hide();
+                ddl2.wrapper.hide();
+                logicDDL.wrapper.hide();
+            }
+            if (e.field === 'AgencyDateOfHire') {
+                var ddl1 = e.container.find('[data-role="dropdownlist"]').first().data('kendoDropDownList');
+                var ddl2 = e.container.find('[data-role="dropdownlist"]').last().data('kendoDropDownList');
+                var logicDDL = $(e.container.find('[data-role="dropdownlist"]')[1]).data('kendoDropDownList');
+
+                ddl1.value('gte');
+                ddl1.trigger('change');
+                ddl2.value('lte');
+                ddl2.trigger('change');
+                ddl1.wrapper.hide();
+                ddl2.wrapper.hide();
+                logicDDL.wrapper.hide();
+            }
+        }
+
+        function ResetGrid() {
+            $("#grid").data("kendoGrid").dataSource.filter([]);
+        }
+        function ExportToExcel() {
+            //var data = grid.dataSource._params();
+            //var prepared = grid.dataSource.transport.parameterMap(data);
+
+            // console.log(JSON.stringify($("#grid").data("kendoGrid").dataSource));
+
+            //$.ajax({
+            //    url: '/Employee/GetGridFilters',
+            //    dataType: "json",
+            //    type: "POST",
+            //    contentType: 'application/json; charset=utf-8',
+            //    data: JSON.stringify($("#grid").data("kendoGrid").dataSource),
+            //    async: true,
+            //    processData: false,
+            //    cache: false,
+            //    success: function (data) {
+            //      //  console.log(data);
+            //    },
+            //    error: function (xhr) {
+            //      //  console.log('error');
+            //    }
+            //})
+            if ($("#filesubmissionid").val().length > 0) {
+                var FileSubmissionFilterId = $("#filesubmissionid").val();
+                var region = $("#region").val();
+                location.href = '@Url.Action("ExportToExcel", "Employee")?FileSubmissionFilterId=' + FileSubmissionFilterId + '&region=' + region + '&SelectedColumns=' + showColumnList.toString();
+            }
+            else {
+                alert("Please select File Submission")
+            }
+        }
+
+        var showColumnList = [];
+        $('#gridColumns').multiselect({
+            enableCaseInsensitiveFiltering: true,
+            includeSelectAllOption: true,
+            onInitialized: function (select, container) {
+                for (var i = 0; i < select[0].options.length; i++) {
+                    var selectedValue = select[0].options[i].value.toLowerCase();
+                    var optionSelected = select[0].options[i].selected;
+                    if (optionSelected == true) {
+                        if ($.inArray(selectedValue, showColumnList) == -1) {
+                            showColumnList.push(selectedValue);
+                        }
+                    }
+                }
+            },
+            onSelectAll: function () {
+                $('#gridColumns').val().forEach(function (selectedValue) {
+                    if ($.inArray(selectedValue, showColumnList) == -1) {
+                        showColumnList.push(selectedValue.toLowerCase());
+                    }
+                });
+
+                UpdateGridToFilter();
+            },
+            onDeselectAll: function () {
+                showColumnList = [];
+                UpdateGridToFilter();
+            },
+            onChange: function (option, checked, select) {
+                var opselected = $(option).val();
+                var selectedValue = opselected.replace(/\s/g, '');
+                if (typeof (selectedValue) != "undefined" && selectedValue != "") {
+                    selectedValue = selectedValue.toLowerCase();
+                }
+                if (checked == true) {
+                    if ($.inArray(selectedValue, showColumnList) == -1) {
+                        showColumnList.push(selectedValue);
+                    }
+                }
+                else {
+                    showColumnList.splice($.inArray(selectedValue, showColumnList), 1);
+                }
+                UpdateGridToFilter();
+            }
+        });
+        function UpdateGridToFilter() {
+            var grid = $("#grid").data('kendoGrid');
+
+            var columns = grid.getOptions().columns;
+            columns.forEach(function (column) {
+                if (typeof (column.field) != "undefined") {
+                    var fieldToCompare = column.field.toLowerCase();
+                    if ($.inArray(fieldToCompare, showColumnList) >= 0) {
+                        grid.showColumn(column.field);
+                    }
+                    else {
+                        grid.hideColumn(column.field);
+                    }
+                }
+            });
+        }
+
+        $(document).ready(function () {
+
+            $(".k-header[data-index='0']").text('Detail');
+            var organization = $("#organization").data("kendoDropDownList"),
+                files = $("#files").data("kendoDropDownList");
+        });
+
+        function EmployeeSearchModel() {
+            return {
+                region: $("#region").val(),
+                FileSubmissionFilterId: $("#filesubmissionid").val()
+            }
+        }
+        function onRequestEnd(e, status) {
+
+            if (e.response.Errors) {
+                var grid = $("#grid").data("kendoGrid");
+                grid.cancelChanges();
+                var message = "";
+                $.each(e.response.Errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alertify.error(message);
+            }
+            //Check request type
+            if (e.type == "update" && !e.response.Errors) {
+                alertify.success("Update record is successfull");
+            }
+        }
+        function onPopOpen(e) {
+
+
+             if ('@LoginInfo.IsEdit.ToString()' == "True")
+             {
+                 $(".k-edit-form-container .k-edit-buttons").show();
+             }
+             else {
+                 $(".k-edit-form-container .k-edit-buttons").hide();
+                 $(".k-edit-form-container .k-edit-buttons").html(''); $(".k-window-title").html("View Detail");
+             }
+
+
+            $("#Salary").addClass("k-textbox");
+            $("#LastPerformanceRating").addClass("k-textbox");
+            $('.k-window .k-textbox').attr("style", "width:80%");
+            $('.k-window .k-dropdown').attr("style", "width:80%");
+            $('.k-window .k-datepicker').attr("style", "width:80%");
+            $('.k-window .single-line').attr("style", "width:80%");
+
+            $("#VacancyDateRangeId").parent().prev().hide();
+            $("#VacancyDateRangeId").parent().hide();
+            $("#SalaryRangeId").parent().prev().hide();
+            $("#SalaryRangeId").parent().hide();
+            $("#AgeRangeId").parent().prev().hide();
+            $("#AgeRangeId").parent().hide();
+            $("#PositionYearsOfServiceId").parent().prev().hide();
+            $("#PositionYearsOfServiceId").parent().hide();
+            $("#RaceIndex").parent().prev().hide();
+            $("#RaceIndex").parent().hide();
+            $("#GenderIndex").parent().prev().hide();
+            $("#GenderIndex").parent().hide();
+            $("#SpanOfControl").parent().prev().hide();
+            $("#SpanOfControl").parent().hide();
+            $("#VacancyDateRangeId").parent().prev().hide();
+            $("#VacancyDateRangeId").parent().hide();
+        }
+        function onFileSubmissionChange() {
+            //   var dropdownlist = $("#SubmissionDateId").data("kendoDropDownList");
+            ddlItem = this.text();
+            if (~ddlItem.indexOf("Delete")) {
+                alertify.error("Selected version employee data was deleted due to Error in records")
+            }
+
+            var grid = $("#grid").data("kendoGrid");
+            grid.dataSource.read();
+            //setIndex;
+        }
+        function filterEEORegion() {
+            return {
+                organization: $("#organization").val(),
+                filesubmission: $("#filesubmissionid").val()
+            };
+        }
+
+        $(document).ready(function () {
+            $("#gridColumns option").attr("selected", "selected");
+            $("#gridColumns").multiselect("refresh");
+
+            setTimeout(function () {
+                $("#grid .k-grid-toolbar").show();
+                $('#gridColumns').val().forEach(function (selectedValue) {
+                    if ($.inArray(selectedValue, showColumnList) == -1) {
+                        showColumnList.push(selectedValue.toLowerCase());
+                    }
+                });
+                UpdateGridToFilter();
+            }, 1000);
+
+        });
+
+        function formatPhoneNumber(data) {
+            var phoneNumber = data.PhoneNumber;
+            if (phoneNumber.length > 0) {
+                var piece1 = phoneNumber.substring(0, 3); //123
+                var piece2 = phoneNumber.substring(3, 6); //456
+                var piece3 = phoneNumber.substring(6); //7890
+                return kendo.format("({0}) {1}-{2}", piece1, piece2, piece3);
+            } else {
+                return "-";
+            }
+
+        }
+    </script>
+
+} 

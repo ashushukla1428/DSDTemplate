@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <!--This bundle was moved by the Telerik VS Extensions for compatibility reasons-->
+    @*<link rel="icon" href="~/Content/favicon.ico" type="image/x-icon" />*@
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="~/Content/Custom/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("css", required: false)
+    <script src="@Url.Content("~/Scripts/kendo/2017.2.621/jszip.min.js")"></script>
+    <style>
+        .header-logo {
+            width: 185px;
+        }
+
+        .navbar-header {
+            padding-top: 5px;
+            min-width: 30%
+        }
+
+        .header-logo:hover {
+            content: url('../Content/Logo/EEO_NOW-Logo-Web.png');
+        }
+
+        .App-Region {
+            font-size: 18px;
+            font-weight: 700;
+            color: red;
+            float: right;
+            margin-top: 8px;
+            margin-left: 30px;
+        }
+        li.UserDetailClass a {
+            padding: 0px;
+            margin-top: 0px;
+            margin-right: 10px;
+        }
+
+            li.UserDetailClass a:first-child {
+                margin-top: 6px;
+            }
+    </style>
+</head>
+<body>
+    <header id="main-header" class="main-header">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" style="display:none;" class="Login-Show-Hide-menu navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar" aria-expanded="false" aria-controls="main-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a href="#">
+                        <img class="header-logo" src="~/Content/Logo/EEO_NOW-Logo-Web-Light.png" />
+                    </a>
+                    <span class="App-Region">@(System.Configuration.ConfigurationManager.AppSettings["CurrentRegion"])</span>
+
+                </div>
+
+                <div id="main-navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav pull-right"></ul>
+                    <ul class="nav navbar-nav pull-right">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+                            string val = "";
+                            if (Request.Cookies["Role"] != null)
+                            {
+                                if (Request.Cookies["Role"].Value == "admin")
+                                {
+                                    <li><a href="/Account/AdminDashboard" class="AdminPanel">Admin Panel</a></li>
+                                }
+                            }
+                            <li class="UserDetailClass">
+                                <a>@User.Identity.Name</a>
+                                <a>@User.Identity.Name</a>
+                                <a>@User.Identity.Name</a>
+
+                            </li>
+                            <li><button type="submit" onclick="ContactUs();" class="btn btn-primary btn-print">Contact Us</button>&nbsp;</li>
+                            <li><a href="/Account/Logout" class="btn btn-default logout">Logout</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="Login-Show-Hide btn btn-default logout" href="/Account/Login">Login</a></li>
+
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div style="padding-top:100px" class="container-fluid body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+
+</body>
+
+
+</html>
+

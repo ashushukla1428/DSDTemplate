@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EEONow.Context", "EEONow.Context\EEONow.Context.csproj", "{D7D2FC8A-AC16-4970-A8D6-7E5D3038D2B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EEONow.Interface", "EEONow.Interface\EEONow.Interface.csproj", "{EF473DD8-5501-4323-B2B1-58ECE1226C2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EEONow.Models", "EEONow.Models\EEONow.Models.csproj", "{93050E0E-EAB3-4EF6-930A-E1CA4E9EFEC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EEONow.Resources", "EEONow.Resources\EEONow.Resources.csproj", "{E71851AC-AA65-4325-AC20-7024067329A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EEONow.Services", "EEONow.Services\EEONow.Services.csproj", "{E3DD09B6-00D3-4D5D-9D34-C8A33CBE07A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EEONow.Utility", "EEONow.Utility\EEONow.Utility.csproj", "{C8FB2BB0-2B2E-4724-99B1-0944296B37B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EEONow.Web", "EEONow.Web\EEONow.Web.csproj", "{34E7EA0D-3F8E-429F-AD99-0772F701F9F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7D2FC8A-AC16-4970-A8D6-7E5D3038D2B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D2FC8A-AC16-4970-A8D6-7E5D3038D2B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D2FC8A-AC16-4970-A8D6-7E5D3038D2B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D2FC8A-AC16-4970-A8D6-7E5D3038D2B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF473DD8-5501-4323-B2B1-58ECE1226C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF473DD8-5501-4323-B2B1-58ECE1226C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF473DD8-5501-4323-B2B1-58ECE1226C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF473DD8-5501-4323-B2B1-58ECE1226C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93050E0E-EAB3-4EF6-930A-E1CA4E9EFEC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93050E0E-EAB3-4EF6-930A-E1CA4E9EFEC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93050E0E-EAB3-4EF6-930A-E1CA4E9EFEC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93050E0E-EAB3-4EF6-930A-E1CA4E9EFEC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E71851AC-AA65-4325-AC20-7024067329A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E71851AC-AA65-4325-AC20-7024067329A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E71851AC-AA65-4325-AC20-7024067329A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E71851AC-AA65-4325-AC20-7024067329A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3DD09B6-00D3-4D5D-9D34-C8A33CBE07A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3DD09B6-00D3-4D5D-9D34-C8A33CBE07A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3DD09B6-00D3-4D5D-9D34-C8A33CBE07A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3DD09B6-00D3-4D5D-9D34-C8A33CBE07A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8FB2BB0-2B2E-4724-99B1-0944296B37B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8FB2BB0-2B2E-4724-99B1-0944296B37B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8FB2BB0-2B2E-4724-99B1-0944296B37B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8FB2BB0-2B2E-4724-99B1-0944296B37B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34E7EA0D-3F8E-429F-AD99-0772F701F9F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34E7EA0D-3F8E-429F-AD99-0772F701F9F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34E7EA0D-3F8E-429F-AD99-0772F701F9F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34E7EA0D-3F8E-429F-AD99-0772F701F9F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F3E3ABD-430A-453C-9A77-91344443B697}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://definedsoftware.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = EEONow.Context\\EEONow.Context.csproj
+		SccProjectName1 = EEONow.Context
+		SccLocalPath1 = EEONow.Context
+		SccProjectUniqueName2 = EEONow.Interface\\EEONow.Interface.csproj
+		SccProjectName2 = EEONow.Interface
+		SccLocalPath2 = EEONow.Interface
+		SccProjectUniqueName3 = EEONow.Models\\EEONow.Models.csproj
+		SccProjectName3 = EEONow.Models
+		SccLocalPath3 = EEONow.Models
+		SccProjectUniqueName4 = EEONow.Resources\\EEONow.Resources.csproj
+		SccProjectName4 = EEONow.Resources
+		SccLocalPath4 = EEONow.Resources
+		SccProjectUniqueName5 = EEONow.Services\\EEONow.Services.csproj
+		SccProjectName5 = EEONow.Services
+		SccLocalPath5 = EEONow.Services
+		SccProjectUniqueName6 = EEONow.Utility\\EEONow.Utility.csproj
+		SccProjectName6 = EEONow.Utility
+		SccLocalPath6 = EEONow.Utility
+		SccProjectUniqueName7 = EEONow.Web\\EEONow.Web.csproj
+		SccProjectName7 = EEONow.Web
+		SccLocalPath7 = EEONow.Web
+	EndGlobalSection
+EndGlobal

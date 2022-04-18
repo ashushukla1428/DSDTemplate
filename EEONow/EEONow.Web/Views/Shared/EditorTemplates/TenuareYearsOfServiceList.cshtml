@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "AgencyYearsOfService";
+}
+
+@using System.Collections
+@model System.Int32
+@(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewBag.AgencyYearsOfServiceList)
+.OptionLabel("- Select Agency Years Of Service - ")
+.DataValueField("Value")
+.DataTextField("Text")
+.Name("AgencyYearsOfServiceId")
+) 

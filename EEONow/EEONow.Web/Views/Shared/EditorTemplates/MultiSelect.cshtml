@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "MultiList";
+}
+
+@using System.Collections
+@*@model System.Int32*@
+@(Html.Kendo().MultiSelect()
+.BindTo((IEnumerable)ViewBag.MenuList)
+.DataValueField("Value")
+.DataTextField("Text")
+.Name("ListMenu")
+.Placeholder("Assign Roles")
+) 

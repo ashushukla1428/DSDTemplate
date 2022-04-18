@@ -1,0 +1,300 @@
+﻿@using Kendo.Mvc.UI
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "Dashboard Configuration";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+@*<link href="~/Content/kendo/kendo.material.min.css" rel="stylesheet" />*@
+<style>
+    .k-button.k-button-icontext .k-icon {
+        vertical-align: middle !important;
+        margin: 0 3px 0 0 !important;
+    }
+
+    .k-edit-form-container {
+        width: auto;
+    }
+
+        .k-edit-form-container .editor-label, .k-edit-label {
+            width: 40%;
+        }
+
+        .k-edit-field, .k-edit-form-container .editor-field {
+            width: 50%;
+        }
+    /* The container */
+    #chkcontainer {
+        display: inline-block;
+        position: relative;
+        padding-left: 30px;
+        font-weight: 500;
+        line-height: 20px;
+        margin-bottom: 0px;
+        cursor: pointer;
+        font-size: 14px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: -4px;
+    }
+
+        /* Hide the browser's default checkbox */
+        #chkcontainer input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: #fff;
+        border: 1px solid #d5d5d5;
+    }
+
+    /* On mouse-over, add a grey background color */
+    #chkcontainer:hover input ~ .checkmark {
+        background-color: #fff;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    #chkcontainer input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    #chkcontainer input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    #chkcontainer .checkmark:after {
+        left: 8px;
+        top: 4px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+</style>
+
+
+@if (LoginInfo.Roles == "DefinedSoftwareAdministrator")
+{
+    <h2 class="main_title_row">Search By Organization:</h2>
+    <div id="SearchPannel">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-lg-12">Organization :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownList()
+            .Name("DDLorganization")
+            .HtmlAttributes(new { style = "width:100%" })
+            // .OptionLabel("--Select organization--")
+            .DataTextField("OrganizationName")
+            .DataValueField("OrganizationId")
+            .DataSource(source =>
+            {
+                source.Read(read =>
+                {
+                    read.Action("GetOrganizationsList", "GraphOrganizationView");
+                });
+            })
+                        //.Events(e => e.Change("BindGrid"))
+                        )
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-lg-12">Roles :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownList()
+              .Name("FilterRoleId")
+              .HtmlAttributes(new { style = "width:100%" })
+              //.OptionLabel("--Select Role--")
+              .DataTextField("RoleName")
+              .DataValueField("RoleId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetRolesList", "GraphOrganizationView").Data("filterRoles"); ;
+                  }).ServerFiltering(true);
+              })
+              .Events(e => e.Change("BindGrid").DataBound("BindGrid"))
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("DDLorganization")
+                        )
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br />
+}
+else
+{
+    <input type="hidden" id="DDLorganization" value="0" />
+}
+<h2 class="main_title_row">DASHBOARD CONFIGURATION</h2>
+<input type="hidden" id="HfUserRoleInfo" value="@LoginInfo.Roles" />
+
+@(Html.Kendo().Grid<EEONow.Models.OrganizationLabelFieldModel>()
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(p => p.LabelKey).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+            columns.Bound(p => p.LabelName).Filterable(false);
+            //columns.Bound(p => p.OrganizationName).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+            columns.ForeignKey(p => p.OrganizationId, (System.Collections.IEnumerable)ViewBag.OrganisationList, "Value", "Text").Title("Organization");
+            columns.Bound(p => p.RoleName).Width(250).Filterable(filterable => filterable.Cell(e => e.Operator("contains").SuggestionOperator(FilterType.Contains).ShowOperators(false)));
+            columns.Bound(p => p.Active).Title("Active").Filterable(filter => filter.Messages(message => message.IsFalse("").IsTrue("Active"))).Width(150);
+            columns.Command(command => { command.Edit().Text((LoginInfo.IsEdit == true ? "Edit" : "View")); }).Width(200);
+        })
+        .Editable(editable => editable.Mode(GridEditMode.InLine).Window(w => w.Title("Edit Organization Label Field").Width(500))).Events(e => e.Edit("onPopOpen"))
+        .Pageable()
+        .Sortable()
+        .Scrollable()
+        .Filterable(ftb => ftb
+        .Mode(GridFilterMode.Row)
+        .Extra(false)
+        )
+        .HtmlAttributes(new { style = "height:550px;" })
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .Events(events =>
+            {
+                //events.Error("error_handler");
+                events.RequestEnd("onRequestEnd");
+            })
+           .Model(model =>
+           {
+               model.Id(p => p.OrganizationLabelFieldId);
+               model.Field(p => p.LabelKey).Editable(false);
+               model.Field(p => p.OrganizationId).Editable(false);
+               model.Field(p => p.RoleName).Editable(false);
+
+           }
+        )
+            .Read(read => read.Action("BindOrganizationLabelFieldModel", "OrganizationLabelField").Data("filterOrganization"))
+            .Update(update => update.Action("UpdateOrganizationLabelField", "OrganizationLabelField"))
+        )
+)
+
+
+
+@section css{
+    <link href="~/Content/Custom/login.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/alertifyjs/alertify.js"></script>
+    <script src="~/Content/alertifyjs/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".k-operator-hidden").find("input[type=radio]").last().hide();
+            $(".k-operator-hidden").find("input[type=radio]").first().attr("id", "chkActiveUser");
+            $(".k-operator-hidden").find("input[type=radio]").first().attr("data-checkbox", "true");
+            $("<span class='checkmark'></span>").insertAfter($(".k-operator-hidden").find("input[type=radio]").first());
+            $(".k-operator-hidden").find("input[type=radio]").first().parents("label").attr("id", "chkcontainer");
+            $(".k-grid").data("kendoGrid").dataSource.filter({ field: "Active", operator: "eq", value: true });
+
+            $(".k-operator-hidden").find("input[type=radio]").first().attr("type", "checkbox");
+            $(".k-operator-hidden").find("input[type=radio]").last().attr("type", "checkbox");
+
+            $("input[id=chkActiveUser]").click(function () {
+
+                if ($(this).attr("data-checkbox") == "true") {
+                    $(".k-grid").data("kendoGrid").dataSource.filter({});
+                    $(this).attr("data-checkbox", "false")
+                    $(this).removeAttr("checked");
+                } else {
+                    $(this).attr("data-checkbox", "true")
+                }
+            });
+        });
+        function onRequestEnd(e, status) {
+            if (e.response.Errors) {
+                var grid = $("#grid").data("kendoGrid");
+                grid.cancelChanges();
+                var message = "";
+                $.each(e.response.Errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alertify.error(message);
+            }
+            if (e.type == "update" && !e.response.Errors) {
+                alertify.success("Update record is successfull");
+            }
+        }
+        function onPopOpen(e) {
+             if ('@LoginInfo.IsEdit.ToString()' == "True")
+             {
+                 $(".k-grid-update").show();
+             }
+             else {
+                 $(".k-grid-update").hide();
+             }
+
+        }
+        function BindGrid(e) {
+            ddlItem = this.text();
+
+
+            var grid = $("#grid").data("kendoGrid");
+            grid.dataSource.read();
+
+        }
+        function filterRoles() {
+            return {
+                organization: $("#DDLorganization").val()
+            };
+        }
+        function filterOrganization() {
+            return {
+                organization: $("#DDLorganization").val(),
+                roleid: $("#FilterRoleId").val()
+            };
+        }
+    </script>
+
+} 

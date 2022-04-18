@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "CountyList";
+}
+
+@using System.Collections
+@model System.Int32
+@(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewBag.CountyList)
+.OptionLabel("- Select County - ")
+.DataValueField("Value")
+.DataTextField("Text")
+.Name("CountyId")
+) 

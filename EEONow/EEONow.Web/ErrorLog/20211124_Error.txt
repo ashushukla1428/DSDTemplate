@@ -1,0 +1,72 @@
+Message :Must declare the scalar variable "@fileSubmissionID".
+Date :11/24/2021 11:42:38 AM
+Method Name :GetEEOProgressReportByRegionService
+File Name :EEOProgressReportByRegionService.cs
+
+
+-----------------------------------------------------------------------------
+
+Message :Must declare the scalar variable "@fileSubmissionID".
+Date :11/24/2021 11:45:11 AM
+Method Name :GetEEOProgressReportByRegionService
+File Name :EEOProgressReportByRegionService.cs
+
+
+-----------------------------------------------------------------------------
+
+Message :The cast to value type 'System.Int32' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type.
+Date :11/24/2021 2:37:19 PM
+Method Name :GetEEOProgressReportByRegionService
+File Name :EEOProgressReportByRegionService.cs
+
+
+-----------------------------------------------------------------------------
+
+Message :The cast to value type 'System.Int32' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type.
+Date :11/24/2021 2:41:19 PM
+Method Name :GetEEOProgressReportByRegionService
+File Name :EEOProgressReportByRegionService.cs
+
+
+-----------------------------------------------------------------------------
+
+Message :The cast to value type 'System.Int32' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type.
+Date :11/24/2021 2:41:32 PM
+Method Name :GetEEOProgressReportByRegionService
+File Name :EEOProgressReportByRegionService.cs
+
+
+-----------------------------------------------------------------------------
+
+Message :The cast to value type 'System.Int32' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type.
+Date :11/24/2021 2:42:55 PM
+Method Name :GetEEOProgressReportByRegionService
+File Name :EEOProgressReportByRegionService.cs
+
+
+-----------------------------------------------------------------------------
+
+Message :Unable to create a constant value of type 'EEONow.Models.EmployeeForProgressRegion'. Only primitive types or enumeration types are supported in this context.
+Date :11/24/2021 2:49:04 PM
+Method Name :GetEEOProgressReportByRegionService
+File Name :EEOProgressReportByRegionService.cs
+
+
+-----------------------------------------------------------------------------
+
+Message :Unable to create a constant value of type 'EEONow.Models.EmployeeForProgressRegion'. Only primitive types or enumeration types are supported in this context.
+Date :11/24/2021 2:49:18 PM
+Method Name :GetEEOProgressReportByRegionService
+File Name :EEOProgressReportByRegionService.cs
+
+
+-----------------------------------------------------------------------------
+
+Message :Object reference not set to an instance of an object.
+Date :11/24/2021 5:18:23 PM
+Method Name :BindMenuUi
+File Name :AccountService.cs
+
+
+-----------------------------------------------------------------------------
+

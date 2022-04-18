@@ -1,0 +1,213 @@
+﻿@model EEONow.Models.EEOGenderCompensationReportModel
+@{
+    ViewBag.Title = "EEO Gender Compensation Report";
+    Layout = "~/Views/Shared/_PartialViewLayout.cshtml";
+} 
+<table class="table-grid">
+    <tbody>
+        <tr>
+            <td class="Alm-text" colspan="2" width="23%">
+                @Model.OrganizationName
+            </td>
+            <td width="78%">
+                <table class="table-grid aligncenter">
+                    <tr>
+                        <th class="td-top-none td-right-none" height="25px" width="25.66%" style="text-align:center; font-size:20px">
+                            EEO Compensation Report
+                        </th>
+                        <th colspan="2" class="td-top-none"><span onclick="ExportEEOReport();" class="AVExport">Export to PDF</span></th>
+                    </tr>
+                    <tr>
+                        <td class="alignmiddle noborder Gheader" width="40%" id="TdMale">
+                            Male
+                        </td>
+                        <td class="alignmiddle noborder  Gheader" width="40%" id="TdMale">
+                            Female
+                        </td>
+                        <td class="noborder alignmiddle  Gheader" >
+                            Total Employees
+                        </td>
+                    </tr>
+                    @*<tr style="text-align:center">
+                            <td width="25.66%">M</td>
+                            <td width="25.66%">F</td>
+                            <td width="25.66%">M</td>
+                            <td width="25.66%">F</td>
+                        </tr>*@
+                </table>
+            </td>
+        </tr>
+
+        @{int countEEORow = 0;
+            foreach (var itemJobTitle in Model.ListJobTitleForEEOGenderCompensation)
+            {
+                countEEORow = countEEORow + 1;
+                <tr>
+                    <td class="@(countEEORow % 2 == 1?"color-Black":"color-Black Bg-AlaternateTr")" style="text-align: center; vertical-align: middle;" width="11%">
+                        <span class="tdTitle" >@itemJobTitle.JobTitleName</span>
+                    </td>
+                    <td width="12%">
+                        <table class="table-grid">
+                            <tr>
+                                <th class="td-top-none color-Black alignRight" height="20px">FTEs</th>
+                            </tr>
+                            <tr class="Bg-AlaternateTr">
+                                <th class="color-Black alignRight" height="20px">High</th>
+                            </tr>
+                            <tr>
+                                <th class="color-Black alignRight" height="20px">Medium</th>
+                            </tr>
+                            <tr class="Bg-AlaternateTr">
+                                <th class="color-Black alignRight" height="20px">Low</th>
+                            </tr>
+                            <tr>
+                                <th class="color-Black alignRight" height="20px">Parity</th>
+                            </tr>
+                            <tr class="Bg-AlaternateTr">
+                                <th class="color-Black alignRight" height="20px">Difference</th>
+                            </tr>
+                            <tr>
+                                <th class="color-Black alignRight" height="20px">Percentage</th>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="78%">
+                        <table class="table-grid">
+                            @*High*@
+                            <tr class="bg-blue">
+
+                                <td class="td-top-none alignmiddle formatNumber" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.FTSMale).FirstOrDefault()
+                                </td>
+                                <td class="td-top-none alignmiddle formatNumber" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.FTSFemale).FirstOrDefault()
+                                </td>
+
+                                <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal border_left" rowspan="7" colspan="2">
+                                    <b>
+                                        @Model.ListEEOGenderCompensationEmployeeCount.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.EmployeeCount).FirstOrDefault()
+                                    </b>
+                                </td>
+                            </tr>
+                            @*High*@
+                            <tr class="bg-blue Bg-AlaternateTr">
+
+
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.HighMale.ToString("N2")).FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.HighFemale.ToString("N2")).FirstOrDefault()
+                                </td>
+
+
+                            </tr>
+
+                            @* Medium*@
+                            <tr class="bg-blue">
+
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @(Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.MediumMale.ToString("N2")).FirstOrDefault())
+                                </td>
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @(Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.MediumFemale.ToString("N2")).FirstOrDefault())
+                                </td>
+
+
+                            </tr>
+                            @*Low*@
+                            <tr class="bg-blue Bg-AlaternateTr">
+
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.LowMale.ToString("N2")).FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.LowFemale.ToString("N2")).FirstOrDefault()
+                                </td>
+
+
+                            </tr>
+                            @*Parity*@
+                            <tr class="bg-blue">
+
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.ParityMale.ToString("N2")).FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.ParityFemale.ToString("N2")).FirstOrDefault()
+                                </td>
+
+
+                            </tr>
+                            @*Difference*@
+                            <tr class="bg-blue Bg-AlaternateTr">
+
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.DifferenceMale.ToString("N2")).FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.DifferenceFemale.ToString("N2")).FirstOrDefault()
+                                </td>
+
+
+                            </tr>
+                            @*Percentage*@
+                            <tr class="bg-blue">
+
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.PercentageMale.ToString() + " %").FirstOrDefault()
+                                </td>
+                                <td class="alignmiddle" height="20px" width="40%">
+                                    @Model.ListEEOGenderCompensation.Where(e => e.JobTitleName == itemJobTitle.JobTitleName).Select(e => e.PercentageFemale.ToString() + " %").FirstOrDefault()
+                                </td>
+
+
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            }
+        }
+        <tr>
+            <th colspan="2" class="alignRight" width="23%">
+
+            </th>
+
+            <th class="alignmiddle" height="20px" width="78%">
+                <table class="table-grid">
+                    <tr class="bg-blue">
+                        <td class="td-top-none alignmiddle nohover tdgrandtotal" width="79.9%" style="text-align:left"> Grand Total</td>
+                        <td class="td-top-none alignmiddle nohover formatNumber tdEmployeeTotal" style="font-size:15px" height="30px">
+                            <b>  @Model.ListEEOGenderCompensationEmployeeCount.Sum(e => e.EmployeeCount)</b>
+                        </td>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+@section scripts{
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //$(this).find('td').each(function (e) {
+            //    console.log(e);
+            //})
+            //$('.formatNumber').text(formatNumber($('.formatNumber').text()))
+            //console.log($('.formatNumber').text());
+
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            })
+
+        })
+
+
+
+    </script>
+}

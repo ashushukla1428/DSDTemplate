@@ -1,0 +1,1988 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dev_eeoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EEONowEntity" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="Sp_InsertEmployeeLevel">
+      <Parameter Name="FileSubmissionId" Mode="In" Type="Int32" />
+      <Parameter Name="OrganizationId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="rptEEO_GenderAndRace_CompensationReport" ReturnType="Collection(dev_eeoModel.rptEEO_GenderAndRace_CompensationReport_Result)">
+      <Parameter Name="organizationID" Mode="In" Type="Int32" />
+      <Parameter Name="fileSubmissionID" Mode="In" Type="Int32" />
+      <Parameter Name="eeoJobCategoryId" Mode="In" Type="Int32" />
+      <Parameter Name="programOfficeName" Mode="In" Type="String" />
+      <Parameter Name="positionTitle" Mode="In" Type="String" />
+      <Parameter Name="regionName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="rptEEOGenderCompensationReport" ReturnType="Collection(dev_eeoModel.rptEEOGenderCompensationReport_Result)">
+      <Parameter Name="organizationID" Mode="In" Type="Int32" />
+      <Parameter Name="fileSubmissionID" Mode="In" Type="Int32" />
+      <Parameter Name="eeoJobCategoryId" Mode="In" Type="Int32" />
+      <Parameter Name="programOfficeName" Mode="In" Type="String" />
+      <Parameter Name="positionTitle" Mode="In" Type="String" />
+      <Parameter Name="regionName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CreateEEORatingMetrics">
+      <Parameter Name="fileSubmissionID" Mode="In" Type="Int32" />
+      <Parameter Name="organizationID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getCSVGraphData_UniquePosition" ReturnType="Collection(dev_eeoModel.getCSVGraphData_UniquePosition_Result)">
+      <Parameter Name="fileSubmissionID" Mode="In" Type="Int32" />
+      <Parameter Name="organizationID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getCSVGraphData" ReturnType="Collection(dev_eeoModel.getCSVGraphData_Result)">
+      <Parameter Name="fileSubmissionID" Mode="In" Type="Int32" />
+      <Parameter Name="organizationID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="rptEEOIndexReport" ReturnType="Collection(dev_eeoModel.rptEEOIndexReport_Result)">
+      <Parameter Name="organizationID" Mode="In" Type="Int32" />
+      <Parameter Name="fileSubmissionID" Mode="In" Type="Int32" />
+      <Parameter Name="positionNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="rptStaffLevelsReport" ReturnType="Collection(dev_eeoModel.rptStaffLevelsReport_Result)">
+      <Parameter Name="organizationID" Mode="In" Type="Int32" />
+      <Parameter Name="fileSubmissionID" Mode="In" Type="Int32" />
+      <Parameter Name="eeoJobCategoryId" Mode="In" Type="Int32" />
+      <Parameter Name="programOfficeName" Mode="In" Type="String" />
+      <Parameter Name="regionName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="rptJobTitlesByEEOCategory" ReturnType="Collection(dev_eeoModel.rptJobTitlesByEEOCategory_Result)">
+      <Parameter Name="organizationID" Mode="In" Type="Int32" />
+      <Parameter Name="fileSubmissionID" Mode="In" Type="Int32" />
+      <Parameter Name="eeoJobCategoryId" Mode="In" Type="Int32" />
+      <Parameter Name="programOfficeName" Mode="In" Type="String" />
+      <Parameter Name="regionName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="rptGetALM_ByEEOCategoryReport" ReturnType="Collection(dev_eeoModel.rptGetALM_ByEEOCategoryReport_Result)">
+      <Parameter Name="USCensusVersionID" Mode="In" Type="Int32" />
+      <Parameter Name="searchByWorkSite" Mode="In" Type="Boolean" />
+      <Parameter Name="occupationCodeID" Mode="In" Type="Int32" />
+      <Parameter Name="puma_codes" Mode="In" Type="String" />
+      <Parameter Name="ESRCodes" Mode="In" Type="String" />
+      <Parameter Name="stateID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="rptGetALM_ByFederalJobCodes" ReturnType="Collection(dev_eeoModel.rptGetALM_ByFederalJobCodes_Result)">
+      <Parameter Name="USCensusVersionID" Mode="In" Type="Int32" />
+      <Parameter Name="stateID" Mode="In" Type="Int32" />
+      <Parameter Name="EEOOccupationCodeID" Mode="In" Type="Int32" />
+      <Parameter Name="EEOJobClasificationCategoryID" Mode="In" Type="Int32" />
+      <Parameter Name="SearchByWorkSite" Mode="In" Type="Boolean" />
+      <Parameter Name="ESRCodes" Mode="In" Type="String" />
+      <Parameter Name="PUMA_CODES" Mode="In" Type="String" />
+      <Parameter Name="MajorOccupationGroup" Mode="In" Type="Int32" />
+      <Parameter Name="MinorOccupationGroupID" Mode="In" Type="Int32" />
+      <Parameter Name="BoardingOccupationGroupID" Mode="In" Type="Int32" />
+      <Parameter Name="OccupationIDs" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="AgencyYearsOfServices" EntityType="dev_eeoModel.AgencyYearsOfService" />
+    <EntitySet Name="AgeRanges" EntityType="dev_eeoModel.AgeRange" />
+    <EntitySet Name="AssignMenuHeaders" EntityType="dev_eeoModel.AssignMenuHeader" />
+    <EntitySet Name="AssignRoles" EntityType="dev_eeoModel.AssignRole" />
+    <EntitySet Name="AvailableLaborMarketDatas" EntityType="dev_eeoModel.AvailableLaborMarketData" />
+    <EntitySet Name="AvailableLaborMarketFileVersions" EntityType="dev_eeoModel.AvailableLaborMarketFileVersion" />
+    <EntitySet Name="Counties" EntityType="dev_eeoModel.County" />
+    <EntitySet Name="DefaultLabelFields" EntityType="dev_eeoModel.DefaultLabelField" />
+    <EntitySet Name="EEOJobCategories" EntityType="dev_eeoModel.EEOJobCategory" />
+    <EntitySet Name="EmployeeLevels" EntityType="dev_eeoModel.EmployeeLevel" />
+    <EntitySet Name="Employees" EntityType="dev_eeoModel.Employee" />
+    <EntitySet Name="FileSubmissionErrors" EntityType="dev_eeoModel.FileSubmissionError" />
+    <EntitySet Name="FileSubmissionRecords" EntityType="dev_eeoModel.FileSubmissionRecord" />
+    <EntitySet Name="FileSubmissions" EntityType="dev_eeoModel.FileSubmission" />
+    <EntitySet Name="FileSubmissionStatus" EntityType="dev_eeoModel.FileSubmissionStatu" />
+    <EntitySet Name="Genders" EntityType="dev_eeoModel.Gender" />
+    <EntitySet Name="GenerateCSVs" EntityType="dev_eeoModel.GenerateCSV" />
+    <EntitySet Name="GraphOrganizationMasters" EntityType="dev_eeoModel.GraphOrganizationMaster" />
+    <EntitySet Name="GraphOrganizationViews" EntityType="dev_eeoModel.GraphOrganizationView" />
+    <EntitySet Name="LastPerformanceRatings" EntityType="dev_eeoModel.LastPerformanceRating" />
+    <EntitySet Name="MenuHeaderConfigurations" EntityType="dev_eeoModel.MenuHeaderConfiguration" />
+    <EntitySet Name="Organizations" EntityType="dev_eeoModel.Organization" />
+    <EntitySet Name="PositionYearsOfServices" EntityType="dev_eeoModel.PositionYearsOfService" />
+    <EntitySet Name="Races" EntityType="dev_eeoModel.Race" />
+    <EntitySet Name="SalaryRanges" EntityType="dev_eeoModel.SalaryRange" />
+    <EntitySet Name="States" EntityType="dev_eeoModel.State" />
+    <EntitySet Name="USCensus_ALLData" EntityType="dev_eeoModel.USCensus_ALLData" />
+    <EntitySet Name="USCensus_BoardingOccupationGroups" EntityType="dev_eeoModel.USCensus_BoardingOccupationGroups" />
+    <EntitySet Name="USCensus_DataVersion" EntityType="dev_eeoModel.USCensus_DataVersion" />
+    <EntitySet Name="USCensus_EEO_OccupationCodes" EntityType="dev_eeoModel.USCensus_EEO_OccupationCodes" />
+    <EntitySet Name="USCensus_EEOJobClasificationCategories" EntityType="dev_eeoModel.USCensus_EEOJobClasificationCategories" />
+    <EntitySet Name="USCensus_EmployeeStatusRecode" EntityType="dev_eeoModel.USCensus_EmployeeStatusRecode" />
+    <EntitySet Name="USCensus_GeographyTypes" EntityType="dev_eeoModel.USCensus_GeographyTypes" />
+    <EntitySet Name="USCensus_MajorOccupationGroups" EntityType="dev_eeoModel.USCensus_MajorOccupationGroups" />
+    <EntitySet Name="USCensus_MinorOccupationGroups" EntityType="dev_eeoModel.USCensus_MinorOccupationGroups" />
+    <EntitySet Name="USCensus_Occupations" EntityType="dev_eeoModel.USCensus_Occupations" />
+    <EntitySet Name="USCensus_Occupations_EEOJobClasificationCategories" EntityType="dev_eeoModel.USCensus_Occupations_EEOJobClasificationCategories" />
+    <EntitySet Name="USCensus_PUMAResidenceCodes" EntityType="dev_eeoModel.USCensus_PUMAResidenceCodes" />
+    <EntitySet Name="USCensus_PUMAWorksiteCodes" EntityType="dev_eeoModel.USCensus_PUMAWorksiteCodes" />
+    <EntitySet Name="VacancyRanges" EntityType="dev_eeoModel.VacancyRange" />
+    <AssociationSet Name="FK_AgencyYearsOfService_Organizations" Association="dev_eeoModel.FK_AgencyYearsOfService_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="AgencyYearsOfService" EntitySet="AgencyYearsOfServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_AgencyYearsOfService" Association="dev_eeoModel.FK_Employees_AgencyYearsOfService">
+      <End Role="AgencyYearsOfService" EntitySet="AgencyYearsOfServices" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AgeRange_Organizations" Association="dev_eeoModel.FK_AgeRange_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="AgeRange" EntitySet="AgeRanges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_AgeRange" Association="dev_eeoModel.FK_Employees_AgeRange">
+      <End Role="AgeRange" EntitySet="AgeRanges" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignMenuHeader_MenuHeaderConfiguration" Association="dev_eeoModel.FK_AssignMenuHeader_MenuHeaderConfiguration">
+      <End Role="MenuHeaderConfiguration" EntitySet="MenuHeaderConfigurations" />
+      <End Role="AssignMenuHeader" EntitySet="AssignMenuHeaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion" Association="dev_eeoModel.FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion">
+      <End Role="AvailableLaborMarketFileVersion" EntitySet="AvailableLaborMarketFileVersions" />
+      <End Role="AvailableLaborMarketData" EntitySet="AvailableLaborMarketDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AvailableLaborMarketData_EEOJobCategories" Association="dev_eeoModel.FK_AvailableLaborMarketData_EEOJobCategories">
+      <End Role="EEOJobCategory" EntitySet="EEOJobCategories" />
+      <End Role="AvailableLaborMarketData" EntitySet="AvailableLaborMarketDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AvailableLaborMarketData_Races" Association="dev_eeoModel.FK_AvailableLaborMarketData_Races">
+      <End Role="Race" EntitySet="Races" />
+      <End Role="AvailableLaborMarketData" EntitySet="AvailableLaborMarketDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AvailableLaborMarketFileVersion_Organizations" Association="dev_eeoModel.FK_AvailableLaborMarketFileVersion_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="AvailableLaborMarketFileVersion" EntitySet="AvailableLaborMarketFileVersions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileSubmissions_AvailableLaborMarketFileVersion" Association="dev_eeoModel.FK_FileSubmissions_AvailableLaborMarketFileVersion">
+      <End Role="AvailableLaborMarketFileVersion" EntitySet="AvailableLaborMarketFileVersions" />
+      <End Role="FileSubmission" EntitySet="FileSubmissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Counties_States" Association="dev_eeoModel.FK_Counties_States">
+      <End Role="State" EntitySet="States" />
+      <End Role="County" EntitySet="Counties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Counties" Association="dev_eeoModel.FK_Employees_Counties">
+      <End Role="County" EntitySet="Counties" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EEOJobCategories_Organizations" Association="dev_eeoModel.FK_EEOJobCategories_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="EEOJobCategory" EntitySet="EEOJobCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_EEOJobCategories" Association="dev_eeoModel.FK_Employees_EEOJobCategories">
+      <End Role="EEOJobCategory" EntitySet="EEOJobCategories" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeLevel_Employees" Association="dev_eeoModel.FK_EmployeeLevel_Employees">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeLevel" EntitySet="EmployeeLevels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_FileSubmissions" Association="dev_eeoModel.FK_Employees_FileSubmissions">
+      <End Role="FileSubmission" EntitySet="FileSubmissions" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Gender" Association="dev_eeoModel.FK_Employees_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_LastPerformanceRating" Association="dev_eeoModel.FK_Employees_LastPerformanceRating">
+      <End Role="LastPerformanceRating" EntitySet="LastPerformanceRatings" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Organizations" Association="dev_eeoModel.FK_Employees_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_PositionYearsOfService" Association="dev_eeoModel.FK_Employees_PositionYearsOfService">
+      <End Role="PositionYearsOfService" EntitySet="PositionYearsOfServices" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Races" Association="dev_eeoModel.FK_Employees_Races">
+      <End Role="Race" EntitySet="Races" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_SalaryRange" Association="dev_eeoModel.FK_Employees_SalaryRange">
+      <End Role="SalaryRange" EntitySet="SalaryRanges" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_States" Association="dev_eeoModel.FK_Employees_States">
+      <End Role="State" EntitySet="States" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_VacancyRange" Association="dev_eeoModel.FK_Employees_VacancyRange">
+      <End Role="VacancyRange" EntitySet="VacancyRanges" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileSubmissionErrors_FileSubmissionRecords" Association="dev_eeoModel.FK_FileSubmissionErrors_FileSubmissionRecords">
+      <End Role="FileSubmissionRecord" EntitySet="FileSubmissionRecords" />
+      <End Role="FileSubmissionError" EntitySet="FileSubmissionErrors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileSubmissionRecords_FileSubmissions" Association="dev_eeoModel.FK_FileSubmissionRecords_FileSubmissions">
+      <End Role="FileSubmission" EntitySet="FileSubmissions" />
+      <End Role="FileSubmissionRecord" EntitySet="FileSubmissionRecords" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileSubmissions_FileSubmissionStatus" Association="dev_eeoModel.FK_FileSubmissions_FileSubmissionStatus">
+      <End Role="FileSubmissionStatu" EntitySet="FileSubmissionStatus" />
+      <End Role="FileSubmission" EntitySet="FileSubmissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileSubmissions_Organizations" Association="dev_eeoModel.FK_FileSubmissions_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="FileSubmission" EntitySet="FileSubmissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GenerateCSV_FileSubmissions" Association="dev_eeoModel.FK_GenerateCSV_FileSubmissions">
+      <End Role="FileSubmission" EntitySet="FileSubmissions" />
+      <End Role="GenerateCSV" EntitySet="GenerateCSVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gender_Organizations" Association="dev_eeoModel.FK_Gender_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="Gender" EntitySet="Genders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GenerateCSV_Organizations" Association="dev_eeoModel.FK_GenerateCSV_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="GenerateCSV" EntitySet="GenerateCSVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GraphOrganizationView_GraphOrganizationMaster" Association="dev_eeoModel.FK_GraphOrganizationView_GraphOrganizationMaster">
+      <End Role="GraphOrganizationMaster" EntitySet="GraphOrganizationMasters" />
+      <End Role="GraphOrganizationView" EntitySet="GraphOrganizationViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GraphOrganizationView_Organizations" Association="dev_eeoModel.FK_GraphOrganizationView_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="GraphOrganizationView" EntitySet="GraphOrganizationViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LastPerformanceRating_Organizations" Association="dev_eeoModel.FK_LastPerformanceRating_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="LastPerformanceRating" EntitySet="LastPerformanceRatings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizations_States" Association="dev_eeoModel.FK_Organizations_States">
+      <End Role="State" EntitySet="States" />
+      <End Role="Organization" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizations_StatesALMDefault" Association="dev_eeoModel.FK_Organizations_StatesALMDefault">
+      <End Role="State" EntitySet="States" />
+      <End Role="Organization" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizations_USCensus_EEO_OccupationCodes" Association="dev_eeoModel.FK_Organizations_USCensus_EEO_OccupationCodes">
+      <End Role="USCensus_EEO_OccupationCodes" EntitySet="USCensus_EEO_OccupationCodes" />
+      <End Role="Organization" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PositionYearsOfService_Organizations" Association="dev_eeoModel.FK_PositionYearsOfService_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="PositionYearsOfService" EntitySet="PositionYearsOfServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Races_Organizations" Association="dev_eeoModel.FK_Races_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="Race" EntitySet="Races" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalaryRange_Organizations" Association="dev_eeoModel.FK_SalaryRange_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="SalaryRange" EntitySet="SalaryRanges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VacancyRange_Organizations" Association="dev_eeoModel.FK_VacancyRange_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="VacancyRange" EntitySet="VacancyRanges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_CountyPUMACodes_States" Association="dev_eeoModel.FK_USCensus_CountyPUMACodes_States">
+      <End Role="State" EntitySet="States" />
+      <End Role="USCensus_PUMAResidenceCodes" EntitySet="USCensus_PUMAResidenceCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_PUMAWorksiteCodes_States" Association="dev_eeoModel.FK_USCensus_PUMAWorksiteCodes_States">
+      <End Role="State" EntitySet="States" />
+      <End Role="USCensus_PUMAWorksiteCodes" EntitySet="USCensus_PUMAWorksiteCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensusData_USCensus_DataVersion" Association="dev_eeoModel.FK_USCensusData_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_ALLData" EntitySet="USCensus_ALLData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups" Association="dev_eeoModel.FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups">
+      <End Role="USCensus_MinorOccupationGroups" EntitySet="USCensus_MinorOccupationGroups" />
+      <End Role="USCensus_BoardingOccupationGroups" EntitySet="USCensus_BoardingOccupationGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_Occupations_USCensus_BoardingOccupationGroups" Association="dev_eeoModel.FK_USCensus_Occupations_USCensus_BoardingOccupationGroups">
+      <End Role="USCensus_BoardingOccupationGroups" EntitySet="USCensus_BoardingOccupationGroups" />
+      <End Role="USCensus_Occupations" EntitySet="USCensus_Occupations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_CountyPUMACodes_USCensus_DataVersion" Association="dev_eeoModel.FK_USCensus_CountyPUMACodes_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_PUMAResidenceCodes" EntitySet="USCensus_PUMAResidenceCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion" Association="dev_eeoModel.FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_EmployeeStatusRecode" EntitySet="USCensus_EmployeeStatusRecode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_GeographyTypes_USCensus_DataVersion" Association="dev_eeoModel.FK_USCensus_GeographyTypes_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_GeographyTypes" EntitySet="USCensus_GeographyTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_MajorOccupationGroups_USCensus_DataVersion" Association="dev_eeoModel.FK_USCensus_MajorOccupationGroups_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_MajorOccupationGroups" EntitySet="USCensus_MajorOccupationGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion" Association="dev_eeoModel.FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_PUMAWorksiteCodes" EntitySet="USCensus_PUMAWorksiteCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensusEEO_OccupationCodes_USCensus_DataVersion" Association="dev_eeoModel.FK_USCensusEEO_OccupationCodes_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_EEO_OccupationCodes" EntitySet="USCensus_EEO_OccupationCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes" Association="dev_eeoModel.FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes">
+      <End Role="USCensus_EEO_OccupationCodes" EntitySet="USCensus_EEO_OccupationCodes" />
+      <End Role="USCensus_EEOJobClasificationCategories" EntitySet="USCensus_EEOJobClasificationCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_EEOJobClasificationCategories" Association="dev_eeoModel.FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_EEOJobClasificationCategories">
+      <End Role="USCensus_EEOJobClasificationCategories" EntitySet="USCensus_EEOJobClasificationCategories" />
+      <End Role="USCensus_Occupations_EEOJobClasificationCategories" EntitySet="USCensus_Occupations_EEOJobClasificationCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups" Association="dev_eeoModel.FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups">
+      <End Role="USCensus_MajorOccupationGroups" EntitySet="USCensus_MajorOccupationGroups" />
+      <End Role="USCensus_MinorOccupationGroups" EntitySet="USCensus_MinorOccupationGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_Occupations" Association="dev_eeoModel.FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_Occupations">
+      <End Role="USCensus_Occupations" EntitySet="USCensus_Occupations" />
+      <End Role="USCensus_Occupations_EEOJobClasificationCategories" EntitySet="USCensus_Occupations_EEOJobClasificationCategories" />
+    </AssociationSet>
+    <AssociationSet Name="USCensus_GeographyType_EmployeeStatusRecodes" Association="dev_eeoModel.USCensus_GeographyType_EmployeeStatusRecodes">
+      <End Role="USCensus_EmployeeStatusRecode" EntitySet="USCensus_EmployeeStatusRecode" />
+      <End Role="USCensus_GeographyTypes" EntitySet="USCensus_GeographyTypes" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="dev_eeoModel.User" />
+    <EntitySet Name="UserRoles" EntityType="dev_eeoModel.UserRole" />
+    <AssociationSet Name="FK_AssignRole_UserRoles" Association="dev_eeoModel.FK_AssignRole_UserRoles">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="AssignRole" EntitySet="AssignRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuHeaderConfiguration_UserRoles" Association="dev_eeoModel.FK_MenuHeaderConfiguration_UserRoles">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="MenuHeaderConfiguration" EntitySet="MenuHeaderConfigurations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Organizations" Association="dev_eeoModel.FK_UserRoles_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_UserRoles" Association="dev_eeoModel.FK_Users_UserRoles">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="MenuConfigurations" EntityType="dev_eeoModel.MenuConfiguration" />
+    <AssociationSet Name="FK_AssignMenuHeader_MenuConfiguration" Association="dev_eeoModel.FK_AssignMenuHeader_MenuConfiguration">
+      <End Role="MenuConfiguration" EntitySet="MenuConfigurations" />
+      <End Role="AssignMenuHeader" EntitySet="AssignMenuHeaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignRole_MenuConfiguration" Association="dev_eeoModel.FK_AssignRole_MenuConfiguration">
+      <End Role="MenuConfiguration" EntitySet="MenuConfigurations" />
+      <End Role="AssignRole" EntitySet="AssignRoles" />
+    </AssociationSet>
+    <EntitySet Name="AssignedGraphOrganizationViews" EntityType="dev_eeoModel.AssignedGraphOrganizationView" />
+    <AssociationSet Name="FK_AssignedGraphOrganizationViews_GraphOrganizationView1" Association="dev_eeoModel.FK_AssignedGraphOrganizationViews_GraphOrganizationView1">
+      <End Role="GraphOrganizationView" EntitySet="GraphOrganizationViews" />
+      <End Role="AssignedGraphOrganizationView" EntitySet="AssignedGraphOrganizationViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignedGraphOrganizationViews_Organizations" Association="dev_eeoModel.FK_AssignedGraphOrganizationViews_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="AssignedGraphOrganizationView" EntitySet="AssignedGraphOrganizationViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignedGraphOrganizationViews_UserRoles" Association="dev_eeoModel.FK_AssignedGraphOrganizationViews_UserRoles">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="AssignedGraphOrganizationView" EntitySet="AssignedGraphOrganizationViews" />
+    </AssociationSet>
+    <EntitySet Name="OrganizationLabelFields" EntityType="dev_eeoModel.OrganizationLabelField" />
+    <AssociationSet Name="FK_OrganizationLabelField_DefaultLabelField" Association="dev_eeoModel.FK_OrganizationLabelField_DefaultLabelField">
+      <End Role="DefaultLabelField" EntitySet="DefaultLabelFields" />
+      <End Role="OrganizationLabelField" EntitySet="OrganizationLabelFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationLabelField_Organizations" Association="dev_eeoModel.FK_OrganizationLabelField_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="OrganizationLabelField" EntitySet="OrganizationLabelFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationLabelField_UserRoles" Association="dev_eeoModel.FK_OrganizationLabelField_UserRoles">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="OrganizationLabelField" EntitySet="OrganizationLabelFields" />
+    </AssociationSet>
+    <EntitySet Name="DefaultEmployeeFields" EntityType="dev_eeoModel.DefaultEmployeeField" />
+    <EntitySet Name="EmployeeActiveFields" EntityType="dev_eeoModel.EmployeeActiveField" />
+    <AssociationSet Name="FK_EmployeeActiveFields_DefaultEmployeeFields" Association="dev_eeoModel.FK_EmployeeActiveFields_DefaultEmployeeFields">
+      <End Role="DefaultEmployeeField" EntitySet="DefaultEmployeeFields" />
+      <End Role="EmployeeActiveField" EntitySet="EmployeeActiveFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeActiveFields_Organizations" Association="dev_eeoModel.FK_EmployeeActiveFields_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="EmployeeActiveField" EntitySet="EmployeeActiveFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeActiveFields_UserRoles" Association="dev_eeoModel.FK_EmployeeActiveFields_UserRoles">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="EmployeeActiveField" EntitySet="EmployeeActiveFields" />
+    </AssociationSet>
+    <EntitySet Name="PublicURLs" EntityType="dev_eeoModel.PublicURL" />
+    <AssociationSet Name="FK_PublicURL_Organizations" Association="dev_eeoModel.FK_PublicURL_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="PublicURL" EntitySet="PublicURLs" />
+    </AssociationSet>
+    <EntitySet Name="EmailAuthenticateLogs" EntityType="dev_eeoModel.EmailAuthenticateLog" />
+    <AssociationSet Name="FK_EmailAuthenticateLog_Users" Association="dev_eeoModel.FK_EmailAuthenticateLog_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="EmailAuthenticateLog" EntitySet="EmailAuthenticateLogs" />
+    </AssociationSet>
+    <EntitySet Name="LoginDeviceInfoes" EntityType="dev_eeoModel.LoginDeviceInfo" />
+    <AssociationSet Name="FK_EmailAuthenticateLog_LoginDeviceInfo" Association="dev_eeoModel.FK_EmailAuthenticateLog_LoginDeviceInfo">
+      <End Role="LoginDeviceInfo" EntitySet="LoginDeviceInfoes" />
+      <End Role="EmailAuthenticateLog" EntitySet="EmailAuthenticateLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoginDeviceInfo_Organizations" Association="dev_eeoModel.FK_LoginDeviceInfo_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="LoginDeviceInfo" EntitySet="LoginDeviceInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoginDeviceInfo_Users" Association="dev_eeoModel.FK_LoginDeviceInfo_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="LoginDeviceInfo" EntitySet="LoginDeviceInfoes" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="rptEEO_GenderAndRace_CompensationReport_Result">
+    <Property Type="String" Name="PositionTitle" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="RaceNumber" Nullable="true" />
+    <Property Type="String" Name="RaceName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="GenderName" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="HighestSalary" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="MediumSalary" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="LowestSalary" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="ParitySalary" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="DifferenceInSalary" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="PercentageDifference" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="TotalEmployees" Nullable="true" />
+    <Property Type="Int32" Name="TotalEmployeesByTitle" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="rptEEOGenderCompensationReport_Result">
+    <Property Type="String" Name="PositionTitle" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="GenderName" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="HighestSalary" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="MediumSalary" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="LowestSalary" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="ParitySalary" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="DifferenceInSalary" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="PercentageDifference" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="TotalEmployees" Nullable="true" />
+    <Property Type="Int32" Name="TotalEmployeesByTitle" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getCSVGraphData_UniquePosition_Result">
+    <Property Type="Int64" Name="series" Nullable="true" />
+    <Property Type="String" Name="position" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="parent" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="positionNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="level" Nullable="true" />
+    <Property Type="String" Name="first" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="middle" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="last" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="phone" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="gender" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="race" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="age" Nullable="false" />
+    <Property Type="String" Name="positionTitle" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="programOffice" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="salary" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="eeo4Code" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="LastPerformanceRating" Nullable="true" Precision="5" Scale="3" />
+    <Property Type="String" Name="agency" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="city" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="county" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="state" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="zipCode" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="supervisorFlag" Nullable="true" />
+    <Property Type="String" Name="staffHeadCount" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberFTEPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberOPSPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberFTEVacantPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberOPSVacantPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberFTEFilledPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberOPSFilledPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="Int32" Name="spanOfControl" Nullable="true" />
+    <Property Type="String" Name="supervisorStaffRatio" Nullable="true" />
+    <Property Type="String" Name="TotalMinoritySupervisors" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="TotalWomenSupervisors" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="PercentMinoritySupervisors" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="PercentWomenSupervisors" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="TotalSupervisors" Nullable="true" MaxLength="4000" />
+    <Property Type="Int32" Name="levelsUP" Nullable="true" />
+    <Property Type="Int32" Name="levelsDown" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="6" />
+    <Property Type="Decimal" Name="yearsFRS" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="yearsAgency" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="yearsCurrentPosition" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="raceid" Nullable="false" />
+    <Property Type="Int32" Name="tysid" Nullable="false" />
+    <Property Type="Int32" Name="eeoid" Nullable="false" />
+    <Property Type="Int32" Name="srid" Nullable="false" />
+    <Property Type="Int32" Name="pspid" Nullable="false" />
+    <Property Type="Int32" Name="arid" Nullable="false" />
+    <Property Type="Int32" Name="lprid" Nullable="false" />
+    <Property Type="Decimal" Name="EEORaceIndex" Nullable="false" Precision="5" Scale="3" />
+    <Property Type="Decimal" Name="EEOGenderIndex" Nullable="false" Precision="5" Scale="3" />
+    <Property Type="String" Name="NationalOrigin" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="OPSPosition" Nullable="true" />
+    <Property Type="Int32" Name="StateCumulativeMonthsOfService" Nullable="false" />
+    <Property Type="String" Name="PositionDateOfHire" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="AgencyDateOfHire" Nullable="true" MaxLength="4000" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="filled" Nullable="true" />
+    <Property Type="Int32" Name="vacant" Nullable="true" />
+    <Property Type="Int32" Name="genderFemale" Nullable="true" />
+    <Property Type="Int32" Name="genderMale" Nullable="true" />
+    <Property Type="Int32" Name="EEOC1" Nullable="true" />
+    <Property Type="Int32" Name="EEOC2" Nullable="true" />
+    <Property Type="Int32" Name="EEOC3" Nullable="true" />
+    <Property Type="Int32" Name="EEOC4" Nullable="true" />
+    <Property Type="Int32" Name="EEOC5" Nullable="true" />
+    <Property Type="Int32" Name="EEOC6" Nullable="true" />
+    <Property Type="Int32" Name="EEOC7" Nullable="true" />
+    <Property Type="Int32" Name="EEOC8" Nullable="true" />
+    <Property Type="Int32" Name="R1" Nullable="true" />
+    <Property Type="Int32" Name="R2" Nullable="true" />
+    <Property Type="Int32" Name="R3" Nullable="true" />
+    <Property Type="Int32" Name="R4" Nullable="true" />
+    <Property Type="Int32" Name="R5" Nullable="true" />
+    <Property Type="Int32" Name="R6" Nullable="true" />
+    <Property Type="Int32" Name="R7" Nullable="true" />
+    <Property Type="Int32" Name="SR1" Nullable="true" />
+    <Property Type="Int32" Name="SR2" Nullable="true" />
+    <Property Type="Int32" Name="SR3" Nullable="true" />
+    <Property Type="Int32" Name="SR4" Nullable="true" />
+    <Property Type="Int32" Name="SR5" Nullable="true" />
+    <Property Type="Int32" Name="SR6" Nullable="true" />
+    <Property Type="Int32" Name="SR7" Nullable="true" />
+    <Property Type="Int32" Name="SR8" Nullable="true" />
+    <Property Type="Int32" Name="SR9" Nullable="true" />
+    <Property Type="Int32" Name="AR1" Nullable="true" />
+    <Property Type="Int32" Name="AR2" Nullable="true" />
+    <Property Type="Int32" Name="AR3" Nullable="true" />
+    <Property Type="Int32" Name="AR4" Nullable="true" />
+    <Property Type="Int32" Name="AR5" Nullable="true" />
+    <Property Type="Int32" Name="AR6" Nullable="true" />
+    <Property Type="Int32" Name="AR7" Nullable="true" />
+    <Property Type="Int32" Name="AR8" Nullable="true" />
+    <Property Type="Int32" Name="PYOS1" Nullable="true" />
+    <Property Type="Int32" Name="PYOS2" Nullable="true" />
+    <Property Type="Int32" Name="PYOS3" Nullable="true" />
+    <Property Type="Int32" Name="PYOS4" Nullable="true" />
+    <Property Type="Int32" Name="PYOS5" Nullable="true" />
+    <Property Type="Int32" Name="PYOS6" Nullable="true" />
+    <Property Type="Int32" Name="PYOS7" Nullable="true" />
+    <Property Type="Int32" Name="PYOS8" Nullable="true" />
+    <Property Type="Int32" Name="AYOS1" Nullable="true" />
+    <Property Type="Int32" Name="AYOS2" Nullable="true" />
+    <Property Type="Int32" Name="AYOS3" Nullable="true" />
+    <Property Type="Int32" Name="AYOS4" Nullable="true" />
+    <Property Type="Int32" Name="AYOS5" Nullable="true" />
+    <Property Type="Int32" Name="AYOS6" Nullable="true" />
+    <Property Type="Int32" Name="AYOS7" Nullable="true" />
+    <Property Type="Int32" Name="AYOS8" Nullable="true" />
+    <Property Type="Int32" Name="LPR1" Nullable="true" />
+    <Property Type="Int32" Name="LPR2" Nullable="true" />
+    <Property Type="Int32" Name="LPR3" Nullable="true" />
+    <Property Type="Int32" Name="LPR4" Nullable="true" />
+    <Property Type="Int32" Name="LPR5" Nullable="true" />
+    <Property Type="Int32" Name="LPR6" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getCSVGraphData_Result">
+    <Property Type="Int64" Name="series" Nullable="true" />
+    <Property Type="String" Name="position" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="parent" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="positionNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="level" Nullable="true" />
+    <Property Type="String" Name="first" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="middle" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="last" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="phone" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="gender" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="race" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="age" Nullable="false" />
+    <Property Type="String" Name="positionTitle" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="programOffice" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="salary" Nullable="true" MaxLength="4000" />
+    <Property Type="DateTime" Name="vacancydate" Nullable="true" />
+    <Property Type="String" Name="eeo4Code" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="LastPerformanceRating" Nullable="true" Precision="5" Scale="3" />
+    <Property Type="String" Name="agency" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="city" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="county" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="state" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="zipCode" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="supervisorFlag" Nullable="true" />
+    <Property Type="String" Name="staffHeadCount" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberFTEPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberOPSPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberFTEVacantPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberOPSVacantPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberFTEFilledPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="NumberOPSFilledPositions" Nullable="true" MaxLength="4000" />
+    <Property Type="Int32" Name="spanOfControl" Nullable="true" />
+    <Property Type="String" Name="supervisorStaffRatio" Nullable="true" />
+    <Property Type="String" Name="TotalMinoritySupervisors" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="TotalWomenSupervisors" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="PercentMinoritySupervisors" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="PercentWomenSupervisors" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="TotalSupervisors" Nullable="true" MaxLength="4000" />
+    <Property Type="Int32" Name="levelsUP" Nullable="true" />
+    <Property Type="Int32" Name="levelsDown" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="6" />
+    <Property Type="Decimal" Name="yearsFRS" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="yearsAgency" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Decimal" Name="yearsCurrentPosition" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="Int32" Name="raceid" Nullable="false" />
+    <Property Type="Int32" Name="tysid" Nullable="false" />
+    <Property Type="Int32" Name="eeoid" Nullable="false" />
+    <Property Type="Int32" Name="srid" Nullable="false" />
+    <Property Type="Int32" Name="pspid" Nullable="false" />
+    <Property Type="Int32" Name="arid" Nullable="false" />
+    <Property Type="Int32" Name="lprid" Nullable="false" />
+    <Property Type="Int32" Name="vrid" Nullable="false" />
+    <Property Type="Decimal" Name="EEORaceIndex" Nullable="false" Precision="5" Scale="3" />
+    <Property Type="Decimal" Name="EEOGenderIndex" Nullable="false" Precision="5" Scale="3" />
+    <Property Type="String" Name="NationalOrigin" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="OPSPosition" Nullable="true" />
+    <Property Type="Int32" Name="StateCumulativeMonthsOfService" Nullable="false" />
+    <Property Type="String" Name="PositionDateOfHire" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="AgencyDateOfHire" Nullable="true" MaxLength="4000" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="filled" Nullable="true" />
+    <Property Type="Int32" Name="vacant" Nullable="true" />
+    <Property Type="Int32" Name="genderFemale" Nullable="true" />
+    <Property Type="Int32" Name="genderMale" Nullable="true" />
+    <Property Type="Int32" Name="EEOC1" Nullable="true" />
+    <Property Type="Int32" Name="EEOC2" Nullable="true" />
+    <Property Type="Int32" Name="EEOC3" Nullable="true" />
+    <Property Type="Int32" Name="EEOC4" Nullable="true" />
+    <Property Type="Int32" Name="EEOC5" Nullable="true" />
+    <Property Type="Int32" Name="EEOC6" Nullable="true" />
+    <Property Type="Int32" Name="EEOC7" Nullable="true" />
+    <Property Type="Int32" Name="EEOC8" Nullable="true" />
+    <Property Type="Int32" Name="R1" Nullable="true" />
+    <Property Type="Int32" Name="R2" Nullable="true" />
+    <Property Type="Int32" Name="R3" Nullable="true" />
+    <Property Type="Int32" Name="R4" Nullable="true" />
+    <Property Type="Int32" Name="R5" Nullable="true" />
+    <Property Type="Int32" Name="R6" Nullable="true" />
+    <Property Type="Int32" Name="R7" Nullable="true" />
+    <Property Type="Int32" Name="SR1" Nullable="true" />
+    <Property Type="Int32" Name="SR2" Nullable="true" />
+    <Property Type="Int32" Name="SR3" Nullable="true" />
+    <Property Type="Int32" Name="SR4" Nullable="true" />
+    <Property Type="Int32" Name="SR5" Nullable="true" />
+    <Property Type="Int32" Name="SR6" Nullable="true" />
+    <Property Type="Int32" Name="SR7" Nullable="true" />
+    <Property Type="Int32" Name="SR8" Nullable="true" />
+    <Property Type="Int32" Name="SR9" Nullable="true" />
+    <Property Type="Int32" Name="VR1" Nullable="true" />
+    <Property Type="Int32" Name="VR2" Nullable="true" />
+    <Property Type="Int32" Name="VR3" Nullable="true" />
+    <Property Type="Int32" Name="VR4" Nullable="true" />
+    <Property Type="Int32" Name="VR5" Nullable="true" />
+    <Property Type="Int32" Name="VR6" Nullable="true" />
+    <Property Type="Int32" Name="VR7" Nullable="true" />
+    <Property Type="Int32" Name="VR8" Nullable="true" />
+    <Property Type="Int32" Name="AR1" Nullable="true" />
+    <Property Type="Int32" Name="AR2" Nullable="true" />
+    <Property Type="Int32" Name="AR3" Nullable="true" />
+    <Property Type="Int32" Name="AR4" Nullable="true" />
+    <Property Type="Int32" Name="AR5" Nullable="true" />
+    <Property Type="Int32" Name="AR6" Nullable="true" />
+    <Property Type="Int32" Name="AR7" Nullable="true" />
+    <Property Type="Int32" Name="AR8" Nullable="true" />
+    <Property Type="Int32" Name="PYOS1" Nullable="true" />
+    <Property Type="Int32" Name="PYOS2" Nullable="true" />
+    <Property Type="Int32" Name="PYOS3" Nullable="true" />
+    <Property Type="Int32" Name="PYOS4" Nullable="true" />
+    <Property Type="Int32" Name="PYOS5" Nullable="true" />
+    <Property Type="Int32" Name="PYOS6" Nullable="true" />
+    <Property Type="Int32" Name="PYOS7" Nullable="true" />
+    <Property Type="Int32" Name="PYOS8" Nullable="true" />
+    <Property Type="Int32" Name="AYOS1" Nullable="true" />
+    <Property Type="Int32" Name="AYOS2" Nullable="true" />
+    <Property Type="Int32" Name="AYOS3" Nullable="true" />
+    <Property Type="Int32" Name="AYOS4" Nullable="true" />
+    <Property Type="Int32" Name="AYOS5" Nullable="true" />
+    <Property Type="Int32" Name="AYOS6" Nullable="true" />
+    <Property Type="Int32" Name="AYOS7" Nullable="true" />
+    <Property Type="Int32" Name="AYOS8" Nullable="true" />
+    <Property Type="Int32" Name="LPR1" Nullable="true" />
+    <Property Type="Int32" Name="LPR2" Nullable="true" />
+    <Property Type="Int32" Name="LPR3" Nullable="true" />
+    <Property Type="Int32" Name="LPR4" Nullable="true" />
+    <Property Type="Int32" Name="LPR5" Nullable="true" />
+    <Property Type="Int32" Name="LPR6" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="rptEEOIndexReport_Result">
+    <Property Type="String" Name="IndexType" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="EmployeeName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TypeName" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="CurrentCount" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="Decimal" Name="ALMPercentage" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="Decimal" Name="CurrentPercent" Nullable="true" Precision="10" Scale="3" />
+    <Property Type="Decimal" Name="EEOIndexRating" Nullable="true" Precision="15" Scale="3" />
+  </ComplexType>
+  <ComplexType Name="rptStaffLevelsReport_Result">
+    <Property Type="Int32" Name="LevelNumber" Nullable="true" />
+    <Property Type="String" Name="LevelNumberDesc" Nullable="true" MaxLength="56" />
+    <Property Type="Int32" Name="RaceId" Nullable="false" />
+    <Property Type="String" Name="RaceName" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="GenderId" Nullable="false" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="EmployeeNbrCount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="rptJobTitlesByEEOCategory_Result">
+    <Property Type="Int32" Name="EEOJobCategoryNumber" Nullable="false" />
+    <Property Type="String" Name="EEOCategoryName" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="PositionTitle" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ProgramOfficeName" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="rptGetALM_ByEEOCategoryReport_Result">
+    <Property Type="String" Name="EEOCategoryNbr" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="EEOCategoryDesc" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="hMale" Nullable="true" />
+    <Property Type="Int32" Name="hFemale" Nullable="true" />
+    <Property Type="Int32" Name="mWhite" Nullable="true" />
+    <Property Type="Int32" Name="fWhite" Nullable="true" />
+    <Property Type="Int32" Name="mBlackOrAfricanAmerican" Nullable="true" />
+    <Property Type="Int32" Name="fBlackOrAfricanAmerican" Nullable="true" />
+    <Property Type="Int32" Name="mNativeHawaiianOrOtherPacificIslander" Nullable="true" />
+    <Property Type="Int32" Name="fNativeHawaiianOrOtherPacificIslander" Nullable="true" />
+    <Property Type="Int32" Name="mAsian" Nullable="true" />
+    <Property Type="Int32" Name="fAsian" Nullable="true" />
+    <Property Type="Int32" Name="mAmericanIndianORAlaskaNative" Nullable="true" />
+    <Property Type="Int32" Name="fAmericanIndianORAlaskaNative" Nullable="true" />
+    <Property Type="Int32" Name="mTwoOrMoreRaces" Nullable="true" />
+    <Property Type="Int32" Name="fTwoOrMoreRaces" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="rptGetALM_ByFederalJobCodes_Result">
+    <Property Type="String" Name="EEOJobCode" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="EEOJobDescription" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="hMale" Nullable="true" />
+    <Property Type="Int32" Name="hFemale" Nullable="true" />
+    <Property Type="Int32" Name="mWhite" Nullable="true" />
+    <Property Type="Int32" Name="fWhite" Nullable="true" />
+    <Property Type="Int32" Name="mBlackOrAfricanAmerican" Nullable="true" />
+    <Property Type="Int32" Name="fBlackOrAfricanAmerican" Nullable="true" />
+    <Property Type="Int32" Name="mNativeHawaiianOrOtherPacificIslander" Nullable="true" />
+    <Property Type="Int32" Name="fNativeHawaiianOrOtherPacificIslander" Nullable="true" />
+    <Property Type="Int32" Name="mAsian" Nullable="true" />
+    <Property Type="Int32" Name="fAsian" Nullable="true" />
+    <Property Type="Int32" Name="mAmericanIndianORAlaskaNative" Nullable="true" />
+    <Property Type="Int32" Name="fAmericanIndianORAlaskaNative" Nullable="true" />
+    <Property Type="Int32" Name="mTwoOrMoreRaces" Nullable="true" />
+    <Property Type="Int32" Name="fTwoOrMoreRaces" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="AgencyYearsOfService">
+    <Key>
+      <PropertyRef Name="AgencyYearsOfServiceId" />
+    </Key>
+    <Property Name="AgencyYearsOfServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MinValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="MaxValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="AgencyYearsOfServiceKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_AgencyYearsOfService_Organizations" FromRole="AgencyYearsOfService" ToRole="Organization" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_AgencyYearsOfService" FromRole="AgencyYearsOfService" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="AgeRange">
+    <Key>
+      <PropertyRef Name="AgeRangeId" />
+    </Key>
+    <Property Name="AgeRangeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MinValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="MaxValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="AgeRangeKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_AgeRange_Organizations" FromRole="AgeRange" ToRole="Organization" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_AgeRange" FromRole="AgeRange" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="AssignMenuHeader">
+    <Key>
+      <PropertyRef Name="AssignMenuHeader_PK" />
+    </Key>
+    <Property Name="AssignMenuHeader_PK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cre_Date" Type="DateTime" Precision="3" />
+    <Property Name="Cre_User" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Mod_Date" Type="DateTime" Precision="3" />
+    <Property Name="Mod_User" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MenuHeaderConfiguration" Relationship="dev_eeoModel.FK_AssignMenuHeader_MenuHeaderConfiguration" FromRole="AssignMenuHeader" ToRole="MenuHeaderConfiguration" />
+    <NavigationProperty Name="MenuConfiguration" Relationship="dev_eeoModel.FK_AssignMenuHeader_MenuConfiguration" FromRole="AssignMenuHeader" ToRole="MenuConfiguration" />
+  </EntityType>
+  <EntityType Name="AssignRole">
+    <Key>
+      <PropertyRef Name="AssignRoleId" />
+    </Key>
+    <Property Name="AssignRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserRole" Relationship="dev_eeoModel.FK_AssignRole_UserRoles" FromRole="AssignRole" ToRole="UserRole" />
+    <NavigationProperty Name="MenuConfiguration" Relationship="dev_eeoModel.FK_AssignRole_MenuConfiguration" FromRole="AssignRole" ToRole="MenuConfiguration" />
+  </EntityType>
+  <EntityType Name="AvailableLaborMarketData">
+    <Key>
+      <PropertyRef Name="AvailableLaborMarketDataId" />
+    </Key>
+    <Property Name="AvailableLaborMarketDataId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaleValue" Type="Int32" />
+    <Property Name="FemaleValue" Type="Int32" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AvailableLaborMarketFileVersion" Relationship="dev_eeoModel.FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion" FromRole="AvailableLaborMarketData" ToRole="AvailableLaborMarketFileVersion" />
+    <NavigationProperty Name="EEOJobCategory" Relationship="dev_eeoModel.FK_AvailableLaborMarketData_EEOJobCategories" FromRole="AvailableLaborMarketData" ToRole="EEOJobCategory" />
+    <NavigationProperty Name="Race" Relationship="dev_eeoModel.FK_AvailableLaborMarketData_Races" FromRole="AvailableLaborMarketData" ToRole="Race" />
+  </EntityType>
+  <EntityType Name="AvailableLaborMarketFileVersion">
+    <Key>
+      <PropertyRef Name="AvailableLaborMarketFileVersionId" />
+    </Key>
+    <Property Name="AvailableLaborMarketFileVersionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubmissionDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FileVersionNumber" Type="Int32" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AvailableLaborMarketDatas" Relationship="dev_eeoModel.FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion" FromRole="AvailableLaborMarketFileVersion" ToRole="AvailableLaborMarketData" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_AvailableLaborMarketFileVersion_Organizations" FromRole="AvailableLaborMarketFileVersion" ToRole="Organization" />
+    <NavigationProperty Name="FileSubmissions" Relationship="dev_eeoModel.FK_FileSubmissions_AvailableLaborMarketFileVersion" FromRole="AvailableLaborMarketFileVersion" ToRole="FileSubmission" />
+  </EntityType>
+  <EntityType Name="County">
+    <Key>
+      <PropertyRef Name="CountyId" />
+    </Key>
+    <Property Name="CountyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="State" Relationship="dev_eeoModel.FK_Counties_States" FromRole="County" ToRole="State" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_Counties" FromRole="County" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="DefaultLabelField">
+    <Key>
+      <PropertyRef Name="DefaultLabelFieldId" />
+    </Key>
+    <Property Name="DefaultLabelFieldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LabelKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayLabelData" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SectionId" Type="Int32" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="OrganizationLabelFields" Relationship="dev_eeoModel.FK_OrganizationLabelField_DefaultLabelField" FromRole="DefaultLabelField" ToRole="OrganizationLabelField" />
+  </EntityType>
+  <EntityType Name="EEOJobCategory">
+    <Key>
+      <PropertyRef Name="EEOJobCategoryId" />
+    </Key>
+    <Property Name="EEOJobCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EEOJobCategoryNumber" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EEOJobCategoryKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AvailableLaborMarketDatas" Relationship="dev_eeoModel.FK_AvailableLaborMarketData_EEOJobCategories" FromRole="EEOJobCategory" ToRole="AvailableLaborMarketData" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_EEOJobCategories_Organizations" FromRole="EEOJobCategory" ToRole="Organization" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_EEOJobCategories" FromRole="EEOJobCategory" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="EmployeeLevel">
+    <Key>
+      <PropertyRef Name="EmployeeLevelId" />
+    </Key>
+    <Property Name="EmployeeLevelId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupervisorPositionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PositionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeLevelNumber" Type="Int32" />
+    <Property Name="OrganizationId" Type="Int32" />
+    <Property Name="FileSubmissionId" Type="Int32" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="dev_eeoModel.FK_EmployeeLevel_Employees" FromRole="EmployeeLevel" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Filled" Type="Boolean" Nullable="false" />
+    <Property Name="VacancyDate" Type="DateTime" Precision="0" />
+    <Property Name="PositionNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SupervisorPositionNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SupervisorFlag" Type="Boolean" Nullable="false" />
+    <Property Name="EEORaceIndex" Type="Decimal" Precision="5" Scale="3" />
+    <Property Name="EEOGenderIndex" Type="Decimal" Precision="5" Scale="3" />
+    <Property Name="SpanOfControl" Type="Int32" />
+    <Property Name="NationalOrigin" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="PositionTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProgramOfficeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OPSPosition" Type="Boolean" />
+    <Property Name="Salary" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="LastPerformanceRatingValue" Type="Decimal" Precision="5" Scale="3" />
+    <Property Name="PositionDateOfHire" Type="DateTime" Precision="0" />
+    <Property Name="AgencyDateOfHire" Type="DateTime" Precision="0" />
+    <Property Name="StateCumulativeMonthsOfService" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="WorkAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WorkCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WorkZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="RegionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AgencyYearsOfService" Relationship="dev_eeoModel.FK_Employees_AgencyYearsOfService" FromRole="Employee" ToRole="AgencyYearsOfService" />
+    <NavigationProperty Name="AgeRange" Relationship="dev_eeoModel.FK_Employees_AgeRange" FromRole="Employee" ToRole="AgeRange" />
+    <NavigationProperty Name="County" Relationship="dev_eeoModel.FK_Employees_Counties" FromRole="Employee" ToRole="County" />
+    <NavigationProperty Name="EEOJobCategory" Relationship="dev_eeoModel.FK_Employees_EEOJobCategories" FromRole="Employee" ToRole="EEOJobCategory" />
+    <NavigationProperty Name="EmployeeLevels" Relationship="dev_eeoModel.FK_EmployeeLevel_Employees" FromRole="Employee" ToRole="EmployeeLevel" />
+    <NavigationProperty Name="FileSubmission" Relationship="dev_eeoModel.FK_Employees_FileSubmissions" FromRole="Employee" ToRole="FileSubmission" />
+    <NavigationProperty Name="Gender" Relationship="dev_eeoModel.FK_Employees_Gender" FromRole="Employee" ToRole="Gender" />
+    <NavigationProperty Name="LastPerformanceRating" Relationship="dev_eeoModel.FK_Employees_LastPerformanceRating" FromRole="Employee" ToRole="LastPerformanceRating" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_Employees_Organizations" FromRole="Employee" ToRole="Organization" />
+    <NavigationProperty Name="PositionYearsOfService" Relationship="dev_eeoModel.FK_Employees_PositionYearsOfService" FromRole="Employee" ToRole="PositionYearsOfService" />
+    <NavigationProperty Name="Race" Relationship="dev_eeoModel.FK_Employees_Races" FromRole="Employee" ToRole="Race" />
+    <NavigationProperty Name="SalaryRange" Relationship="dev_eeoModel.FK_Employees_SalaryRange" FromRole="Employee" ToRole="SalaryRange" />
+    <NavigationProperty Name="State" Relationship="dev_eeoModel.FK_Employees_States" FromRole="Employee" ToRole="State" />
+    <NavigationProperty Name="VacancyRange" Relationship="dev_eeoModel.FK_Employees_VacancyRange" FromRole="Employee" ToRole="VacancyRange" />
+  </EntityType>
+  <EntityType Name="FileSubmissionError">
+    <Key>
+      <PropertyRef Name="FileSubmissionErrorId" />
+    </Key>
+    <Property Name="FileSubmissionErrorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ErrorDescription" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="FileSubmissionRecord" Relationship="dev_eeoModel.FK_FileSubmissionErrors_FileSubmissionRecords" FromRole="FileSubmissionError" ToRole="FileSubmissionRecord" />
+  </EntityType>
+  <EntityType Name="FileSubmissionRecord">
+    <Key>
+      <PropertyRef Name="FileSubmissionRecordNumber" />
+      <PropertyRef Name="FileSubmissionId" />
+    </Key>
+    <Property Name="FileSubmissionRecordNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileSubmissionId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Filled" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="VacancyDate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PositionNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SupervisorPositionNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SupervisorFlag" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Race" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NationalOrigin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PositionTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProgramOfficeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OPSPosition" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Salary" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EEOCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PositionDateOfHire" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastPerformanceRating" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AgencyDateOfHire" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StateCumulativeMonthsOfService" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WorkAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WorkCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WorkState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WorkZipCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WorkCounty" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsValidate" Type="Boolean" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="RegionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FileSubmissionErrors" Relationship="dev_eeoModel.FK_FileSubmissionErrors_FileSubmissionRecords" FromRole="FileSubmissionRecord" ToRole="FileSubmissionError" />
+    <NavigationProperty Name="FileSubmission" Relationship="dev_eeoModel.FK_FileSubmissionRecords_FileSubmissions" FromRole="FileSubmissionRecord" ToRole="FileSubmission" />
+  </EntityType>
+  <EntityType Name="FileSubmission">
+    <Key>
+      <PropertyRef Name="FileSubmissionId" />
+    </Key>
+    <Property Name="FileSubmissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OriginalFileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NewFileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubmissionDateTime" Type="DateTime" Precision="3" />
+    <Property Name="FileVersionNumber" Type="Int32" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AvailableLaborMarketFileVersion" Relationship="dev_eeoModel.FK_FileSubmissions_AvailableLaborMarketFileVersion" FromRole="FileSubmission" ToRole="AvailableLaborMarketFileVersion" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_FileSubmissions" FromRole="FileSubmission" ToRole="Employee" />
+    <NavigationProperty Name="FileSubmissionRecords" Relationship="dev_eeoModel.FK_FileSubmissionRecords_FileSubmissions" FromRole="FileSubmission" ToRole="FileSubmissionRecord" />
+    <NavigationProperty Name="FileSubmissionStatu" Relationship="dev_eeoModel.FK_FileSubmissions_FileSubmissionStatus" FromRole="FileSubmission" ToRole="FileSubmissionStatu" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_FileSubmissions_Organizations" FromRole="FileSubmission" ToRole="Organization" />
+    <NavigationProperty Name="GenerateCSVs" Relationship="dev_eeoModel.FK_GenerateCSV_FileSubmissions" FromRole="FileSubmission" ToRole="GenerateCSV" />
+  </EntityType>
+  <EntityType Name="FileSubmissionStatu">
+    <Key>
+      <PropertyRef Name="FileSubmissionStatusId" />
+    </Key>
+    <Property Name="FileSubmissionStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="FileSubmissions" Relationship="dev_eeoModel.FK_FileSubmissions_FileSubmissionStatus" FromRole="FileSubmissionStatu" ToRole="FileSubmission" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderId" />
+    </Key>
+    <Property Name="GenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_Gender" FromRole="Gender" ToRole="Employee" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_Gender_Organizations" FromRole="Gender" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="GenerateCSV">
+    <Key>
+      <PropertyRef Name="GeneratedCsvId" />
+    </Key>
+    <Property Name="GeneratedCsvId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <NavigationProperty Name="FileSubmission" Relationship="dev_eeoModel.FK_GenerateCSV_FileSubmissions" FromRole="GenerateCSV" ToRole="FileSubmission" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_GenerateCSV_Organizations" FromRole="GenerateCSV" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="GraphOrganizationMaster">
+    <Key>
+      <PropertyRef Name="GraphOrganizationMasterId" />
+    </Key>
+    <Property Name="GraphOrganizationMasterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DefaultName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ColorKey" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderNo" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="GraphOrganizationViews" Relationship="dev_eeoModel.FK_GraphOrganizationView_GraphOrganizationMaster" FromRole="GraphOrganizationMaster" ToRole="GraphOrganizationView" />
+  </EntityType>
+  <EntityType Name="GraphOrganizationView">
+    <Key>
+      <PropertyRef Name="GraphOrganizationViewId" />
+    </Key>
+    <Property Name="GraphOrganizationViewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ColorKey" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderNo" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="GraphOrganizationMaster" Relationship="dev_eeoModel.FK_GraphOrganizationView_GraphOrganizationMaster" FromRole="GraphOrganizationView" ToRole="GraphOrganizationMaster" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_GraphOrganizationView_Organizations" FromRole="GraphOrganizationView" ToRole="Organization" />
+    <NavigationProperty Name="AssignedGraphOrganizationViews" Relationship="dev_eeoModel.FK_AssignedGraphOrganizationViews_GraphOrganizationView1" FromRole="GraphOrganizationView" ToRole="AssignedGraphOrganizationView" />
+  </EntityType>
+  <EntityType Name="LastPerformanceRating">
+    <Key>
+      <PropertyRef Name="LastPerformanceRatingId" />
+    </Key>
+    <Property Name="LastPerformanceRatingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MinValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="MaxValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="LastPerformanceRatingKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_LastPerformanceRating" FromRole="LastPerformanceRating" ToRole="Employee" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_LastPerformanceRating_Organizations" FromRole="LastPerformanceRating" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="MenuHeaderConfiguration">
+    <Key>
+      <PropertyRef Name="MenuHeaderID_PK" />
+    </Key>
+    <Property Name="MenuHeaderID_PK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsHeader" Type="Boolean" />
+    <Property Name="SortOrder" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MenuController" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MenuAction" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MenuIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Cre_Date" Type="DateTime" Precision="3" />
+    <Property Name="Cre_User" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Mod_Date" Type="DateTime" Precision="3" />
+    <Property Name="Mod_User" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AssignMenuHeaders" Relationship="dev_eeoModel.FK_AssignMenuHeader_MenuHeaderConfiguration" FromRole="MenuHeaderConfiguration" ToRole="AssignMenuHeader" />
+    <NavigationProperty Name="UserRole" Relationship="dev_eeoModel.FK_MenuHeaderConfiguration_UserRoles" FromRole="MenuHeaderConfiguration" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="OrganizationId" />
+    </Key>
+    <Property Name="OrganizationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrgCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="ParentOrganizationID" Type="Int32" />
+    <Property Name="NonVacanciesDisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VacanciesDisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AgencyYearsOfServices" Relationship="dev_eeoModel.FK_AgencyYearsOfService_Organizations" FromRole="Organization" ToRole="AgencyYearsOfService" />
+    <NavigationProperty Name="AgeRanges" Relationship="dev_eeoModel.FK_AgeRange_Organizations" FromRole="Organization" ToRole="AgeRange" />
+    <NavigationProperty Name="AvailableLaborMarketFileVersions" Relationship="dev_eeoModel.FK_AvailableLaborMarketFileVersion_Organizations" FromRole="Organization" ToRole="AvailableLaborMarketFileVersion" />
+    <NavigationProperty Name="EEOJobCategories" Relationship="dev_eeoModel.FK_EEOJobCategories_Organizations" FromRole="Organization" ToRole="EEOJobCategory" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_Organizations" FromRole="Organization" ToRole="Employee" />
+    <NavigationProperty Name="FileSubmissions" Relationship="dev_eeoModel.FK_FileSubmissions_Organizations" FromRole="Organization" ToRole="FileSubmission" />
+    <NavigationProperty Name="Genders" Relationship="dev_eeoModel.FK_Gender_Organizations" FromRole="Organization" ToRole="Gender" />
+    <NavigationProperty Name="GenerateCSVs" Relationship="dev_eeoModel.FK_GenerateCSV_Organizations" FromRole="Organization" ToRole="GenerateCSV" />
+    <NavigationProperty Name="GraphOrganizationViews" Relationship="dev_eeoModel.FK_GraphOrganizationView_Organizations" FromRole="Organization" ToRole="GraphOrganizationView" />
+    <NavigationProperty Name="LastPerformanceRatings" Relationship="dev_eeoModel.FK_LastPerformanceRating_Organizations" FromRole="Organization" ToRole="LastPerformanceRating" />
+    <NavigationProperty Name="State" Relationship="dev_eeoModel.FK_Organizations_States" FromRole="Organization" ToRole="State" />
+    <NavigationProperty Name="StatesALMDefault" Relationship="dev_eeoModel.FK_Organizations_StatesALMDefault" FromRole="Organization" ToRole="State" />
+    <NavigationProperty Name="USCensus_EEO_OccupationCodes" Relationship="dev_eeoModel.FK_Organizations_USCensus_EEO_OccupationCodes" FromRole="Organization" ToRole="USCensus_EEO_OccupationCodes" />
+    <NavigationProperty Name="PositionYearsOfServices" Relationship="dev_eeoModel.FK_PositionYearsOfService_Organizations" FromRole="Organization" ToRole="PositionYearsOfService" />
+    <NavigationProperty Name="Races" Relationship="dev_eeoModel.FK_Races_Organizations" FromRole="Organization" ToRole="Race" />
+    <NavigationProperty Name="SalaryRanges" Relationship="dev_eeoModel.FK_SalaryRange_Organizations" FromRole="Organization" ToRole="SalaryRange" />
+    <NavigationProperty Name="VacancyRanges" Relationship="dev_eeoModel.FK_VacancyRange_Organizations" FromRole="Organization" ToRole="VacancyRange" />
+    <NavigationProperty Name="UserRoles" Relationship="dev_eeoModel.FK_UserRoles_Organizations" FromRole="Organization" ToRole="UserRole" />
+    <NavigationProperty Name="AssignedGraphOrganizationViews" Relationship="dev_eeoModel.FK_AssignedGraphOrganizationViews_Organizations" FromRole="Organization" ToRole="AssignedGraphOrganizationView" />
+    <NavigationProperty Name="OrganizationLabelFields" Relationship="dev_eeoModel.FK_OrganizationLabelField_Organizations" FromRole="Organization" ToRole="OrganizationLabelField" />
+    <NavigationProperty Name="EmployeeActiveFields" Relationship="dev_eeoModel.FK_EmployeeActiveFields_Organizations" FromRole="Organization" ToRole="EmployeeActiveField" />
+    <NavigationProperty Name="PublicURLs" Relationship="dev_eeoModel.FK_PublicURL_Organizations" FromRole="Organization" ToRole="PublicURL" />
+    <Property Name="EnableTwoFactorAuthentication" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="LoginDeviceInfoes" Relationship="dev_eeoModel.FK_LoginDeviceInfo_Organizations" FromRole="Organization" ToRole="LoginDeviceInfo" />
+  </EntityType>
+  <EntityType Name="PositionYearsOfService">
+    <Key>
+      <PropertyRef Name="PositionYearsOfServiceId" />
+    </Key>
+    <Property Name="PositionYearsOfServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MinValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="MaxValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="PositionYearsOfServiceKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_PositionYearsOfService" FromRole="PositionYearsOfService" ToRole="Employee" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_PositionYearsOfService_Organizations" FromRole="PositionYearsOfService" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="Race">
+    <Key>
+      <PropertyRef Name="RaceId" />
+    </Key>
+    <Property Name="RaceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RaceNumber" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RaceKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AvailableLaborMarketDatas" Relationship="dev_eeoModel.FK_AvailableLaborMarketData_Races" FromRole="Race" ToRole="AvailableLaborMarketData" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_Races" FromRole="Race" ToRole="Employee" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_Races_Organizations" FromRole="Race" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="SalaryRange">
+    <Key>
+      <PropertyRef Name="SalaryRangeId" />
+    </Key>
+    <Property Name="SalaryRangeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MinValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="MaxValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="SalaryKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_SalaryRange" FromRole="SalaryRange" ToRole="Employee" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_SalaryRange_Organizations" FromRole="SalaryRange" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="USCensus_ResidenceCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="USCensus_WorksiteCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Counties" Relationship="dev_eeoModel.FK_Counties_States" FromRole="State" ToRole="County" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_States" FromRole="State" ToRole="Employee" />
+    <NavigationProperty Name="Organizations" Relationship="dev_eeoModel.FK_Organizations_States" FromRole="State" ToRole="Organization" />
+    <NavigationProperty Name="Organizations1" Relationship="dev_eeoModel.FK_Organizations_StatesALMDefault" FromRole="State" ToRole="Organization" />
+    <NavigationProperty Name="USCensus_PUMAResidenceCodes" Relationship="dev_eeoModel.FK_USCensus_CountyPUMACodes_States" FromRole="State" ToRole="USCensus_PUMAResidenceCodes" />
+    <NavigationProperty Name="USCensus_PUMAWorksiteCodes" Relationship="dev_eeoModel.FK_USCensus_PUMAWorksiteCodes_States" FromRole="State" ToRole="USCensus_PUMAWorksiteCodes" />
+  </EntityType>
+  <EntityType Name="USCensus_ALLData">
+    <Key>
+      <PropertyRef Name="USCensusDataID" />
+    </Key>
+    <Property Name="USCensusDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateResidenceCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PUMAResidenceCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="StateWorksiteCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PUMAWorksiteCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="RaceID" Type="Int32" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="PWGTPCount" Type="Int32" Nullable="false" />
+    <Property Name="OCCPJobCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ESRCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AGEPCode" Type="Int32" Nullable="false" />
+    <Property Name="HISPCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USCensus_DataVersion" Relationship="dev_eeoModel.FK_USCensusData_USCensus_DataVersion" FromRole="USCensus_ALLData" ToRole="USCensus_DataVersion" />
+  </EntityType>
+  <EntityType Name="USCensus_BoardingOccupationGroups">
+    <Key>
+      <PropertyRef Name="BoardingOccupationGroupID" />
+    </Key>
+    <Property Name="BoardingOccupationGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="USCensus_MinorOccupationGroups" Relationship="dev_eeoModel.FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups" FromRole="USCensus_BoardingOccupationGroups" ToRole="USCensus_MinorOccupationGroups" />
+    <NavigationProperty Name="USCensus_Occupations" Relationship="dev_eeoModel.FK_USCensus_Occupations_USCensus_BoardingOccupationGroups" FromRole="USCensus_BoardingOccupationGroups" ToRole="USCensus_Occupations" />
+  </EntityType>
+  <EntityType Name="USCensus_DataVersion">
+    <Key>
+      <PropertyRef Name="USCensusVersionID" />
+    </Key>
+    <Property Name="USCensusVersionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="Int32" />
+    <NavigationProperty Name="USCensus_ALLData" Relationship="dev_eeoModel.FK_USCensusData_USCensus_DataVersion" FromRole="USCensus_DataVersion" ToRole="USCensus_ALLData" />
+    <NavigationProperty Name="USCensus_PUMAResidenceCodes" Relationship="dev_eeoModel.FK_USCensus_CountyPUMACodes_USCensus_DataVersion" FromRole="USCensus_DataVersion" ToRole="USCensus_PUMAResidenceCodes" />
+    <NavigationProperty Name="USCensus_EmployeeStatusRecode" Relationship="dev_eeoModel.FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion" FromRole="USCensus_DataVersion" ToRole="USCensus_EmployeeStatusRecode" />
+    <NavigationProperty Name="USCensus_GeographyTypes" Relationship="dev_eeoModel.FK_USCensus_GeographyTypes_USCensus_DataVersion" FromRole="USCensus_DataVersion" ToRole="USCensus_GeographyTypes" />
+    <NavigationProperty Name="USCensus_MajorOccupationGroups" Relationship="dev_eeoModel.FK_USCensus_MajorOccupationGroups_USCensus_DataVersion" FromRole="USCensus_DataVersion" ToRole="USCensus_MajorOccupationGroups" />
+    <NavigationProperty Name="USCensus_PUMAWorksiteCodes" Relationship="dev_eeoModel.FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion" FromRole="USCensus_DataVersion" ToRole="USCensus_PUMAWorksiteCodes" />
+    <NavigationProperty Name="USCensus_EEO_OccupationCodes" Relationship="dev_eeoModel.FK_USCensusEEO_OccupationCodes_USCensus_DataVersion" FromRole="USCensus_DataVersion" ToRole="USCensus_EEO_OccupationCodes" />
+  </EntityType>
+  <EntityType Name="USCensus_EEO_OccupationCodes">
+    <Key>
+      <PropertyRef Name="EEOOccupationCodeID" />
+    </Key>
+    <Property Name="EEOOccupationCodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Organizations" Relationship="dev_eeoModel.FK_Organizations_USCensus_EEO_OccupationCodes" FromRole="USCensus_EEO_OccupationCodes" ToRole="Organization" />
+    <NavigationProperty Name="USCensus_DataVersion" Relationship="dev_eeoModel.FK_USCensusEEO_OccupationCodes_USCensus_DataVersion" FromRole="USCensus_EEO_OccupationCodes" ToRole="USCensus_DataVersion" />
+    <NavigationProperty Name="USCensus_EEOJobClasificationCategories" Relationship="dev_eeoModel.FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes" FromRole="USCensus_EEO_OccupationCodes" ToRole="USCensus_EEOJobClasificationCategories" />
+  </EntityType>
+  <EntityType Name="USCensus_EEOJobClasificationCategories">
+    <Key>
+      <PropertyRef Name="EEOJobClasificationCategoryID" />
+    </Key>
+    <Property Name="EEOJobClasificationCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="USCensus_EEO_OccupationCodes" Relationship="dev_eeoModel.FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes" FromRole="USCensus_EEOJobClasificationCategories" ToRole="USCensus_EEO_OccupationCodes" />
+    <NavigationProperty Name="USCensus_Occupations_EEOJobClasificationCategories" Relationship="dev_eeoModel.FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_EEOJobClasificationCategories" FromRole="USCensus_EEOJobClasificationCategories" ToRole="USCensus_Occupations_EEOJobClasificationCategories" />
+  </EntityType>
+  <EntityType Name="USCensus_EmployeeStatusRecode">
+    <Key>
+      <PropertyRef Name="EmploymentStatusRecodeId" />
+    </Key>
+    <Property Name="EmploymentStatusRecodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="USCensus_DataVersion" Relationship="dev_eeoModel.FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion" FromRole="USCensus_EmployeeStatusRecode" ToRole="USCensus_DataVersion" />
+    <NavigationProperty Name="USCensus_GeographyTypes" Relationship="dev_eeoModel.USCensus_GeographyType_EmployeeStatusRecodes" FromRole="USCensus_EmployeeStatusRecode" ToRole="USCensus_GeographyTypes" />
+  </EntityType>
+  <EntityType Name="USCensus_GeographyTypes">
+    <Key>
+      <PropertyRef Name="GeographyTypeId" />
+    </Key>
+    <Property Name="GeographyTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="USCensus_DataVersion" Relationship="dev_eeoModel.FK_USCensus_GeographyTypes_USCensus_DataVersion" FromRole="USCensus_GeographyTypes" ToRole="USCensus_DataVersion" />
+    <NavigationProperty Name="USCensus_EmployeeStatusRecode" Relationship="dev_eeoModel.USCensus_GeographyType_EmployeeStatusRecodes" FromRole="USCensus_GeographyTypes" ToRole="USCensus_EmployeeStatusRecode" />
+  </EntityType>
+  <EntityType Name="USCensus_MajorOccupationGroups">
+    <Key>
+      <PropertyRef Name="MajorOccupationGroupID" />
+    </Key>
+    <Property Name="MajorOccupationGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="USCensus_DataVersion" Relationship="dev_eeoModel.FK_USCensus_MajorOccupationGroups_USCensus_DataVersion" FromRole="USCensus_MajorOccupationGroups" ToRole="USCensus_DataVersion" />
+    <NavigationProperty Name="USCensus_MinorOccupationGroups" Relationship="dev_eeoModel.FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups" FromRole="USCensus_MajorOccupationGroups" ToRole="USCensus_MinorOccupationGroups" />
+  </EntityType>
+  <EntityType Name="USCensus_MinorOccupationGroups">
+    <Key>
+      <PropertyRef Name="MinorOccupationGroupID" />
+    </Key>
+    <Property Name="MinorOccupationGroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="USCensus_BoardingOccupationGroups" Relationship="dev_eeoModel.FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups" FromRole="USCensus_MinorOccupationGroups" ToRole="USCensus_BoardingOccupationGroups" />
+    <NavigationProperty Name="USCensus_MajorOccupationGroups" Relationship="dev_eeoModel.FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups" FromRole="USCensus_MinorOccupationGroups" ToRole="USCensus_MajorOccupationGroups" />
+  </EntityType>
+  <EntityType Name="USCensus_Occupations">
+    <Key>
+      <PropertyRef Name="OccupationID" />
+    </Key>
+    <Property Name="OccupationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="USCensus_BoardingOccupationGroups" Relationship="dev_eeoModel.FK_USCensus_Occupations_USCensus_BoardingOccupationGroups" FromRole="USCensus_Occupations" ToRole="USCensus_BoardingOccupationGroups" />
+    <NavigationProperty Name="USCensus_Occupations_EEOJobClasificationCategories" Relationship="dev_eeoModel.FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_Occupations" FromRole="USCensus_Occupations" ToRole="USCensus_Occupations_EEOJobClasificationCategories" />
+  </EntityType>
+  <EntityType Name="USCensus_Occupations_EEOJobClasificationCategories">
+    <Key>
+      <PropertyRef Name="OccupationID" />
+      <PropertyRef Name="EEOJobClasificationCategoryID" />
+    </Key>
+    <Property Name="OccupationID" Type="Int32" Nullable="false" />
+    <Property Name="EEOJobClasificationCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="USCensus_EEOJobClasificationCategories" Relationship="dev_eeoModel.FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_EEOJobClasificationCategories" FromRole="USCensus_Occupations_EEOJobClasificationCategories" ToRole="USCensus_EEOJobClasificationCategories" />
+    <NavigationProperty Name="USCensus_Occupations" Relationship="dev_eeoModel.FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_Occupations" FromRole="USCensus_Occupations_EEOJobClasificationCategories" ToRole="USCensus_Occupations" />
+  </EntityType>
+  <EntityType Name="USCensus_PUMAResidenceCodes">
+    <Key>
+      <PropertyRef Name="USCensus_PUMAResidenceCodeID" />
+    </Key>
+    <Property Name="USCensus_PUMAResidenceCodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PUMACode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PUMADescription" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="State" Relationship="dev_eeoModel.FK_USCensus_CountyPUMACodes_States" FromRole="USCensus_PUMAResidenceCodes" ToRole="State" />
+    <NavigationProperty Name="USCensus_DataVersion" Relationship="dev_eeoModel.FK_USCensus_CountyPUMACodes_USCensus_DataVersion" FromRole="USCensus_PUMAResidenceCodes" ToRole="USCensus_DataVersion" />
+  </EntityType>
+  <EntityType Name="USCensus_PUMAWorksiteCodes">
+    <Key>
+      <PropertyRef Name="USCensus_PUMAWorksiteCodeID" />
+    </Key>
+    <Property Name="USCensus_PUMAWorksiteCodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PUMACode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PUMADescription" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="State" Relationship="dev_eeoModel.FK_USCensus_PUMAWorksiteCodes_States" FromRole="USCensus_PUMAWorksiteCodes" ToRole="State" />
+    <NavigationProperty Name="USCensus_DataVersion" Relationship="dev_eeoModel.FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion" FromRole="USCensus_PUMAWorksiteCodes" ToRole="USCensus_DataVersion" />
+  </EntityType>
+  <EntityType Name="VacancyRange">
+    <Key>
+      <PropertyRef Name="VacancyRangeId" />
+    </Key>
+    <Property Name="VacancyRangeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MinValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="MaxValue" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="VacancyRangeKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Employees" Relationship="dev_eeoModel.FK_Employees_VacancyRange" FromRole="VacancyRange" ToRole="Employee" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_VacancyRange_Organizations" FromRole="VacancyRange" ToRole="Organization" />
+  </EntityType>
+  <Association Name="FK_AgencyYearsOfService_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.AgencyYearsOfService" Role="AgencyYearsOfService" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_AgencyYearsOfService">
+    <End Type="dev_eeoModel.AgencyYearsOfService" Role="AgencyYearsOfService" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_AgeRange_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.AgeRange" Role="AgeRange" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_AgeRange">
+    <End Type="dev_eeoModel.AgeRange" Role="AgeRange" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_AssignMenuHeader_MenuHeaderConfiguration">
+    <End Type="dev_eeoModel.MenuHeaderConfiguration" Role="MenuHeaderConfiguration" Multiplicity="1" />
+    <End Type="dev_eeoModel.AssignMenuHeader" Role="AssignMenuHeader" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion">
+    <End Type="dev_eeoModel.AvailableLaborMarketFileVersion" Role="AvailableLaborMarketFileVersion" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.AvailableLaborMarketData" Role="AvailableLaborMarketData" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_AvailableLaborMarketData_EEOJobCategories">
+    <End Type="dev_eeoModel.EEOJobCategory" Role="EEOJobCategory" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.AvailableLaborMarketData" Role="AvailableLaborMarketData" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_AvailableLaborMarketData_Races">
+    <End Type="dev_eeoModel.Race" Role="Race" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.AvailableLaborMarketData" Role="AvailableLaborMarketData" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_AvailableLaborMarketFileVersion_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.AvailableLaborMarketFileVersion" Role="AvailableLaborMarketFileVersion" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_FileSubmissions_AvailableLaborMarketFileVersion">
+    <End Type="dev_eeoModel.AvailableLaborMarketFileVersion" Role="AvailableLaborMarketFileVersion" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.FileSubmission" Role="FileSubmission" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Counties_States">
+    <End Type="dev_eeoModel.State" Role="State" Multiplicity="1" />
+    <End Type="dev_eeoModel.County" Role="County" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_Counties">
+    <End Type="dev_eeoModel.County" Role="County" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_EEOJobCategories_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.EEOJobCategory" Role="EEOJobCategory" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_EEOJobCategories">
+    <End Type="dev_eeoModel.EEOJobCategory" Role="EEOJobCategory" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_EmployeeLevel_Employees">
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.EmployeeLevel" Role="EmployeeLevel" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_FileSubmissions">
+    <End Type="dev_eeoModel.FileSubmission" Role="FileSubmission" Multiplicity="1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_Gender">
+    <End Type="dev_eeoModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_LastPerformanceRating">
+    <End Type="dev_eeoModel.LastPerformanceRating" Role="LastPerformanceRating" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_PositionYearsOfService">
+    <End Type="dev_eeoModel.PositionYearsOfService" Role="PositionYearsOfService" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_Races">
+    <End Type="dev_eeoModel.Race" Role="Race" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_SalaryRange">
+    <End Type="dev_eeoModel.SalaryRange" Role="SalaryRange" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_States">
+    <End Type="dev_eeoModel.State" Role="State" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Employees_VacancyRange">
+    <End Type="dev_eeoModel.VacancyRange" Role="VacancyRange" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Employee" Role="Employee" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_FileSubmissionErrors_FileSubmissionRecords">
+    <End Type="dev_eeoModel.FileSubmissionRecord" Role="FileSubmissionRecord" Multiplicity="1" />
+    <End Type="dev_eeoModel.FileSubmissionError" Role="FileSubmissionError" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_FileSubmissionRecords_FileSubmissions">
+    <End Type="dev_eeoModel.FileSubmission" Role="FileSubmission" Multiplicity="1" />
+    <End Type="dev_eeoModel.FileSubmissionRecord" Role="FileSubmissionRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileSubmission">
+        <PropertyRef Name="FileSubmissionId" />
+      </Principal>
+      <Dependent Role="FileSubmissionRecord">
+        <PropertyRef Name="FileSubmissionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileSubmissions_FileSubmissionStatus">
+    <End Type="dev_eeoModel.FileSubmissionStatu" Role="FileSubmissionStatu" Multiplicity="1" />
+    <End Type="dev_eeoModel.FileSubmission" Role="FileSubmission" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_FileSubmissions_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.FileSubmission" Role="FileSubmission" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_GenerateCSV_FileSubmissions">
+    <End Type="dev_eeoModel.FileSubmission" Role="FileSubmission" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.GenerateCSV" Role="GenerateCSV" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Gender_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.Gender" Role="Gender" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_GenerateCSV_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.GenerateCSV" Role="GenerateCSV" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_GraphOrganizationView_GraphOrganizationMaster">
+    <End Type="dev_eeoModel.GraphOrganizationMaster" Role="GraphOrganizationMaster" Multiplicity="1" />
+    <End Type="dev_eeoModel.GraphOrganizationView" Role="GraphOrganizationView" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_GraphOrganizationView_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.GraphOrganizationView" Role="GraphOrganizationView" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_LastPerformanceRating_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.LastPerformanceRating" Role="LastPerformanceRating" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Organizations_States">
+    <End Type="dev_eeoModel.State" Role="State" Multiplicity="1" />
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Organizations_StatesALMDefault">
+    <End Type="dev_eeoModel.State" Role="State" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Organizations_USCensus_EEO_OccupationCodes">
+    <End Type="dev_eeoModel.USCensus_EEO_OccupationCodes" Role="USCensus_EEO_OccupationCodes" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_PositionYearsOfService_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.PositionYearsOfService" Role="PositionYearsOfService" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Races_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.Race" Role="Race" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_SalaryRange_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.SalaryRange" Role="SalaryRange" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_VacancyRange_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.VacancyRange" Role="VacancyRange" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_CountyPUMACodes_States">
+    <End Type="dev_eeoModel.State" Role="State" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_PUMAResidenceCodes" Role="USCensus_PUMAResidenceCodes" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_PUMAWorksiteCodes_States">
+    <End Type="dev_eeoModel.State" Role="State" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_PUMAWorksiteCodes" Role="USCensus_PUMAWorksiteCodes" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensusData_USCensus_DataVersion">
+    <End Type="dev_eeoModel.USCensus_DataVersion" Role="USCensus_DataVersion" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_ALLData" Role="USCensus_ALLData" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups">
+    <End Type="dev_eeoModel.USCensus_MinorOccupationGroups" Role="USCensus_MinorOccupationGroups" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_BoardingOccupationGroups" Role="USCensus_BoardingOccupationGroups" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_Occupations_USCensus_BoardingOccupationGroups">
+    <End Type="dev_eeoModel.USCensus_BoardingOccupationGroups" Role="USCensus_BoardingOccupationGroups" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_Occupations" Role="USCensus_Occupations" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_CountyPUMACodes_USCensus_DataVersion">
+    <End Type="dev_eeoModel.USCensus_DataVersion" Role="USCensus_DataVersion" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_PUMAResidenceCodes" Role="USCensus_PUMAResidenceCodes" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion">
+    <End Type="dev_eeoModel.USCensus_DataVersion" Role="USCensus_DataVersion" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_EmployeeStatusRecode" Role="USCensus_EmployeeStatusRecode" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_GeographyTypes_USCensus_DataVersion">
+    <End Type="dev_eeoModel.USCensus_DataVersion" Role="USCensus_DataVersion" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_GeographyTypes" Role="USCensus_GeographyTypes" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_MajorOccupationGroups_USCensus_DataVersion">
+    <End Type="dev_eeoModel.USCensus_DataVersion" Role="USCensus_DataVersion" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_MajorOccupationGroups" Role="USCensus_MajorOccupationGroups" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion">
+    <End Type="dev_eeoModel.USCensus_DataVersion" Role="USCensus_DataVersion" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_PUMAWorksiteCodes" Role="USCensus_PUMAWorksiteCodes" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensusEEO_OccupationCodes_USCensus_DataVersion">
+    <End Type="dev_eeoModel.USCensus_DataVersion" Role="USCensus_DataVersion" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.USCensus_EEO_OccupationCodes" Role="USCensus_EEO_OccupationCodes" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes">
+    <End Type="dev_eeoModel.USCensus_EEO_OccupationCodes" Role="USCensus_EEO_OccupationCodes" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_EEOJobClasificationCategories" Role="USCensus_EEOJobClasificationCategories" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_EEOJobClasificationCategories">
+    <End Type="dev_eeoModel.USCensus_EEOJobClasificationCategories" Role="USCensus_EEOJobClasificationCategories" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_Occupations_EEOJobClasificationCategories" Role="USCensus_Occupations_EEOJobClasificationCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_EEOJobClasificationCategories">
+        <PropertyRef Name="EEOJobClasificationCategoryID" />
+      </Principal>
+      <Dependent Role="USCensus_Occupations_EEOJobClasificationCategories">
+        <PropertyRef Name="EEOJobClasificationCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups">
+    <End Type="dev_eeoModel.USCensus_MajorOccupationGroups" Role="USCensus_MajorOccupationGroups" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_MinorOccupationGroups" Role="USCensus_MinorOccupationGroups" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_Occupations">
+    <End Type="dev_eeoModel.USCensus_Occupations" Role="USCensus_Occupations" Multiplicity="1" />
+    <End Type="dev_eeoModel.USCensus_Occupations_EEOJobClasificationCategories" Role="USCensus_Occupations_EEOJobClasificationCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_Occupations">
+        <PropertyRef Name="OccupationID" />
+      </Principal>
+      <Dependent Role="USCensus_Occupations_EEOJobClasificationCategories">
+        <PropertyRef Name="OccupationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USCensus_GeographyType_EmployeeStatusRecodes">
+    <End Type="dev_eeoModel.USCensus_EmployeeStatusRecode" Role="USCensus_EmployeeStatusRecode" Multiplicity="*" />
+    <End Type="dev_eeoModel.USCensus_GeographyTypes" Role="USCensus_GeographyTypes" Multiplicity="*" />
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SecurityToken" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastLoginDateTime" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserRole" Relationship="dev_eeoModel.FK_Users_UserRoles" FromRole="User" ToRole="UserRole" />
+    <NavigationProperty Name="EmailAuthenticateLogs" Relationship="dev_eeoModel.FK_EmailAuthenticateLog_Users" FromRole="User" ToRole="EmailAuthenticateLog" />
+    <NavigationProperty Name="LoginDeviceInfoes" Relationship="dev_eeoModel.FK_LoginDeviceInfo_Users" FromRole="User" ToRole="LoginDeviceInfo" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="IsFilter" Type="Boolean" Nullable="false" />
+    <Property Name="IsAdd" Type="Boolean" Nullable="false" />
+    <Property Name="IsEdit" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AssignRoles" Relationship="dev_eeoModel.FK_AssignRole_UserRoles" FromRole="UserRole" ToRole="AssignRole" />
+    <NavigationProperty Name="MenuHeaderConfigurations" Relationship="dev_eeoModel.FK_MenuHeaderConfiguration_UserRoles" FromRole="UserRole" ToRole="MenuHeaderConfiguration" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_UserRoles_Organizations" FromRole="UserRole" ToRole="Organization" />
+    <NavigationProperty Name="Users" Relationship="dev_eeoModel.FK_Users_UserRoles" FromRole="UserRole" ToRole="User" />
+    <NavigationProperty Name="AssignedGraphOrganizationViews" Relationship="dev_eeoModel.FK_AssignedGraphOrganizationViews_UserRoles" FromRole="UserRole" ToRole="AssignedGraphOrganizationView" />
+    <NavigationProperty Name="OrganizationLabelFields" Relationship="dev_eeoModel.FK_OrganizationLabelField_UserRoles" FromRole="UserRole" ToRole="OrganizationLabelField" />
+    <NavigationProperty Name="EmployeeActiveFields" Relationship="dev_eeoModel.FK_EmployeeActiveFields_UserRoles" FromRole="UserRole" ToRole="EmployeeActiveField" />
+  </EntityType>
+  <Association Name="FK_AssignRole_UserRoles">
+    <End Type="dev_eeoModel.UserRole" Role="UserRole" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.AssignRole" Role="AssignRole" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_MenuHeaderConfiguration_UserRoles">
+    <End Type="dev_eeoModel.UserRole" Role="UserRole" Multiplicity="1" />
+    <End Type="dev_eeoModel.MenuHeaderConfiguration" Role="MenuHeaderConfiguration" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_UserRoles_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.UserRole" Role="UserRole" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Users_UserRoles">
+    <End Type="dev_eeoModel.UserRole" Role="UserRole" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.User" Role="User" Multiplicity="*" />
+  </Association>
+  <EntityType Name="MenuConfiguration">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MenuController" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MenuAction" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MenuIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsAdminOnly" Type="Boolean" Nullable="false" />
+    <Property Name="SortOrder" Type="Int32" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AssignMenuHeaders" Relationship="dev_eeoModel.FK_AssignMenuHeader_MenuConfiguration" FromRole="MenuConfiguration" ToRole="AssignMenuHeader" />
+    <NavigationProperty Name="AssignRoles" Relationship="dev_eeoModel.FK_AssignRole_MenuConfiguration" FromRole="MenuConfiguration" ToRole="AssignRole" />
+  </EntityType>
+  <Association Name="FK_AssignMenuHeader_MenuConfiguration">
+    <End Type="dev_eeoModel.MenuConfiguration" Role="MenuConfiguration" Multiplicity="1" />
+    <End Type="dev_eeoModel.AssignMenuHeader" Role="AssignMenuHeader" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_AssignRole_MenuConfiguration">
+    <End Type="dev_eeoModel.MenuConfiguration" Role="MenuConfiguration" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.AssignRole" Role="AssignRole" Multiplicity="*" />
+  </Association>
+  <EntityType Name="AssignedGraphOrganizationView">
+    <Key>
+      <PropertyRef Name="AssignedGraphOrganizationViewId" />
+    </Key>
+    <Property Name="AssignedGraphOrganizationViewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="GraphOrganizationView" Relationship="dev_eeoModel.FK_AssignedGraphOrganizationViews_GraphOrganizationView1" FromRole="AssignedGraphOrganizationView" ToRole="GraphOrganizationView" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_AssignedGraphOrganizationViews_Organizations" FromRole="AssignedGraphOrganizationView" ToRole="Organization" />
+    <NavigationProperty Name="UserRole" Relationship="dev_eeoModel.FK_AssignedGraphOrganizationViews_UserRoles" FromRole="AssignedGraphOrganizationView" ToRole="UserRole" />
+  </EntityType>
+  <Association Name="FK_AssignedGraphOrganizationViews_GraphOrganizationView1">
+    <End Type="dev_eeoModel.GraphOrganizationView" Role="GraphOrganizationView" Multiplicity="1" />
+    <End Type="dev_eeoModel.AssignedGraphOrganizationView" Role="AssignedGraphOrganizationView" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_AssignedGraphOrganizationViews_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.AssignedGraphOrganizationView" Role="AssignedGraphOrganizationView" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_AssignedGraphOrganizationViews_UserRoles">
+    <End Type="dev_eeoModel.UserRole" Role="UserRole" Multiplicity="1" />
+    <End Type="dev_eeoModel.AssignedGraphOrganizationView" Role="AssignedGraphOrganizationView" Multiplicity="*" />
+  </Association>
+  <EntityType Name="OrganizationLabelField">
+    <Key>
+      <PropertyRef Name="OrganizationLabelFieldId" />
+    </Key>
+    <Property Name="OrganizationLabelFieldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayLabelData" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SectionId" Type="Int32" />
+    <Property Name="PageId" Type="Int32" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DefaultLabelField" Relationship="dev_eeoModel.FK_OrganizationLabelField_DefaultLabelField" FromRole="OrganizationLabelField" ToRole="DefaultLabelField" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_OrganizationLabelField_Organizations" FromRole="OrganizationLabelField" ToRole="Organization" />
+    <NavigationProperty Name="UserRole" Relationship="dev_eeoModel.FK_OrganizationLabelField_UserRoles" FromRole="OrganizationLabelField" ToRole="UserRole" />
+  </EntityType>
+  <Association Name="FK_OrganizationLabelField_DefaultLabelField">
+    <End Type="dev_eeoModel.DefaultLabelField" Role="DefaultLabelField" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.OrganizationLabelField" Role="OrganizationLabelField" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_OrganizationLabelField_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.OrganizationLabelField" Role="OrganizationLabelField" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_OrganizationLabelField_UserRoles">
+    <End Type="dev_eeoModel.UserRole" Role="UserRole" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.OrganizationLabelField" Role="OrganizationLabelField" Multiplicity="*" />
+  </Association>
+  <EntityType Name="DefaultEmployeeField">
+    <Key>
+      <PropertyRef Name="DefaultEmployeeFieldId" />
+    </Key>
+    <Property Name="DefaultEmployeeFieldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ColumnCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ColumnName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Sorting" Type="Int32" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EmployeeActiveFields" Relationship="dev_eeoModel.FK_EmployeeActiveFields_DefaultEmployeeFields" FromRole="DefaultEmployeeField" ToRole="EmployeeActiveField" />
+  </EntityType>
+  <EntityType Name="EmployeeActiveField">
+    <Key>
+      <PropertyRef Name="EmployeeActiveFieldId" />
+    </Key>
+    <Property Name="EmployeeActiveFieldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayLabelData" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Sorting" Type="Int32" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DefaultEmployeeField" Relationship="dev_eeoModel.FK_EmployeeActiveFields_DefaultEmployeeFields" FromRole="EmployeeActiveField" ToRole="DefaultEmployeeField" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_EmployeeActiveFields_Organizations" FromRole="EmployeeActiveField" ToRole="Organization" />
+    <NavigationProperty Name="UserRole" Relationship="dev_eeoModel.FK_EmployeeActiveFields_UserRoles" FromRole="EmployeeActiveField" ToRole="UserRole" />
+  </EntityType>
+  <Association Name="FK_EmployeeActiveFields_DefaultEmployeeFields">
+    <End Type="dev_eeoModel.DefaultEmployeeField" Role="DefaultEmployeeField" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.EmployeeActiveField" Role="EmployeeActiveField" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_EmployeeActiveFields_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.EmployeeActiveField" Role="EmployeeActiveField" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_EmployeeActiveFields_UserRoles">
+    <End Type="dev_eeoModel.UserRole" Role="UserRole" Multiplicity="0..1" />
+    <End Type="dev_eeoModel.EmployeeActiveField" Role="EmployeeActiveField" Multiplicity="*" />
+  </Association>
+  <EntityType Name="PublicURL">
+    <Key>
+      <PropertyRef Name="PublicURLId" />
+    </Key>
+    <Property Name="PublicURLId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="CreateUserId" Type="Int32" />
+    <Property Name="CreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_PublicURL_Organizations" FromRole="PublicURL" ToRole="Organization" />
+  </EntityType>
+  <Association Name="FK_PublicURL_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.PublicURL" Role="PublicURL" Multiplicity="*" />
+  </Association>
+  <EntityType Name="EmailAuthenticateLog">
+    <Key>
+      <PropertyRef Name="EmailLogId" />
+    </Key>
+    <Property Name="EmailLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthenticateCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="EmailSentTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="dev_eeoModel.FK_EmailAuthenticateLog_Users" FromRole="EmailAuthenticateLog" ToRole="User" />
+    <NavigationProperty Name="LoginDeviceInfo" Relationship="dev_eeoModel.FK_EmailAuthenticateLog_LoginDeviceInfo" FromRole="EmailAuthenticateLog" ToRole="LoginDeviceInfo" />
+  </EntityType>
+  <Association Name="FK_EmailAuthenticateLog_Users">
+    <End Type="dev_eeoModel.User" Role="User" Multiplicity="1" />
+    <End Type="dev_eeoModel.EmailAuthenticateLog" Role="EmailAuthenticateLog" Multiplicity="*" />
+  </Association>
+  <EntityType Name="LoginDeviceInfo">
+    <Key>
+      <PropertyRef Name="LoginDeviceInfoId" />
+    </Key>
+    <Property Name="LoginDeviceInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeviceAccessInfo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IpAddress" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MacAdresss" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="RandomKey" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LoginDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+    <Property Name="NoOfTimeLogin" Type="Int32" Nullable="false" />
+    <Property Name="IsMobile" Type="Boolean" Nullable="false" />
+    <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+    <Property Name="CreateUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUserId" Type="Int32" />
+    <Property Name="UpdateDateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EmailAuthenticateLogs" Relationship="dev_eeoModel.FK_EmailAuthenticateLog_LoginDeviceInfo" FromRole="LoginDeviceInfo" ToRole="EmailAuthenticateLog" />
+    <NavigationProperty Name="Organization" Relationship="dev_eeoModel.FK_LoginDeviceInfo_Organizations" FromRole="LoginDeviceInfo" ToRole="Organization" />
+    <NavigationProperty Name="User" Relationship="dev_eeoModel.FK_LoginDeviceInfo_Users" FromRole="LoginDeviceInfo" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_EmailAuthenticateLog_LoginDeviceInfo">
+    <End Type="dev_eeoModel.LoginDeviceInfo" Role="LoginDeviceInfo" Multiplicity="1" />
+    <End Type="dev_eeoModel.EmailAuthenticateLog" Role="EmailAuthenticateLog" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_LoginDeviceInfo_Organizations">
+    <End Type="dev_eeoModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="dev_eeoModel.LoginDeviceInfo" Role="LoginDeviceInfo" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_LoginDeviceInfo_Users">
+    <End Type="dev_eeoModel.User" Role="User" Multiplicity="1" />
+    <End Type="dev_eeoModel.LoginDeviceInfo" Role="LoginDeviceInfo" Multiplicity="*" />
+  </Association>
+</Schema>

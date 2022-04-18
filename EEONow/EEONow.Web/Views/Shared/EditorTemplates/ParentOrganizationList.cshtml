@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "ParentOrganizationList";
+}
+
+@using System.Collections
+@model System.Int32
+    @(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewBag.ParentOrganizationList)
+//.OptionLabel("- Select Organization - ")
+.DataValueField("Value")
+.DataTextField("Text")
+.SelectedIndex(0)
+.Name("ParentOrganizationId")
+.HtmlAttributes(new { required = "required" })
+    ) 

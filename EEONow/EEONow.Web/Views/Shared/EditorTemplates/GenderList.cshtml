@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "GenderList";
+}
+
+@using System.Collections
+@model System.Int32
+@(Html.Kendo().DropDownList()
+.BindTo((IEnumerable)ViewBag.GenderList)
+.OptionLabel("- Select Gender - ")
+.DataValueField("Value")
+.DataTextField("Text")
+.Name("GenderId")
+) 

@@ -1,0 +1,91 @@
+﻿body {
+    padding-top: 0px;
+}
+
+#btnPrint {
+    background-color: #205867;
+    color: white;
+    border-color: #205867;
+}
+
+#btnVideo {
+    background-color: #0F243E;
+    color: white;
+    border-color: #0F243E;
+}
+
+#divFilter > div {
+    padding-top: 20px;
+}
+
+    #divFilter > div > input[type=text] {
+        width: 100%;
+        border: 2px solid #769DCB;
+        padding: 0px 5px 0px 10px;
+    }
+
+.lnk-logo, .lnk-logo:hover, .lnk-logo:focus {
+    color: red;
+    text-decoration: none;
+}
+
+#divButtons > span {
+    font-size: 18px;
+    padding-left: 10px;
+    padding-top: 10px;
+    float: left;
+}
+
+#divButtons > div {
+    padding-top: 10px;
+}
+
+#divLogo {
+    padding-bottom: 36px;
+    padding-top: 30px;
+    border-right: 3px solid #769DCB;
+}
+
+    #divLogo > h3 {
+        color: red;
+    }
+
+#txtExaminer {
+    border: 2px solid #769DCB;
+    padding: 0px 5px 0px 10px;
+}
+
+#divComunity {
+    background-color: #813E05;
+    color: white;
+}
+
+    #divComunity > div {
+        font-size: 15px;
+        padding: 5px 0px 5px 0px;
+        text-align: center;
+    }
+
+        #divComunity > div > a {
+            color: yellow;
+        }
+
+#divTxtFilters {
+    font-size: 18px;
+    text-align: center;
+}
+
+#divExTop {
+    border: 1px solid grey;
+    /*margin: 0px -15px 0px -15px;*/
+    padding: 0px 15px 0px 15px;
+    border-radius: 5px;
+}
+
+@media (max-width: 980px) {
+    #divLogo {
+        border-right: none !important;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+}

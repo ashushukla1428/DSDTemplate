@@ -1,0 +1,130 @@
+﻿@model EEONow.Models.ViewIndexReportModel
+@{
+    ViewBag.Title = "View Index Report";
+    Layout = "~/Views/Shared/_PartialViewLayout.cshtml";
+}
+
+<style>
+    .view-index {
+        border: 2px solid #ccc;
+        padding: 6px;
+    }
+
+        .view-index table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .view-index td, .view-index th {
+            text-align: left;
+            padding: 6px;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .view-index tr:nth-child(2n),
+        .view-index .b_color {
+            background-color: #dddddd;
+        }
+
+        .view-index tr.wt_color,
+        .view-index th.wt_color {
+            background: #fff;
+        }
+
+        .view-index tr td:first-child,
+        .view-index tr th:first-child {
+            width: 35%;
+        }
+    
+    .Header tr th:first-child {
+        width: 20%;
+    }
+
+
+    .view-index tr td:nth-child(2),
+    .view-index tr th:nth-child(2) {
+        text-align: right;
+        width: auto;
+    }
+
+    .view-index tr td:nth-child(3),
+    .view-index tr th:nth-child(3) {
+        text-align: center;
+        width: auto;
+    }
+
+    .view-index tr td.text-left,
+    .view-index tr th.text-left {
+        text-align: left;
+    }
+</style>
+
+
+<div class="view-index">
+
+    <table class="Header">
+        <tr>
+            <th>Supervisor Name:</th>
+            <th class="b_color text-left" colspan="3">@Model.EmployeeName</th>
+        </tr>
+    </table>
+    <table>
+        <tr class="wt_color">
+            <th>Race</th>
+            <th>Available Labor Market (ALM)</th>
+            <th>Employees</th>
+            <th>Employees %</th>
+
+        </tr>
+        @foreach (var item in @Model.RaceIndexList)
+        {
+        <tr>
+            <td>@item.TypeName</td>
+            <td>@item.ALMPercentage%</td>
+            <td>@item.CurrentCount</td>
+            <td>@item.CurrentPercentage%</td>
+
+        </tr>
+        }
+        <tr class="wt_color">
+            <th>Total Race Index: @Model.EEORaceIndexRating%</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </table>
+    <table>
+        <tr class="wt_color">
+            <th>Gender</th>
+            <th>Available Labor Market (ALM)</th>
+            <th>Employees</th>
+            <th>Employees %</th>
+        </tr>
+        @foreach (var item in @Model.GenderIndexList)
+        {
+        <tr>
+            <td>@item.TypeName</td>
+            <td>@item.ALMPercentage%</td>
+            <td>@item.CurrentCount</td>
+            <td>@item.CurrentPercentage%</td>
+        </tr>
+        }
+        <tr class="wt_color">
+            <th>Total Gender Index: @Model.EEOGenderIndexRating%</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </table>
+</div>
+
+
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+        })
+    </script>
+}

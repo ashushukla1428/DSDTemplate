@@ -1,0 +1,638 @@
+﻿@model EEONow.Models.ALMViaRacesEeoModel
+@{
+    ViewBag.Title = "Public URL";
+    Layout = "~/Views/Shared/_PublicURLLayout.cshtml";
+}
+
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+<link href="~/Content/PublicURL.css" rel="stylesheet" />
+<style type="text/css">
+    .AVExport{
+        display:none!important;
+    }
+    .main-content {
+        padding-right: 0px !important;
+    }
+
+    .menu-closed .main-content {
+        padding-left: 0px;
+    }
+
+    .panel-CopyRight {
+        /*padding: 2px 0px 6px 0px;*/
+        color: #212823;
+        font-size: 12px;
+        font-weight: bold;
+        float: right;
+        position: absolute;
+        right: 26px;
+        background: #ffffff;
+        z-index: 3;
+        width: 36%;
+        text-align: right;
+    }
+    /*.RC0, .EEO0, .TYS0, .na {
+            color: #df3131;
+        }*/
+    /*::-webkit-scrollbar {
+            display: none;
+        }*/
+
+    .li-align-right {
+        text-align: right;
+    }
+
+    div#sbc-viz-Color-Selector {
+        padding-bottom: 2px;
+    }
+
+    div#divColorSpliter {
+        background: #fff;
+        height: 4px;
+        margin: 20px -16px 0px -16px;
+    }
+
+    .panel-custom {
+        display: none;
+        height: 0px !important;
+        width: 0px !important;
+    }
+
+    .LegendColorScheme-Custom {
+        background: #00A0DC;
+        padding: 15px;
+    }
+
+
+
+        /*.LegendColorScheme-Custom ul li {
+                width: 33% !important;
+            }*/
+
+        .LegendColorScheme-Custom .legend-section-single {
+            /*overflow-y: scroll;
+                height: 100%;
+                width: 115%;
+                padding-bottom: 20px;*/
+            width: 107%;
+        }
+
+    .LegendColorScheme-Custom {
+        /*background: #00A0DC;
+            padding: 15px 15px 50px 15px;
+            height: 250px;
+            overflow: hidden;
+            position: relative;*/
+        /*background: #00A0DC;*/
+        padding: 9px 0px 0px 0px;
+    }
+
+        .LegendColorScheme-Custom h2 {
+            color: #fff !important;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 0 0 10px 0;
+            border-bottom: 1px solid #fff;
+            margin: 0 0 10px 0;
+        }
+
+
+    ul.name-list-Total {
+        /*padding: 0;
+            border-top: 1px solid #fff;
+            position: absolute;
+            bottom: 0px;
+            width: 90%;
+            background: #00A0DC;
+            left: 0px;
+            padding: 7px 0;
+            margin: 0px 5%;*/
+        border-top: 1px solid #fff;
+        background: #00A0DC;
+        left: 0px;
+        padding: 3px 0px 0px 0px;
+        text-align: right;
+    }
+
+        ul.name-list-Total li {
+            /*width: 33% !important;*/
+            display: inline-block;
+            /*font-weight: 700;*/
+            font-size: 12px;
+        }
+
+    /*.tooltip-arrow,
+        .red-tooltip + .tooltip > .tooltip-inner {
+            background-color: #f00;
+        }
+        .red-tooltip + .tooltip.top > .tooltip-arrow {
+            background-color: #f00;
+        }*/
+    .tooltip > .tooltip-inner {
+        background-color: #f5f5f5 !important;
+        width: 100%;
+        color: #00A0DC;
+        padding: 5px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .tooltip.fade {
+        opacity: 1 !important;
+    }
+
+    .tooltip > .tooltip-arrow {
+        display: none
+    }
+
+    #sbc-viz-search-box input:focus + #search-results {
+        display: block;
+    }
+
+    #sbc-viz-search-box input[value=""] + #search-results {
+        display: none;
+    }
+
+    div.contact div#spacer0, div.contact div#spacer4, div.contact div#spacer8, div.contact div#spacer11 {
+        margin-bottom: 10px !important;
+    }
+    /*div.EEOInformation div#spacer3 {
+        margin-bottom: 10px !important;17046001/11785/141019
+    }*/
+
+    .back-section {
+        /*padding-top: 40px;*/
+    }
+
+    .hidePannel {
+        display: none !important;
+    }
+    .demo-target-custom svg{
+        left:0px!important;
+    }
+</style>
+<style>
+    .dg .cr.string:first-child {
+        width: 25%;
+        margin: 0 2px 0 0;
+    }
+
+    .dg .cr.string:nth-child(2) {
+        width: 49.7%;
+        margin: 0 2px 0 0;
+        /*max-width: 162px;*/
+    }
+
+    .dg .cr.function {
+        width: 24%;
+    }
+</style>
+
+
+@if (ViewBag.configuredOrganization == 1)
+{
+    <style>
+        body {
+            background: #fff !important;
+        }
+
+        .warning-message {
+            font-size: 34px;
+            padding: 10px;
+            font-weight: 600;
+            color: red;
+        }
+    </style>
+    <div class="warning-message">No data found, the application has no data to display within dashboard. Please try again later. If problem continues contact your system administrator. </div>
+}
+else
+{
+    <div class="BodyLoader-outer">
+        <div class="BodyLoader">
+        </div>
+    </div>
+    <div style="display:none" id="demo-options"></div>
+
+    <div class="main-dashboard">
+        <div id="demo-container">
+            <div id="demo-target"></div>
+            <input id="sample-input" type="file" style="visibility:hidden" />
+        </div>
+    </div>
+    <div id="divMessage" style="display:none">
+        <h2 style="color:black"> Chart is visible only with the screen resolutions 999px and above</h2>
+    </div>
+
+
+
+
+    <input type="hidden" value="@ViewBag.EEORating" id="hfEEORating" />
+    <input type="hidden" value="0" id="hfHeight" />
+    <input type="hidden" id="hfCurrentSelectedYear" value="0" />
+
+
+    <input type="hidden" value="" id="hfFilename" />
+    <input type="hidden" id="RightLabel" value="1" />
+    <input type="hidden" id="hfOrgainisationId" value="@ViewBag.OrgainisationId" />
+    <input type="hidden" id="hfRoleId" value="@ViewBag.RoleId" />
+    <input type="hidden" value="@ViewBag.ListOfGraphOrganizationView" id="hfListOfGraphOrganizationView" />
+    <input type="hidden" value="CS1" id="hfSelectedColorValue" />
+    <div style="display:none" id="LegendContainer"></div>
+    @*https://demos.telerik.com/aspnet-mvc/dialog/events*@
+    @(
+                    Html.Kendo().Window()
+                        .Name("dialog")
+                        .Title("Legend Color Scheme")
+                        .Content(
+                              "<div id='divLegend'></div>"
+                    )
+                    .Width(500)
+                    .Draggable(true)
+                    .Modal(false)
+                    .Resizable()
+                    .Animation(ani => ani.Close(c => c.Duration(0)))
+                    .Actions(actions =>
+                    {
+        //actions.Add().Text("Close");
+        actions.Close();
+                    })
+                    .Visible(false)
+                    .Modal(true)
+
+    )
+
+    @(
+          Html.Kendo().Window()
+              .Name("AvailableLaborMarketdialog")
+              .Title("Available Labor Market")
+              .Content("<div id='divAvailableLaborMarket'>" + @Html.Partial("~/Views/Dashboard/Partials/AvailableLaborMarket.cshtml", Model) + "</div>"
+          )
+          .Width(1300)
+          .Height(600)
+          .Draggable(true)
+          .Modal(false)
+          .Resizable()
+          .Animation(ani => ani.Close(c => c.Duration(0)))
+           .Events(events => events.Resize("onResize")
+           )
+          .Actions(actions =>
+          {
+  //actions.Add().Text("Close");
+  actions.Close();
+          })//.HtmlAttributes("left:0px")
+          .Visible(false)
+          .Modal(true)
+
+    )
+
+
+    @(
+          Html.Kendo().Window()
+              .Name("IndexReport")
+              .Title("Race and Gender Index Report")
+              .Content("<div id='divIndexReport'></div>"
+          )
+          .Width(750)
+          .Height(520)
+          .Draggable(true)
+          .Modal(false)
+          .Resizable()
+          .Animation(ani => ani.Close(c => c.Duration(0)))
+          .Actions(actions =>
+          {
+  //actions.Add().Text("Close");
+  actions.Close();
+          })//.HtmlAttributes("left:0px")
+          .Visible(false)
+          .Modal(true)
+
+    )
+    @section css{
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
+    }
+    @section scripts{
+        <script src="~/bower_components/intl/dist/Intl.complete.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+        <script src="~/Scripts/custom.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script>
+
+          function ExportEEOReport() {
+              location.href = '@Url.Action("ExportEEOReport", "PublicURL")?OrgainisationId=' + $("#hfOrgainisationId").val() + '&filename=' +  escape($("#hfFilename").val());;
+        }
+        function BindCurrentEEOReport() {
+            //$.ajax({
+            //    type: "GET",
+            //    url: "/Dashboard/GetAvailableLaborMarket",
+            //    data: {
+            //        filename: $("#hfFilename").val()
+            //    },
+            //    success: function (response) {
+            //        //console.log(response)
+            //        $("#divAvailableLaborMarket").html(response);
+            //    },
+            //    error: function (errorResponse) {
+            //        console.log(errorResponse);
+            //    }
+            //});
+        }
+
+
+            $(document).ready(function () {
+                if ($("#hfHeight").val() == "0") {
+                    $("#hfHeight").val($(".main-dashboard").height());
+                }
+            getLegendCollections();
+            GetUserLabel();
+            setTimeout(function () {
+                 
+                $("#sbc-viz-selection-details").show();
+                if (/MSIE \d/.test(navigator.userAgent)) {
+                    $("#sbc-viz-stats").hide();
+                }
+                ShowLegendColor();
+
+            }, 1000);
+
+            if (parseInt($(window).width()) > 999) {
+                $("body").toggleClass("menu-closed");
+
+            } else {
+                $("#demo-options").hide();
+                $(".main-dashboard").hide();
+                $("#divMessage").show();
+            }
+
+        });
+
+        function GetUserLabel() {
+
+            organization = $("#hfOrgainisationId").val()
+            $.ajax({
+                type: "GET",
+                url: "/PublicURL/GetUserLabel?organisastionId=" + organization + "&RoleId=" + $("#hfRoleId").val(),
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+                    var a = "Number";
+                    $.each(response, function (innerI, innerR) {
+                        $("#RightLabel").attr("data-" + innerI, innerR);
+
+                        //_html = _html + "<input type='hidden' value='" + innerR + "' id='hf" + innerI + "' />";
+                    });
+
+
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            });
+        }
+        function getLegendCollections() {
+            $.ajax({
+                type: "GET",
+                url: "/PublicURL/getLegendCollections?OrgainisationId=" + $("#hfOrgainisationId").val(),
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+                    if (response != null) {
+                        // var result = JSON.stringify(response);
+                        _html = "";
+                        $.each(response, function (innerI, innerR) {
+                            _html = _html + "<input type='hidden' value='" + innerR + "' id='hf" + innerI + "' />";
+                        });
+
+                        $("#LegendContainer").html(_html);
+
+                        //$.each($("#hfRaces").val().split(","), function (innerI, innerR) {
+                        //    console.log(innerR)
+                        //});
+                    }
+                    else {
+
+
+                    }
+                }
+            })
+        }
+        CurrentUserFile = function () {
+            var result = $.ajax({
+                type: "GET",
+                url: "/PublicURL/GetCurrentUserFiles?OrgainisationId=" + $("#hfOrgainisationId").val(),
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+                    if (response != null) {
+                        var result = JSON.stringify(response);
+                        //return 'sample1'
+                    }
+                    else {
+                        return 'sample1'
+                        alertify.success("Fail to delete records");
+                    }
+                }
+            })
+            return result;
+        }
+        ShowLegendColor = function () {
+            var result = $.ajax({
+                type: "GET",
+                url: "/PublicURL/GetLegendList?OrgainisationId=" + $("#hfOrgainisationId").val() + "&Type=" + $("#ddlColorSelector").val() + "&filename=" + $("#hfFilename").val(),
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+                    return response
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+            return result;
+
+        }
+        CurrentOrganisationColorCode = function () {
+            var result = $.ajax({
+                type: "GET",
+                url: "/PublicURL/GetCurrentOrganisationColorCode?OrgainisationId=" + $("#hfOrgainisationId").val() + "&RoleId=" + $("#hfRoleId").val(),
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+                    return response
+                }
+            })
+            return result;
+        }
+
+        DynamicColorChanger = function (_value) {
+            ShowLegendColorforDynamicColorChanger();
+            var result = $.ajax({
+                type: "GET",
+                url: "/PublicURL/GetDynamicColorChanger?OrgainisationId=" + $("#hfOrgainisationId").val() + "&Selectedvalue=" + _value,
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+                    return response
+                }
+            })
+            return result;
+        }
+        CsvFileList = function () {
+
+            var result = $.ajax({
+                type: "GET",
+                url: "/PublicURL/GetCsvFileList?OrgainisationId=" + $("#hfOrgainisationId").val() + "&year=" + $("#hfCurrentSelectedYear").val(),
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+                    return response
+                }
+            })
+            return result;
+        }
+        OrgYear = function () {
+
+            var result = $.ajax({
+                type: "GET",
+                url: "/PublicURL/GetSelectedYearList?OrgainisationId=" + $("#hfOrgainisationId").val(),
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+
+                    return response;
+                }
+            })
+            return result;
+        }
+        GetCurrentSelectedYear = function () {
+
+            var result = $.ajax({
+                type: "GET",
+                url: "/PublicURL/GetCurrentSelectedYear?OrgainisationId=" + $("#hfOrgainisationId").val(),
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+                    return response;
+                }
+            })
+            return result;
+        }
+        function ZipCodeFormat(_ZipCode) {
+            var result = "";
+            var num = _ZipCode.replace(/\D/g, "");
+            if (num.length == 7) {
+                result = num.substr(0, 4) + "-" + num.substr(4);
+            }
+            if (num.length == 9) {
+                result = num.substr(0, 5) + "-" + num.substr(5);
+            }
+            // var result = _ZipCode;
+            return result;
+        }
+
+        function ShowLegendColorforDynamicColorChanger() {
+            var result = $.ajax({
+                type: "GET",
+                url: "/PublicURL/GetLegendList?OrgainisationId=" + $("#hfOrgainisationId").val() + "&Type=" + $("#ddlColorSelector").val() + "&filename=" + $("#hfFilename").val(),
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+                    return response
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+            var html = "";
+            html = html + '<h2>Legend Color Scheme/Counts</h2>'
+
+            html = html + '<div class="legend-section-single">'
+                + '<ul class="name-list">';
+            $.each(result.responseJSON, function (innerI, innerR) {
+                if (innerI == "KeyValue") {
+                    $("#hfSelectedColorValue").val(innerR);
+                }
+                else {
+                    html = html + '<li data-toggle="tooltip" data-placement="top" class="red-tooltip"  style="width:70%;" title="' + innerI.split('^')[0] + '" ><span style="background-color:' + innerR + ';"></span>' + innerI.split('^')[0] + '</li>';
+                    //html = html + '<li data-toggle="tooltip" data-placement="top" class="red-tooltip li-align-right"  style="width:20%;"  title="' + ((parseFloat(innerI.split('^')[1]) / parseFloat(TotalCount)) * 100.00).toFixed(2) + '%" >' + formatNumber(innerI.split('^')[1]) + '</li>';
+                    html = html + '<li id="li' + innerI.split('^')[1] + '" data-toggle="tooltip" data-placement="top" class="red-tooltip li-align-right"  style="width:30%;"  title="" >0</li>';
+                }
+            });
+
+            html = html + '</ul></div>';
+            html = html + '<ul class="name-list-Total"><li class="last" style="width:80%;">Total</li>';
+            //html = html + '<li class="last" style="width:20%;">' + formatNumber(TotalCount) + '</li></ul>';
+            html = html + '<li id="liLegendTotal" class="last" style="width:20%;">0</li></ul>';
+
+            $("#divColorLegend").html(html);
+            $('[data-toggle="tooltip"]').tooltip();
+            // return html;
+        }
+
+        CheckLoginSectionCallBack = function () {
+            var result = $.ajax({
+                type: "GET",
+                url: "/Home/LevelUserSession",
+                async: false,
+                cache: false,
+                timeout: 30000,
+                success: function (response) {
+                     if (response == false) {
+                        var url = '@Url.Action("Login", "Account")';
+                        window.location.href = url;
+                    }
+                    return response;
+                }
+            })
+            return result;
+        }
+
+        function getIndexReport(position) {
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "/PublicURL/GetIndexReport",
+                data: {
+                    organisastionId: $("#hfOrgainisationId").val(),
+                    filename: $("#hfFilename").val(),
+                    position: position
+                },
+                success: function (response) {
+                    //console.log(response)
+                    $("#divIndexReport").html(response);
+                    $('#IndexReport').data("kendoWindow").center();
+                    $('#IndexReport').data("kendoWindow").open();
+                },
+                error: function (errorResponse) {
+                    console.log(errorResponse);
+                }
+            });
+            }
+            function onResize(e) {
+                //console.log($("#AvailableLaborMarketdialog").height());
+                $("#div-tablebody").height($("#AvailableLaborMarketdialog").height() - 90);
+            }
+        </script>
+        <script src="~/Dashboard/DashboardChart.js"></script>
+
+    }
+}

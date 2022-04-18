@@ -1,0 +1,188 @@
+﻿@model EEONow.Models.EEOReportbyRegionModel
+@{
+    ViewBag.Title = "EEO Report by Region";
+    Layout = "~/Views/Shared/_PartialViewLayout.cshtml";
+}
+<style>
+    #div-tablebody {
+        /*overflow:hidden;*/
+        overflow-y: scroll;
+    }
+</style>
+
+<table class="table-grid" style="width:98.98%">
+    <tbody>
+        <tr>
+            <td class="Alm-text" colspan="2" width="23%">
+                @Model.OrganizationName
+            </td>
+            <td width="78%">
+                <table class="table-grid aligncenter">
+                    <tr>
+                        <th class="td-top-none td-right-none" colspan="12" height="25px" style="text-align:center">
+                            EEO Report By Region - @Model.RegionName
+                        </th>
+                        <td class="td-top-none" colspan="2"><span onclick="ExportEEOReport();" class="AVExport">Export to PDF</span></td>
+                    </tr>
+                    <tr>
+                        @foreach (var item in Model.ListRacesForRegion)
+                        {
+                        <td class="noborder" width="12.5%" colspan="2" id="TdRaces@(item.RacesId)">
+                            @item.RacesName
+                        </td>
+                        }
+                        <td class="noborder alignmiddle" width="8.5%" rowspan="2" colspan="2">
+                            Total Employees
+                        </td>
+                    </tr>
+                    <tr style="text-align:center">
+
+
+                        @foreach (var item in Model.ListRacesForRegion)
+                        {
+                        <td width="6.25%">M</td>
+                        <td class="border_right" width="6.25%">F</td>
+                        }
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="div-tablebody">
+    <table class="table-grid">
+        <tbody>
+            @{int countEEORow = 0;
+            foreach (var itemEEO in Model.ListEEOForRegion)
+            {
+                countEEORow = countEEORow + 1;
+                    <tr>
+                        <td class="@(countEEORow % 2 == 1?"color-Black":"color-Black Bg-AlaternateTr")" style="text-align: center; vertical-align: middle;" width="11%">
+                            <span>@itemEEO.EEOName</span>
+                        </td>
+                        <td width="12%">
+                            <table class="table-grid">
+                                <tr>
+                                    <th class="td-top-none color-Black alignRight" height="20px">Total Workforce</th>
+                                </tr>
+                                <tr class="Bg-AlaternateTr">
+                                    <th class="color-Black alignRight" height="20px">% Workforce</th>
+                                </tr>
+                                @*<tr>
+                                        <th class="color-Black alignRight" height="20px">% ALM</th>
+                                    </tr>
+                                    <tr class="Bg-AlaternateTr">
+                                        <th class="color-Black alignRight" height="20px">80% of ALM</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="color-Black alignRight" height="20px">Parity</th>
+                                    </tr>
+                                    <tr class="Bg-AlaternateTr">
+                                        <th class="color-Black alignRight" height="20px">Underutilized</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="color-Black alignRight" height="20px">Goal</th>
+                                    </tr>*@
+                            </table>
+                        </td>
+                        <td width="78%">
+
+                            <table class="table-grid">
+
+                                <tr class="bg-blue">
+                                    @if (Model.ListRacesForRegion != null)
+                                {
+                                    foreach (var itemALM in Model.ListRacesForRegion)
+                                    {
+                                            <td class="td-top-none alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeRegionValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceMale).FirstOrDefault()
+                                            </td>
+                                            <td class="td-top-none alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeRegionValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceFemale).FirstOrDefault()
+                                            </td>
+                                    }
+                                }
+                                    <td class="td-top-none alignmiddle nohover formatNumber border_left" rowspan="7" colspan="2" width="8.5%">
+                                        <b>
+                                            @Model.ListComputeRegionValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale + r.TotalWorkforceFemale)).FirstOrDefault()
+                                        </b>
+                                    </td>
+                                </tr>
+
+                                <tr class="bg-blue Bg-AlaternateTr">
+                                    @foreach (var itemALM in Model.ListRacesForRegion)
+                                {
+
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @(Model.ListComputeRegionValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => (((e.TotalWorkforceMale * 100.00) / (e.TotalSelectedEEO == 0 ? 1 : e.TotalSelectedEEO)).ToString("N2")) + " %").FirstOrDefault())
+                                            </td>
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeRegionValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => (((e.TotalWorkforceFemale * 100.00) / (e.TotalSelectedEEO == 0 ? 1 : e.TotalSelectedEEO)).ToString("N2")) + " %").FirstOrDefault()
+                                            </td>
+
+                                }
+                                </tr>
+
+                                @*Goal*@
+                                @*<tr class="bg-blue">
+                                        @foreach (var itemALM in Model.ListRacesForALM)
+                                        {
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => Convert.ToInt32((e.TotalSelectedEEO * (((e.AMLMale * 100) / e.AMLSelectedEEO) * .0080)) - e.TotalWorkforceMale)).FirstOrDefault()
+                                            </td>
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => Convert.ToInt32((e.TotalSelectedEEO * (((e.AMLFemale * 100) / e.AMLSelectedEEO) * .0080)) - e.TotalWorkforceFemale)).FirstOrDefault()
+                                            </td>
+                                        }
+
+                                    </tr>*@
+                            </table>
+                        </td>
+                    </tr>
+                }
+            }
+            <tr>
+                <th colspan="2" class="alignRight" width="23%">
+
+                </th>
+
+                <th class="alignmiddle" height="20px" width="78%">
+                    <table class="table-grid">
+                        <tr class="bg-blue">
+                            <td class="td-top-none alignmiddle nohover tdgrandtotal" style="text-align:left"> Grand Total</td>
+                            <td class="td-top-none alignmiddle nohover formatNumber" style="font-size:15px" width="9.0%" height="30px">
+                                <b>  @Model.ListComputeRegionValue.Sum(e => e.TotalWorkforceMale + e.TotalWorkforceFemale)</b>
+                            </td>
+                        </tr>
+                    </table>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //$(this).find('td').each(function (e) {
+            //    console.log(e);
+            //})
+            //$('.formatNumber').text(formatNumber($('.formatNumber').text()))
+            //console.log($('.formatNumber').text());
+
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            });
+            $("#div-tablebody").height($(".main-content").height() - 375);
+
+        })
+
+
+
+    </script>
+}

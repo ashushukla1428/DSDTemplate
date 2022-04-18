@@ -1,0 +1,1657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dev_eeoModelStoreContainer" CdmEntityContainer="EEONowEntity">
+    <FunctionImportMapping FunctionImportName="Sp_InsertEmployeeLevel" FunctionName="dev_eeoModel.Store.Sp_InsertEmployeeLevel" />
+    <FunctionImportMapping FunctionImportName="rptEEO_GenderAndRace_CompensationReport" FunctionName="dev_eeoModel.Store.rptEEO_GenderAndRace_CompensationReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_eeoModel.rptEEO_GenderAndRace_CompensationReport_Result">
+          <ScalarProperty Name="PositionTitle" ColumnName="PositionTitle" />
+          <ScalarProperty Name="RaceNumber" ColumnName="RaceNumber" />
+          <ScalarProperty Name="RaceName" ColumnName="RaceName" />
+          <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+          <ScalarProperty Name="HighestSalary" ColumnName="HighestSalary" />
+          <ScalarProperty Name="MediumSalary" ColumnName="MediumSalary" />
+          <ScalarProperty Name="LowestSalary" ColumnName="LowestSalary" />
+          <ScalarProperty Name="ParitySalary" ColumnName="ParitySalary" />
+          <ScalarProperty Name="DifferenceInSalary" ColumnName="DifferenceInSalary" />
+          <ScalarProperty Name="PercentageDifference" ColumnName="PercentageDifference" />
+          <ScalarProperty Name="TotalEmployees" ColumnName="TotalEmployees" />
+          <ScalarProperty Name="TotalEmployeesByTitle" ColumnName="TotalEmployeesByTitle" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="rptEEOGenderCompensationReport" FunctionName="dev_eeoModel.Store.rptEEOGenderCompensationReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_eeoModel.rptEEOGenderCompensationReport_Result">
+          <ScalarProperty Name="PositionTitle" ColumnName="PositionTitle" />
+          <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+          <ScalarProperty Name="HighestSalary" ColumnName="HighestSalary" />
+          <ScalarProperty Name="MediumSalary" ColumnName="MediumSalary" />
+          <ScalarProperty Name="LowestSalary" ColumnName="LowestSalary" />
+          <ScalarProperty Name="ParitySalary" ColumnName="ParitySalary" />
+          <ScalarProperty Name="DifferenceInSalary" ColumnName="DifferenceInSalary" />
+          <ScalarProperty Name="PercentageDifference" ColumnName="PercentageDifference" />
+          <ScalarProperty Name="TotalEmployees" ColumnName="TotalEmployees" />
+          <ScalarProperty Name="TotalEmployeesByTitle" ColumnName="TotalEmployeesByTitle" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CreateEEORatingMetrics" FunctionName="dev_eeoModel.Store.CreateEEORatingMetrics" />
+    <FunctionImportMapping FunctionImportName="getCSVGraphData" FunctionName="dev_eeoModel.Store.getCSVGraphData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_eeoModel.getCSVGraphData_Result">
+          <ScalarProperty Name="series" ColumnName="series" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="parent" ColumnName="parent" />
+          <ScalarProperty Name="positionNumber" ColumnName="positionNumber" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="first" ColumnName="first" />
+          <ScalarProperty Name="middle" ColumnName="middle" />
+          <ScalarProperty Name="last" ColumnName="last" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="race" ColumnName="race" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="positionTitle" ColumnName="positionTitle" />
+          <ScalarProperty Name="programOffice" ColumnName="programOffice" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="vacancydate" ColumnName="vacancydate" />
+          <ScalarProperty Name="eeo4Code" ColumnName="eeo4Code" />
+          <ScalarProperty Name="LastPerformanceRating" ColumnName="LastPerformanceRating" />
+          <ScalarProperty Name="agency" ColumnName="agency" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="county" ColumnName="county" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+          <ScalarProperty Name="supervisorFlag" ColumnName="supervisorFlag" />
+          <ScalarProperty Name="staffHeadCount" ColumnName="staffHeadCount" />
+          <ScalarProperty Name="NumberFTEPositions" ColumnName="NumberFTEPositions" />
+          <ScalarProperty Name="NumberOPSPositions" ColumnName="NumberOPSPositions" />
+          <ScalarProperty Name="NumberFTEVacantPositions" ColumnName="NumberFTEVacantPositions" />
+          <ScalarProperty Name="NumberOPSVacantPositions" ColumnName="NumberOPSVacantPositions" />
+          <ScalarProperty Name="NumberFTEFilledPositions" ColumnName="NumberFTEFilledPositions" />
+          <ScalarProperty Name="NumberOPSFilledPositions" ColumnName="NumberOPSFilledPositions" />
+          <ScalarProperty Name="spanOfControl" ColumnName="spanOfControl" />
+          <ScalarProperty Name="supervisorStaffRatio" ColumnName="supervisorStaffRatio" />
+          <ScalarProperty Name="TotalMinoritySupervisors" ColumnName="TotalMinoritySupervisors" />
+          <ScalarProperty Name="TotalWomenSupervisors" ColumnName="TotalWomenSupervisors" />
+          <ScalarProperty Name="PercentMinoritySupervisors" ColumnName="PercentMinoritySupervisors" />
+          <ScalarProperty Name="PercentWomenSupervisors" ColumnName="PercentWomenSupervisors" />
+          <ScalarProperty Name="TotalSupervisors" ColumnName="TotalSupervisors" />
+          <ScalarProperty Name="levelsUP" ColumnName="levelsUP" />
+          <ScalarProperty Name="levelsDown" ColumnName="levelsDown" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="yearsFRS" ColumnName="yearsFRS" />
+          <ScalarProperty Name="yearsAgency" ColumnName="yearsAgency" />
+          <ScalarProperty Name="yearsCurrentPosition" ColumnName="yearsCurrentPosition" />
+          <ScalarProperty Name="raceid" ColumnName="raceid" />
+          <ScalarProperty Name="tysid" ColumnName="tysid" />
+          <ScalarProperty Name="eeoid" ColumnName="eeoid" />
+          <ScalarProperty Name="srid" ColumnName="srid" />
+          <ScalarProperty Name="pspid" ColumnName="pspid" />
+          <ScalarProperty Name="arid" ColumnName="arid" />
+          <ScalarProperty Name="lprid" ColumnName="lprid" />
+          <ScalarProperty Name="vrid" ColumnName="vrid" />
+          <ScalarProperty Name="EEORaceIndex" ColumnName="EEORaceIndex" />
+          <ScalarProperty Name="EEOGenderIndex" ColumnName="EEOGenderIndex" />
+          <ScalarProperty Name="NationalOrigin" ColumnName="NationalOrigin" />
+          <ScalarProperty Name="OPSPosition" ColumnName="OPSPosition" />
+          <ScalarProperty Name="StateCumulativeMonthsOfService" ColumnName="StateCumulativeMonthsOfService" />
+          <ScalarProperty Name="PositionDateOfHire" ColumnName="PositionDateOfHire" />
+          <ScalarProperty Name="AgencyDateOfHire" ColumnName="AgencyDateOfHire" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="filled" ColumnName="filled" />
+          <ScalarProperty Name="vacant" ColumnName="vacant" />
+          <ScalarProperty Name="genderFemale" ColumnName="genderFemale" />
+          <ScalarProperty Name="genderMale" ColumnName="genderMale" />
+          <ScalarProperty Name="EEOC1" ColumnName="EEOC1" />
+          <ScalarProperty Name="EEOC2" ColumnName="EEOC2" />
+          <ScalarProperty Name="EEOC3" ColumnName="EEOC3" />
+          <ScalarProperty Name="EEOC4" ColumnName="EEOC4" />
+          <ScalarProperty Name="EEOC5" ColumnName="EEOC5" />
+          <ScalarProperty Name="EEOC6" ColumnName="EEOC6" />
+          <ScalarProperty Name="EEOC7" ColumnName="EEOC7" />
+          <ScalarProperty Name="EEOC8" ColumnName="EEOC8" />
+          <ScalarProperty Name="R1" ColumnName="R1" />
+          <ScalarProperty Name="R2" ColumnName="R2" />
+          <ScalarProperty Name="R3" ColumnName="R3" />
+          <ScalarProperty Name="R4" ColumnName="R4" />
+          <ScalarProperty Name="R5" ColumnName="R5" />
+          <ScalarProperty Name="R6" ColumnName="R6" />
+          <ScalarProperty Name="R7" ColumnName="R7" />
+          <ScalarProperty Name="SR1" ColumnName="SR1" />
+          <ScalarProperty Name="SR2" ColumnName="SR2" />
+          <ScalarProperty Name="SR3" ColumnName="SR3" />
+          <ScalarProperty Name="SR4" ColumnName="SR4" />
+          <ScalarProperty Name="SR5" ColumnName="SR5" />
+          <ScalarProperty Name="SR6" ColumnName="SR6" />
+          <ScalarProperty Name="SR7" ColumnName="SR7" />
+          <ScalarProperty Name="SR8" ColumnName="SR8" />
+          <ScalarProperty Name="SR9" ColumnName="SR9" />
+          <ScalarProperty Name="VR1" ColumnName="VR1" />
+          <ScalarProperty Name="VR2" ColumnName="VR2" />
+          <ScalarProperty Name="VR3" ColumnName="VR3" />
+          <ScalarProperty Name="VR4" ColumnName="VR4" />
+          <ScalarProperty Name="VR5" ColumnName="VR5" />
+          <ScalarProperty Name="VR6" ColumnName="VR6" />
+          <ScalarProperty Name="VR7" ColumnName="VR7" />
+          <ScalarProperty Name="VR8" ColumnName="VR8" />
+          <ScalarProperty Name="AR1" ColumnName="AR1" />
+          <ScalarProperty Name="AR2" ColumnName="AR2" />
+          <ScalarProperty Name="AR3" ColumnName="AR3" />
+          <ScalarProperty Name="AR4" ColumnName="AR4" />
+          <ScalarProperty Name="AR5" ColumnName="AR5" />
+          <ScalarProperty Name="AR6" ColumnName="AR6" />
+          <ScalarProperty Name="AR7" ColumnName="AR7" />
+          <ScalarProperty Name="AR8" ColumnName="AR8" />
+          <ScalarProperty Name="PYOS1" ColumnName="PYOS1" />
+          <ScalarProperty Name="PYOS2" ColumnName="PYOS2" />
+          <ScalarProperty Name="PYOS3" ColumnName="PYOS3" />
+          <ScalarProperty Name="PYOS4" ColumnName="PYOS4" />
+          <ScalarProperty Name="PYOS5" ColumnName="PYOS5" />
+          <ScalarProperty Name="PYOS6" ColumnName="PYOS6" />
+          <ScalarProperty Name="PYOS7" ColumnName="PYOS7" />
+          <ScalarProperty Name="PYOS8" ColumnName="PYOS8" />
+          <ScalarProperty Name="AYOS1" ColumnName="AYOS1" />
+          <ScalarProperty Name="AYOS2" ColumnName="AYOS2" />
+          <ScalarProperty Name="AYOS3" ColumnName="AYOS3" />
+          <ScalarProperty Name="AYOS4" ColumnName="AYOS4" />
+          <ScalarProperty Name="AYOS5" ColumnName="AYOS5" />
+          <ScalarProperty Name="AYOS6" ColumnName="AYOS6" />
+          <ScalarProperty Name="AYOS7" ColumnName="AYOS7" />
+          <ScalarProperty Name="AYOS8" ColumnName="AYOS8" />
+          <ScalarProperty Name="LPR1" ColumnName="LPR1" />
+          <ScalarProperty Name="LPR2" ColumnName="LPR2" />
+          <ScalarProperty Name="LPR3" ColumnName="LPR3" />
+          <ScalarProperty Name="LPR4" ColumnName="LPR4" />
+          <ScalarProperty Name="LPR5" ColumnName="LPR5" />
+          <ScalarProperty Name="LPR6" ColumnName="LPR6" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="rptEEOIndexReport" FunctionName="dev_eeoModel.Store.rptEEOIndexReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_eeoModel.rptEEOIndexReport_Result">
+          <ScalarProperty Name="IndexType" ColumnName="IndexType" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="CurrentCount" ColumnName="CurrentCount" />
+          <ScalarProperty Name="ALMPercentage" ColumnName="ALMPercentage" />
+          <ScalarProperty Name="CurrentPercent" ColumnName="CurrentPercent" />
+          <ScalarProperty Name="EEOIndexRating" ColumnName="EEOIndexRating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="rptStaffLevelsReport" FunctionName="dev_eeoModel.Store.rptStaffLevelsReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_eeoModel.rptStaffLevelsReport_Result">
+          <ScalarProperty Name="LevelNumber" ColumnName="LevelNumber" />
+          <ScalarProperty Name="LevelNumberDesc" ColumnName="LevelNumberDesc" />
+          <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+          <ScalarProperty Name="RaceName" ColumnName="RaceName" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="EmployeeNbrCount" ColumnName="EmployeeNbrCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="rptJobTitlesByEEOCategory" FunctionName="dev_eeoModel.Store.rptJobTitlesByEEOCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_eeoModel.rptJobTitlesByEEOCategory_Result">
+          <ScalarProperty Name="EEOJobCategoryNumber" ColumnName="EEOJobCategoryNumber" />
+          <ScalarProperty Name="EEOCategoryName" ColumnName="EEOCategoryName" />
+          <ScalarProperty Name="PositionTitle" ColumnName="PositionTitle" />
+          <ScalarProperty Name="ProgramOfficeName" ColumnName="ProgramOfficeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="rptGetALM_ByEEOCategoryReport" FunctionName="dev_eeoModel.Store.rptGetALM_ByEEOCategoryReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_eeoModel.rptGetALM_ByEEOCategoryReport_Result">
+          <ScalarProperty Name="EEOCategoryNbr" ColumnName="EEOCategoryNbr" />
+          <ScalarProperty Name="EEOCategoryDesc" ColumnName="EEOCategoryDesc" />
+          <ScalarProperty Name="hMale" ColumnName="hMale" />
+          <ScalarProperty Name="hFemale" ColumnName="hFemale" />
+          <ScalarProperty Name="mWhite" ColumnName="mWhite" />
+          <ScalarProperty Name="fWhite" ColumnName="fWhite" />
+          <ScalarProperty Name="mBlackOrAfricanAmerican" ColumnName="mBlackOrAfricanAmerican" />
+          <ScalarProperty Name="fBlackOrAfricanAmerican" ColumnName="fBlackOrAfricanAmerican" />
+          <ScalarProperty Name="mNativeHawaiianOrOtherPacificIslander" ColumnName="mNativeHawaiianOrOtherPacificIslander" />
+          <ScalarProperty Name="fNativeHawaiianOrOtherPacificIslander" ColumnName="fNativeHawaiianOrOtherPacificIslander" />
+          <ScalarProperty Name="mAsian" ColumnName="mAsian" />
+          <ScalarProperty Name="fAsian" ColumnName="fAsian" />
+          <ScalarProperty Name="mAmericanIndianORAlaskaNative" ColumnName="mAmericanIndianORAlaskaNative" />
+          <ScalarProperty Name="fAmericanIndianORAlaskaNative" ColumnName="fAmericanIndianORAlaskaNative" />
+          <ScalarProperty Name="mTwoOrMoreRaces" ColumnName="mTwoOrMoreRaces" />
+          <ScalarProperty Name="fTwoOrMoreRaces" ColumnName="fTwoOrMoreRaces" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="rptGetALM_ByFederalJobCodes" FunctionName="dev_eeoModel.Store.rptGetALM_ByFederalJobCodes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dev_eeoModel.rptGetALM_ByFederalJobCodes_Result">
+          <ScalarProperty Name="EEOJobCode" ColumnName="EEOJobCode" />
+          <ScalarProperty Name="EEOJobDescription" ColumnName="EEOJobDescription" />
+          <ScalarProperty Name="hMale" ColumnName="hMale" />
+          <ScalarProperty Name="hFemale" ColumnName="hFemale" />
+          <ScalarProperty Name="mWhite" ColumnName="mWhite" />
+          <ScalarProperty Name="fWhite" ColumnName="fWhite" />
+          <ScalarProperty Name="mBlackOrAfricanAmerican" ColumnName="mBlackOrAfricanAmerican" />
+          <ScalarProperty Name="fBlackOrAfricanAmerican" ColumnName="fBlackOrAfricanAmerican" />
+          <ScalarProperty Name="mNativeHawaiianOrOtherPacificIslander" ColumnName="mNativeHawaiianOrOtherPacificIslander" />
+          <ScalarProperty Name="fNativeHawaiianOrOtherPacificIslander" ColumnName="fNativeHawaiianOrOtherPacificIslander" />
+          <ScalarProperty Name="mAsian" ColumnName="mAsian" />
+          <ScalarProperty Name="fAsian" ColumnName="fAsian" />
+          <ScalarProperty Name="mAmericanIndianORAlaskaNative" ColumnName="mAmericanIndianORAlaskaNative" />
+          <ScalarProperty Name="fAmericanIndianORAlaskaNative" ColumnName="fAmericanIndianORAlaskaNative" />
+          <ScalarProperty Name="mTwoOrMoreRaces" ColumnName="mTwoOrMoreRaces" />
+          <ScalarProperty Name="fTwoOrMoreRaces" ColumnName="fTwoOrMoreRaces" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="AgencyYearsOfServices">
+      <EntityTypeMapping TypeName="dev_eeoModel.AgencyYearsOfService">
+        <MappingFragment StoreEntitySet="AgencyYearsOfService">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="AgencyYearsOfServiceKey" ColumnName="AgencyYearsOfServiceKey" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="DisplayColorCode" ColumnName="DisplayColorCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="AgencyYearsOfServiceId" ColumnName="AgencyYearsOfServiceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgeRanges">
+      <EntityTypeMapping TypeName="dev_eeoModel.AgeRange">
+        <MappingFragment StoreEntitySet="AgeRange">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="AgeRangeKey" ColumnName="AgeRangeKey" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="DisplayColorCode" ColumnName="DisplayColorCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="AgeRangeId" ColumnName="AgeRangeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AssignMenuHeaders">
+      <EntityTypeMapping TypeName="dev_eeoModel.AssignMenuHeader">
+        <MappingFragment StoreEntitySet="AssignMenuHeader">
+          <ScalarProperty Name="Mod_User" ColumnName="Mod_User" />
+          <ScalarProperty Name="Mod_Date" ColumnName="Mod_Date" />
+          <ScalarProperty Name="Cre_User" ColumnName="Cre_User" />
+          <ScalarProperty Name="Cre_Date" ColumnName="Cre_Date" />
+          <ScalarProperty Name="AssignMenuHeader_PK" ColumnName="AssignMenuHeader_PK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AssignRoles">
+      <EntityTypeMapping TypeName="dev_eeoModel.AssignRole">
+        <MappingFragment StoreEntitySet="AssignRole">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="AssignRoleId" ColumnName="AssignRoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AvailableLaborMarketDatas">
+      <EntityTypeMapping TypeName="dev_eeoModel.AvailableLaborMarketData">
+        <MappingFragment StoreEntitySet="AvailableLaborMarketData">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="FemaleValue" ColumnName="FemaleValue" />
+          <ScalarProperty Name="MaleValue" ColumnName="MaleValue" />
+          <ScalarProperty Name="AvailableLaborMarketDataId" ColumnName="AvailableLaborMarketDataId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AvailableLaborMarketFileVersions">
+      <EntityTypeMapping TypeName="dev_eeoModel.AvailableLaborMarketFileVersion">
+        <MappingFragment StoreEntitySet="AvailableLaborMarketFileVersion">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="FileVersionNumber" ColumnName="FileVersionNumber" />
+          <ScalarProperty Name="SubmissionDateTime" ColumnName="SubmissionDateTime" />
+          <ScalarProperty Name="AvailableLaborMarketFileVersionId" ColumnName="AvailableLaborMarketFileVersionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Counties">
+      <EntityTypeMapping TypeName="dev_eeoModel.County">
+        <MappingFragment StoreEntitySet="Counties">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DefaultLabelFields">
+      <EntityTypeMapping TypeName="dev_eeoModel.DefaultLabelField">
+        <MappingFragment StoreEntitySet="DefaultLabelField">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+          <ScalarProperty Name="DisplayLabelData" ColumnName="DisplayLabelData" />
+          <ScalarProperty Name="LabelKey" ColumnName="LabelKey" />
+          <ScalarProperty Name="DefaultLabelFieldId" ColumnName="DefaultLabelFieldId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EEOJobCategories">
+      <EntityTypeMapping TypeName="dev_eeoModel.EEOJobCategory">
+        <MappingFragment StoreEntitySet="EEOJobCategories">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="EEOJobCategoryKey" ColumnName="EEOJobCategoryKey" />
+          <ScalarProperty Name="DisplayColorCode" ColumnName="DisplayColorCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EEOJobCategoryNumber" ColumnName="EEOJobCategoryNumber" />
+          <ScalarProperty Name="EEOJobCategoryId" ColumnName="EEOJobCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeLevels">
+      <EntityTypeMapping TypeName="dev_eeoModel.EmployeeLevel">
+        <MappingFragment StoreEntitySet="EmployeeLevel">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="FileSubmissionId" ColumnName="FileSubmissionId" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="EmployeeLevelNumber" ColumnName="EmployeeLevelNumber" />
+          <ScalarProperty Name="PositionNumber" ColumnName="PositionNumber" />
+          <ScalarProperty Name="SupervisorPositionNumber" ColumnName="SupervisorPositionNumber" />
+          <ScalarProperty Name="EmployeeLevelId" ColumnName="EmployeeLevelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="dev_eeoModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="WorkZipCode" ColumnName="WorkZipCode" />
+          <ScalarProperty Name="WorkCity" ColumnName="WorkCity" />
+          <ScalarProperty Name="WorkAddress" ColumnName="WorkAddress" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StateCumulativeMonthsOfService" ColumnName="StateCumulativeMonthsOfService" />
+          <ScalarProperty Name="AgencyDateOfHire" ColumnName="AgencyDateOfHire" />
+          <ScalarProperty Name="PositionDateOfHire" ColumnName="PositionDateOfHire" />
+          <ScalarProperty Name="LastPerformanceRatingValue" ColumnName="LastPerformanceRatingValue" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="OPSPosition" ColumnName="OPSPosition" />
+          <ScalarProperty Name="ProgramOfficeName" ColumnName="ProgramOfficeName" />
+          <ScalarProperty Name="PositionTitle" ColumnName="PositionTitle" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="NationalOrigin" ColumnName="NationalOrigin" />
+          <ScalarProperty Name="SpanOfControl" ColumnName="SpanOfControl" />
+          <ScalarProperty Name="EEOGenderIndex" ColumnName="EEOGenderIndex" />
+          <ScalarProperty Name="EEORaceIndex" ColumnName="EEORaceIndex" />
+          <ScalarProperty Name="SupervisorFlag" ColumnName="SupervisorFlag" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SupervisorPositionNumber" ColumnName="SupervisorPositionNumber" />
+          <ScalarProperty Name="PositionNumber" ColumnName="PositionNumber" />
+          <ScalarProperty Name="VacancyDate" ColumnName="VacancyDate" />
+          <ScalarProperty Name="Filled" ColumnName="Filled" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileSubmissionErrors">
+      <EntityTypeMapping TypeName="dev_eeoModel.FileSubmissionError">
+        <MappingFragment StoreEntitySet="FileSubmissionErrors">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="ErrorDescription" ColumnName="ErrorDescription" />
+          <ScalarProperty Name="FileSubmissionErrorId" ColumnName="FileSubmissionErrorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileSubmissionRecords">
+      <EntityTypeMapping TypeName="dev_eeoModel.FileSubmissionRecord">
+        <MappingFragment StoreEntitySet="FileSubmissionRecords">
+          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="IsValidate" ColumnName="IsValidate" />
+          <ScalarProperty Name="WorkCounty" ColumnName="WorkCounty" />
+          <ScalarProperty Name="WorkZipCode" ColumnName="WorkZipCode" />
+          <ScalarProperty Name="WorkState" ColumnName="WorkState" />
+          <ScalarProperty Name="WorkCity" ColumnName="WorkCity" />
+          <ScalarProperty Name="WorkAddress" ColumnName="WorkAddress" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StateCumulativeMonthsOfService" ColumnName="StateCumulativeMonthsOfService" />
+          <ScalarProperty Name="AgencyDateOfHire" ColumnName="AgencyDateOfHire" />
+          <ScalarProperty Name="LastPerformanceRating" ColumnName="LastPerformanceRating" />
+          <ScalarProperty Name="PositionDateOfHire" ColumnName="PositionDateOfHire" />
+          <ScalarProperty Name="EEOCode" ColumnName="EEOCode" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="OPSPosition" ColumnName="OPSPosition" />
+          <ScalarProperty Name="ProgramOfficeName" ColumnName="ProgramOfficeName" />
+          <ScalarProperty Name="PositionTitle" ColumnName="PositionTitle" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="NationalOrigin" ColumnName="NationalOrigin" />
+          <ScalarProperty Name="Race" ColumnName="Race" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="SupervisorFlag" ColumnName="SupervisorFlag" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SupervisorPositionNumber" ColumnName="SupervisorPositionNumber" />
+          <ScalarProperty Name="PositionNumber" ColumnName="PositionNumber" />
+          <ScalarProperty Name="VacancyDate" ColumnName="VacancyDate" />
+          <ScalarProperty Name="Filled" ColumnName="Filled" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="FileSubmissionId" ColumnName="FileSubmissionId" />
+          <ScalarProperty Name="FileSubmissionRecordNumber" ColumnName="FileSubmissionRecordNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileSubmissions">
+      <EntityTypeMapping TypeName="dev_eeoModel.FileSubmission">
+        <MappingFragment StoreEntitySet="FileSubmissions">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="FileVersionNumber" ColumnName="FileVersionNumber" />
+          <ScalarProperty Name="SubmissionDateTime" ColumnName="SubmissionDateTime" />
+          <ScalarProperty Name="NewFileName" ColumnName="NewFileName" />
+          <ScalarProperty Name="OriginalFileName" ColumnName="OriginalFileName" />
+          <ScalarProperty Name="FileSubmissionId" ColumnName="FileSubmissionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileSubmissionStatus">
+      <EntityTypeMapping TypeName="dev_eeoModel.FileSubmissionStatu">
+        <MappingFragment StoreEntitySet="FileSubmissionStatus">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FileSubmissionStatusId" ColumnName="FileSubmissionStatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genders">
+      <EntityTypeMapping TypeName="dev_eeoModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="DisplayColorCode" ColumnName="DisplayColorCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GenerateCSVs">
+      <EntityTypeMapping TypeName="dev_eeoModel.GenerateCSV">
+        <MappingFragment StoreEntitySet="GenerateCSV">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="GeneratedCsvId" ColumnName="GeneratedCsvId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GraphOrganizationMasters">
+      <EntityTypeMapping TypeName="dev_eeoModel.GraphOrganizationMaster">
+        <MappingFragment StoreEntitySet="GraphOrganizationMaster">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="ColorKey" ColumnName="ColorKey" />
+          <ScalarProperty Name="DefaultName" ColumnName="DefaultName" />
+          <ScalarProperty Name="GraphOrganizationMasterId" ColumnName="GraphOrganizationMasterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GraphOrganizationViews">
+      <EntityTypeMapping TypeName="dev_eeoModel.GraphOrganizationView">
+        <MappingFragment StoreEntitySet="GraphOrganizationView">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="ColorKey" ColumnName="ColorKey" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GraphOrganizationViewId" ColumnName="GraphOrganizationViewId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LastPerformanceRatings">
+      <EntityTypeMapping TypeName="dev_eeoModel.LastPerformanceRating">
+        <MappingFragment StoreEntitySet="LastPerformanceRating">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="LastPerformanceRatingKey" ColumnName="LastPerformanceRatingKey" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="DisplayColorCode" ColumnName="DisplayColorCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="LastPerformanceRatingId" ColumnName="LastPerformanceRatingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuHeaderConfigurations">
+      <EntityTypeMapping TypeName="dev_eeoModel.MenuHeaderConfiguration">
+        <MappingFragment StoreEntitySet="MenuHeaderConfiguration">
+          <ScalarProperty Name="Mod_User" ColumnName="Mod_User" />
+          <ScalarProperty Name="Mod_Date" ColumnName="Mod_Date" />
+          <ScalarProperty Name="Cre_User" ColumnName="Cre_User" />
+          <ScalarProperty Name="Cre_Date" ColumnName="Cre_Date" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+          <ScalarProperty Name="MenuAction" ColumnName="MenuAction" />
+          <ScalarProperty Name="MenuController" ColumnName="MenuController" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="IsHeader" ColumnName="IsHeader" />
+          <ScalarProperty Name="MenuKey" ColumnName="MenuKey" />
+          <ScalarProperty Name="MenuHeaderID_PK" ColumnName="MenuHeaderID_PK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organizations">
+      <EntityTypeMapping TypeName="dev_eeoModel.Organization">
+        <MappingFragment StoreEntitySet="Organizations">
+          <ScalarProperty Name="EnableTwoFactorAuthentication" ColumnName="EnableTwoFactorAuthentication" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="VacanciesDisplayColorCode" ColumnName="VacanciesDisplayColorCode" />
+          <ScalarProperty Name="NonVacanciesDisplayColorCode" ColumnName="NonVacanciesDisplayColorCode" />
+          <ScalarProperty Name="ParentOrganizationID" ColumnName="ParentOrganizationID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OrgCode" ColumnName="OrgCode" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PositionYearsOfServices">
+      <EntityTypeMapping TypeName="dev_eeoModel.PositionYearsOfService">
+        <MappingFragment StoreEntitySet="PositionYearsOfService">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="PositionYearsOfServiceKey" ColumnName="PositionYearsOfServiceKey" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="DisplayColorCode" ColumnName="DisplayColorCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="PositionYearsOfServiceId" ColumnName="PositionYearsOfServiceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Races">
+      <EntityTypeMapping TypeName="dev_eeoModel.Race">
+        <MappingFragment StoreEntitySet="Races">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="RaceKey" ColumnName="RaceKey" />
+          <ScalarProperty Name="DisplayColorCode" ColumnName="DisplayColorCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RaceNumber" ColumnName="RaceNumber" />
+          <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalaryRanges">
+      <EntityTypeMapping TypeName="dev_eeoModel.SalaryRange">
+        <MappingFragment StoreEntitySet="SalaryRange">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="SalaryKey" ColumnName="SalaryKey" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="DisplayColorCode" ColumnName="DisplayColorCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="SalaryRangeId" ColumnName="SalaryRangeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="dev_eeoModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="USCensus_WorksiteCode" ColumnName="USCensus_WorksiteCode" />
+          <ScalarProperty Name="USCensus_ResidenceCode" ColumnName="USCensus_ResidenceCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_ALLData">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_ALLData">
+        <MappingFragment StoreEntitySet="USCensus_ALLData">
+          <ScalarProperty Name="HISPCode" ColumnName="HISPCode" />
+          <ScalarProperty Name="AGEPCode" ColumnName="AGEPCode" />
+          <ScalarProperty Name="ESRCode" ColumnName="ESRCode" />
+          <ScalarProperty Name="OCCPJobCode" ColumnName="OCCPJobCode" />
+          <ScalarProperty Name="PWGTPCount" ColumnName="PWGTPCount" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="RaceID" ColumnName="RaceID" />
+          <ScalarProperty Name="PUMAWorksiteCode" ColumnName="PUMAWorksiteCode" />
+          <ScalarProperty Name="StateWorksiteCode" ColumnName="StateWorksiteCode" />
+          <ScalarProperty Name="PUMAResidenceCode" ColumnName="PUMAResidenceCode" />
+          <ScalarProperty Name="StateResidenceCode" ColumnName="StateResidenceCode" />
+          <ScalarProperty Name="USCensusDataID" ColumnName="USCensusDataID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_BoardingOccupationGroups">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_BoardingOccupationGroups">
+        <MappingFragment StoreEntitySet="USCensus_BoardingOccupationGroups">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="BoardingOccupationGroupID" ColumnName="BoardingOccupationGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_DataVersion">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_DataVersion">
+        <MappingFragment StoreEntitySet="USCensus_DataVersion">
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="USCensusVersionID" ColumnName="USCensusVersionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_EEO_OccupationCodes">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_EEO_OccupationCodes">
+        <MappingFragment StoreEntitySet="USCensus_EEO_OccupationCodes">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="EEOOccupationCodeID" ColumnName="EEOOccupationCodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_EEOJobClasificationCategories">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_EEOJobClasificationCategories">
+        <MappingFragment StoreEntitySet="USCensus_EEOJobClasificationCategories">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="EEOJobClasificationCategoryID" ColumnName="EEOJobClasificationCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_EmployeeStatusRecode">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_EmployeeStatusRecode">
+        <MappingFragment StoreEntitySet="USCensus_EmployeeStatusRecode">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="EmploymentStatusRecodeId" ColumnName="EmploymentStatusRecodeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_GeographyTypes">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_GeographyTypes">
+        <MappingFragment StoreEntitySet="USCensus_GeographyTypes">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GeographyTypeId" ColumnName="GeographyTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_MajorOccupationGroups">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_MajorOccupationGroups">
+        <MappingFragment StoreEntitySet="USCensus_MajorOccupationGroups">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="MajorOccupationGroupID" ColumnName="MajorOccupationGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_MinorOccupationGroups">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_MinorOccupationGroups">
+        <MappingFragment StoreEntitySet="USCensus_MinorOccupationGroups">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="MinorOccupationGroupID" ColumnName="MinorOccupationGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_Occupations">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_Occupations">
+        <MappingFragment StoreEntitySet="USCensus_Occupations">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="OccupationID" ColumnName="OccupationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_Occupations_EEOJobClasificationCategories">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_Occupations_EEOJobClasificationCategories">
+        <MappingFragment StoreEntitySet="USCensus_Occupations_EEOJobClasificationCategories">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="EEOJobClasificationCategoryID" ColumnName="EEOJobClasificationCategoryID" />
+          <ScalarProperty Name="OccupationID" ColumnName="OccupationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_PUMAResidenceCodes">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_PUMAResidenceCodes">
+        <MappingFragment StoreEntitySet="USCensus_PUMAResidenceCodes">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="PUMADescription" ColumnName="PUMADescription" />
+          <ScalarProperty Name="PUMACode" ColumnName="PUMACode" />
+          <ScalarProperty Name="USCensus_PUMAResidenceCodeID" ColumnName="USCensus_PUMAResidenceCodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USCensus_PUMAWorksiteCodes">
+      <EntityTypeMapping TypeName="dev_eeoModel.USCensus_PUMAWorksiteCodes">
+        <MappingFragment StoreEntitySet="USCensus_PUMAWorksiteCodes">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="PUMADescription" ColumnName="PUMADescription" />
+          <ScalarProperty Name="PUMACode" ColumnName="PUMACode" />
+          <ScalarProperty Name="USCensus_PUMAWorksiteCodeID" ColumnName="USCensus_PUMAWorksiteCodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VacancyRanges">
+      <EntityTypeMapping TypeName="dev_eeoModel.VacancyRange">
+        <MappingFragment StoreEntitySet="VacancyRange">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="VacancyRangeKey" ColumnName="VacancyRangeKey" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="DisplayColorCode" ColumnName="DisplayColorCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="VacancyRangeId" ColumnName="VacancyRangeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_AgencyYearsOfService_Organizations" TypeName="dev_eeoModel.FK_AgencyYearsOfService_Organizations" StoreEntitySet="AgencyYearsOfService">
+      <EndProperty Name="AgencyYearsOfService">
+        <ScalarProperty Name="AgencyYearsOfServiceId" ColumnName="AgencyYearsOfServiceId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_AgencyYearsOfService" TypeName="dev_eeoModel.FK_Employees_AgencyYearsOfService" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="AgencyYearsOfService">
+        <ScalarProperty Name="AgencyYearsOfServiceId" ColumnName="AgencyYearsOfServiceId" />
+      </EndProperty>
+      <Condition ColumnName="AgencyYearsOfServiceId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_AgeRange_Organizations" TypeName="dev_eeoModel.FK_AgeRange_Organizations" StoreEntitySet="AgeRange">
+      <EndProperty Name="AgeRange">
+        <ScalarProperty Name="AgeRangeId" ColumnName="AgeRangeId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_AgeRange" TypeName="dev_eeoModel.FK_Employees_AgeRange" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="AgeRange">
+        <ScalarProperty Name="AgeRangeId" ColumnName="AgeRangeId" />
+      </EndProperty>
+      <Condition ColumnName="AgeRangeId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_AssignMenuHeader_MenuHeaderConfiguration" TypeName="dev_eeoModel.FK_AssignMenuHeader_MenuHeaderConfiguration" StoreEntitySet="AssignMenuHeader">
+      <EndProperty Name="AssignMenuHeader">
+        <ScalarProperty Name="AssignMenuHeader_PK" ColumnName="AssignMenuHeader_PK" />
+      </EndProperty>
+      <EndProperty Name="MenuHeaderConfiguration">
+        <ScalarProperty Name="MenuHeaderID_PK" ColumnName="MenuHeaderID_FK" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion" TypeName="dev_eeoModel.FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion" StoreEntitySet="AvailableLaborMarketData">
+      <EndProperty Name="AvailableLaborMarketData">
+        <ScalarProperty Name="AvailableLaborMarketDataId" ColumnName="AvailableLaborMarketDataId" />
+      </EndProperty>
+      <EndProperty Name="AvailableLaborMarketFileVersion">
+        <ScalarProperty Name="AvailableLaborMarketFileVersionId" ColumnName="AvailableLaborMarketFileVersionId" />
+      </EndProperty>
+      <Condition ColumnName="AvailableLaborMarketFileVersionId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_AvailableLaborMarketData_EEOJobCategories" TypeName="dev_eeoModel.FK_AvailableLaborMarketData_EEOJobCategories" StoreEntitySet="AvailableLaborMarketData">
+      <EndProperty Name="AvailableLaborMarketData">
+        <ScalarProperty Name="AvailableLaborMarketDataId" ColumnName="AvailableLaborMarketDataId" />
+      </EndProperty>
+      <EndProperty Name="EEOJobCategory">
+        <ScalarProperty Name="EEOJobCategoryId" ColumnName="EEOJobCategoryId" />
+      </EndProperty>
+      <Condition ColumnName="EEOJobCategoryId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_AvailableLaborMarketData_Races" TypeName="dev_eeoModel.FK_AvailableLaborMarketData_Races" StoreEntitySet="AvailableLaborMarketData">
+      <EndProperty Name="AvailableLaborMarketData">
+        <ScalarProperty Name="AvailableLaborMarketDataId" ColumnName="AvailableLaborMarketDataId" />
+      </EndProperty>
+      <EndProperty Name="Race">
+        <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+      </EndProperty>
+      <Condition ColumnName="RaceId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_AvailableLaborMarketFileVersion_Organizations" TypeName="dev_eeoModel.FK_AvailableLaborMarketFileVersion_Organizations" StoreEntitySet="AvailableLaborMarketFileVersion">
+      <EndProperty Name="AvailableLaborMarketFileVersion">
+        <ScalarProperty Name="AvailableLaborMarketFileVersionId" ColumnName="AvailableLaborMarketFileVersionId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_FileSubmissions_AvailableLaborMarketFileVersion" TypeName="dev_eeoModel.FK_FileSubmissions_AvailableLaborMarketFileVersion" StoreEntitySet="FileSubmissions">
+      <EndProperty Name="FileSubmission">
+        <ScalarProperty Name="FileSubmissionId" ColumnName="FileSubmissionId" />
+      </EndProperty>
+      <EndProperty Name="AvailableLaborMarketFileVersion">
+        <ScalarProperty Name="AvailableLaborMarketFileVersionId" ColumnName="AvailableLaborMarketFileVersionId" />
+      </EndProperty>
+      <Condition ColumnName="AvailableLaborMarketFileVersionId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Counties_States" TypeName="dev_eeoModel.FK_Counties_States" StoreEntitySet="Counties">
+      <EndProperty Name="County">
+        <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+      </EndProperty>
+      <EndProperty Name="State">
+        <ScalarProperty Name="StateId" ColumnName="StateId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_Counties" TypeName="dev_eeoModel.FK_Employees_Counties" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="County">
+        <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+      </EndProperty>
+      <Condition ColumnName="CountyId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_EEOJobCategories_Organizations" TypeName="dev_eeoModel.FK_EEOJobCategories_Organizations" StoreEntitySet="EEOJobCategories">
+      <EndProperty Name="EEOJobCategory">
+        <ScalarProperty Name="EEOJobCategoryId" ColumnName="EEOJobCategoryId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_EEOJobCategories" TypeName="dev_eeoModel.FK_Employees_EEOJobCategories" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="EEOJobCategory">
+        <ScalarProperty Name="EEOJobCategoryId" ColumnName="EEOCodeId" />
+      </EndProperty>
+      <Condition ColumnName="EEOCodeId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_EmployeeLevel_Employees" TypeName="dev_eeoModel.FK_EmployeeLevel_Employees" StoreEntitySet="EmployeeLevel">
+      <EndProperty Name="EmployeeLevel">
+        <ScalarProperty Name="EmployeeLevelId" ColumnName="EmployeeLevelId" />
+      </EndProperty>
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <Condition ColumnName="EmployeeId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_FileSubmissions" TypeName="dev_eeoModel.FK_Employees_FileSubmissions" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="FileSubmission">
+        <ScalarProperty Name="FileSubmissionId" ColumnName="FileSubmissionId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_Gender" TypeName="dev_eeoModel.FK_Employees_Gender" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="Gender">
+        <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+      </EndProperty>
+      <Condition ColumnName="GenderId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_LastPerformanceRating" TypeName="dev_eeoModel.FK_Employees_LastPerformanceRating" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="LastPerformanceRating">
+        <ScalarProperty Name="LastPerformanceRatingId" ColumnName="LastPerformanceRatingId" />
+      </EndProperty>
+      <Condition ColumnName="LastPerformanceRatingId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_Organizations" TypeName="dev_eeoModel.FK_Employees_Organizations" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_PositionYearsOfService" TypeName="dev_eeoModel.FK_Employees_PositionYearsOfService" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="PositionYearsOfService">
+        <ScalarProperty Name="PositionYearsOfServiceId" ColumnName="PositionYearsOfServiceId" />
+      </EndProperty>
+      <Condition ColumnName="PositionYearsOfServiceId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_Races" TypeName="dev_eeoModel.FK_Employees_Races" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="Race">
+        <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+      </EndProperty>
+      <Condition ColumnName="RaceId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_SalaryRange" TypeName="dev_eeoModel.FK_Employees_SalaryRange" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="SalaryRange">
+        <ScalarProperty Name="SalaryRangeId" ColumnName="SalaryRangeId" />
+      </EndProperty>
+      <Condition ColumnName="SalaryRangeId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_States" TypeName="dev_eeoModel.FK_Employees_States" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="State">
+        <ScalarProperty Name="StateId" ColumnName="WorkStateId" />
+      </EndProperty>
+      <Condition ColumnName="WorkStateId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Employees_VacancyRange" TypeName="dev_eeoModel.FK_Employees_VacancyRange" StoreEntitySet="Employees">
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+      </EndProperty>
+      <EndProperty Name="VacancyRange">
+        <ScalarProperty Name="VacancyRangeId" ColumnName="VacancyRangeId" />
+      </EndProperty>
+      <Condition ColumnName="VacancyRangeId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_FileSubmissionErrors_FileSubmissionRecords" TypeName="dev_eeoModel.FK_FileSubmissionErrors_FileSubmissionRecords" StoreEntitySet="FileSubmissionErrors">
+      <EndProperty Name="FileSubmissionError">
+        <ScalarProperty Name="FileSubmissionErrorId" ColumnName="FileSubmissionErrorId" />
+      </EndProperty>
+      <EndProperty Name="FileSubmissionRecord">
+        <ScalarProperty Name="FileSubmissionId" ColumnName="FileSubmissionId" />
+        <ScalarProperty Name="FileSubmissionRecordNumber" ColumnName="FileSubmissionRecordNumber" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_FileSubmissions_FileSubmissionStatus" TypeName="dev_eeoModel.FK_FileSubmissions_FileSubmissionStatus" StoreEntitySet="FileSubmissions">
+      <EndProperty Name="FileSubmission">
+        <ScalarProperty Name="FileSubmissionId" ColumnName="FileSubmissionId" />
+      </EndProperty>
+      <EndProperty Name="FileSubmissionStatu">
+        <ScalarProperty Name="FileSubmissionStatusId" ColumnName="FileSubmissionStatusId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_FileSubmissions_Organizations" TypeName="dev_eeoModel.FK_FileSubmissions_Organizations" StoreEntitySet="FileSubmissions">
+      <EndProperty Name="FileSubmission">
+        <ScalarProperty Name="FileSubmissionId" ColumnName="FileSubmissionId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_GenerateCSV_FileSubmissions" TypeName="dev_eeoModel.FK_GenerateCSV_FileSubmissions" StoreEntitySet="GenerateCSV">
+      <EndProperty Name="GenerateCSV">
+        <ScalarProperty Name="GeneratedCsvId" ColumnName="GeneratedCsvId" />
+      </EndProperty>
+      <EndProperty Name="FileSubmission">
+        <ScalarProperty Name="FileSubmissionId" ColumnName="FileSubmissionID" />
+      </EndProperty>
+      <Condition ColumnName="FileSubmissionID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Gender_Organizations" TypeName="dev_eeoModel.FK_Gender_Organizations" StoreEntitySet="Gender">
+      <EndProperty Name="Gender">
+        <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_GenerateCSV_Organizations" TypeName="dev_eeoModel.FK_GenerateCSV_Organizations" StoreEntitySet="GenerateCSV">
+      <EndProperty Name="GenerateCSV">
+        <ScalarProperty Name="GeneratedCsvId" ColumnName="GeneratedCsvId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+      <Condition ColumnName="OrganizationId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_GraphOrganizationView_GraphOrganizationMaster" TypeName="dev_eeoModel.FK_GraphOrganizationView_GraphOrganizationMaster" StoreEntitySet="GraphOrganizationView">
+      <EndProperty Name="GraphOrganizationView">
+        <ScalarProperty Name="GraphOrganizationViewId" ColumnName="GraphOrganizationViewId" />
+      </EndProperty>
+      <EndProperty Name="GraphOrganizationMaster">
+        <ScalarProperty Name="GraphOrganizationMasterId" ColumnName="GraphOrganizationMasterId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_GraphOrganizationView_Organizations" TypeName="dev_eeoModel.FK_GraphOrganizationView_Organizations" StoreEntitySet="GraphOrganizationView">
+      <EndProperty Name="GraphOrganizationView">
+        <ScalarProperty Name="GraphOrganizationViewId" ColumnName="GraphOrganizationViewId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganisationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_LastPerformanceRating_Organizations" TypeName="dev_eeoModel.FK_LastPerformanceRating_Organizations" StoreEntitySet="LastPerformanceRating">
+      <EndProperty Name="LastPerformanceRating">
+        <ScalarProperty Name="LastPerformanceRatingId" ColumnName="LastPerformanceRatingId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Organizations_States" TypeName="dev_eeoModel.FK_Organizations_States" StoreEntitySet="Organizations">
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+      <EndProperty Name="State">
+        <ScalarProperty Name="StateId" ColumnName="StateId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Organizations_StatesALMDefault" TypeName="dev_eeoModel.FK_Organizations_StatesALMDefault" StoreEntitySet="Organizations">
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+      <EndProperty Name="State">
+        <ScalarProperty Name="StateId" ColumnName="DefaultStateID" />
+      </EndProperty>
+      <Condition ColumnName="DefaultStateID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Organizations_USCensus_EEO_OccupationCodes" TypeName="dev_eeoModel.FK_Organizations_USCensus_EEO_OccupationCodes" StoreEntitySet="Organizations">
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+      <EndProperty Name="USCensus_EEO_OccupationCodes">
+        <ScalarProperty Name="EEOOccupationCodeID" ColumnName="DefaultEEOOccupationalCodeID" />
+      </EndProperty>
+      <Condition ColumnName="DefaultEEOOccupationalCodeID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_PositionYearsOfService_Organizations" TypeName="dev_eeoModel.FK_PositionYearsOfService_Organizations" StoreEntitySet="PositionYearsOfService">
+      <EndProperty Name="PositionYearsOfService">
+        <ScalarProperty Name="PositionYearsOfServiceId" ColumnName="PositionYearsOfServiceId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Races_Organizations" TypeName="dev_eeoModel.FK_Races_Organizations" StoreEntitySet="Races">
+      <EndProperty Name="Race">
+        <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_SalaryRange_Organizations" TypeName="dev_eeoModel.FK_SalaryRange_Organizations" StoreEntitySet="SalaryRange">
+      <EndProperty Name="SalaryRange">
+        <ScalarProperty Name="SalaryRangeId" ColumnName="SalaryRangeId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_VacancyRange_Organizations" TypeName="dev_eeoModel.FK_VacancyRange_Organizations" StoreEntitySet="VacancyRange">
+      <EndProperty Name="VacancyRange">
+        <ScalarProperty Name="VacancyRangeId" ColumnName="VacancyRangeId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_CountyPUMACodes_States" TypeName="dev_eeoModel.FK_USCensus_CountyPUMACodes_States" StoreEntitySet="USCensus_PUMAResidenceCodes">
+      <EndProperty Name="USCensus_PUMAResidenceCodes">
+        <ScalarProperty Name="USCensus_PUMAResidenceCodeID" ColumnName="USCensus_PUMAResidenceCodeID" />
+      </EndProperty>
+      <EndProperty Name="State">
+        <ScalarProperty Name="StateId" ColumnName="StateID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_PUMAWorksiteCodes_States" TypeName="dev_eeoModel.FK_USCensus_PUMAWorksiteCodes_States" StoreEntitySet="USCensus_PUMAWorksiteCodes">
+      <EndProperty Name="USCensus_PUMAWorksiteCodes">
+        <ScalarProperty Name="USCensus_PUMAWorksiteCodeID" ColumnName="USCensus_PUMAWorksiteCodeID" />
+      </EndProperty>
+      <EndProperty Name="State">
+        <ScalarProperty Name="StateId" ColumnName="StateID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensusData_USCensus_DataVersion" TypeName="dev_eeoModel.FK_USCensusData_USCensus_DataVersion" StoreEntitySet="USCensus_ALLData">
+      <EndProperty Name="USCensus_ALLData">
+        <ScalarProperty Name="USCensusDataID" ColumnName="USCensusDataID" />
+      </EndProperty>
+      <EndProperty Name="USCensus_DataVersion">
+        <ScalarProperty Name="USCensusVersionID" ColumnName="USCensusVersionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups" TypeName="dev_eeoModel.FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups" StoreEntitySet="USCensus_BoardingOccupationGroups">
+      <EndProperty Name="USCensus_BoardingOccupationGroups">
+        <ScalarProperty Name="BoardingOccupationGroupID" ColumnName="BoardingOccupationGroupID" />
+      </EndProperty>
+      <EndProperty Name="USCensus_MinorOccupationGroups">
+        <ScalarProperty Name="MinorOccupationGroupID" ColumnName="MinorOccupationGroupID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_Occupations_USCensus_BoardingOccupationGroups" TypeName="dev_eeoModel.FK_USCensus_Occupations_USCensus_BoardingOccupationGroups" StoreEntitySet="USCensus_Occupations">
+      <EndProperty Name="USCensus_Occupations">
+        <ScalarProperty Name="OccupationID" ColumnName="OccupationID" />
+      </EndProperty>
+      <EndProperty Name="USCensus_BoardingOccupationGroups">
+        <ScalarProperty Name="BoardingOccupationGroupID" ColumnName="BoardingOccupationGroupID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_CountyPUMACodes_USCensus_DataVersion" TypeName="dev_eeoModel.FK_USCensus_CountyPUMACodes_USCensus_DataVersion" StoreEntitySet="USCensus_PUMAResidenceCodes">
+      <EndProperty Name="USCensus_PUMAResidenceCodes">
+        <ScalarProperty Name="USCensus_PUMAResidenceCodeID" ColumnName="USCensus_PUMAResidenceCodeID" />
+      </EndProperty>
+      <EndProperty Name="USCensus_DataVersion">
+        <ScalarProperty Name="USCensusVersionID" ColumnName="USCensusVersionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion" TypeName="dev_eeoModel.FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion" StoreEntitySet="USCensus_EmployeeStatusRecode">
+      <EndProperty Name="USCensus_EmployeeStatusRecode">
+        <ScalarProperty Name="EmploymentStatusRecodeId" ColumnName="EmploymentStatusRecodeId" />
+      </EndProperty>
+      <EndProperty Name="USCensus_DataVersion">
+        <ScalarProperty Name="USCensusVersionID" ColumnName="USCensusVersionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_GeographyTypes_USCensus_DataVersion" TypeName="dev_eeoModel.FK_USCensus_GeographyTypes_USCensus_DataVersion" StoreEntitySet="USCensus_GeographyTypes">
+      <EndProperty Name="USCensus_GeographyTypes">
+        <ScalarProperty Name="GeographyTypeId" ColumnName="GeographyTypeId" />
+      </EndProperty>
+      <EndProperty Name="USCensus_DataVersion">
+        <ScalarProperty Name="USCensusVersionID" ColumnName="USCensusVersionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_MajorOccupationGroups_USCensus_DataVersion" TypeName="dev_eeoModel.FK_USCensus_MajorOccupationGroups_USCensus_DataVersion" StoreEntitySet="USCensus_MajorOccupationGroups">
+      <EndProperty Name="USCensus_MajorOccupationGroups">
+        <ScalarProperty Name="MajorOccupationGroupID" ColumnName="MajorOccupationGroupID" />
+      </EndProperty>
+      <EndProperty Name="USCensus_DataVersion">
+        <ScalarProperty Name="USCensusVersionID" ColumnName="USCensusVersionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion" TypeName="dev_eeoModel.FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion" StoreEntitySet="USCensus_PUMAWorksiteCodes">
+      <EndProperty Name="USCensus_PUMAWorksiteCodes">
+        <ScalarProperty Name="USCensus_PUMAWorksiteCodeID" ColumnName="USCensus_PUMAWorksiteCodeID" />
+      </EndProperty>
+      <EndProperty Name="USCensus_DataVersion">
+        <ScalarProperty Name="USCensusVersionID" ColumnName="USCensusVersionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensusEEO_OccupationCodes_USCensus_DataVersion" TypeName="dev_eeoModel.FK_USCensusEEO_OccupationCodes_USCensus_DataVersion" StoreEntitySet="USCensus_EEO_OccupationCodes">
+      <EndProperty Name="USCensus_EEO_OccupationCodes">
+        <ScalarProperty Name="EEOOccupationCodeID" ColumnName="EEOOccupationCodeID" />
+      </EndProperty>
+      <EndProperty Name="USCensus_DataVersion">
+        <ScalarProperty Name="USCensusVersionID" ColumnName="USCensusVersionID" />
+      </EndProperty>
+      <Condition ColumnName="USCensusVersionID" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes" TypeName="dev_eeoModel.FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes" StoreEntitySet="USCensus_EEOJobClasificationCategories">
+      <EndProperty Name="USCensus_EEOJobClasificationCategories">
+        <ScalarProperty Name="EEOJobClasificationCategoryID" ColumnName="EEOJobClasificationCategoryID" />
+      </EndProperty>
+      <EndProperty Name="USCensus_EEO_OccupationCodes">
+        <ScalarProperty Name="EEOOccupationCodeID" ColumnName="EEOOccupationCodeID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups" TypeName="dev_eeoModel.FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups" StoreEntitySet="USCensus_MinorOccupationGroups">
+      <EndProperty Name="USCensus_MinorOccupationGroups">
+        <ScalarProperty Name="MinorOccupationGroupID" ColumnName="MinorOccupationGroupID" />
+      </EndProperty>
+      <EndProperty Name="USCensus_MajorOccupationGroups">
+        <ScalarProperty Name="MajorOccupationGroupID" ColumnName="MajorOccupationGroupID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="USCensus_GeographyType_EmployeeStatusRecodes" TypeName="dev_eeoModel.USCensus_GeographyType_EmployeeStatusRecodes" StoreEntitySet="USCensus_GeographyType_EmployeeStatusRecodes">
+      <EndProperty Name="USCensus_GeographyTypes">
+        <ScalarProperty Name="GeographyTypeId" ColumnName="GeographyTypeId" />
+      </EndProperty>
+      <EndProperty Name="USCensus_EmployeeStatusRecode">
+        <ScalarProperty Name="EmploymentStatusRecodeId" ColumnName="EmploymentStatusRecodeId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="dev_eeoModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="LastLoginDateTime" ColumnName="LastLoginDateTime" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="SecurityToken" ColumnName="SecurityToken" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="dev_eeoModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
+          <ScalarProperty Name="IsAdd" ColumnName="IsAdd" />
+          <ScalarProperty Name="IsFilter" ColumnName="IsFilter" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_AssignRole_UserRoles" TypeName="dev_eeoModel.FK_AssignRole_UserRoles" StoreEntitySet="AssignRole">
+      <EndProperty Name="AssignRole">
+        <ScalarProperty Name="AssignRoleId" ColumnName="AssignRoleId" />
+      </EndProperty>
+      <EndProperty Name="UserRole">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+      <Condition ColumnName="RoleId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_MenuHeaderConfiguration_UserRoles" TypeName="dev_eeoModel.FK_MenuHeaderConfiguration_UserRoles" StoreEntitySet="MenuHeaderConfiguration">
+      <EndProperty Name="MenuHeaderConfiguration">
+        <ScalarProperty Name="MenuHeaderID_PK" ColumnName="MenuHeaderID_PK" />
+      </EndProperty>
+      <EndProperty Name="UserRole">
+        <ScalarProperty Name="RoleId" ColumnName="UserRoleID_FK" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_UserRoles_Organizations" TypeName="dev_eeoModel.FK_UserRoles_Organizations" StoreEntitySet="UserRoles">
+      <EndProperty Name="UserRole">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Users_UserRoles" TypeName="dev_eeoModel.FK_Users_UserRoles" StoreEntitySet="Users">
+      <EndProperty Name="User">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="UserRole">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+      <Condition ColumnName="RoleId" IsNull="false" />
+    </AssociationSetMapping>
+    <EntitySetMapping Name="MenuConfigurations">
+      <EntityTypeMapping TypeName="dev_eeoModel.MenuConfiguration">
+        <MappingFragment StoreEntitySet="MenuConfiguration">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="IsAdminOnly" ColumnName="IsAdminOnly" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+          <ScalarProperty Name="MenuAction" ColumnName="MenuAction" />
+          <ScalarProperty Name="MenuController" ColumnName="MenuController" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MenuKey" ColumnName="MenuKey" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_AssignMenuHeader_MenuConfiguration" TypeName="dev_eeoModel.FK_AssignMenuHeader_MenuConfiguration" StoreEntitySet="AssignMenuHeader">
+      <EndProperty Name="AssignMenuHeader">
+        <ScalarProperty Name="AssignMenuHeader_PK" ColumnName="AssignMenuHeader_PK" />
+      </EndProperty>
+      <EndProperty Name="MenuConfiguration">
+        <ScalarProperty Name="MenuId" ColumnName="MenuID_FK" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_AssignRole_MenuConfiguration" TypeName="dev_eeoModel.FK_AssignRole_MenuConfiguration" StoreEntitySet="AssignRole">
+      <EndProperty Name="AssignRole">
+        <ScalarProperty Name="AssignRoleId" ColumnName="AssignRoleId" />
+      </EndProperty>
+      <EndProperty Name="MenuConfiguration">
+        <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+      </EndProperty>
+      <Condition ColumnName="MenuId" IsNull="false" />
+    </AssociationSetMapping>
+    <EntitySetMapping Name="AssignedGraphOrganizationViews">
+      <EntityTypeMapping TypeName="dev_eeoModel.AssignedGraphOrganizationView">
+        <MappingFragment StoreEntitySet="AssignedGraphOrganizationViews">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="AssignedGraphOrganizationViewId" ColumnName="AssignedGraphOrganizationViewId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_AssignedGraphOrganizationViews_GraphOrganizationView1" TypeName="dev_eeoModel.FK_AssignedGraphOrganizationViews_GraphOrganizationView1" StoreEntitySet="AssignedGraphOrganizationViews">
+      <EndProperty Name="AssignedGraphOrganizationView">
+        <ScalarProperty Name="AssignedGraphOrganizationViewId" ColumnName="AssignedGraphOrganizationViewId" />
+      </EndProperty>
+      <EndProperty Name="GraphOrganizationView">
+        <ScalarProperty Name="GraphOrganizationViewId" ColumnName="GraphOrganizationViewId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_AssignedGraphOrganizationViews_Organizations" TypeName="dev_eeoModel.FK_AssignedGraphOrganizationViews_Organizations" StoreEntitySet="AssignedGraphOrganizationViews">
+      <EndProperty Name="AssignedGraphOrganizationView">
+        <ScalarProperty Name="AssignedGraphOrganizationViewId" ColumnName="AssignedGraphOrganizationViewId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_AssignedGraphOrganizationViews_UserRoles" TypeName="dev_eeoModel.FK_AssignedGraphOrganizationViews_UserRoles" StoreEntitySet="AssignedGraphOrganizationViews">
+      <EndProperty Name="AssignedGraphOrganizationView">
+        <ScalarProperty Name="AssignedGraphOrganizationViewId" ColumnName="AssignedGraphOrganizationViewId" />
+      </EndProperty>
+      <EndProperty Name="UserRole">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="OrganizationLabelFields">
+      <EntityTypeMapping TypeName="dev_eeoModel.OrganizationLabelField">
+        <MappingFragment StoreEntitySet="OrganizationLabelField">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+          <ScalarProperty Name="DisplayLabelData" ColumnName="DisplayLabelData" />
+          <ScalarProperty Name="OrganizationLabelFieldId" ColumnName="OrganizationLabelFieldId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_OrganizationLabelField_DefaultLabelField" TypeName="dev_eeoModel.FK_OrganizationLabelField_DefaultLabelField" StoreEntitySet="OrganizationLabelField">
+      <EndProperty Name="OrganizationLabelField">
+        <ScalarProperty Name="OrganizationLabelFieldId" ColumnName="OrganizationLabelFieldId" />
+      </EndProperty>
+      <EndProperty Name="DefaultLabelField">
+        <ScalarProperty Name="DefaultLabelFieldId" ColumnName="DefaultLabelFieldId" />
+      </EndProperty>
+      <Condition ColumnName="DefaultLabelFieldId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_OrganizationLabelField_Organizations" TypeName="dev_eeoModel.FK_OrganizationLabelField_Organizations" StoreEntitySet="OrganizationLabelField">
+      <EndProperty Name="OrganizationLabelField">
+        <ScalarProperty Name="OrganizationLabelFieldId" ColumnName="OrganizationLabelFieldId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganisationId" />
+      </EndProperty>
+      <Condition ColumnName="OrganisationId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_OrganizationLabelField_UserRoles" TypeName="dev_eeoModel.FK_OrganizationLabelField_UserRoles" StoreEntitySet="OrganizationLabelField">
+      <EndProperty Name="OrganizationLabelField">
+        <ScalarProperty Name="OrganizationLabelFieldId" ColumnName="OrganizationLabelFieldId" />
+      </EndProperty>
+      <EndProperty Name="UserRole">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+      <Condition ColumnName="RoleId" IsNull="false" />
+    </AssociationSetMapping>
+    <EntitySetMapping Name="DefaultEmployeeFields">
+      <EntityTypeMapping TypeName="dev_eeoModel.DefaultEmployeeField">
+        <MappingFragment StoreEntitySet="DefaultEmployeeFields">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Sorting" ColumnName="Sorting" />
+          <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+          <ScalarProperty Name="ColumnCode" ColumnName="ColumnCode" />
+          <ScalarProperty Name="DefaultEmployeeFieldId" ColumnName="DefaultEmployeeFieldId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeActiveFields">
+      <EntityTypeMapping TypeName="dev_eeoModel.EmployeeActiveField">
+        <MappingFragment StoreEntitySet="EmployeeActiveFields">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Sorting" ColumnName="Sorting" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="DisplayLabelData" ColumnName="DisplayLabelData" />
+          <ScalarProperty Name="EmployeeActiveFieldId" ColumnName="EmployeeActiveFieldId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_EmployeeActiveFields_DefaultEmployeeFields" TypeName="dev_eeoModel.FK_EmployeeActiveFields_DefaultEmployeeFields" StoreEntitySet="EmployeeActiveFields">
+      <EndProperty Name="EmployeeActiveField">
+        <ScalarProperty Name="EmployeeActiveFieldId" ColumnName="EmployeeActiveFieldId" />
+      </EndProperty>
+      <EndProperty Name="DefaultEmployeeField">
+        <ScalarProperty Name="DefaultEmployeeFieldId" ColumnName="DefaultEmployeeFieldId" />
+      </EndProperty>
+      <Condition ColumnName="DefaultEmployeeFieldId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_EmployeeActiveFields_Organizations" TypeName="dev_eeoModel.FK_EmployeeActiveFields_Organizations" StoreEntitySet="EmployeeActiveFields">
+      <EndProperty Name="EmployeeActiveField">
+        <ScalarProperty Name="EmployeeActiveFieldId" ColumnName="EmployeeActiveFieldId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganisationId" />
+      </EndProperty>
+      <Condition ColumnName="OrganisationId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_EmployeeActiveFields_UserRoles" TypeName="dev_eeoModel.FK_EmployeeActiveFields_UserRoles" StoreEntitySet="EmployeeActiveFields">
+      <EndProperty Name="EmployeeActiveField">
+        <ScalarProperty Name="EmployeeActiveFieldId" ColumnName="EmployeeActiveFieldId" />
+      </EndProperty>
+      <EndProperty Name="UserRole">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+      <Condition ColumnName="RoleId" IsNull="false" />
+    </AssociationSetMapping>
+    <EntitySetMapping Name="PublicURLs">
+      <EntityTypeMapping TypeName="dev_eeoModel.PublicURL">
+        <MappingFragment StoreEntitySet="PublicURL">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="PublicURLId" ColumnName="PublicURLId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_PublicURL_Organizations" TypeName="dev_eeoModel.FK_PublicURL_Organizations" StoreEntitySet="PublicURL">
+      <EndProperty Name="PublicURL">
+        <ScalarProperty Name="PublicURLId" ColumnName="PublicURLId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrgainisationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="EmailAuthenticateLogs">
+      <EntityTypeMapping TypeName="dev_eeoModel.EmailAuthenticateLog">
+        <MappingFragment StoreEntitySet="EmailAuthenticateLog">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="EmailSentTime" ColumnName="EmailSentTime" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="AuthenticateCode" ColumnName="AuthenticateCode" />
+          <ScalarProperty Name="EmailLogId" ColumnName="EmailLogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_EmailAuthenticateLog_Users" TypeName="dev_eeoModel.FK_EmailAuthenticateLog_Users" StoreEntitySet="EmailAuthenticateLog">
+      <EndProperty Name="EmailAuthenticateLog">
+        <ScalarProperty Name="EmailLogId" ColumnName="EmailLogId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="LoginDeviceInfoes">
+      <EntityTypeMapping TypeName="dev_eeoModel.LoginDeviceInfo">
+        <MappingFragment StoreEntitySet="LoginDeviceInfo">
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+          <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+          <ScalarProperty Name="IsMobile" ColumnName="IsMobile" />
+          <ScalarProperty Name="NoOfTimeLogin" ColumnName="NoOfTimeLogin" />
+          <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+          <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
+          <ScalarProperty Name="RandomKey" ColumnName="RandomKey" />
+          <ScalarProperty Name="MacAdresss" ColumnName="MacAdresss" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="DeviceAccessInfo" ColumnName="DeviceAccessInfo" />
+          <ScalarProperty Name="LoginDeviceInfoId" ColumnName="LoginDeviceInfoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_EmailAuthenticateLog_LoginDeviceInfo" TypeName="dev_eeoModel.FK_EmailAuthenticateLog_LoginDeviceInfo" StoreEntitySet="EmailAuthenticateLog">
+      <EndProperty Name="EmailAuthenticateLog">
+        <ScalarProperty Name="EmailLogId" ColumnName="EmailLogId" />
+      </EndProperty>
+      <EndProperty Name="LoginDeviceInfo">
+        <ScalarProperty Name="LoginDeviceInfoId" ColumnName="LoginDeviceInfoId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_LoginDeviceInfo_Organizations" TypeName="dev_eeoModel.FK_LoginDeviceInfo_Organizations" StoreEntitySet="LoginDeviceInfo">
+      <EndProperty Name="LoginDeviceInfo">
+        <ScalarProperty Name="LoginDeviceInfoId" ColumnName="LoginDeviceInfoId" />
+      </EndProperty>
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_LoginDeviceInfo_Users" TypeName="dev_eeoModel.FK_LoginDeviceInfo_Users" StoreEntitySet="LoginDeviceInfo">
+      <EndProperty Name="LoginDeviceInfo">
+        <ScalarProperty Name="LoginDeviceInfoId" ColumnName="LoginDeviceInfoId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

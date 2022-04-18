@@ -1,0 +1,245 @@
+﻿@model EEONow.Models.OrhChartDashborad
+@{
+    ViewBag.Title = "Live Orh Chart Dashborad";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<link href="~/Content/OrgChartContent/OrgStyle.css" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+<style> 
+    .main_title_row {
+        margin: -10px 0 10px 0;
+    }
+
+    #control-export-menu {
+        top: 10px !important;
+    }
+
+    #divSearch, #divSearchIcon {
+        top: 10px !important;
+        left: 0px !important;
+    }
+</style>
+<h2 class="main_title_row">Live Org Chart:</h2>
+<div id="SearchPannel">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+
+                <div class="col-lg-12">File Submissions :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+                          .Name("filesubmission")
+                          .HtmlAttributes(new { style = "width:100%" })
+                          .DataTextField("Text")
+                          .DataValueField("Value")
+                          .BindTo(Model.ListFileSubmission)
+                          .Enable(true)
+                          .Events(e =>
+                          {
+                              e.Change("onFileSubmissionChange");
+                          })
+                    )
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-lg-12">Title :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().TextBoxFor(m => m.Title).HtmlAttributes(new { placeholder = "Title", type = "text", @class = "form-control" }))
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-lg-12">Sub Title :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().TextBoxFor(m => m.SubTitle).HtmlAttributes(new { placeholder = "Sub Title", type = "text", @class = "form-control" }))
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@(Html.HiddenFor(e => e.FileSubmissionId))
+@(Html.HiddenFor(e => e.FilePath))
+@(Html.HiddenFor(e => e.OrganizationId))
+@(Html.HiddenFor(e => e.OrganizationName))
+@(Html.HiddenFor(e => e.EffectiveDate))
+
+<div class="render-outer">
+    <div id="orgchart">
+    </div>
+</div>
+<div id="pdf-export" style="display: none;"></div>
+@section scripts{
+
+    <script src="~/Content/OrgChartContent/orgchart.js" type="text/javascript"></script>
+    <script src="~/Content/OrgChartContent/papaparse.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var chart
+        function GenerateOrgChart(FilePath) {
+            var allText;
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", FilePath, false);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status == 0) {
+                        allText = rawFile.responseText;
+                    }
+                }
+            }
+            rawFile.send(null);
+            var results = Papa.parse(allText, {
+                header: true
+            })
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+            var today = mm + '/' + dd + '/' + yyyy;
+            chart = new OrgChart(document.getElementById("orgchart"), {
+                onExportStart: function (sender, type, filename) {
+                    //$("#date-export")[0].innerHTML = "Efective Date " + today
+                    //$("#something")[0].innerHTML = "Department of children and famlies"
+                }, 
+                layout: BALKANGraph.tree,
+                template: "olivia",
+                lazyLoading: true,
+                enableSearch: true,
+                toolbar: true,
+                mouseScrool: BALKANGraph.action.zoom,
+                menu: {
+                    pdf: {
+                        text: "Export PDF",
+                        //icon: OrgChart.icon.pdf(24, 24, "#7A7A7A"),
+                        //onClick: pdf
+                    },
+                    //png: { text: "Export PNG" },
+                    //svg: { text: "Export SVG" },
+                    //csv: { text: "Export CSV" },
+                },
+                nodeMenu: { 
+                    pdf: {
+                        text: "Export PDF",
+                        //icon: OrgChart.icon.pdf(24, 24, "#7A7A7A"),
+                        //onClick: pdf
+                    }, 
+                },
+                collapse: {
+                    level: 2,
+                    allChildren: true
+                },
+                //onExpCollClick: function (sender, action, id, ids) {
+
+                //    var node = sender.getBGNode(id);
+                //    var centerId = id;
+                //    var rippleId = id;
+                //    if (action == BALKANGraph.COLLAPSE) {
+                //        var node = sender.getBGNode(id);
+                //        if (node.parent == null) return true;
+                //        centerId = node.pid;
+                //    }
+                //    sender.center(centerId, BALKANGraph.COLLAPSE_PARENT_NEIGHBORS, BALKANGraph.COLLAPSE_SUB_CHILDRENS, rippleId);
+                //    return false;
+                //},
+                onSearchClick: function (sender, id) {
+                    var node = sender.getBGNode(id);
+                    var centerId = id;
+                    var rippleId = id;                     
+                    sender.center(centerId, BALKANGraph.COLLAPSE_PARENT_NEIGHBORS, BALKANGraph.COLLAPSE_SUB_CHILDRENS, rippleId);                
+                    return false;
+                },
+                //searchFields: ["Name", "title"],
+                
+                nodeBinding: {
+                    field_0: "Name",
+                    field_1: "Title",
+                    field_2: "Program office",
+                    field_3: "Position Number",
+                    field_4: "DisplayName",
+                    img_0: "img"
+                },
+                nodes: manipulateNodes(results.data),
+                align: OrgChart.ORIENTATION,
+            }); 
+            chart.fit();
+        }
+        function manipulateNodes(nodedata) {
+            return nodedata.map((node) => {
+                let _node = {
+                    "id": node.position,
+                    "Name": node.first +' ' + node.last,
+                    "DisplayName": node.first + ' ' + node.middle + ' ' + node.last,
+                    "Phone": node.phone,
+                    "Email": node.email,
+                    "Gender": node.gender,
+                    "Title": node.positionTitle,
+                    "Program office": node.programOffice,
+                    "Age": node.age,
+                    "Address": node.address,
+                    "City": node.city,
+                    "County": node.county,
+                    "Salary": node.salary,
+                    "State": node.state,
+                    "Zip Code": node.zipCode,
+                    "supervisorFlag": node.supervisorFlag,
+                    "Position Number": node.position,
+                    "img": "https://content-static.upwork.com/uploads/2014/10/01073435/profilephoto5.jpg"
+
+                };
+                if (node.parent) {
+                    _node.pid = node.parent
+                }
+                return _node
+            });
+        };
+
+        //function pdf(nodeId) {
+        //    chart.exportPDF({
+        //        format: "A4",
+        //        extraHtml: '<div style="text-align:left">3333333</div>'
+        //    });
+        //}
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            GenerateOrgChart('@Model.FilePath');
+        });
+        function onFileSubmissionChange()
+        {
+            ddlItem = parseInt(this.value());
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "/Dashboard/GetFileSubmissionDetail",
+                data: { 
+                    FileSubmissionId: ddlItem, 
+                },
+                success: function (response) { 
+                    $("#FileSubmissionId").val(response.FileSubmissionId);
+                    $("#FilePath").val(response.FilePath);
+                    $("#OrganizationId").val(response.OrganizationId);
+                    $("#OrganizationName").val(response.OrganizationName);
+                    $("#EffectiveDate").val(response.EffectiveDate);
+                    GenerateOrgChart(response.FilePath);
+                },
+                error: function (errorResponse) {
+                    console.log(errorResponse);
+                }
+            });
+        }
+    </script>
+}
+

@@ -1,0 +1,327 @@
+﻿@model EEONow.Models.JobsByEEOCategoryReportModel
+@{
+    ViewBag.Title = "Jobs By EEO Category Report";
+    Layout = "~/Views/Shared/_PartialViewLayout.cshtml";
+}
+<style>
+    table {
+        width: 100%;
+    }
+
+    .Bg-AlaternateTr {
+        background: #f0f0f0;
+    }
+
+    tr.bg-blue:hover td {
+        color: #fff;
+        background: #04418c;
+    }
+
+    tr.bg-blue td {
+        color: #000;
+    }
+
+    .color-Black {
+        color: #000;
+    }
+
+    inspector-stylesheet:1 tr.bg-blue:hover {
+        background: #04418c;
+        color: #fff;
+    }
+
+    .table-grid {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table-grid > tbody > tr > th {
+            padding: 1;
+        }
+
+        .table-grid > thead > tr > th,
+        .table-grid > tbody > tr > th,
+        .table-grid > tfoot > tr > th,
+        .table-grid > thead > tr > td,
+        .table-grid > tbody > tr > td,
+        .table-grid > tfoot > tr > td {
+            border: 1px solid #04418c;
+        }
+
+
+
+        .table-grid .table-grid td,
+        .table-grid .table-grid th {
+            border-top: 1px solid #04418c;
+            border-right: 1px solid #04418c;
+            border-bottom: 0;
+            border-left: 0;
+        }
+
+            .table-grid .table-grid td:last-child,
+            .table-grid .table-grid th:last-child {
+                border-right: 0;
+            }
+
+    td {
+        /*border: 1px solid #04418c;*/
+        color: #04418c;
+        /*border-collapse: collapse;*/
+        vertical-align: top;
+    }
+
+    .noborder {
+        border: none;
+    }
+
+    /*.Alm-Img {
+        width: 100px;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .Alm-imgtext {
+        float: left;
+        margin-top: 40px;
+    }*/
+    .Alm-text {
+        vertical-align: middle;
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+
+    .td-top-none {
+        border-top: none !important;
+        /*vertical-align :middle;*/
+    }
+
+    .td-bottom-none {
+        border-bottom: none !important;
+    }
+
+    .td-left-none {
+        border-left: none !important;
+    }
+
+    .td-right-none {
+        border-right: none !important;
+    }
+
+    .aligncenter {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .alignmiddle {
+        vertical-align: middle;
+        padding-left: 3px
+    }
+
+    .alignRight {
+        text-align: right;
+        padding-right: 3px !important;
+    }
+
+    .nohover {
+        background: none !important;
+        color: #000 !important;
+    }
+
+    .AVExport {
+        float: right;
+        margin-top: 3px;
+        margin-right: -70px;
+        text-decoration: underline;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .AVExport:hover {
+            font-size: 16px;
+        }
+
+    .tdgrandtotal {
+        text-align: right;
+        padding-right: 10px;
+        font-size: 18px;
+    }
+
+    .tdEmployeeTotal {
+        text-align: center;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .tdTitle {
+        font-weight: 700;
+    }
+</style>
+<table class="table-grid">
+    <tbody>
+        <tr>
+            <td class="Alm-text" colspan="2" width="23%">
+                @Model.OrganizationName
+            </td>
+            <td width="78%">
+                <table class="table-grid aligncenter">
+                    <tr>
+                        <th class="td-top-none td-right-none" colspan="2" height="25px" style="text-align:center; font-size:20px">
+                            Jobs By EEO Category Report
+                        </th>
+                        <th class="td-top-none" colspan="2"></th>
+                    </tr>
+                    <tr>
+                        <td class="noborder" width="30%" colspan="2" style="vertical-align: middle;text-align: left;padding-left: 10px;font-size: 14px;" id="TdPosition">
+                            Position Title
+                        </td>
+                        <td class="noborder" width="70%" colspan="2" style="vertical-align: middle;text-align: left;padding-left: 10px;font-size: 14px;" id="TdProgram">
+                            Program Office(s)
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        @{int countEEORow = 0; int PageBreak = 0;
+            foreach (var itemJobsByEEOCategory in Model.ListJobsByEEOCategory)
+            {
+                countEEORow = countEEORow + 1;
+                <tr>
+                    <td colspan="2" class="@(countEEORow % 2 == 1 ? "color-Black" : "color-Black Bg-AlaternateTr")" style="padding: 10px;font-size: 14px;" width="22%">
+                        <span class="tdTitle">@itemJobsByEEOCategory.EEOJobCategoryName</span>
+                    </td>
+
+                    <td width="78%">
+                        <table class="table-grid">
+                            @{int countInnerEEORow = 0;
+                                string TdHeight = "20px";
+                                foreach (var ItemOfPositionAndProgram in Model.ListPositionAndProgram.Where(e => e.EEOJobCategoryNumber == itemJobsByEEOCategory.EEOJobCategoryNumber).ToList())
+                                {
+                                    countInnerEEORow = countInnerEEORow + 1;
+                                    if(ItemOfPositionAndProgram.ProgramOfficeName.Count>4)
+                                    {
+                                        PageBreak = PageBreak + 2;
+                                        TdHeight = "42px";
+                                    }
+                                    else
+                                    {
+                                        PageBreak = PageBreak + 1;
+                                        TdHeight = "20px";
+                                    }
+
+
+                                    <tr class="@(countInnerEEORow % 2 == 1 ? "bg-blue" : "bg-blue Bg-AlaternateTr")">
+                                        <td class="td-top-none innertext" height="20px" width="30%">
+                                            @ItemOfPositionAndProgram.PositionTitle
+                                        </td>
+                                        <td class="td-top-none innertext" height="@TdHeight" width="70%">                                             
+                                            @{ 
+                                                for (int i = 0; i < ItemOfPositionAndProgram.ProgramOfficeName.Count; i++)
+                                                { 
+                                                    if (i < (ItemOfPositionAndProgram.ProgramOfficeName.Count - 1))
+                                                    {
+                                                        @(ItemOfPositionAndProgram.ProgramOfficeName[i] + " , ")
+                                                    }
+                                                    else 
+                                                    {
+                                                        @(ItemOfPositionAndProgram.ProgramOfficeName[i])
+                                                    }
+                                                }
+ 
+                                              } 
+                                        </td>
+                                    </tr>
+
+                                   if (PageBreak == 54)
+                                   {
+                                       PageBreak = 1;
+                                       @Html.Raw(@"</table></td></tr><tr style='height:50px;'><td style='border:none;' colspan='3'></td></tr>")
+                                       <tr>
+                                            <td class="Alm-text" colspan="2" width="23 % ">
+                                                @Model.OrganizationName
+                                            </td>
+                                            <td width="78%">
+                                                <table class="table-grid aligncenter">
+                                                    <tr>
+                                                        <th class="td-top-none td-right-none" colspan="2" height="25px" style="text-align:center; font-size:20px">
+                                                            Jobs By EEO Category Report
+                                                        </th>
+                                                        <th class="td-top-none" colspan="2"></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="noborder" width="30%" colspan="2" style="vertical-align: middle;text-align: left;padding-left: 10px;font-size: 14px;" id="TdPosition">
+                                                            Position Title
+                                                        </td>
+                                                        <td class="noborder" width="70%" colspan="2" style="vertical-align: middle;text-align: left;padding-left: 10px;font-size: 14px;" id="TdProgram">
+                                                            Program Office(s)
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                       @Html.Raw(@"<tr><td colspan='2' class='" + (countEEORow % 2 == 1 ? "color-Black" : "color-Black Bg-AlaternateTr") + "' style='padding: 10px; font-size: 14px;' width='22%'><span class='tdTitle'>" + itemJobsByEEOCategory.EEOJobCategoryName + "</span></td><td width='78%'><table class='table-grid'>")
+                                    }
+                                }
+
+                                <tr class="@(countInnerEEORow % 2 == 1 ? "bg-blue Bg-AlaternateTr" : "bg-blue ")" style="text-align:right;    border-top: 1px solid #04418c;">
+                                    <td class="td-top-none innertext" height="20px" width="30%" style="vertical-align:middle">
+                                        <span class="tdTitle">Sub Total: @(Model.ListPositionAndProgram.Where(e => e.EEOJobCategoryNumber == itemJobsByEEOCategory.EEOJobCategoryNumber).Count()) &nbsp;</span>
+                                    </td>
+                                    <td class="td-top-none innertext" height="20px" width="70%" style="vertical-align:middle">
+                                        <span class="tdTitle"></span>
+                                    </td>
+                                </tr>
+                                PageBreak = PageBreak + 1;
+
+                            }
+                        </table>
+                    </td>
+                </tr>
+                                                }
+          }
+        <tr>
+            <td colspan="2"></td>
+            <td width="78%">
+                <table class="table-grid">
+                    <tr class="bg-blue">
+                        <td class="td-top-none innertext" style="text-align:right;"  height="20px" width="30%"><span class="tdTitle">Grand Total : @(Model.ListPositionAndProgram.Count()) &nbsp;</span></td>
+                        <td class="td-top-none innertext" height="20px" width="70%"></td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+@section scripts{
+    <script src="/Scripts/jquery-3.2.1.js"></script>
+    <script src="/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //$(this).find('td').each(function (e) {
+            //    console.log(e);
+            //})
+            //$('.formatNumber').text(formatNumber($('.formatNumber').text()))
+            //console.log($('.formatNumber').text());
+
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            })
+
+        })
+
+
+
+
+    </script>
+
+}

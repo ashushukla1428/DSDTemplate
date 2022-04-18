@@ -1,0 +1,188 @@
+USE [dsdProjectTemplate]
+GO
+SET IDENTITY_INSERT [dbo].[States] ON 
+GO
+INSERT [dbo].[States] ([Id], [StateName], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (1, N'US', 1, 1, CAST(N'2021-05-17T07:41:56.710' AS DateTime), 1, CAST(N'2021-09-13T14:38:18.893' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[States] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Cities] ON 
+GO
+INSERT [dbo].[Cities] ([Id], [StateId], [CityName], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (1, 1, N'US', 1, 1, CAST(N'2021-05-17T08:11:19.973' AS DateTime), 1, CAST(N'2021-06-18T15:57:42.470' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Cities] OFF
+
+--Organization
+GO
+SET IDENTITY_INSERT [dbo].[Organizations] ON 
+GO
+INSERT [dbo].[Organizations] ([Id], [ParentOrganizationId], [Name], [Description], [OrgCode], [WorkNumber], [FaxNumber], [ContactEmail], [Address], [ZipCode], [CityId], [StateId], [IsAdminOnly], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (1, 0, N'Defined Software services', N'Defined Software services', N'DSS2021', N'9876771947', N'9876771947', N'email@gmail.com', N'address', N'zip code', 1, 1, 1, 1, 1, CAST(N'2021-05-18T10:24:42.013' AS DateTime), 1, CAST(N'2021-06-16T15:55:42.867' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Organizations] OFF
+--RegistrationRequestTypes
+GO
+SET IDENTITY_INSERT [dbo].[RegistrationRequestTypes] ON 
+GO
+INSERT [dbo].[RegistrationRequestTypes] ([Id], [OrganizationId], [TypeName], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (1, 1, N'user', 1, 1, CAST(N'2021-05-25T10:20:01.997' AS DateTime), 1, CAST(N'2021-05-25T15:50:11.520' AS DateTime))
+
+GO
+SET IDENTITY_INSERT [dbo].[RegistrationRequestTypes] OFF
+--UsersRoles
+GO
+SET IDENTITY_INSERT [dbo].[UsersRoles] ON 
+GO
+INSERT [dbo].[UsersRoles] ([Id], [OrganizationId], [RoleName], [CanAddRecords], [CanEditRecords], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (1, 1, N'Software Administrator', 1, 1, 1, 1, CAST(N'2021-05-25T09:48:52.270' AS DateTime), 0, CAST(N'2021-06-03T15:57:04.240' AS DateTime))
+GO
+INSERT [dbo].[UsersRoles] ([Id], [OrganizationId], [RoleName], [CanAddRecords], [CanEditRecords], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (2,1, N'Software Support', 1, 1, 1, 1, CAST(N'2021-05-25T10:08:54.743' AS DateTime), 1, CAST(N'2021-10-04T07:50:55.790' AS DateTime))
+ 
+GO
+SET IDENTITY_INSERT [dbo].[UsersRoles] OFF
+--UserType
+GO
+SET IDENTITY_INSERT [dbo].[UserType] ON 
+GO
+INSERT [dbo].[UserType] ([Id], [TypeName], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (1, N'Admin', 1, 1, CAST(N'2021-05-18T07:23:34.110' AS DateTime), 1, CAST(N'2021-06-17T15:34:55.953' AS DateTime))
+
+GO
+SET IDENTITY_INSERT [dbo].[UserType] OFF
+
+--Users
+GO
+SET IDENTITY_INSERT [dbo].[Users] ON 
+GO
+INSERT [dbo].[Users] ([Id], [UserTypeId], [UserName], [FirstName], [MiddleName], [LastName], [EmailAddress], [ProfilePicture], [SecurityQuestion1], [AnswerSecurityQuestion1], [SecurityQuestion2], [AnswerSecurityQuestion2], [SecurityQuestion3], [AnswerSecurityQuestion3], [PendingRegistration], [RegistrationCellPhoneNumber], [RegistrationWorkPhoneNumber], [RegistrationWorkPhoneNumberExt], [RegistrationDate], [EmailTwoFactorAuthentication], [SMSTwoFactorAuthentication], [IsActive], [LastLoginDateTime], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (1, 1, N'medinad', N'David', NULL, N'medinad', N'david@definedsoftware.com', N'https://image.flaticon.com/icons/png/512/1946/1946429.png', 1, N'Answer 1', 2, N'Answer 2', 3, N'Answer 3', 0, N'1511151', N'35354354', NULL, CAST(N'2021-05-28T11:02:21.173' AS DateTime), 0, 0, 1, CAST(N'2021-10-25T16:48:23.327' AS DateTime), 1, CAST(N'2021-05-28T11:02:21.173' AS DateTime), 1, CAST(N'2021-06-09T10:59:56.380' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Users] OFF
+--OrganizationUsers
+GO
+SET IDENTITY_INSERT [dbo].[OrganizationUsers] ON 
+GO
+INSERT [dbo].[OrganizationUsers] ([Id], [OrganizationId], [UserId], [RoleId], [RegistrationRequestTypeId], [IsActive], [Note]) VALUES (1, 1, 1, 1, 1, 1, NULL)
+
+GO
+SET IDENTITY_INSERT [dbo].[OrganizationUsers] OFF
+--SoftwareUsers
+GO
+SET IDENTITY_INSERT [dbo].[SoftwareUsers] ON 
+GO
+INSERT [dbo].[SoftwareUsers] ([Id], [UserId], [IsSuperAdmin]) VALUES (1, 1, 1)
+GO
+SET IDENTITY_INSERT [dbo].[SoftwareUsers] OFF
+GO
+
+
+--UsersLoginPasswords and 1st time password is Medinad@21
+GO
+SET IDENTITY_INSERT [dbo].[UsersLoginPasswords] ON 
+GO
+INSERT [dbo].[UsersLoginPasswords] ([Id], [UserId], [EncryptedPassword], [PasswordSalt], [SecurityToken], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (1, 1, N'Ccid+APde6+5WwZY4PR0cg==', N'XTaHuCNo3wuFnntfEilKfHZRU9I=', N'b916edfc-0650-4d77-a56e-96f4eb60ede6', 1, 0, CAST(N'2021-06-01T11:51:56.570' AS DateTime), 1, CAST(N'2021-10-11T09:09:17.493' AS DateTime))
+
+SET IDENTITY_INSERT [dbo].[UsersLoginPasswords] OFF
+GO
+
+GO
+INSERT [dbo].[AppAreas] ([Id], [AreaName], [IsActive]) VALUES (1, N'Masters', 1)
+GO
+
+
+GO
+SET IDENTITY_INSERT [dbo].[MenuConfiguration] ON 
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (1, N'Users_Index', N'User', 0, N'Users', N'Index', N'nav-icon fas fa-users', 15, 0, 1, 1, CAST(N'2021-10-27T06:03:51.147' AS DateTime), 1, CAST(N'2021-11-10T08:42:51.890' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (2, N'Cities_Index', N'Cities', 0, N'Cities', N'Index', N'nav-icon fas fa-globe-europe', 9, 1, 1, 1, CAST(N'2021-10-27T06:48:44.190' AS DateTime), 1, CAST(N'2021-11-10T08:40:52.390' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (3, N'States_Index', N'States', 0, N'States', N'Index', N'nav-icon fas fa-globe-europe', 7, 1, 1, 1, CAST(N'2021-10-27T07:13:39.257' AS DateTime), 1, CAST(N'2021-11-10T08:40:22.477' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (4, N'OrganizationUsers_Index', N'Organizer User', 0, N'OrganizationUsers', N'Index', N'nav-icon fas fa-building', 4, 0, 1, 1, CAST(N'2021-10-27T07:29:21.300' AS DateTime), 1, CAST(N'2021-11-10T08:38:58.017' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (5, N'Masters_Index', N'Organization Master', 0, N'Masters', N'Index', N'fas fa-calendar-alt', 5, 0, 0, 1, CAST(N'2021-10-28T05:56:10.507' AS DateTime), 1, CAST(N'2021-11-10T07:52:50.330' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (6, N'Masters_Index', N'Organization Year', 0, N'Masters', N'Index', N'fas fa-calendar - alt', 7, 1, 0, 1, CAST(N'2021-10-28T11:05:22.740' AS DateTime), 1, CAST(N'2021-11-10T07:52:41.230' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (7, N'County_Index', N'Countries', 0, N'County', N'Index', N'nav-icon fas fa-globe-europe', 8, 1, 1, 1, CAST(N'2021-10-28T13:27:31.517' AS DateTime), 1, CAST(N'2021-11-10T08:40:37.853' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (8, N'County_Index', N'Test', 0, N'County', N'Index', N'far fa-address-book', 4, 1, 0, 1, CAST(N'2021-11-01T05:12:25.700' AS DateTime), 1, CAST(N'2021-11-10T08:00:18.847' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (9, N'States_Index', N'State', 0, N'States', N'Index', N'fas fa-globe-europe', 2, 1, 0, 1, CAST(N'2021-11-01T08:25:56.880' AS DateTime), 1, CAST(N'2021-11-10T07:59:52.453' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (10, N'MenuConfiguration_Index', N'Menu Configuration', 0, N'MenuConfiguration', N'Index', N'nav-icon fas fa-bars', 16, 1, 1, 1, CAST(N'2021-11-08T06:13:55.227' AS DateTime), 1, CAST(N'2021-11-10T08:42:34.960' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (11, N'Dashboard_Index', N'Dashboard', 1, N'Dashboard', N'Index', N'nav-icon fas fa-tachometer-alt', 1, 0, 1, 1, CAST(N'2021-11-10T07:30:45.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (12, N'Organizations_Index', N'Organizations', 0, N'Organizations', N'Index', N'nav-icon fas fa-building', 2, 1, 1, 1, CAST(N'2021-11-10T07:43:06.350' AS DateTime), 1, CAST(N'2021-11-10T08:34:53.087' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (13, N'OrganizationYears_Index', N'Organization Years', 0, N'OrganizationYears', N'Index', N'nav-icon fas fa-calendar - alt', 3, 1, 1, 1, CAST(N'2021-11-10T07:44:16.913' AS DateTime), 1, CAST(N'2021-11-10T08:35:35.750' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (14, N'ClientsContactTypes_Index', N'Clients Contact Types', 0, N'ClientsContactTypes', N'Index', N'nav-icon far fa-address-book', 5, 1, 1, 1, CAST(N'2021-11-10T07:56:20.160' AS DateTime), 1, CAST(N'2021-11-10T08:39:55.050' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (15, N'ProvidersContactTypes_Index', N'Providers Contact Types', 0, N'ProvidersContactTypes', N'Index', N'nav-icon far fa-address-book', 6, 1, 1, 1, CAST(N'2021-11-10T07:58:04.463' AS DateTime), 1, CAST(N'2021-11-10T08:40:08.607' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (16, N'GendersType_Index', N'GendersType', 0, N'GendersType', N'Index', N'nav-icon fas fa-venus-mars', 10, 1, 1, 1, CAST(N'2021-11-10T08:03:03.597' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (17, N'SecurityQuestions_Index', N'Security Questions', 0, N'SecurityQuestions', N'Index', N'nav-icon fas fa-question', 11, 1, 1, 1, CAST(N'2021-11-10T08:04:42.797' AS DateTime), 1, CAST(N'2021-11-10T08:41:19.487' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (18, N'UsersType_Index', N'UsersType', 0, N'UsersType', N'Index', N'nav-icon fas fa-user', 12, 1, 1, 1, CAST(N'2021-11-10T08:08:11.200' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (19, N'UsersRoles_Index', N'UsersRoles', 0, N'UsersRoles', N'Index', N'nav-icon fas fa-user-tag', 13, 1, 1, 1, CAST(N'2021-11-10T08:10:58.137' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (20, N'RegistrationRequestTypes_Index', N'Registration Request Types', 0, N'RegistrationRequestTypes', N'Index', N'nav-icon fas fa-universal-access', 14, 1, 1, 1, CAST(N'2021-11-10T08:14:12.553' AS DateTime), 1, CAST(N'2021-11-10T08:30:16.613' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (21, N'MenuHeaderConfiguration_Index', N'Menu Header Configuration', 0, N'MenuHeaderConfiguration', N'Index', N'nav-icon fa fa-cog', 17, 1, 1, 1, CAST(N'2021-11-10T08:17:33.850' AS DateTime), 1, CAST(N'2021-11-10T08:41:40.770' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (22, N'SystemErrorsLog_Index', N'System''s Errors', 0, N'SystemErrorsLog', N'Index', N'nav-icon fas fa-bug', 18, 0, 1, 1, CAST(N'2021-11-10T08:18:45.193' AS DateTime), 1, CAST(N'2021-11-10T08:41:55.400' AS DateTime))
+GO
+INSERT [dbo].[MenuConfiguration] ([Id], [MenuKey], [Name], [IsAdminOnly], [MenuController], [MenuAction], [MenuIcon], [DisplayOrder], [AreaId], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (23, N'ActionsHistory_Index', N'Actions History', 0, N'ActionsHistory', N'Index', N'nav-icon fas fa-history', 19, 0, 1, 1, CAST(N'2021-11-10T08:20:22.730' AS DateTime), 1, CAST(N'2021-11-10T09:37:30.987' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[MenuConfiguration] OFF
+GO
+
+
+GO
+SET IDENTITY_INSERT [dbo].[MenuIcons] ON 
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (1, N'Home', N'nav-icon fas fa-home', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (2, N'Organization', N'nav-icon fas fa-building', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (3, N'Calendar', N'nav-icon fas fa-calendar-alt', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (4, N'Address Book', N'nav-icon far fa-address-book', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (5, N'Globe', N'nav-icon fas fa-globe-europe', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (6, N'Users', N'nav-icon fas fa-users', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (7, N'History', N'nav-icon fas fa-history', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (8, N'Question', N'nav-icon fas fa-question', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (9, N'User Type', N'nav-icon fas fa-user', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (10, N'Menu Configuration', N'nav-icon fas fa-bars', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (11, N'Menu Header Configuration', N'nav-icon fa fa-cog', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (12, N'Cities', N'nav-icon fas fa-city', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (13, N'System Error', N'nav-icon fas fa-bug', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (14, N'Organizer Years', N'nav-icon fas fa-calendar - alt', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (15, N'Dashboard', N'nav-icon fas fa-tachometer-alt', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (16, N'Clients Contact Types', N'nav-icon far fa-address-book', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (17, N'Provider Contact Types', N'nav-icon far fa-address-book', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (18, N'Genders Type', N'nav-icon fas fa-venus-mars', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (19, N'User Role', N'nav-icon fas fa-user-tag', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), NULL, NULL)
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (20, N'Request Type', N'nav-icon fas fa-universal-access', 1, 1, CAST(N'2021-11-11T14:50:05.347' AS DateTime), 1, CAST(N'2021-11-11T10:02:40.903' AS DateTime))
+GO
+INSERT [dbo].[MenuIcons] ([Id], [Name], [Value], [IsActive], [CreatedBy], [CreatedDate], [UpdatedBy], [UpdatedDate]) VALUES (21, N'Menu Icons', N'nav-icon fas fa-icons', 1, 1, CAST(N'2021-11-11T10:04:30.590' AS DateTime), 1, CAST(N'2021-11-11T10:06:54.470' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[MenuIcons] OFF
+GO
+

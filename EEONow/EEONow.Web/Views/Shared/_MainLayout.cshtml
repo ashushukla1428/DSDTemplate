@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="google-site-verification" content="zyRw7CxzAUPg2RoX1Hc8besePcGOPaIhAfVrlWY-phQ" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    @*<link rel="icon" href="~/Content/favicon.ico" type="image/x-icon" />*@
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="~/Content/Custom/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/LeftMenu.css" rel="stylesheet" />
+    @RenderSection("css", false)
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        .k-operator-hidden {
+            padding: 0px;
+        }
+
+        #grid .k-filtercell > span > .k-button, .k-autocomplete.k-state-hover > .k-i-close, .k-clear-value, .k-i-close, .k-dropdown-operator {
+            display: none;
+        }
+
+        .k-filtercell > span {
+            padding-right: 0px;
+        }
+
+        .header-logo {
+            width: 185px;
+        }
+
+        .navbar-header {
+            padding-top: 5px;
+            min-width: 30%
+        }
+
+        .header-logo:hover {
+            content: url('../Content/Logo/EEO_NOW-Logo-Web.png');
+        }
+        /*.copy-right-logo
+        {
+            width:75%;
+        }*/
+        .back-section {
+            width: 100%;
+            background: #ffffff;
+            height: 30px; 
+        }
+
+        .App-Region {
+            font-size: 18px;
+            font-weight: 700;
+            color: red;
+            float: right;
+            margin-top: 8px;
+            margin-left: 30px;
+        }
+
+        .Img-help {
+            width: 40px;
+            margin: 8px 2px 0px 12px;
+        }
+
+            .Img-help:hover {
+                width: 44px;
+                margin: 6px 2px 0px 12px;
+                cursor: pointer;
+            }
+    </style>
+    <style>
+        div#supportpopup-main {
+            float: left;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0px 0px;
+        }
+
+        #supportpopup-main .support-logo {
+            float: left;
+            width: 100%;
+        }
+
+        #supportpopup-main .clear-info {
+            float: left;
+            width: 100%;
+            position: relative;
+            color: #828282;
+            padding-bottom: 13px;
+        }
+
+        #supportpopup-main .support-title {
+            float: left;
+            width: 100%;
+            font-size: 18px;
+            padding-top: 15px;
+        }
+
+        #supportpopup-main p, #supportpopup-main a {
+            font-size: 15px;
+            padding-top: 10px;
+        }
+
+        #supportpopup-main .support-bottom-logo {
+            float: left;
+            width: 100%;
+            padding-top: 8px;
+            border-top: 1px solid #eaeaea;
+            margin-top: 11px;
+        }
+
+        #supportpopup-main .clear-info:after {
+            content: "";
+            width: 35px;
+            height: 1px;
+            background: #c0c0c0;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            margin: 0 auto;
+            bottom: 0px;
+        }
+        li.UserDetailClass a {
+            padding: 0px;
+            margin-top: 0px;
+            margin-right: 10px;
+        }
+
+            li.UserDetailClass a:first-child {
+                margin-top: 6px;
+            }
+        /*.k-command-cell .k-grid-edit {
+            display: none;
+        }*/
+    </style>
+
+</head>
+@{
+    var LoginInfo = EEONow.Utilities.AppUtility.DecryptCookie();
+}
+<body style="background: #f2f3f4;">
+    <header id="main-header" class="main-header">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="javascript:void(0);" id="menu-toggle"><i class="fa fa-bars"></i></a>
+                    <a href="#">
+                        <img class="header-logo" src="~/Content/Logo/EEO_NOW-Logo-Web-Light.png" />
+                    </a>
+                    <span class="App-Region">@(System.Configuration.ConfigurationManager.AppSettings["CurrentRegion"])</span>
+                    @*<a class="navbar-brand" href="~/"><span class="primary-color"> EEO Now</span></a>*@
+                </div>
+
+                <div id="main-navbar" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav pull-right">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="UserDetailClass">
+                                <a>@LoginInfo.UserName</a>
+                                <a>@User.Identity.Name</a>
+                                <a>@LoginInfo.Roles</a>
+
+                            </li>
+                            <li><a href="/Account/Logout" class="btn btn-default logout">Logout</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="Login-Show-Hide btn btn-default logout" href="/Account/Login">Login</a></li>
+                        }
+
+                        <li onclick="OpenHelpSupportPopup();" id="lihelp" title="Contact Support" style="width: 60px;text-align: right;"><img class="Img-help" src="~/Content/Logo/Help3.png" /></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="nav-side-menu">
+        @* <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" onclick="ResponsiveMenu();" data-target="#menu-content"></i>*@
+        <i class="fa fa-bars fa-2x toggle-btn" onclick="ResponsiveMenu();"></i>
+
+        <a class="navbar-brand" href="~/"><span class="primary-color"> custodias® </span></a>
+        <div id="divMenuList" class="menu-list">
+            <ul id="menu-content" style="display:none" class="menu-content collapse out">
+                <li class="mobonly"><a href="/Account/Logout"><i class="fa fa-lock fa-lg"></i>@(User.Identity.IsAuthenticated == true ? "Logout" : "Login")</a><span class="nav-text">@(User.Identity.IsAuthenticated == true ? User.Identity.Name : "")</span></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="main-content responsive-main-content">
+        @RenderBody()
+        <div class="back-section">
+            <div class="panel-CopyRight">
+                @(System.Configuration.ConfigurationManager.AppSettings["AppVersion"]) © 2017-@(System.DateTime.Now.Year.ToString()) - All rights reserved. <a href="https://definedSoftware.com" target="_blank"><img class="copy-right-logo" src="~/Content/Logo/Powered_by_DSD-Logo.png" /></a>
+            </div>
+        </div>
+        @*@{
+                string url = HttpContext.Current.Request.Url.ToString();
+                HttpContextBase context = new HttpContextWrapper(HttpContext.Current);
+                RouteData rd = RouteTable.Routes.GetRouteData(context);
+                if (rd != null)
+                {
+                    <input type="hidden" id="HfCurrentController" value="@(rd.GetRequiredString("controller"))" />
+                }
+            }*@
+    </div>
+    @(
+        Html.Kendo().Window()
+            .Name("helpSupport")
+            .Title("Contact Support")
+            .Content(
+                  "<div id='divSupport'></div>"
+        )
+        .Width(600)
+        .Draggable(true)
+        .Modal(false)
+        .Resizable()
+        .Animation(ani => ani.Close(c => c.Duration(0)))
+        .Actions(actions =>
+        {
+            //actions.Add().Text("Close");
+            actions.Close();
+        })
+        .Visible(false)
+        .Modal(true)
+
+    )
+    <div id="divSupportpopup" style="display:none" class="">
+        <div id="supportpopup-main">
+            <div class="support-logo"><img class="header-logo" src="/Content/Logo/EEO_NOW-Logo-Web.png"></div>
+            <div class="clear-info">Delivering simplified and clear information technology solutions</div>
+            <div class="support-title">Phone Support Hours: Monday – Friday 9AM to 5PM</div>
+            <p>(850) 270-0593</p>
+            <div class="support-title">Email Support: 24 hour respond time</div>
+            <a href="mailto:support@definedsoftware.com ">support@definedsoftware.com</a>
+            <div class="support-title">Office Location</div>
+            <p>2888 Mahan Drive Suite #8 Tallahassee, FL 32308</p>
+            <div class="support-bottom-logo"><img class="copy-right-logo" src="/Content/Logo/Powered_by_DSD-Logo.png"></div>
+
+
+        </div>
+
+
+
+    </div><!--divSupportpopup-->
+    @RenderSection("scripts", false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#divSupport").html($("#divSupportpopup").html())
+        });
+
+        $("#menu-toggle").on("click", function () {
+            $("body").toggleClass("menu-closed");
+            //$(this).find("i.fa").toggleClass("fa-close").toggleClass("fa-bars");
+        });
+
+        function ResponsiveMenu() {
+            $(".menu-content").toggleClass("in")
+        }
+
+        function OpenHelpSupportPopup() {
+            $("#helpSupport_wnd_title").html('Contact Support');
+            $('#helpSupport').data("kendoWindow").center();
+            $('#helpSupport').data("kendoWindow").open();
+        }
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "/Account/MenuUi",
+                success: function (response) {
+                    var html = "";
+                    $(response).each(function () {
+                        html = html + '<ul id="menu_content' + this.MenuKey + '" class="menu-content collapse out sim">'
+                        if (!$(this).attr('IsHeader')) {
+                            html = html + '<li id="Headerli' + this.MenuKey + '" data-toggle="collapse" data-target="#InnerUi' + this.MenuKey + '" class="collapsed sim" aria-expanded="false">'
+                                + '<a href=' + $(this).attr('MenuUrl') + '>'
+                                + '<i class="' + this.MenuIcon + '"></i> ' + this.Name
+                                + '</li><ul class="sub-menu collapse" id="InnerUi' + this.MenuKey + '" aria-expanded="false" style="height: 0px;">';
+                        } else {
+                            html = html + '<li id="Headerli' + this.MenuKey + '" data-toggle="collapse" data-target="#InnerUi' + this.MenuKey + '" class="collapsed sim" aria-expanded="false">'
+                                + '<a href=#>'
+                                + '<i class="' + this.MenuIcon + '"></i> ' + this.Name
+                                + '<span class="arrow"></span></a>'
+                                + '</li><ul class="sub-menu collapse" id="InnerUi' + this.MenuKey + '" aria-expanded="false" style="height: 0px;">';
+                        }
+                        var _headerValue = this.MenuKey;
+                        $(this.InnerMenuList).each(function () {
+                            if ($(this).attr('IsActive')) {
+                                if (!$(this).attr('IsHeader')) {
+                                    html = html + '<li onclick="SetMenuKey(\'Headerli' + _headerValue + '\',\'NA\',\'li' + _headerValue + $(this).attr('MenuKey').trim() + '\')"  id="li' + _headerValue + $(this).attr('MenuKey') + '" class="">'
+                                        + '<a href=' + $(this).attr('MenuUrl') + '>'
+                                        + '<i class="' + $(this).attr('MenuIcon') + '"></i> ' + $(this).attr('Name')
+                                        + '</a>'
+                                        + '</li>';
+                                }
+                                else {
+                                    html = html + '<li id="InnerHeaderli' + _headerValue + $(this).attr('MenuKey').trim() + '" data-toggle="collapse" data-target="#InnerMenu' + _headerValue + $(this).attr('MenuKey').trim() + '" class="collapsed" aria-expanded="false">'
+                                        + '<a href="#"><i class="' + $(this).attr('MenuIcon') + '"></i> ' + $(this).attr('Name') + ' <span class="arrow"></span></a>'
+                                        + '</li>'
+                                        + '<ul class="sub-menu collapse" aria-expanded="false" style="height: 0px;" id="InnerMenu' + _headerValue + $(this).attr('MenuKey').trim() + '">';
+
+                                    var _InnerheaderValue = $(this).attr('MenuKey').trim();
+                                    for (var i = 0; i < $(this).attr('InnerMenuList').length; i++) {
+                                        if ($(this).attr('InnerMenuList')[i]['IsActive']) {
+                                            html = html + '<li onclick="SetMenuKey(\'Headerli' + _headerValue + '\',\'InnerHeaderli' + _headerValue + _InnerheaderValue + '\',\'li' + _headerValue + $(this).attr('InnerMenuList')[i]["MenuKey"].trim() + '\')"  id="li' + _headerValue + $(this).attr('InnerMenuList')[i]["MenuKey"] + '"><a href="' + $(this).attr('InnerMenuList')[i]["MenuUrl"] + '"><i class="glyphicon glyphicon- chevron - right"></i>' + $(this).attr('InnerMenuList')[i]["Name"] + '</a></li>';
+                                        }
+                                    }
+                                    html = html + '</ul>'
+                                }
+                            }
+                        });
+                        html = html + '</ul>'
+                    });
+                    html = html + '</ul>';
+                    $("#menu-content").append(html);
+
+                    if (localStorage.MenuKey == undefined) {
+                        $("#HeaderliTMConsultant").click();
+                        $("#InnerHeaderliTMConsultantForms").click();
+                        $("#InnerHeaderliTMConsultantTimesheet").click();
+                    } else {
+                        $("#" + localStorage.MenuKey).addClass("active");
+                        $("#" + localStorage.MenuTopKeyHeader).click();
+                        $("#" + localStorage.MenuKeyHeader).click();
+                        if (localStorage.MenuTopKeyHeader != "HeaderliTMConsultant") {
+                            $("#HeaderliTMConsultant").click();
+                        }
+                        if (localStorage.MenuKeyHeader != "InnerHeaderliTMConsultantForms") {
+                            $("#InnerHeaderliTMConsultantForms").click();
+                        }
+                        if (localStorage.MenuKeyHeader != "InnerHeaderliTMConsultantTimesheet") {
+                            $("#InnerHeaderliTMConsultantTimesheet").click();
+                        }
+                    }
+                    $("#menu-content").slideDown(1000);
+                },
+                error: function (errorResponse) {
+                    alert(errorResponse);
+                }
+            });
+        });
+
+        function SetMenuKey(MenuTopKeyHeader, MenuKeyHeader, MenuKey) {
+            localStorage.MenuTopKeyHeader = MenuTopKeyHeader;
+            localStorage.MenuKeyHeader = MenuKeyHeader;
+            localStorage.MenuKey = MenuKey;
+        }
+
+        $(document).ready(function () {
+
+            if ('@LoginInfo.IsFilter.ToString()'=="True")
+            {
+                $(".k-filter-row").show();
+            }
+            else {
+                $(".k-filter-row").hide()
+                $(".k-filter-row").html('');
+            }
+
+            if('@LoginInfo.IsAdd.ToString()'=="True")
+            {
+               $("#grid .k-grid-toolbar").show();
+            }
+            else {
+                $("#grid .k-grid-toolbar").hide();
+                //$("#grid .k-grid-toolbar").html('');
+
+            }
+        });
+    </script>
+</body>
+</html>

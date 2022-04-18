@@ -1,0 +1,2187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dev_eeoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AgencyYearsOfService">
+    <Key>
+      <PropertyRef Name="AgencyYearsOfServiceId" />
+    </Key>
+    <Property Name="AgencyYearsOfServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="MinValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="MaxValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="AgencyYearsOfServiceKey" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AgeRange">
+    <Key>
+      <PropertyRef Name="AgeRangeId" />
+    </Key>
+    <Property Name="AgeRangeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="MinValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="MaxValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="AgeRangeKey" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AssignedGraphOrganizationViews">
+    <Key>
+      <PropertyRef Name="AssignedGraphOrganizationViewId" />
+    </Key>
+    <Property Name="AssignedGraphOrganizationViewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GraphOrganizationViewId" Type="int" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AssignMenuHeader">
+    <Key>
+      <PropertyRef Name="AssignMenuHeader_PK" />
+    </Key>
+    <Property Name="AssignMenuHeader_PK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuHeaderID_FK" Type="int" Nullable="false" />
+    <Property Name="MenuID_FK" Type="int" Nullable="false" />
+    <Property Name="Cre_Date" Type="datetime" />
+    <Property Name="Cre_User" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="Mod_Date" Type="datetime" />
+    <Property Name="Mod_User" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="AssignRole">
+    <Key>
+      <PropertyRef Name="AssignRoleId" />
+    </Key>
+    <Property Name="AssignRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="MenuId" Type="int" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AvailableLaborMarketData">
+    <Key>
+      <PropertyRef Name="AvailableLaborMarketDataId" />
+    </Key>
+    <Property Name="AvailableLaborMarketDataId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AvailableLaborMarketFileVersionId" Type="int" />
+    <Property Name="EEOJobCategoryId" Type="int" />
+    <Property Name="RaceId" Type="int" />
+    <Property Name="MaleValue" Type="int" />
+    <Property Name="FemaleValue" Type="int" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AvailableLaborMarketFileVersion">
+    <Key>
+      <PropertyRef Name="AvailableLaborMarketFileVersionId" />
+    </Key>
+    <Property Name="AvailableLaborMarketFileVersionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="SubmissionDateTime" Type="datetime" Nullable="false" />
+    <Property Name="FileVersionNumber" Type="int" Nullable="false" />
+    <Property Name="Notes" Type="varchar(max)" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Counties">
+    <Key>
+      <PropertyRef Name="CountyId" />
+    </Key>
+    <Property Name="CountyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateId" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DefaultEmployeeFields">
+    <Key>
+      <PropertyRef Name="DefaultEmployeeFieldId" />
+    </Key>
+    <Property Name="DefaultEmployeeFieldId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ColumnCode" Type="nvarchar" MaxLength="250" />
+    <Property Name="ColumnName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Sorting" Type="int" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DefaultLabelField">
+    <Key>
+      <PropertyRef Name="DefaultLabelFieldId" />
+    </Key>
+    <Property Name="DefaultLabelFieldId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LabelKey" Type="nvarchar" MaxLength="250" />
+    <Property Name="DisplayLabelData" Type="nvarchar" MaxLength="250" />
+    <Property Name="SectionId" Type="int" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EEOJobCategories">
+    <Key>
+      <PropertyRef Name="EEOJobCategoryId" />
+    </Key>
+    <Property Name="EEOJobCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="EEOJobCategoryNumber" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="EEOJobCategoryKey" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmailAuthenticateLog">
+    <Key>
+      <PropertyRef Name="EmailLogId" />
+    </Key>
+    <Property Name="EmailLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="LoginDeviceInfoId" Type="int" Nullable="false" />
+    <Property Name="AuthenticateCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="EmailSentTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeActiveFields">
+    <Key>
+      <PropertyRef Name="EmployeeActiveFieldId" />
+    </Key>
+    <Property Name="EmployeeActiveFieldId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DefaultEmployeeFieldId" Type="int" />
+    <Property Name="DisplayLabelData" Type="nvarchar" MaxLength="250" />
+    <Property Name="OrganisationId" Type="int" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Sorting" Type="int" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeLevel">
+    <Key>
+      <PropertyRef Name="EmployeeLevelId" />
+    </Key>
+    <Property Name="EmployeeLevelId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" />
+    <Property Name="SupervisorPositionNumber" Type="varchar" MaxLength="50" />
+    <Property Name="PositionNumber" Type="varchar" MaxLength="50" />
+    <Property Name="EmployeeLevelNumber" Type="int" />
+    <Property Name="OrganizationId" Type="int" />
+    <Property Name="FileSubmissionId" Type="int" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="FileSubmissionId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="100" />
+    <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Filled" Type="bit" Nullable="false" />
+    <Property Name="VacancyDate" Type="date" />
+    <Property Name="VacancyRangeId" Type="int" />
+    <Property Name="PositionNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SupervisorPositionNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="30" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="SupervisorFlag" Type="bit" Nullable="false" />
+    <Property Name="GenderId" Type="int" />
+    <Property Name="RaceId" Type="int" />
+    <Property Name="EEORaceIndex" Type="decimal" Precision="5" Scale="3" />
+    <Property Name="EEOGenderIndex" Type="decimal" Precision="5" Scale="3" />
+    <Property Name="SpanOfControl" Type="int" />
+    <Property Name="SalaryRangeId" Type="int" />
+    <Property Name="NationalOrigin" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="AgeRangeId" Type="int" />
+    <Property Name="PositionTitle" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ProgramOfficeName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="OPSPosition" Type="bit" />
+    <Property Name="Salary" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="EEOCodeId" Type="int" />
+    <Property Name="LastPerformanceRatingId" Type="int" />
+    <Property Name="LastPerformanceRatingValue" Type="decimal" Precision="5" Scale="3" />
+    <Property Name="PositionDateOfHire" Type="date" />
+    <Property Name="AgencyDateOfHire" Type="date" />
+    <Property Name="StateCumulativeMonthsOfService" Type="int" Nullable="false" />
+    <Property Name="PositionYearsOfServiceId" Type="int" />
+    <Property Name="AgencyYearsOfServiceId" Type="int" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="WorkAddress" Type="varchar" MaxLength="100" />
+    <Property Name="WorkCity" Type="varchar" MaxLength="100" />
+    <Property Name="WorkStateId" Type="int" />
+    <Property Name="WorkZipCode" Type="varchar" MaxLength="10" />
+    <Property Name="CountyId" Type="int" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+    <Property Name="RegionName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="FileSubmissionErrors">
+    <Key>
+      <PropertyRef Name="FileSubmissionErrorId" />
+    </Key>
+    <Property Name="FileSubmissionErrorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileSubmissionRecordNumber" Type="int" Nullable="false" />
+    <Property Name="FileSubmissionId" Type="int" Nullable="false" />
+    <Property Name="ErrorDescription" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FileSubmissionRecords">
+    <Key>
+      <PropertyRef Name="FileSubmissionRecordNumber" />
+      <PropertyRef Name="FileSubmissionId" />
+    </Key>
+    <Property Name="FileSubmissionRecordNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileSubmissionId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="100" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="100" />
+    <Property Name="LastName" Type="varchar" MaxLength="100" />
+    <Property Name="Filled" Type="varchar" MaxLength="100" />
+    <Property Name="VacancyDate" Type="varchar" MaxLength="100" />
+    <Property Name="PositionNumber" Type="varchar" MaxLength="100" />
+    <Property Name="SupervisorPositionNumber" Type="varchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="SupervisorFlag" Type="varchar" MaxLength="100" />
+    <Property Name="Gender" Type="varchar" MaxLength="100" />
+    <Property Name="Race" Type="varchar" MaxLength="100" />
+    <Property Name="NationalOrigin" Type="varchar" MaxLength="100" />
+    <Property Name="Age" Type="varchar" MaxLength="100" />
+    <Property Name="PositionTitle" Type="varchar" MaxLength="100" />
+    <Property Name="ProgramOfficeName" Type="varchar" MaxLength="100" />
+    <Property Name="OPSPosition" Type="varchar" MaxLength="100" />
+    <Property Name="Salary" Type="varchar" MaxLength="100" />
+    <Property Name="EEOCode" Type="varchar" MaxLength="100" />
+    <Property Name="PositionDateOfHire" Type="varchar" MaxLength="100" />
+    <Property Name="LastPerformanceRating" Type="varchar" MaxLength="100" />
+    <Property Name="AgencyDateOfHire" Type="varchar" MaxLength="100" />
+    <Property Name="StateCumulativeMonthsOfService" Type="varchar" MaxLength="100" />
+    <Property Name="UserID" Type="varchar" MaxLength="100" />
+    <Property Name="WorkAddress" Type="varchar" MaxLength="100" />
+    <Property Name="WorkCity" Type="varchar" MaxLength="100" />
+    <Property Name="WorkState" Type="varchar" MaxLength="100" />
+    <Property Name="WorkZipCode" Type="varchar" MaxLength="100" />
+    <Property Name="WorkCounty" Type="varchar" MaxLength="100" />
+    <Property Name="IsValidate" Type="bit" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+    <Property Name="RegionName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="FileSubmissions">
+    <Key>
+      <PropertyRef Name="FileSubmissionId" />
+    </Key>
+    <Property Name="FileSubmissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="FileSubmissionStatusId" Type="int" Nullable="false" />
+    <Property Name="AvailableLaborMarketFileVersionId" Type="int" />
+    <Property Name="OriginalFileName" Type="varchar" MaxLength="200" />
+    <Property Name="NewFileName" Type="varchar" MaxLength="200" />
+    <Property Name="SubmissionDateTime" Type="datetime" />
+    <Property Name="FileVersionNumber" Type="int" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FileSubmissionStatus">
+    <Key>
+      <PropertyRef Name="FileSubmissionStatusId" />
+    </Key>
+    <Property Name="FileSubmissionStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderId" />
+    </Key>
+    <Property Name="GenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GenerateCSV">
+    <Key>
+      <PropertyRef Name="GeneratedCsvId" />
+    </Key>
+    <Property Name="GeneratedCsvId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" />
+    <Property Name="FileSubmissionID" Type="int" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="GraphOrganizationMaster">
+    <Key>
+      <PropertyRef Name="GraphOrganizationMasterId" />
+    </Key>
+    <Property Name="GraphOrganizationMasterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DefaultName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ColorKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderNo" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GraphOrganizationView">
+    <Key>
+      <PropertyRef Name="GraphOrganizationViewId" />
+    </Key>
+    <Property Name="GraphOrganizationViewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganisationId" Type="int" Nullable="false" />
+    <Property Name="GraphOrganizationMasterId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ColorKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderNo" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LastPerformanceRating">
+    <Key>
+      <PropertyRef Name="LastPerformanceRatingId" />
+    </Key>
+    <Property Name="LastPerformanceRatingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="MinValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="MaxValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="LastPerformanceRatingKey" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LoginDeviceInfo">
+    <Key>
+      <PropertyRef Name="LoginDeviceInfoId" />
+    </Key>
+    <Property Name="LoginDeviceInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="DeviceAccessInfo" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="IpAddress" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="MacAdresss" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="RandomKey" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="LoginDateTime" Type="datetime" Nullable="false" />
+    <Property Name="LastLoginTime" Type="datetime" />
+    <Property Name="NoOfTimeLogin" Type="int" Nullable="false" />
+    <Property Name="IsMobile" Type="bit" Nullable="false" />
+    <Property Name="IsVerified" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MenuConfiguration">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuKey" Type="nvarchar" MaxLength="200" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="MenuController" Type="nvarchar" MaxLength="100" />
+    <Property Name="MenuAction" Type="nvarchar" MaxLength="100" />
+    <Property Name="MenuIcon" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsAdminOnly" Type="bit" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MenuHeaderConfiguration">
+    <Key>
+      <PropertyRef Name="MenuHeaderID_PK" />
+    </Key>
+    <Property Name="MenuHeaderID_PK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserRoleID_FK" Type="int" Nullable="false" />
+    <Property Name="MenuKey" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsHeader" Type="bit" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="MenuController" Type="nvarchar" MaxLength="100" />
+    <Property Name="MenuAction" Type="nvarchar" MaxLength="100" />
+    <Property Name="MenuIcon" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Cre_Date" Type="datetime" />
+    <Property Name="Cre_User" Type="varchar" MaxLength="256" />
+    <Property Name="Mod_Date" Type="datetime" />
+    <Property Name="Mod_User" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="OrganizationLabelField">
+    <Key>
+      <PropertyRef Name="OrganizationLabelFieldId" />
+    </Key>
+    <Property Name="OrganizationLabelFieldId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DefaultLabelFieldId" Type="int" />
+    <Property Name="DisplayLabelData" Type="nvarchar" MaxLength="250" />
+    <Property Name="SectionId" Type="int" />
+    <Property Name="OrganisationId" Type="int" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="PageId" Type="int" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Organizations">
+    <Key>
+      <PropertyRef Name="OrganizationId" />
+    </Key>
+    <Property Name="OrganizationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrgCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="StateId" Type="int" Nullable="false" />
+    <Property Name="ZipCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DefaultStateID" Type="int" />
+    <Property Name="DefaultEEOOccupationalCodeID" Type="int" />
+    <Property Name="ParentOrganizationID" Type="int" />
+    <Property Name="NonVacanciesDisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="VacanciesDisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="EnableTwoFactorAuthentication" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PositionYearsOfService">
+    <Key>
+      <PropertyRef Name="PositionYearsOfServiceId" />
+    </Key>
+    <Property Name="PositionYearsOfServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="MinValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="MaxValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="PositionYearsOfServiceKey" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PublicURL">
+    <Key>
+      <PropertyRef Name="PublicURLId" />
+    </Key>
+    <Property Name="PublicURLId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrgainisationId" Type="int" Nullable="false" />
+    <Property Name="Token" Type="nvarchar(max)" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="CreateDateTime" Type="datetime" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Races">
+    <Key>
+      <PropertyRef Name="RaceId" />
+    </Key>
+    <Property Name="RaceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="RaceNumber" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="RaceKey" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SalaryRange">
+    <Key>
+      <PropertyRef Name="SalaryRangeId" />
+    </Key>
+    <Property Name="SalaryRangeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="MinValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="MaxValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="SalaryKey" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="States">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="USCensus_ResidenceCode" Type="varchar" MaxLength="10" />
+    <Property Name="USCensus_WorksiteCode" Type="varchar" MaxLength="10" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="USCensus_ALLData">
+    <Key>
+      <PropertyRef Name="USCensusDataID" />
+    </Key>
+    <Property Name="USCensusDataID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USCensusVersionID" Type="int" Nullable="false" />
+    <Property Name="StateResidenceCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PUMAResidenceCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="StateWorksiteCode" Type="varchar" MaxLength="10" />
+    <Property Name="PUMAWorksiteCode" Type="varchar" MaxLength="10" />
+    <Property Name="RaceID" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="int" Nullable="false" />
+    <Property Name="PWGTPCount" Type="int" Nullable="false" />
+    <Property Name="OCCPJobCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ESRCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AGEPCode" Type="int" Nullable="false" />
+    <Property Name="HISPCode" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USCensus_BoardingOccupationGroups">
+    <Key>
+      <PropertyRef Name="BoardingOccupationGroupID" />
+    </Key>
+    <Property Name="BoardingOccupationGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MinorOccupationGroupID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USCensus_DataVersion">
+    <Key>
+      <PropertyRef Name="USCensusVersionID" />
+    </Key>
+    <Property Name="USCensusVersionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Year" Type="int" />
+  </EntityType>
+  <EntityType Name="USCensus_EEO_OccupationCodes">
+    <Key>
+      <PropertyRef Name="EEOOccupationCodeID" />
+    </Key>
+    <Property Name="EEOOccupationCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USCensusVersionID" Type="int" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USCensus_EEOJobClasificationCategories">
+    <Key>
+      <PropertyRef Name="EEOJobClasificationCategoryID" />
+    </Key>
+    <Property Name="EEOJobClasificationCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EEOOccupationCodeID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USCensus_EmployeeStatusRecode">
+    <Key>
+      <PropertyRef Name="EmploymentStatusRecodeId" />
+    </Key>
+    <Property Name="EmploymentStatusRecodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USCensusVersionID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="USCensus_GeographyType_EmployeeStatusRecodes">
+    <Key>
+      <PropertyRef Name="GeographyTypeId" />
+      <PropertyRef Name="EmploymentStatusRecodeId" />
+    </Key>
+    <Property Name="GeographyTypeId" Type="int" Nullable="false" />
+    <Property Name="EmploymentStatusRecodeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USCensus_GeographyTypes">
+    <Key>
+      <PropertyRef Name="GeographyTypeId" />
+    </Key>
+    <Property Name="GeographyTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USCensusVersionID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="USCensus_MajorOccupationGroups">
+    <Key>
+      <PropertyRef Name="MajorOccupationGroupID" />
+    </Key>
+    <Property Name="MajorOccupationGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USCensusVersionID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USCensus_MinorOccupationGroups">
+    <Key>
+      <PropertyRef Name="MinorOccupationGroupID" />
+    </Key>
+    <Property Name="MinorOccupationGroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MajorOccupationGroupID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USCensus_Occupations">
+    <Key>
+      <PropertyRef Name="OccupationID" />
+    </Key>
+    <Property Name="OccupationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BoardingOccupationGroupID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USCensus_Occupations_EEOJobClasificationCategories">
+    <Key>
+      <PropertyRef Name="OccupationID" />
+      <PropertyRef Name="EEOJobClasificationCategoryID" />
+    </Key>
+    <Property Name="OccupationID" Type="int" Nullable="false" />
+    <Property Name="EEOJobClasificationCategoryID" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USCensus_PUMAResidenceCodes">
+    <Key>
+      <PropertyRef Name="USCensus_PUMAResidenceCodeID" />
+    </Key>
+    <Property Name="USCensus_PUMAResidenceCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USCensusVersionID" Type="int" Nullable="false" />
+    <Property Name="StateID" Type="int" Nullable="false" />
+    <Property Name="PUMACode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PUMADescription" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="USCensus_PUMAWorksiteCodes">
+    <Key>
+      <PropertyRef Name="USCensus_PUMAWorksiteCodeID" />
+    </Key>
+    <Property Name="USCensus_PUMAWorksiteCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USCensusVersionID" Type="int" Nullable="false" />
+    <Property Name="StateID" Type="int" Nullable="false" />
+    <Property Name="PUMACode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PUMADescription" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="IsFilter" Type="bit" Nullable="false" />
+    <Property Name="IsAdd" Type="bit" Nullable="false" />
+    <Property Name="IsEdit" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SecurityToken" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PasswordSalt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastLoginDateTime" Type="datetime" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="VacancyRange">
+    <Key>
+      <PropertyRef Name="VacancyRangeId" />
+    </Key>
+    <Property Name="VacancyRangeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DisplayColorCode" Type="varchar" MaxLength="50" />
+    <Property Name="MinValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="MaxValue" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="VacancyRangeKey" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateUserId" Type="int" Nullable="false" />
+    <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUserId" Type="int" />
+    <Property Name="UpdateDateTime" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_AgencyYearsOfService_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="AgencyYearsOfService" Type="Self.AgencyYearsOfService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="AgencyYearsOfService">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AgeRange_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="AgeRange" Type="Self.AgeRange" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="AgeRange">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssignedGraphOrganizationViews_GraphOrganizationView1">
+    <End Role="GraphOrganizationView" Type="Self.GraphOrganizationView" Multiplicity="1" />
+    <End Role="AssignedGraphOrganizationViews" Type="Self.AssignedGraphOrganizationViews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GraphOrganizationView">
+        <PropertyRef Name="GraphOrganizationViewId" />
+      </Principal>
+      <Dependent Role="AssignedGraphOrganizationViews">
+        <PropertyRef Name="GraphOrganizationViewId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssignedGraphOrganizationViews_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="AssignedGraphOrganizationViews" Type="Self.AssignedGraphOrganizationViews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="AssignedGraphOrganizationViews">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssignedGraphOrganizationViews_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="1" />
+    <End Role="AssignedGraphOrganizationViews" Type="Self.AssignedGraphOrganizationViews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="AssignedGraphOrganizationViews">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssignMenuHeader_MenuConfiguration">
+    <End Role="MenuConfiguration" Type="Self.MenuConfiguration" Multiplicity="1" />
+    <End Role="AssignMenuHeader" Type="Self.AssignMenuHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuConfiguration">
+        <PropertyRef Name="MenuId" />
+      </Principal>
+      <Dependent Role="AssignMenuHeader">
+        <PropertyRef Name="MenuID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssignMenuHeader_MenuHeaderConfiguration">
+    <End Role="MenuHeaderConfiguration" Type="Self.MenuHeaderConfiguration" Multiplicity="1" />
+    <End Role="AssignMenuHeader" Type="Self.AssignMenuHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuHeaderConfiguration">
+        <PropertyRef Name="MenuHeaderID_PK" />
+      </Principal>
+      <Dependent Role="AssignMenuHeader">
+        <PropertyRef Name="MenuHeaderID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssignRole_MenuConfiguration">
+    <End Role="MenuConfiguration" Type="Self.MenuConfiguration" Multiplicity="0..1" />
+    <End Role="AssignRole" Type="Self.AssignRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuConfiguration">
+        <PropertyRef Name="MenuId" />
+      </Principal>
+      <Dependent Role="AssignRole">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssignRole_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+    <End Role="AssignRole" Type="Self.AssignRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="AssignRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion">
+    <End Role="AvailableLaborMarketFileVersion" Type="Self.AvailableLaborMarketFileVersion" Multiplicity="0..1" />
+    <End Role="AvailableLaborMarketData" Type="Self.AvailableLaborMarketData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AvailableLaborMarketFileVersion">
+        <PropertyRef Name="AvailableLaborMarketFileVersionId" />
+      </Principal>
+      <Dependent Role="AvailableLaborMarketData">
+        <PropertyRef Name="AvailableLaborMarketFileVersionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AvailableLaborMarketData_EEOJobCategories">
+    <End Role="EEOJobCategories" Type="Self.EEOJobCategories" Multiplicity="0..1" />
+    <End Role="AvailableLaborMarketData" Type="Self.AvailableLaborMarketData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EEOJobCategories">
+        <PropertyRef Name="EEOJobCategoryId" />
+      </Principal>
+      <Dependent Role="AvailableLaborMarketData">
+        <PropertyRef Name="EEOJobCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AvailableLaborMarketData_Races">
+    <End Role="Races" Type="Self.Races" Multiplicity="0..1" />
+    <End Role="AvailableLaborMarketData" Type="Self.AvailableLaborMarketData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Races">
+        <PropertyRef Name="RaceId" />
+      </Principal>
+      <Dependent Role="AvailableLaborMarketData">
+        <PropertyRef Name="RaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AvailableLaborMarketFileVersion_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="AvailableLaborMarketFileVersion" Type="Self.AvailableLaborMarketFileVersion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="AvailableLaborMarketFileVersion">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Counties_States">
+    <End Role="States" Type="Self.States" Multiplicity="1" />
+    <End Role="Counties" Type="Self.Counties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="Counties">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EEOJobCategories_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="EEOJobCategories" Type="Self.EEOJobCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="EEOJobCategories">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmailAuthenticateLog_LoginDeviceInfo">
+    <End Role="LoginDeviceInfo" Type="Self.LoginDeviceInfo" Multiplicity="1" />
+    <End Role="EmailAuthenticateLog" Type="Self.EmailAuthenticateLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginDeviceInfo">
+        <PropertyRef Name="LoginDeviceInfoId" />
+      </Principal>
+      <Dependent Role="EmailAuthenticateLog">
+        <PropertyRef Name="LoginDeviceInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmailAuthenticateLog_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="EmailAuthenticateLog" Type="Self.EmailAuthenticateLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="EmailAuthenticateLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeActiveFields_DefaultEmployeeFields">
+    <End Role="DefaultEmployeeFields" Type="Self.DefaultEmployeeFields" Multiplicity="0..1" />
+    <End Role="EmployeeActiveFields" Type="Self.EmployeeActiveFields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DefaultEmployeeFields">
+        <PropertyRef Name="DefaultEmployeeFieldId" />
+      </Principal>
+      <Dependent Role="EmployeeActiveFields">
+        <PropertyRef Name="DefaultEmployeeFieldId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeActiveFields_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+    <End Role="EmployeeActiveFields" Type="Self.EmployeeActiveFields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="EmployeeActiveFields">
+        <PropertyRef Name="OrganisationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeActiveFields_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+    <End Role="EmployeeActiveFields" Type="Self.EmployeeActiveFields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="EmployeeActiveFields">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeLevel_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="EmployeeLevel" Type="Self.EmployeeLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="EmployeeLevel">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_AgencyYearsOfService">
+    <End Role="AgencyYearsOfService" Type="Self.AgencyYearsOfService" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AgencyYearsOfService">
+        <PropertyRef Name="AgencyYearsOfServiceId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="AgencyYearsOfServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_AgeRange">
+    <End Role="AgeRange" Type="Self.AgeRange" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AgeRange">
+        <PropertyRef Name="AgeRangeId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="AgeRangeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Counties">
+    <End Role="Counties" Type="Self.Counties" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Counties">
+        <PropertyRef Name="CountyId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="CountyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_EEOJobCategories">
+    <End Role="EEOJobCategories" Type="Self.EEOJobCategories" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EEOJobCategories">
+        <PropertyRef Name="EEOJobCategoryId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="EEOCodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_FileSubmissions">
+    <End Role="FileSubmissions" Type="Self.FileSubmissions" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileSubmissions">
+        <PropertyRef Name="FileSubmissionId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="FileSubmissionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_LastPerformanceRating">
+    <End Role="LastPerformanceRating" Type="Self.LastPerformanceRating" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LastPerformanceRating">
+        <PropertyRef Name="LastPerformanceRatingId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="LastPerformanceRatingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_PositionYearsOfService">
+    <End Role="PositionYearsOfService" Type="Self.PositionYearsOfService" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PositionYearsOfService">
+        <PropertyRef Name="PositionYearsOfServiceId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="PositionYearsOfServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_Races">
+    <End Role="Races" Type="Self.Races" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Races">
+        <PropertyRef Name="RaceId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="RaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_SalaryRange">
+    <End Role="SalaryRange" Type="Self.SalaryRange" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalaryRange">
+        <PropertyRef Name="SalaryRangeId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="SalaryRangeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_States">
+    <End Role="States" Type="Self.States" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="WorkStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_VacancyRange">
+    <End Role="VacancyRange" Type="Self.VacancyRange" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VacancyRange">
+        <PropertyRef Name="VacancyRangeId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="VacancyRangeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileSubmissionErrors_FileSubmissionRecords">
+    <End Role="FileSubmissionRecords" Type="Self.FileSubmissionRecords" Multiplicity="1" />
+    <End Role="FileSubmissionErrors" Type="Self.FileSubmissionErrors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileSubmissionRecords">
+        <PropertyRef Name="FileSubmissionRecordNumber" />
+        <PropertyRef Name="FileSubmissionId" />
+      </Principal>
+      <Dependent Role="FileSubmissionErrors">
+        <PropertyRef Name="FileSubmissionRecordNumber" />
+        <PropertyRef Name="FileSubmissionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileSubmissionRecords_FileSubmissions">
+    <End Role="FileSubmissions" Type="Self.FileSubmissions" Multiplicity="1" />
+    <End Role="FileSubmissionRecords" Type="Self.FileSubmissionRecords" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileSubmissions">
+        <PropertyRef Name="FileSubmissionId" />
+      </Principal>
+      <Dependent Role="FileSubmissionRecords">
+        <PropertyRef Name="FileSubmissionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileSubmissions_AvailableLaborMarketFileVersion">
+    <End Role="AvailableLaborMarketFileVersion" Type="Self.AvailableLaborMarketFileVersion" Multiplicity="0..1" />
+    <End Role="FileSubmissions" Type="Self.FileSubmissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AvailableLaborMarketFileVersion">
+        <PropertyRef Name="AvailableLaborMarketFileVersionId" />
+      </Principal>
+      <Dependent Role="FileSubmissions">
+        <PropertyRef Name="AvailableLaborMarketFileVersionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileSubmissions_FileSubmissionStatus">
+    <End Role="FileSubmissionStatus" Type="Self.FileSubmissionStatus" Multiplicity="1" />
+    <End Role="FileSubmissions" Type="Self.FileSubmissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileSubmissionStatus">
+        <PropertyRef Name="FileSubmissionStatusId" />
+      </Principal>
+      <Dependent Role="FileSubmissions">
+        <PropertyRef Name="FileSubmissionStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FileSubmissions_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="FileSubmissions" Type="Self.FileSubmissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="FileSubmissions">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gender_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="Gender" Type="Self.Gender" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="Gender">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GenerateCSV_FileSubmissions">
+    <End Role="FileSubmissions" Type="Self.FileSubmissions" Multiplicity="0..1" />
+    <End Role="GenerateCSV" Type="Self.GenerateCSV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FileSubmissions">
+        <PropertyRef Name="FileSubmissionId" />
+      </Principal>
+      <Dependent Role="GenerateCSV">
+        <PropertyRef Name="FileSubmissionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GenerateCSV_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+    <End Role="GenerateCSV" Type="Self.GenerateCSV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="GenerateCSV">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GraphOrganizationView_GraphOrganizationMaster">
+    <End Role="GraphOrganizationMaster" Type="Self.GraphOrganizationMaster" Multiplicity="1" />
+    <End Role="GraphOrganizationView" Type="Self.GraphOrganizationView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GraphOrganizationMaster">
+        <PropertyRef Name="GraphOrganizationMasterId" />
+      </Principal>
+      <Dependent Role="GraphOrganizationView">
+        <PropertyRef Name="GraphOrganizationMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GraphOrganizationView_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="GraphOrganizationView" Type="Self.GraphOrganizationView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="GraphOrganizationView">
+        <PropertyRef Name="OrganisationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LastPerformanceRating_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="LastPerformanceRating" Type="Self.LastPerformanceRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="LastPerformanceRating">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoginDeviceInfo_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="LoginDeviceInfo" Type="Self.LoginDeviceInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="LoginDeviceInfo">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoginDeviceInfo_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="LoginDeviceInfo" Type="Self.LoginDeviceInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="LoginDeviceInfo">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuHeaderConfiguration_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="1" />
+    <End Role="MenuHeaderConfiguration" Type="Self.MenuHeaderConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="MenuHeaderConfiguration">
+        <PropertyRef Name="UserRoleID_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationLabelField_DefaultLabelField">
+    <End Role="DefaultLabelField" Type="Self.DefaultLabelField" Multiplicity="0..1" />
+    <End Role="OrganizationLabelField" Type="Self.OrganizationLabelField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DefaultLabelField">
+        <PropertyRef Name="DefaultLabelFieldId" />
+      </Principal>
+      <Dependent Role="OrganizationLabelField">
+        <PropertyRef Name="DefaultLabelFieldId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationLabelField_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+    <End Role="OrganizationLabelField" Type="Self.OrganizationLabelField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="OrganizationLabelField">
+        <PropertyRef Name="OrganisationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrganizationLabelField_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+    <End Role="OrganizationLabelField" Type="Self.OrganizationLabelField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="OrganizationLabelField">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organizations_States">
+    <End Role="States" Type="Self.States" Multiplicity="1" />
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="Organizations">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organizations_StatesALMDefault">
+    <End Role="States" Type="Self.States" Multiplicity="0..1" />
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="Organizations">
+        <PropertyRef Name="DefaultStateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organizations_USCensus_EEO_OccupationCodes">
+    <End Role="USCensus_EEO_OccupationCodes" Type="Self.USCensus_EEO_OccupationCodes" Multiplicity="0..1" />
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_EEO_OccupationCodes">
+        <PropertyRef Name="EEOOccupationCodeID" />
+      </Principal>
+      <Dependent Role="Organizations">
+        <PropertyRef Name="DefaultEEOOccupationalCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PositionYearsOfService_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="PositionYearsOfService" Type="Self.PositionYearsOfService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="PositionYearsOfService">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PublicURL_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="PublicURL" Type="Self.PublicURL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="PublicURL">
+        <PropertyRef Name="OrgainisationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Races_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="Races" Type="Self.Races" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="Races">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalaryRange_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="SalaryRange" Type="Self.SalaryRange" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="SalaryRange">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups">
+    <End Role="USCensus_MinorOccupationGroups" Type="Self.USCensus_MinorOccupationGroups" Multiplicity="1" />
+    <End Role="USCensus_BoardingOccupationGroups" Type="Self.USCensus_BoardingOccupationGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_MinorOccupationGroups">
+        <PropertyRef Name="MinorOccupationGroupID" />
+      </Principal>
+      <Dependent Role="USCensus_BoardingOccupationGroups">
+        <PropertyRef Name="MinorOccupationGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_CountyPUMACodes_States">
+    <End Role="States" Type="Self.States" Multiplicity="1" />
+    <End Role="USCensus_PUMAResidenceCodes" Type="Self.USCensus_PUMAResidenceCodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="USCensus_PUMAResidenceCodes">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_CountyPUMACodes_USCensus_DataVersion">
+    <End Role="USCensus_DataVersion" Type="Self.USCensus_DataVersion" Multiplicity="1" />
+    <End Role="USCensus_PUMAResidenceCodes" Type="Self.USCensus_PUMAResidenceCodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_DataVersion">
+        <PropertyRef Name="USCensusVersionID" />
+      </Principal>
+      <Dependent Role="USCensus_PUMAResidenceCodes">
+        <PropertyRef Name="USCensusVersionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes">
+    <End Role="USCensus_EEO_OccupationCodes" Type="Self.USCensus_EEO_OccupationCodes" Multiplicity="1" />
+    <End Role="USCensus_EEOJobClasificationCategories" Type="Self.USCensus_EEOJobClasificationCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_EEO_OccupationCodes">
+        <PropertyRef Name="EEOOccupationCodeID" />
+      </Principal>
+      <Dependent Role="USCensus_EEOJobClasificationCategories">
+        <PropertyRef Name="EEOOccupationCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion">
+    <End Role="USCensus_DataVersion" Type="Self.USCensus_DataVersion" Multiplicity="1" />
+    <End Role="USCensus_EmployeeStatusRecode" Type="Self.USCensus_EmployeeStatusRecode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_DataVersion">
+        <PropertyRef Name="USCensusVersionID" />
+      </Principal>
+      <Dependent Role="USCensus_EmployeeStatusRecode">
+        <PropertyRef Name="USCensusVersionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_GeographyType_EmployeeStatusRecodes_USCensus_EmployeeStatusRecode">
+    <End Role="USCensus_EmployeeStatusRecode" Type="Self.USCensus_EmployeeStatusRecode" Multiplicity="1" />
+    <End Role="USCensus_GeographyType_EmployeeStatusRecodes" Type="Self.USCensus_GeographyType_EmployeeStatusRecodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_EmployeeStatusRecode">
+        <PropertyRef Name="EmploymentStatusRecodeId" />
+      </Principal>
+      <Dependent Role="USCensus_GeographyType_EmployeeStatusRecodes">
+        <PropertyRef Name="EmploymentStatusRecodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_GeographyType_EmployeeStatusRecodes_USCensus_GeographyTypes">
+    <End Role="USCensus_GeographyTypes" Type="Self.USCensus_GeographyTypes" Multiplicity="1" />
+    <End Role="USCensus_GeographyType_EmployeeStatusRecodes" Type="Self.USCensus_GeographyType_EmployeeStatusRecodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_GeographyTypes">
+        <PropertyRef Name="GeographyTypeId" />
+      </Principal>
+      <Dependent Role="USCensus_GeographyType_EmployeeStatusRecodes">
+        <PropertyRef Name="GeographyTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_GeographyTypes_USCensus_DataVersion">
+    <End Role="USCensus_DataVersion" Type="Self.USCensus_DataVersion" Multiplicity="1" />
+    <End Role="USCensus_GeographyTypes" Type="Self.USCensus_GeographyTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_DataVersion">
+        <PropertyRef Name="USCensusVersionID" />
+      </Principal>
+      <Dependent Role="USCensus_GeographyTypes">
+        <PropertyRef Name="USCensusVersionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_MajorOccupationGroups_USCensus_DataVersion">
+    <End Role="USCensus_DataVersion" Type="Self.USCensus_DataVersion" Multiplicity="1" />
+    <End Role="USCensus_MajorOccupationGroups" Type="Self.USCensus_MajorOccupationGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_DataVersion">
+        <PropertyRef Name="USCensusVersionID" />
+      </Principal>
+      <Dependent Role="USCensus_MajorOccupationGroups">
+        <PropertyRef Name="USCensusVersionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups">
+    <End Role="USCensus_MajorOccupationGroups" Type="Self.USCensus_MajorOccupationGroups" Multiplicity="1" />
+    <End Role="USCensus_MinorOccupationGroups" Type="Self.USCensus_MinorOccupationGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_MajorOccupationGroups">
+        <PropertyRef Name="MajorOccupationGroupID" />
+      </Principal>
+      <Dependent Role="USCensus_MinorOccupationGroups">
+        <PropertyRef Name="MajorOccupationGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_EEOJobClasificationCategories">
+    <End Role="USCensus_EEOJobClasificationCategories" Type="Self.USCensus_EEOJobClasificationCategories" Multiplicity="1" />
+    <End Role="USCensus_Occupations_EEOJobClasificationCategories" Type="Self.USCensus_Occupations_EEOJobClasificationCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_EEOJobClasificationCategories">
+        <PropertyRef Name="EEOJobClasificationCategoryID" />
+      </Principal>
+      <Dependent Role="USCensus_Occupations_EEOJobClasificationCategories">
+        <PropertyRef Name="EEOJobClasificationCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_Occupations">
+    <End Role="USCensus_Occupations" Type="Self.USCensus_Occupations" Multiplicity="1" />
+    <End Role="USCensus_Occupations_EEOJobClasificationCategories" Type="Self.USCensus_Occupations_EEOJobClasificationCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_Occupations">
+        <PropertyRef Name="OccupationID" />
+      </Principal>
+      <Dependent Role="USCensus_Occupations_EEOJobClasificationCategories">
+        <PropertyRef Name="OccupationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_Occupations_USCensus_BoardingOccupationGroups">
+    <End Role="USCensus_BoardingOccupationGroups" Type="Self.USCensus_BoardingOccupationGroups" Multiplicity="1" />
+    <End Role="USCensus_Occupations" Type="Self.USCensus_Occupations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_BoardingOccupationGroups">
+        <PropertyRef Name="BoardingOccupationGroupID" />
+      </Principal>
+      <Dependent Role="USCensus_Occupations">
+        <PropertyRef Name="BoardingOccupationGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_PUMAWorksiteCodes_States">
+    <End Role="States" Type="Self.States" Multiplicity="1" />
+    <End Role="USCensus_PUMAWorksiteCodes" Type="Self.USCensus_PUMAWorksiteCodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="USCensus_PUMAWorksiteCodes">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion">
+    <End Role="USCensus_DataVersion" Type="Self.USCensus_DataVersion" Multiplicity="1" />
+    <End Role="USCensus_PUMAWorksiteCodes" Type="Self.USCensus_PUMAWorksiteCodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_DataVersion">
+        <PropertyRef Name="USCensusVersionID" />
+      </Principal>
+      <Dependent Role="USCensus_PUMAWorksiteCodes">
+        <PropertyRef Name="USCensusVersionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensusData_USCensus_DataVersion">
+    <End Role="USCensus_DataVersion" Type="Self.USCensus_DataVersion" Multiplicity="1" />
+    <End Role="USCensus_ALLData" Type="Self.USCensus_ALLData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_DataVersion">
+        <PropertyRef Name="USCensusVersionID" />
+      </Principal>
+      <Dependent Role="USCensus_ALLData">
+        <PropertyRef Name="USCensusVersionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USCensusEEO_OccupationCodes_USCensus_DataVersion">
+    <End Role="USCensus_DataVersion" Type="Self.USCensus_DataVersion" Multiplicity="0..1" />
+    <End Role="USCensus_EEO_OccupationCodes" Type="Self.USCensus_EEO_OccupationCodes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USCensus_DataVersion">
+        <PropertyRef Name="USCensusVersionID" />
+      </Principal>
+      <Dependent Role="USCensus_EEO_OccupationCodes">
+        <PropertyRef Name="USCensusVersionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VacancyRange_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+    <End Role="VacancyRange" Type="Self.VacancyRange" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="VacancyRange">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CreateEEORatingMetrics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileSubmissionID" Type="int" Mode="In" />
+    <Parameter Name="organizationID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getCSVGraphData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileSubmissionID" Type="int" Mode="In" />
+    <Parameter Name="organizationID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="rptEEO_GenderAndRace_CompensationReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="organizationID" Type="int" Mode="In" />
+    <Parameter Name="fileSubmissionID" Type="int" Mode="In" />
+    <Parameter Name="eeoJobCategoryId" Type="int" Mode="In" />
+    <Parameter Name="programOfficeName" Type="varchar" Mode="In" />
+    <Parameter Name="positionTitle" Type="varchar" Mode="In" />
+    <Parameter Name="regionName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="rptEEOGenderCompensationReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="organizationID" Type="int" Mode="In" />
+    <Parameter Name="fileSubmissionID" Type="int" Mode="In" />
+    <Parameter Name="eeoJobCategoryId" Type="int" Mode="In" />
+    <Parameter Name="programOfficeName" Type="varchar" Mode="In" />
+    <Parameter Name="positionTitle" Type="varchar" Mode="In" />
+    <Parameter Name="regionName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="rptEEOIndexReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="organizationID" Type="int" Mode="In" />
+    <Parameter Name="fileSubmissionID" Type="int" Mode="In" />
+    <Parameter Name="positionNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="rptGetALM_ByEEOCategoryReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USCensusVersionID" Type="int" Mode="In" />
+    <Parameter Name="searchByWorkSite" Type="bit" Mode="In" />
+    <Parameter Name="occupationCodeID" Type="int" Mode="In" />
+    <Parameter Name="puma_codes" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ESRCodes" Type="varchar(max)" Mode="In" />
+    <Parameter Name="stateID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="rptGetALM_ByFederalJobCodes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USCensusVersionID" Type="int" Mode="In" />
+    <Parameter Name="stateID" Type="int" Mode="In" />
+    <Parameter Name="EEOOccupationCodeID" Type="int" Mode="In" />
+    <Parameter Name="EEOJobClasificationCategoryID" Type="int" Mode="In" />
+    <Parameter Name="SearchByWorkSite" Type="bit" Mode="In" />
+    <Parameter Name="ESRCodes" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PUMA_CODES" Type="varchar(max)" Mode="In" />
+    <Parameter Name="MajorOccupationGroup" Type="int" Mode="In" />
+    <Parameter Name="MinorOccupationGroupID" Type="int" Mode="In" />
+    <Parameter Name="BoardingOccupationGroupID" Type="int" Mode="In" />
+    <Parameter Name="OccupationIDs" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="rptJobTitlesByEEOCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="organizationID" Type="int" Mode="In" />
+    <Parameter Name="fileSubmissionID" Type="int" Mode="In" />
+    <Parameter Name="eeoJobCategoryId" Type="int" Mode="In" />
+    <Parameter Name="programOfficeName" Type="varchar" Mode="In" />
+    <Parameter Name="regionName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="rptStaffLevelsReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="organizationID" Type="int" Mode="In" />
+    <Parameter Name="fileSubmissionID" Type="int" Mode="In" />
+    <Parameter Name="eeoJobCategoryId" Type="int" Mode="In" />
+    <Parameter Name="programOfficeName" Type="varchar" Mode="In" />
+    <Parameter Name="regionName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_InsertEmployeeLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FileSubmissionId" Type="int" Mode="In" />
+    <Parameter Name="OrganizationId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="dev_eeoModelStoreContainer">
+    <EntitySet Name="AgencyYearsOfService" EntityType="Self.AgencyYearsOfService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AgeRange" EntityType="Self.AgeRange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssignedGraphOrganizationViews" EntityType="Self.AssignedGraphOrganizationViews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssignMenuHeader" EntityType="Self.AssignMenuHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AssignRole" EntityType="Self.AssignRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AvailableLaborMarketData" EntityType="Self.AvailableLaborMarketData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AvailableLaborMarketFileVersion" EntityType="Self.AvailableLaborMarketFileVersion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Counties" EntityType="Self.Counties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DefaultEmployeeFields" EntityType="Self.DefaultEmployeeFields" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DefaultLabelField" EntityType="Self.DefaultLabelField" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EEOJobCategories" EntityType="Self.EEOJobCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailAuthenticateLog" EntityType="Self.EmailAuthenticateLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeActiveFields" EntityType="Self.EmployeeActiveFields" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeLevel" EntityType="Self.EmployeeLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FileSubmissionErrors" EntityType="Self.FileSubmissionErrors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FileSubmissionRecords" EntityType="Self.FileSubmissionRecords" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FileSubmissions" EntityType="Self.FileSubmissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FileSubmissionStatus" EntityType="Self.FileSubmissionStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GenerateCSV" EntityType="Self.GenerateCSV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GraphOrganizationMaster" EntityType="Self.GraphOrganizationMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GraphOrganizationView" EntityType="Self.GraphOrganizationView" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LastPerformanceRating" EntityType="Self.LastPerformanceRating" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginDeviceInfo" EntityType="Self.LoginDeviceInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuConfiguration" EntityType="Self.MenuConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuHeaderConfiguration" EntityType="Self.MenuHeaderConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrganizationLabelField" EntityType="Self.OrganizationLabelField" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organizations" EntityType="Self.Organizations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PositionYearsOfService" EntityType="Self.PositionYearsOfService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PublicURL" EntityType="Self.PublicURL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Races" EntityType="Self.Races" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryRange" EntityType="Self.SalaryRange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_ALLData" EntityType="Self.USCensus_ALLData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_BoardingOccupationGroups" EntityType="Self.USCensus_BoardingOccupationGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_DataVersion" EntityType="Self.USCensus_DataVersion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_EEO_OccupationCodes" EntityType="Self.USCensus_EEO_OccupationCodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_EEOJobClasificationCategories" EntityType="Self.USCensus_EEOJobClasificationCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_EmployeeStatusRecode" EntityType="Self.USCensus_EmployeeStatusRecode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_GeographyType_EmployeeStatusRecodes" EntityType="Self.USCensus_GeographyType_EmployeeStatusRecodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_GeographyTypes" EntityType="Self.USCensus_GeographyTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_MajorOccupationGroups" EntityType="Self.USCensus_MajorOccupationGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_MinorOccupationGroups" EntityType="Self.USCensus_MinorOccupationGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_Occupations" EntityType="Self.USCensus_Occupations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_Occupations_EEOJobClasificationCategories" EntityType="Self.USCensus_Occupations_EEOJobClasificationCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_PUMAResidenceCodes" EntityType="Self.USCensus_PUMAResidenceCodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USCensus_PUMAWorksiteCodes" EntityType="Self.USCensus_PUMAWorksiteCodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VacancyRange" EntityType="Self.VacancyRange" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AgencyYearsOfService_Organizations" Association="Self.FK_AgencyYearsOfService_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="AgencyYearsOfService" EntitySet="AgencyYearsOfService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AgeRange_Organizations" Association="Self.FK_AgeRange_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="AgeRange" EntitySet="AgeRange" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignedGraphOrganizationViews_GraphOrganizationView1" Association="Self.FK_AssignedGraphOrganizationViews_GraphOrganizationView1">
+      <End Role="GraphOrganizationView" EntitySet="GraphOrganizationView" />
+      <End Role="AssignedGraphOrganizationViews" EntitySet="AssignedGraphOrganizationViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignedGraphOrganizationViews_Organizations" Association="Self.FK_AssignedGraphOrganizationViews_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="AssignedGraphOrganizationViews" EntitySet="AssignedGraphOrganizationViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignedGraphOrganizationViews_UserRoles" Association="Self.FK_AssignedGraphOrganizationViews_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="AssignedGraphOrganizationViews" EntitySet="AssignedGraphOrganizationViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignMenuHeader_MenuConfiguration" Association="Self.FK_AssignMenuHeader_MenuConfiguration">
+      <End Role="MenuConfiguration" EntitySet="MenuConfiguration" />
+      <End Role="AssignMenuHeader" EntitySet="AssignMenuHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignMenuHeader_MenuHeaderConfiguration" Association="Self.FK_AssignMenuHeader_MenuHeaderConfiguration">
+      <End Role="MenuHeaderConfiguration" EntitySet="MenuHeaderConfiguration" />
+      <End Role="AssignMenuHeader" EntitySet="AssignMenuHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignRole_MenuConfiguration" Association="Self.FK_AssignRole_MenuConfiguration">
+      <End Role="MenuConfiguration" EntitySet="MenuConfiguration" />
+      <End Role="AssignRole" EntitySet="AssignRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssignRole_UserRoles" Association="Self.FK_AssignRole_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="AssignRole" EntitySet="AssignRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion" Association="Self.FK_AvailableLaborMarketData_AvailableLaborMarketFileVersion">
+      <End Role="AvailableLaborMarketFileVersion" EntitySet="AvailableLaborMarketFileVersion" />
+      <End Role="AvailableLaborMarketData" EntitySet="AvailableLaborMarketData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AvailableLaborMarketData_EEOJobCategories" Association="Self.FK_AvailableLaborMarketData_EEOJobCategories">
+      <End Role="EEOJobCategories" EntitySet="EEOJobCategories" />
+      <End Role="AvailableLaborMarketData" EntitySet="AvailableLaborMarketData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AvailableLaborMarketData_Races" Association="Self.FK_AvailableLaborMarketData_Races">
+      <End Role="Races" EntitySet="Races" />
+      <End Role="AvailableLaborMarketData" EntitySet="AvailableLaborMarketData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AvailableLaborMarketFileVersion_Organizations" Association="Self.FK_AvailableLaborMarketFileVersion_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="AvailableLaborMarketFileVersion" EntitySet="AvailableLaborMarketFileVersion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Counties_States" Association="Self.FK_Counties_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Counties" EntitySet="Counties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EEOJobCategories_Organizations" Association="Self.FK_EEOJobCategories_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="EEOJobCategories" EntitySet="EEOJobCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmailAuthenticateLog_LoginDeviceInfo" Association="Self.FK_EmailAuthenticateLog_LoginDeviceInfo">
+      <End Role="LoginDeviceInfo" EntitySet="LoginDeviceInfo" />
+      <End Role="EmailAuthenticateLog" EntitySet="EmailAuthenticateLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmailAuthenticateLog_Users" Association="Self.FK_EmailAuthenticateLog_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="EmailAuthenticateLog" EntitySet="EmailAuthenticateLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeActiveFields_DefaultEmployeeFields" Association="Self.FK_EmployeeActiveFields_DefaultEmployeeFields">
+      <End Role="DefaultEmployeeFields" EntitySet="DefaultEmployeeFields" />
+      <End Role="EmployeeActiveFields" EntitySet="EmployeeActiveFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeActiveFields_Organizations" Association="Self.FK_EmployeeActiveFields_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="EmployeeActiveFields" EntitySet="EmployeeActiveFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeActiveFields_UserRoles" Association="Self.FK_EmployeeActiveFields_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="EmployeeActiveFields" EntitySet="EmployeeActiveFields" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeLevel_Employees" Association="Self.FK_EmployeeLevel_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="EmployeeLevel" EntitySet="EmployeeLevel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_AgencyYearsOfService" Association="Self.FK_Employees_AgencyYearsOfService">
+      <End Role="AgencyYearsOfService" EntitySet="AgencyYearsOfService" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_AgeRange" Association="Self.FK_Employees_AgeRange">
+      <End Role="AgeRange" EntitySet="AgeRange" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Counties" Association="Self.FK_Employees_Counties">
+      <End Role="Counties" EntitySet="Counties" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_EEOJobCategories" Association="Self.FK_Employees_EEOJobCategories">
+      <End Role="EEOJobCategories" EntitySet="EEOJobCategories" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_FileSubmissions" Association="Self.FK_Employees_FileSubmissions">
+      <End Role="FileSubmissions" EntitySet="FileSubmissions" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Gender" Association="Self.FK_Employees_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_LastPerformanceRating" Association="Self.FK_Employees_LastPerformanceRating">
+      <End Role="LastPerformanceRating" EntitySet="LastPerformanceRating" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Organizations" Association="Self.FK_Employees_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_PositionYearsOfService" Association="Self.FK_Employees_PositionYearsOfService">
+      <End Role="PositionYearsOfService" EntitySet="PositionYearsOfService" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_Races" Association="Self.FK_Employees_Races">
+      <End Role="Races" EntitySet="Races" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_SalaryRange" Association="Self.FK_Employees_SalaryRange">
+      <End Role="SalaryRange" EntitySet="SalaryRange" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_States" Association="Self.FK_Employees_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_VacancyRange" Association="Self.FK_Employees_VacancyRange">
+      <End Role="VacancyRange" EntitySet="VacancyRange" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileSubmissionErrors_FileSubmissionRecords" Association="Self.FK_FileSubmissionErrors_FileSubmissionRecords">
+      <End Role="FileSubmissionRecords" EntitySet="FileSubmissionRecords" />
+      <End Role="FileSubmissionErrors" EntitySet="FileSubmissionErrors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileSubmissionRecords_FileSubmissions" Association="Self.FK_FileSubmissionRecords_FileSubmissions">
+      <End Role="FileSubmissions" EntitySet="FileSubmissions" />
+      <End Role="FileSubmissionRecords" EntitySet="FileSubmissionRecords" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileSubmissions_AvailableLaborMarketFileVersion" Association="Self.FK_FileSubmissions_AvailableLaborMarketFileVersion">
+      <End Role="AvailableLaborMarketFileVersion" EntitySet="AvailableLaborMarketFileVersion" />
+      <End Role="FileSubmissions" EntitySet="FileSubmissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileSubmissions_FileSubmissionStatus" Association="Self.FK_FileSubmissions_FileSubmissionStatus">
+      <End Role="FileSubmissionStatus" EntitySet="FileSubmissionStatus" />
+      <End Role="FileSubmissions" EntitySet="FileSubmissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FileSubmissions_Organizations" Association="Self.FK_FileSubmissions_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="FileSubmissions" EntitySet="FileSubmissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gender_Organizations" Association="Self.FK_Gender_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="Gender" EntitySet="Gender" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GenerateCSV_FileSubmissions" Association="Self.FK_GenerateCSV_FileSubmissions">
+      <End Role="FileSubmissions" EntitySet="FileSubmissions" />
+      <End Role="GenerateCSV" EntitySet="GenerateCSV" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GenerateCSV_Organizations" Association="Self.FK_GenerateCSV_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="GenerateCSV" EntitySet="GenerateCSV" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GraphOrganizationView_GraphOrganizationMaster" Association="Self.FK_GraphOrganizationView_GraphOrganizationMaster">
+      <End Role="GraphOrganizationMaster" EntitySet="GraphOrganizationMaster" />
+      <End Role="GraphOrganizationView" EntitySet="GraphOrganizationView" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GraphOrganizationView_Organizations" Association="Self.FK_GraphOrganizationView_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="GraphOrganizationView" EntitySet="GraphOrganizationView" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LastPerformanceRating_Organizations" Association="Self.FK_LastPerformanceRating_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="LastPerformanceRating" EntitySet="LastPerformanceRating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoginDeviceInfo_Organizations" Association="Self.FK_LoginDeviceInfo_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="LoginDeviceInfo" EntitySet="LoginDeviceInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoginDeviceInfo_Users" Association="Self.FK_LoginDeviceInfo_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="LoginDeviceInfo" EntitySet="LoginDeviceInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuHeaderConfiguration_UserRoles" Association="Self.FK_MenuHeaderConfiguration_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="MenuHeaderConfiguration" EntitySet="MenuHeaderConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationLabelField_DefaultLabelField" Association="Self.FK_OrganizationLabelField_DefaultLabelField">
+      <End Role="DefaultLabelField" EntitySet="DefaultLabelField" />
+      <End Role="OrganizationLabelField" EntitySet="OrganizationLabelField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationLabelField_Organizations" Association="Self.FK_OrganizationLabelField_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="OrganizationLabelField" EntitySet="OrganizationLabelField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrganizationLabelField_UserRoles" Association="Self.FK_OrganizationLabelField_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="OrganizationLabelField" EntitySet="OrganizationLabelField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizations_States" Association="Self.FK_Organizations_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Organizations" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizations_StatesALMDefault" Association="Self.FK_Organizations_StatesALMDefault">
+      <End Role="States" EntitySet="States" />
+      <End Role="Organizations" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizations_USCensus_EEO_OccupationCodes" Association="Self.FK_Organizations_USCensus_EEO_OccupationCodes">
+      <End Role="USCensus_EEO_OccupationCodes" EntitySet="USCensus_EEO_OccupationCodes" />
+      <End Role="Organizations" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PositionYearsOfService_Organizations" Association="Self.FK_PositionYearsOfService_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="PositionYearsOfService" EntitySet="PositionYearsOfService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PublicURL_Organizations" Association="Self.FK_PublicURL_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="PublicURL" EntitySet="PublicURL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Races_Organizations" Association="Self.FK_Races_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="Races" EntitySet="Races" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalaryRange_Organizations" Association="Self.FK_SalaryRange_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="SalaryRange" EntitySet="SalaryRange" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups" Association="Self.FK_USCensus_BoardingOccupationGroups_USCensus_MinorOccupationGroups">
+      <End Role="USCensus_MinorOccupationGroups" EntitySet="USCensus_MinorOccupationGroups" />
+      <End Role="USCensus_BoardingOccupationGroups" EntitySet="USCensus_BoardingOccupationGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_CountyPUMACodes_States" Association="Self.FK_USCensus_CountyPUMACodes_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="USCensus_PUMAResidenceCodes" EntitySet="USCensus_PUMAResidenceCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_CountyPUMACodes_USCensus_DataVersion" Association="Self.FK_USCensus_CountyPUMACodes_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_PUMAResidenceCodes" EntitySet="USCensus_PUMAResidenceCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes" Association="Self.FK_USCensus_EEOJobClasificationCategories_USCensusEEO_OccupationCodes">
+      <End Role="USCensus_EEO_OccupationCodes" EntitySet="USCensus_EEO_OccupationCodes" />
+      <End Role="USCensus_EEOJobClasificationCategories" EntitySet="USCensus_EEOJobClasificationCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion" Association="Self.FK_USCensus_EmployeeStatusRecode_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_EmployeeStatusRecode" EntitySet="USCensus_EmployeeStatusRecode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_GeographyType_EmployeeStatusRecodes_USCensus_EmployeeStatusRecode" Association="Self.FK_USCensus_GeographyType_EmployeeStatusRecodes_USCensus_EmployeeStatusRecode">
+      <End Role="USCensus_EmployeeStatusRecode" EntitySet="USCensus_EmployeeStatusRecode" />
+      <End Role="USCensus_GeographyType_EmployeeStatusRecodes" EntitySet="USCensus_GeographyType_EmployeeStatusRecodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_GeographyType_EmployeeStatusRecodes_USCensus_GeographyTypes" Association="Self.FK_USCensus_GeographyType_EmployeeStatusRecodes_USCensus_GeographyTypes">
+      <End Role="USCensus_GeographyTypes" EntitySet="USCensus_GeographyTypes" />
+      <End Role="USCensus_GeographyType_EmployeeStatusRecodes" EntitySet="USCensus_GeographyType_EmployeeStatusRecodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_GeographyTypes_USCensus_DataVersion" Association="Self.FK_USCensus_GeographyTypes_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_GeographyTypes" EntitySet="USCensus_GeographyTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_MajorOccupationGroups_USCensus_DataVersion" Association="Self.FK_USCensus_MajorOccupationGroups_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_MajorOccupationGroups" EntitySet="USCensus_MajorOccupationGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups" Association="Self.FK_USCensus_MinorOccupationGroups_USCensus_MajorOccupationGroups">
+      <End Role="USCensus_MajorOccupationGroups" EntitySet="USCensus_MajorOccupationGroups" />
+      <End Role="USCensus_MinorOccupationGroups" EntitySet="USCensus_MinorOccupationGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_EEOJobClasificationCategories" Association="Self.FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_EEOJobClasificationCategories">
+      <End Role="USCensus_EEOJobClasificationCategories" EntitySet="USCensus_EEOJobClasificationCategories" />
+      <End Role="USCensus_Occupations_EEOJobClasificationCategories" EntitySet="USCensus_Occupations_EEOJobClasificationCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_Occupations" Association="Self.FK_USCensus_Occupations_EEOJobClasificationCategories_USCensus_Occupations">
+      <End Role="USCensus_Occupations" EntitySet="USCensus_Occupations" />
+      <End Role="USCensus_Occupations_EEOJobClasificationCategories" EntitySet="USCensus_Occupations_EEOJobClasificationCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_Occupations_USCensus_BoardingOccupationGroups" Association="Self.FK_USCensus_Occupations_USCensus_BoardingOccupationGroups">
+      <End Role="USCensus_BoardingOccupationGroups" EntitySet="USCensus_BoardingOccupationGroups" />
+      <End Role="USCensus_Occupations" EntitySet="USCensus_Occupations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_PUMAWorksiteCodes_States" Association="Self.FK_USCensus_PUMAWorksiteCodes_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="USCensus_PUMAWorksiteCodes" EntitySet="USCensus_PUMAWorksiteCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion" Association="Self.FK_USCensus_PUMAWorksiteCodes_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_PUMAWorksiteCodes" EntitySet="USCensus_PUMAWorksiteCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensusData_USCensus_DataVersion" Association="Self.FK_USCensusData_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_ALLData" EntitySet="USCensus_ALLData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USCensusEEO_OccupationCodes_USCensus_DataVersion" Association="Self.FK_USCensusEEO_OccupationCodes_USCensus_DataVersion">
+      <End Role="USCensus_DataVersion" EntitySet="USCensus_DataVersion" />
+      <End Role="USCensus_EEO_OccupationCodes" EntitySet="USCensus_EEO_OccupationCodes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Organizations" Association="Self.FK_UserRoles_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_UserRoles" Association="Self.FK_Users_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VacancyRange_Organizations" Association="Self.FK_VacancyRange_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="VacancyRange" EntitySet="VacancyRange" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

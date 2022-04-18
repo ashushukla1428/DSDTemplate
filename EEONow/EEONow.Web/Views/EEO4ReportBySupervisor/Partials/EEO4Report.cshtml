@@ -1,0 +1,347 @@
+﻿@model EEONow.Models.Models.EEO4Report.EEO4ReportViewModel
+@{
+    ViewBag.Title = "EEO4 Report";
+    Layout = "~/Views/Shared/_PartialViewLayout.cshtml";
+    int _index = 1;
+}
+<style>
+    #div-tablebody {
+        /*overflow:hidden;*/
+        overflow-y: scroll;
+    }
+</style>
+
+<table class="table-grid" style="width:98.98%">
+    <tbody>
+        <tr>
+            <td class="Alm-text" colspan="2" width="23%">
+                @Model.ManagerName
+            </td>
+            <td width="78%">
+                <table class="table-grid aligncenter">
+                    <tr>
+                        <th class="td-top-none td-right-none" colspan="12" height="25px" style="text-align:center">
+                            Available Labor Market by Race / Ethnicity
+                        </th>
+                        <td class="td-top-none" colspan="2"><span onclick="ExportEEOReport();" class="AVExport">Export to PDF</span></td>
+                    </tr>
+                    <tr>
+                        @foreach (var item in Model.ListRacesForALM)
+                        {
+                            <td class="noborder" width="12.5%" colspan="2" id="TdRaces@(item.RacesId)">
+                                @item.RacesName
+                            </td>
+                        }
+                        <td class="noborder alignmiddle" width="8.5%" rowspan="2" colspan="2">
+                            Totals
+                        </td>
+                    </tr>
+                    <tr style="text-align:center">
+
+
+                        @foreach (var item in Model.ListRacesForALM)
+                        {
+                            <td width="6.25%">M</td>
+                            <td class="border_right" width="6.25%">F</td>
+                        }
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="div-tablebody">
+    <table class="table-grid">
+        <tbody>
+            @{int countEEORow = 0;
+                int _1stRow = 1;
+                foreach (var itemEEO in Model.ListEEOForALM)
+                {
+                    countEEORow = countEEORow + 1;
+                    <tr>
+                        <td class="@(countEEORow % 2 == 1 ? "color-Black" : "color-Black Bg-AlaternateTr")" style="text-align: center; vertical-align: middle;" width="8%">
+                            <span>@itemEEO.EEOName</span>
+                        </td>
+                        <td width="15%">
+                            <table class="table-grid">
+                                @{
+                                    foreach (var item in (List<string>)ViewBag.SalaryRange)
+                                    {
+                                        if (_index % 2 == 0)
+                                        {
+                                            <tr class="Bg-AlaternateTr">
+                                               
+                                                <th class="@(_1stRow==1?"td-top-none color-Black aligncenter":"color-Black aligncenter")" height="20px">
+                                                    @_index
+                                                    @Html.Raw(item)
+                                                    
+                                                </th>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <th class="@(_1stRow==1?"td-top-none color-Black aligncenter":"color-Black aligncenter")" height="20px">
+                                                    @_index
+                                                    @Html.Raw(item)
+                                                </th>
+                                            </tr>
+                                        }
+
+                                        _index = _index + 1;
+                                        _1stRow = _1stRow + 1;
+                    if (_1stRow == 9)
+                    {
+                        _1stRow=1;
+                    }
+                                    }
+                                }
+
+
+                            </table>
+                        </td>
+                        <td width="78%">
+
+                            <table class="table-grid">
+                                @* //0 -> 15999.99*@
+                                <tr class="bg-blue">
+                                    @if (Model.ListRacesForALM != null)
+                                    {
+                                        foreach (var itemALM in Model.ListRacesForALM)
+                                        {
+                                            <td class="td-top-none alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceMale_Between0K_n_15K).FirstOrDefault()
+                                            </td>
+                                            <td class="td-top-none alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceFemale_Between0K_n_15K).FirstOrDefault()
+                                            </td>
+                                        }
+                                    }
+
+                                    <td class="td-top-none alignmiddle formatNumber" colspan="2" width="8.5%">
+                                        <b>
+                                            @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale_Between0K_n_15K + r.TotalWorkforceFemale_Between0K_n_15K)).FirstOrDefault()
+                                        </b>
+                                    </td>
+
+                                </tr>
+                                @*% 16000.00 -> 19999.99*@
+                                <tr class="bg-blue Bg-AlaternateTr">
+                                    @if (Model.ListRacesForALM != null)
+                                    {
+                                        foreach (var itemALM in Model.ListRacesForALM)
+                                        {
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceMale_Between16K_n_19K).FirstOrDefault()
+                                            </td>
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceFemale_Between16K_n_19K).FirstOrDefault()
+                                            </td>
+                                        }
+                                    }
+
+                                    <td class="alignmiddle formatNumber" colspan="2" width="8.5%">
+                                        <b>
+                                            @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale_Between16K_n_19K + r.TotalWorkforceFemale_Between16K_n_19K)).FirstOrDefault()
+                                        </b>
+                                    </td>
+
+                                </tr>
+                                @*20000.00 -> 24999.99*@
+                                <tr class="bg-blue Bg-AlaternateTr">
+                                    @if (Model.ListRacesForALM != null)
+                                    {
+                                        foreach (var itemALM in Model.ListRacesForALM)
+                                        {
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceMale_Between20K_n_24K).FirstOrDefault()
+                                            </td>
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceFemale_Between20K_n_24K).FirstOrDefault()
+                                            </td>
+                                        }
+                                    }
+
+                                    <td class="alignmiddle formatNumber" colspan="2" width="8.5%">
+                                        <b>
+                                            @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale_Between20K_n_24K + r.TotalWorkforceFemale_Between20K_n_24K)).FirstOrDefault()
+                                        </b>
+                                    </td>
+
+                                </tr>
+                                @* 25000.00 -> 32999.99*@
+                                <tr class="bg-blue Bg-AlaternateTr">
+                                    @if (Model.ListRacesForALM != null)
+                                    {
+                                        foreach (var itemALM in Model.ListRacesForALM)
+                                        {
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceMale_Between25K_n_32K).FirstOrDefault()
+                                            </td>
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceFemale_Between25K_n_32K).FirstOrDefault()
+                                            </td>
+                                        }
+                                    }
+
+                                    <td class="alignmiddle formatNumber" colspan="2" width="8.5%">
+                                        <b>
+                                            @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale_Between25K_n_32K + r.TotalWorkforceFemale_Between25K_n_32K)).FirstOrDefault()
+                                        </b>
+                                    </td>
+
+                                </tr>
+                                @*33000.00 -> 42999.99*@
+                                <tr class="bg-blue Bg-AlaternateTr">
+                                    @if (Model.ListRacesForALM != null)
+                                    {
+                                        foreach (var itemALM in Model.ListRacesForALM)
+                                        {
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceMale_Between33K_n_42K).FirstOrDefault()
+                                            </td>
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceFemale_Between33K_n_42K).FirstOrDefault()
+                                            </td>
+                                        }
+                                    }
+
+                                    <td class="alignmiddle formatNumber" colspan="2" width="8.5%">
+                                        <b>
+                                            @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale_Between33K_n_42K + r.TotalWorkforceFemale_Between33K_n_42K)).FirstOrDefault()
+                                        </b>
+                                    </td>
+
+                                </tr>
+                                @*  43000.00 -> 54999.99*@
+                                <tr class="bg-blue Bg-AlaternateTr">
+                                    @if (Model.ListRacesForALM != null)
+                                    {
+                                        foreach (var itemALM in Model.ListRacesForALM)
+                                        {
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceMale_Between43K_n_54K).FirstOrDefault()
+                                            </td>
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceFemale_Between43K_n_54K).FirstOrDefault()
+                                            </td>
+                                        }
+                                    }
+
+                                    <td class="alignmiddle formatNumber" colspan="2" width="8.5%">
+                                        <b>
+                                            @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale_Between43K_n_54K + r.TotalWorkforceFemale_Between43K_n_54K)).FirstOrDefault()
+                                        </b>
+                                    </td>
+
+                                </tr>
+                                @* 55000.00 -> 69999.99*@
+                                <tr class="bg-blue Bg-AlaternateTr">
+                                    @if (Model.ListRacesForALM != null)
+                                    {
+                                        foreach (var itemALM in Model.ListRacesForALM)
+                                        {
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceMale_Between55K_n_69K).FirstOrDefault()
+                                            </td>
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceFemale_Between55K_n_69K).FirstOrDefault()
+                                            </td>
+                                        }
+                                    }
+
+                                    <td class="alignmiddle formatNumber" colspan="2" width="8.5%">
+                                        <b>
+                                            @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale_Between55K_n_69K + r.TotalWorkforceFemale_Between55K_n_69K)).FirstOrDefault()
+                                        </b>
+                                    </td>
+
+                                </tr>
+                                @*  70000.00 -> --------*@
+                                <tr class="bg-blue Bg-AlaternateTr">
+                                    @if (Model.ListRacesForALM != null)
+                                    {
+                                        foreach (var itemALM in Model.ListRacesForALM)
+                                        {
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceMale_Greater_Than_70K).FirstOrDefault()
+                                            </td>
+                                            <td class="alignmiddle" height="20px" width="6.25%">
+                                                @Model.ListComputeALMValue.Where(e => e.RacesId == itemALM.RacesId && e.EEOId == itemEEO.EEOId).Select(e => e.TotalWorkforceFemale_Greater_Than_70K).FirstOrDefault()
+                                            </td>
+                                        }
+                                    }
+
+                                    <td class="alignmiddle formatNumber" colspan="2" width="8.5%">
+                                        <b>
+                                            @Model.ListComputeALMValue.Where(e => e.EEOId == itemEEO.EEOId).GroupBy(e => e.EEOId).Select(e => e.Sum(r => r.TotalWorkforceMale_Greater_Than_70K + r.TotalWorkforceFemale_Greater_Than_70K)).FirstOrDefault()
+                                        </b>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                }
+            }
+            <tr>
+                <th colspan="2" class="alignRight" width="23%">
+
+                </th>
+
+                <th class="alignmiddle" height="20px" width="78%">
+                    <table class="table-grid">
+                        <tr class="bg-blue">
+                            <td class="td-top-none alignmiddle nohover" style="text-align:right;padding-right: 10px;"> Grand Total WorkForce</td>
+                            <td class="td-top-none alignmiddle nohover formatNumber" style="font-size:15px" width="9.05%" height="30px">
+                                <b> @Model.TotalWorkforce</b>
+                            </td>
+                        </tr>
+                    </table>
+                </th>
+            </tr>
+            @*<tr>
+            <th colspan="2" class="alignRight" width="23%">
+
+            </th>
+
+            <th class="alignmiddle" height="20px" width="78%">
+                <table class="table-grid">
+                    <tr class="bg-blue">
+                        <td class="td-top-none alignmiddle nohover" style="text-align:right;padding-right: 10px;"> Grand Total ALM</td>
+                        <td class="td-top-none alignmiddle nohover formatNumber" style="font-size:15px" width="9.05%" height="30px">
+                            <b>  00</b>
+                        </td>
+                    </tr>
+                </table>
+            </th>
+        </tr>*@
+        </tbody>
+    </table>
+
+</div>
+
+
+@section scripts{
+    @*<script src="~/Scripts/kendo/jquery.min.js"></script>*@
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //$(this).find('td').each(function (e) {
+            //    console.log(e);
+            //})
+            //$('.formatNumber').text(formatNumber($('.formatNumber').text()))
+            //console.log($('.formatNumber').text());
+
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            })
+              $("#div-tablebody").height($(".main-content").height() - 375);
+        })
+
+
+
+    </script>
+}

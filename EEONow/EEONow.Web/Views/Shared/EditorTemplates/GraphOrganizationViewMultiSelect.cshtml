@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "GraphOrganizationViewList";
+}
+
+@using System.Collections
+@*@model System.Int32*@
+@(Html.Kendo().MultiSelect()
+//.BindTo((IEnumerable)ViewBag.GraphOrganizationViewList)
+.DataValueField("Value")
+.DataTextField("Text")
+.Name("ListGraphOrganizationView")
+.Placeholder("Pages")
+.DataSource(source =>
+{
+    source.Read(read =>
+    {
+        read.Action("GetGraphOrganizationViewViaOrganisation", "GraphOrganizationView")
+            .Data("filterOrganization");
+    })
+    .ServerFiltering(true);
+})
+) 

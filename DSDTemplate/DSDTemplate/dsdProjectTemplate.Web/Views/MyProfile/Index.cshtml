@@ -1,0 +1,299 @@
+﻿@using Kendo.Mvc.UI
+@model dsdProjectTemplate.ViewModel.User.UserProfileViewModel
+@{
+    ViewBag.Title = "My Profile";
+}
+<style>
+    .k-textbox, .k-dropdown {
+        width: 100%
+    }
+</style>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">@ViewBag.Title </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">My Profile </h3>
+        </div>
+        <div class="demo-section k-content" style="margin-left:10px;margin-right:10px;width:50%">
+
+            @(Html.Kendo().Form<dsdProjectTemplate.ViewModel.User.UserProfileViewModel>()
+        .Name("formExample")
+        .HtmlAttributes(new { action = "Index", method = "POST" })
+        .Validatable(v =>
+        {
+            v.ValidateOnBlur(true);
+            v.ValidationSummary(vs => vs.Enable(false));
+        })
+        .Items(items =>
+        {
+            items.AddGroup()
+                .Items(i =>
+                {
+                    i.Add()
+                         .Field(f => f.FirstName)
+                         .Label(l => l.Text("First Name:"));
+                    i.Add()
+                        .Field(f => f.MiddleName)
+                        .Label(l => l.Text("Middle Name:"));
+                    i.Add()
+                        .Field(f => f.LastName)
+                        .Label(l => l.Text("Last Name:"));
+                    i.Add()
+                        .Field(f => f.EmailAddress)
+                        .Label(l => l.Text("Email Address"));                    
+
+                    i.Add()
+                        .Field(f => f.RegistrationCellPhoneNumber)
+                        .Label(l => l.Text("Registration Cell Phone Number:"));
+
+
+                    i.Add()
+                       .Field(f => f.RegistrationWorkPhoneNumber)
+                       .Label(l => l.Text("Registration Work PhoneNumber:"));
+
+                    i.Add()
+                       .Field(f => f.SecurityQuestion1)
+                       .Label(l => l.Text("Security Question 1")
+                       );
+                    i.Add()
+                        .Field(f => f.AnswerSecurityQuestion1)
+                        .Label(l => l.Text("AnswerSecurity Question 1"));
+                    i.Add()
+                      .Field(f => f.SecurityQuestion2)
+                      .Label(l => l.Text("Security Question 2"));
+                    i.Add()
+                        .Field(f => f.AnswerSecurityQuestion2)
+                        .Label(l => l.Text("Answer Security Question 2"));
+
+                    i.Add()
+                    .Field(f => f.SecurityQuestion3)
+                    .Label(l => l.Text("Security Question 3"));
+                    i.Add()
+                        .Field(f => f.AnswerSecurityQuestion3)
+                        .Label(l => l.Text("Answer Security Question 3"));
+
+
+                });
+        })
+        .Events(ev => ev.ValidateField("onFormValidateField").Submit("onFormSubmit").Clear("onFormClear"))
+    )
+            <div id="validation-success"></div>
+        </div>
+
+    </div>
+    @(Html.Kendo().Window().Name("TwoFactorAuthentication")
+    .Title("Two Factor Authentication")
+ .Draggable(true)
+    //.Resizable()
+    .Scrollable(false)
+    .Width(400)
+    .Height(200)
+    .Visible(false)
+    .Iframe(true)
+    .Modal(true)
+ .Actions(actions => actions.Minimize().Maximize().Close())
+)
+</section>
+<script>
+  
+ 
+    function onFormValidateField(e) {
+
+        $("#validation-success").html("");
+    }
+    function showWindow(flag, reqType) {
+        var wnd = $("#TwoFactorAuthentication").data("kendoWindow");
+
+        wnd.refresh({
+            url: "/MyProfile/ShowwoFactorAuthentication?flag=" + flag + "&reqType=" + reqType
+        });
+
+        //  wnd.("Manage Filters");
+       // wnd.title('User Name: ' + dataItem.UserName);
+        wnd.center();
+        wnd.open();
+    }
+    function onFormSubmit(e) {
+        e.preventDefault();
+        var dataModel = $("#formExample").serialize();
+        //to get alert popup
+        //alert(valdata);
+        $.ajax({
+            type: 'POST',
+            data: dataModel,
+            url: '/MyProfile/Index',
+            success: function (data) {
+
+                if (data.Status) {
+                    //swal("", data.Message, "success");
+                    toastr.success(data.Message, '', { timeOut: 1000 });
+                    $("#validation-success").html("<div class='k-messagebox k-messagebox-success'>" + data.Message +"</div>");
+                }
+                else {
+                    //swal("Sorry!", data.Message, "warning");
+                    $("#validation-success").html("<div class='k-messagebox k-messagebox-error'>"+data.Message+"</div > ");
+                    toastr.error(data.Message, 'Warning', { timeOut: 1500 });
+                }
+
+            },
+            failure: function (response) {
+                $("#validation-success").html("");
+                // alert(response.responseText);
+                swal("Sorry!", response.responseText, "error");
+            },
+            error: function (response) {
+                swal("Sorry!", response.responseText, "error");
+                $("#validation-success").html("");
+            }
+
+        });
+        //$("#validation-success").html("<div class='k-messagebox k-messagebox-success'>Form data is valid!</div>");
+    }
+
+    function onFormClear(e) {
+        $("#validation-success").html("");
+    }
+</script>
+<script>
+   
+    $(document).ready(function () {
+        HideControls();
+        $("input").change(function () {
+            HideControls();
+        });
+
+       //EmailTwoFactorAuthentication
+        $('#EmailTwoFactorAuthentication').click(function () {
+            $.ajax({
+                type: 'POST',
+                //data: dataModel,
+                url: '/MyProfile/SendTwoFactorAuthenticationCodeOnEmail',
+                success: function (data) {
+
+                    if (data.Status) {
+                        showWindow($("#EmailTwoFactorAuthentication").val(),2);
+                        toastr.success(data.Message, '', { timeOut: 1000 });
+                    }
+                    else {
+                        //swal("Sorry!", data.Message, "warning");
+                        $("#validation-success").html("<div class='k-messagebox k-messagebox-error'>" + data.Message + "</div > ");
+                    }
+
+                },
+                failure: function (response) {
+                    $("#validation-success").html("");
+                    // alert(response.responseText);
+                    swal("Sorry!", response.responseText, "error");
+                },
+                error: function (response) {
+                    swal("Sorry!", response.responseText, "error");
+                    $("#validation-success").html("");
+                }
+
+            });
+        });
+        //SMSTwoFactorAuthentication
+        $('#SMSTwoFactorAuthentication').click(function () {
+            $.ajax({
+                type: 'POST',
+                //data: dataModel,
+                url: '/MyProfile/SendTwoFactorAuthenticationCodeOnPhone',
+                success: function (data) {
+
+                    if (data.Status) {
+                        showWindow($("#SMSTwoFactorAuthentication").val(),1);
+                        toastr.success(data.Message, '', { timeOut: 1000 });
+                    }
+                    else {
+                        //swal("Sorry!", data.Message, "warning");
+                        $("#validation-success").html("<div class='k-messagebox k-messagebox-error'>" + data.Message + "</div > ");
+                    }
+
+                },
+                failure: function (response) {
+                    $("#validation-success").html("");
+                    // alert(response.responseText);
+                    swal("Sorry!", response.responseText, "error");
+                },
+                error: function (response) {
+                    swal("Sorry!", response.responseText, "error");
+                    $("#validation-success").html("");
+                }
+
+            });
+        });
+
+        $("#btnsubmit").click(function (e) {
+            //Serialize the form datas.
+            var valdata = $("#friendform").serialize();
+            //to get alert popup
+          //  alert(valdata);
+            $.ajax({
+                url: "/Friend/AddFriend",
+                type: "POST",
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: valdata
+            });
+        });
+
+        function HideControls() {
+
+           
+            $("input[title='SecurityQuestion1']").css("display", "none");
+            $("input[title='SecurityQuestion2']").css("display", "none");
+            $("input[title='SecurityQuestion3']").css("display", "none");
+            $(".k-link").hide();
+        }
+    });
+</script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+     var QuestionesList =@Html.Raw(Json.Encode(ViewBag.Questiones));
+
+        $("#SecurityQuestion1").kendoDropDownList({
+        //optionLabel: "Select Project Task ID",
+        dataTextField: "Text",
+        dataValueField: "Value",
+        dataSource: QuestionesList
+        }).data("kendoDropDownList");
+
+        $("#SecurityQuestion2").kendoDropDownList({
+            //optionLabel: "Select Project Task ID",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: QuestionesList
+        }).data("kendoDropDownList");
+
+        $("#SecurityQuestion3").kendoDropDownList({
+            //optionLabel: "Select Project Task ID",
+            dataTextField: "Text",
+            dataValueField: "Value",
+            dataSource: QuestionesList
+        }).data("kendoDropDownList");
+
+    })
+
+    
+   // var ProjectTaskID_Dropdownlist = $("#SecurityQuestion1").data("kendoDropDownList");
+    // ProjectTaskID_Dropdownlist.select(0);
+   // ProjectTaskID_Dropdownlist.trigger("change");
+  
+</script>

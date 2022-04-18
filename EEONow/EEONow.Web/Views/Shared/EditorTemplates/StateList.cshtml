@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "StateList";
+}
+
+@using System.Collections
+@model System.Int32
+@(Html.Kendo().DropDownList()
+        .BindTo((IEnumerable)ViewBag.StateList)
+        .OptionLabel("- Select State - ")
+        .DataValueField("Value")
+        .DataTextField("Text")
+        .Name("StateId")
+        .HtmlAttributes(new { tabindex = "5" , required = "required" })
+) 

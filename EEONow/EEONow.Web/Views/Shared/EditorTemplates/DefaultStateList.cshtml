@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "DefaultStateList";
+}
+
+@using System.Collections
+@model System.Int32
+@(Html.Kendo().DropDownList()
+        .BindTo((IEnumerable)ViewBag.DefaultStateList)
+        .OptionLabel("- Select State - ")
+        .DataValueField("Value")
+        .DataTextField("Text")
+        .Name("DefaultStateId")
+        .HtmlAttributes(new { tabindex = "5" , required = "required" })
+) 

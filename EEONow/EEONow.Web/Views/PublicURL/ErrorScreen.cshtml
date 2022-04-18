@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Error Screen";
+    Layout = "~/Views/Shared/_PublicURLLayout.cshtml";
+}
+<style>
+    body {
+        background: #ffffff!important;
+    }
+    .main-content {
+        padding: 70px 30px 10px 30px;
+    }
+    h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #ff0305;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+
+        <h2> 
+            @(System.Configuration.ConfigurationManager.AppSettings["PublicUrlErrorMessage"])
+        </h2>
+    </div>
+</div>
+
+

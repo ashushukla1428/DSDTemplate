@@ -1,0 +1,392 @@
+﻿@model EEONow.Models.EEOGenderCompensationReportModel
+@using EEONow.Utilities;
+@{
+    ViewBag.Title = "EEO Gender Compensation Report";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var LoginInfo = AppUtility.DecryptCookie();
+}
+
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/kendo/jquery.min.js"></script>
+<script src="~/Scripts/kendo/jszip.min.js"></script>
+<script src="~/Scripts/kendo/kendo.all.min.js"></script>
+<script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+<script src="~/Scripts/bootstrap-multiselect.js"></script>
+<link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+<link href="~/Content/Reports.css" rel="stylesheet" />
+<style>
+
+
+</style>
+<input type="hidden" id="HfUserRoleInfo" value="@LoginInfo.Roles" />
+<h2 class="main_title_row">Search By:</h2>
+<div id="SearchPannel">
+    <div class="row">
+        <div class="col-md-3" style="@(LoginInfo.Roles=="DefinedSoftwareAdministrator"? "display:block" : "display:none")">
+            <div class="row">
+                <div class="col-lg-12">Organization :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("organization")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("OrganizationName")
+              .DataValueField("OrganizationId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetOrganizationsList", "EEOGenderCompensationReport");
+                  });
+              })
+                    )
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">File Submissions :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("filesubmission")
+              .HtmlAttributes(new { style = "width:100%" })
+              .DataTextField("FileName")
+              .DataValueField("FileSubmissionId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetFileViaOrganisation", "EEOGenderCompensationReport")
+                          .Data("filterFiles");
+                  })
+                  .ServerFiltering(true);
+              })
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("organization")
+
+                    )
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">EEO Job Category :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("eeojobcategory")
+              .HtmlAttributes(new { style = "width:100%" })
+              .OptionLabel("--Select All--")
+              .DataTextField("EEOJobCategoryName")
+              .DataValueField("EEOJobCategoryId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetEEOJobCategory", "EEOGenderCompensationReport")
+                      .Data("filterEEOCategories");
+                  })
+                  .ServerFiltering(true);
+              })
+              .Events(e =>
+              {
+                  e.Change("filterEEOPositionTitleRefresh");
+              })
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("organization")
+                    )
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">Program Office :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("eeoprogramoffice")
+              .HtmlAttributes(new { style = "width:100%" })
+              .OptionLabel("--Select All--")
+              .DataTextField("EEOProgramOfficeName")
+              .DataValueField("EEOProgramOfficeId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetEEOProgramOffice", "EEOGenderCompensationReport")
+                          .Data("filterEEOProgramOffice");
+                  })
+                  .ServerFiltering(true);
+              })
+               .Events(e =>
+               {
+                   e.Change("filterEEOPositionTitleRefresh");
+               })
+              .Enable(false)
+              //.AutoBind(false)
+              .CascadeFrom("filesubmission")
+                    )
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">Region :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("region")
+              .HtmlAttributes(new { style = "width:100%" })
+              .OptionLabel("--Select All--")
+              .DataTextField("RegionName")
+              .DataValueField("RegionId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetEEORegion", "EEOProgressReportByRegion")
+                          .Data("filterEEORegion");
+                  })
+                  .ServerFiltering(true);
+              }).Events(e =>
+              {
+                  e.Change("filterEEOPositionTitleRefresh");
+              })
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("filesubmission")
+                    )
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-lg-12">Position Title :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+              .Name("eeopositiontitle")
+              .HtmlAttributes(new { style = "width:100%" })
+              .OptionLabel("--Select All--")
+              .DataTextField("EEOPositionTitleName")
+              .DataValueField("EEOPositionTitleId")
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Action("GetEEOPositionTitle", "EEOGenderCompensationReport")
+                          .Data("filterEEOPositionTitle");
+                  })
+                  .ServerFiltering(true);
+              })
+              .Enable(false)
+              .AutoBind(false)
+              .CascadeFrom("filesubmission")
+
+                    )
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3" style="display:none">
+            <div class="row">
+
+                <div class="col-lg-12">Job Title Sort Order :</div>
+                <div class="col-lg-12">
+                    @(Html.Kendo().DropDownList()
+          .Name("jobtitlesortorder")
+          .DataTextField("Text")
+          .DataValueField("Value")
+          .BindTo(new List<SelectListItem>() {
+            new SelectListItem() {
+                  Text = "Position Title",
+                  Value = "1"
+              },
+              new SelectListItem() {
+                  Text = "Total Employees ",
+                  Value = "2"
+              }
+          })
+          .Value("1")
+          .HtmlAttributes(new { style = "width: 100%" })
+                    )
+                </div>
+
+            </div>
+        </div>
+        @*<div class="col-md-3">
+                <div class="row">
+
+                    <div class="col-lg-12">Total Employees Sort Order :</div>
+                    <div class="col-lg-12">
+                        @(Html.Kendo().DropDownList()
+              .Name("totalemployeesortorder")
+              .DataTextField("Text")
+              .DataValueField("Value")
+              .BindTo(new List<SelectListItem>() {
+                  new SelectListItem() {
+                      Text = "Ascending ",
+                      Value = "1"
+                  },
+                  new SelectListItem() {
+                      Text = "Descending ",
+                      Value = "2"
+                  }
+              })
+              .Value("2")
+              .HtmlAttributes(new { style = "width: 100%" })
+                        )
+                    </div>
+
+                </div>
+            </div>*@
+
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-lg-12">&nbsp;</div>
+                <div class="col-lg-12">
+                    <input type="button" id="btnSubmit" onclick="BindEEOGenderCompensationReport();" style="width:100%" class="k-primary k-button" value="Search" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>
+
+
+<h2 class="main_title_row">EEO Compensation Report:</h2>
+
+<div class="render-outer">
+    <div id="RenderReport">
+    </div>
+</div>
+<div class="BodyLoader-outer">
+    <div class="BodyLoader">
+    </div>
+</div>
+
+@section css{ 
+    <link href="~/Content/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Content/alertifyjs/alertify.js"></script>
+    <script src="~/Content/alertifyjs/alertify.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //$(this).find('td').each(function (e) {
+            //    console.log(e);
+            //})
+            //$('.formatNumber').text(formatNumber($('.formatNumber').text()))
+            //console.log($('.formatNumber').text());
+            //BindEEOGenderCompensationReport();
+            $('.formatNumber').each(function (e, elm) {
+                $(elm).text(formatNumber($(elm).text()));
+            });
+            $(".BodyLoader").hide();
+            $(".BodyLoader-outer").hide();
+            $(".render-outer").height($(".main-content").height() - 250);
+        });
+        function ExportEEOReport() {
+            $(".BodyLoader").show();
+            $(".BodyLoader-outer").show();
+              var organization= $("#organization").val();
+              var filesubmission= $("#filesubmission").val();
+              var eeojobcategory= escape($("#eeojobcategory").val());
+              var eeoprogramoffice= escape($("#eeoprogramoffice").val());
+              var eeopositiontitle = escape($("#eeopositiontitle").val());
+              var jobtitlesortorder = $("#jobtitlesortorder").val();
+              var region = $("#region").val();
+              location.href = '@Url.Action("ExportToPDF", "EEOGenderCompensationReport")?organization=' + organization + '&filesubmission=' + filesubmission + '&eeojobcategory=' + eeojobcategory + '&jobtitlesortorder=' + jobtitlesortorder + '&eeoprogramoffice=' + eeoprogramoffice + '&eeopositiontitle=' + eeopositiontitle + '&region=' + region;
+              $(".BodyLoader").hide();
+              $(".BodyLoader-outer").hide();
+
+        }
+        function BindEEOGenderCompensationReport() {
+            if ($("#eeopositiontitle").val().length == 0)
+            {
+                alertify.error("Please select a position title from the list");
+            }
+            else {
+                $(".BodyLoader").show();
+                $(".BodyLoader-outer").show();
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: "/EEOGenderCompensationReport/GetEEOGenderCompensationReport",
+                    data: {
+                        organization: $("#organization").val(),
+                        filesubmission: $("#filesubmission").val(),
+                        eeojobcategory: $("#eeojobcategory").val(),
+                        jobtitlesortorder: $("#jobtitlesortorder").val(),
+                        eeoprogramoffice: $("#eeoprogramoffice").val(),
+                        eeopositiontitle: $("#eeopositiontitle").val(),
+                        region: $("#region").val()
+                    },
+                    success: function (response) {
+                        //console.log(response)
+                        $("#RenderReport").html(response);
+                        $(".BodyLoader").hide();
+                        $(".BodyLoader-outer").hide();
+                    },
+                    error: function (errorResponse) {
+                        $(".BodyLoader").hide();
+                        $(".BodyLoader-outer").hide();
+                        console.log(errorResponse);
+                    }
+                });
+            }
+        }
+        function filterFiles() {
+            return {
+                organization: $("#organization").val()
+            };
+        }
+        function filterEEOProgramOffice() {
+            return {
+                organization: $("#organization").val(),
+                filesubmission: $("#filesubmission").val()
+            };
+        }
+        function filterEEOCategories() {
+            return {
+                organization: $("#organization").val()
+            };
+        }
+        function filterEEOPositionTitle() {
+            return {
+                organization: $("#organization").val(),
+                filesubmission: $("#filesubmission").val(),
+                eeojobcategory: $("#eeojobcategory").val(),
+                eeoprogramoffice: $("#eeoprogramoffice").val(),
+                region: $("#region").val()
+            };
+        }
+        function filterEEOPositionTitleRefresh() {
+
+            var dropdownlist = $("#eeopositiontitle").data("kendoDropDownList");
+
+            dropdownlist.dataSource.read();
+
+
+        }
+        function filterEEORegion() {
+            return {
+                organization: $("#organization").val(),
+                filesubmission: $("#filesubmission").val()
+            };
+        }
+    </script>
+}
